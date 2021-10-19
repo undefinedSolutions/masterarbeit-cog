@@ -16,3 +16,20 @@ jobs:
       - run: npm run lint
       - run: npm run htmllint
       - run: npm run stylelint
+
+  build:
+    needs: lint
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-build
+          path: dist/*
