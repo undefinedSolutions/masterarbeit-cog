@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "htmllint": "htmllint \"src/**/*.html\"",
     "stylelint": "stylelint \"src/**/*.scss\""
   },
   "private": true,
@@ -38,14 +39,15 @@
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "eslint": "^7.26.0",
+    "htmllint-cli": "0.0.7",
     "jasmine-core": "~3.8.0",
-    "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
-    "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "stylelint": "^13.13.1",
+    "karma-jasmine": "~4.0.0",
+    "karma": "~6.3.0",
     "stylelint-order": "^4.1.0",
+    "stylelint": "^13.13.1",
     "typescript": "~4.3.5"
   }
 }
