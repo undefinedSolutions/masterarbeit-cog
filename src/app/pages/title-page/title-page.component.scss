@@ -1,0 +1,57 @@
+.header {
+  float:right;
+  width:41%;
+
+  img {
+    margin-left:-60px;
+    width:60px;
+  }
+
+  p {
+    float: none;
+    font-size: 12px;
+    font-weight: bold;
+    span {
+      display: block;
+      font-weight: normal;
+    }
+  }
+
+  p:first-of-type {
+    margin-top:0;
+  }
+}
+
+h1 {
+  clear: both;
+  font-size: 30px;
+  line-height: 36px;
+  padding: 60px 36px;
+  text-align: center;
+}
+
+.meta {
+  padding: 24px;
+
+  p {
+    font-size: 20px;
+  }
+
+  .table {
+    display: table;
+    margin: 75px 0 0;
+
+    div {
+      display: table-row;
+
+      div {
+        display: table-cell;
+        padding: 16px 10px 0 0;
+      }
+    }
+  }
+}
+
+.date {
+  padding: 50px 0 0 24px;
+}
