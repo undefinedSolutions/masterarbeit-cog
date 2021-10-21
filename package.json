@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "htmllint": "htmllint \"src/**/*.html\"",
-    "stylelint": "stylelint \"src/**/*.scss\""
+    "stylelint": "stylelint \"src/**/*.scss\" \"src/**/*.css\""
   },
   "private": true,
   "dependencies": {
