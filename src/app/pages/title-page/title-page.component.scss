@@ -1,6 +1,6 @@
 .header {
   float: right;
-  width: 250px;
+  width: 265px;
 
   img {
     margin-left: -60px;
@@ -9,7 +9,7 @@
 
   p {
     float: none;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     span {
       display: block;
@@ -24,22 +24,22 @@
 
 h1 {
   clear: both;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 36px;
   padding: 50px 36px;
   text-align: center;
 }
 
 .meta {
-  padding: 24px;
+  padding: 24px 0 0;
 
   p {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .table {
     display: table;
-    margin: 75px 0 0;
+    margin: 50px 0 0;
 
     div {
       display: table-row;
@@ -53,5 +53,5 @@ h1 {
 }
 
 .date {
-  padding: 20px 0 0 24px;
+  padding: 35px 0 0;
 }
