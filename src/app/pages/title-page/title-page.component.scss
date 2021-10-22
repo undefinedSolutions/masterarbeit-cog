@@ -31,10 +31,15 @@ h1 {
 }
 
 .meta {
-  padding: 24px 0 0;
+  padding: 24px;
 
   p {
     font-size: 16px;
+  }
+
+  .date {
+    margin: 0;
+    padding: 115px 0 0;
   }
 
   .table {
@@ -50,8 +55,4 @@ h1 {
       }
     }
   }
-}
-
-.date {
-  padding: 35px 0 0;
 }

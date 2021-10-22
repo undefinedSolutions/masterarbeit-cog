@@ -2,6 +2,12 @@
   size: A4 portrait;
 }
 
+@page:first {
+  --pagedjs-margin-right: 72px !important;
+  --pagedjs-margin-left: 72px !important;
+  --pagedjs-margin-bottom: 72px !important;
+}
+
 @media screen {
   body {
     background: #fafafa;
