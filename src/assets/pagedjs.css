@@ -20,3 +20,11 @@
     margin: 0 auto 13px;
   }
 }
+
+.newPageAfter {
+  page-break-after: always;
+}
+
+.newPageBefore {
+  page-break-before: always;
+}
