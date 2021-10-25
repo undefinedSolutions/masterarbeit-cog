@@ -28,3 +28,8 @@
 .newPageBefore {
   page-break-before: always;
 }
+
+.toDo {
+  color: red;
+  font-style: italic;
+}
