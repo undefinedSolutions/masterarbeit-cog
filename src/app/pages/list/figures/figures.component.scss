@@ -1,0 +1,31 @@
+.list {
+  .description {
+    background:#fff;
+    clear:both;
+    float:left;
+    padding:1px 0.5em;
+    width:200px;
+
+    span {
+      background: #fff;
+      left: 120px;
+      padding:1px 0.5em;
+      position: absolute;
+    }
+  }
+
+  .dotted {
+    border-bottom: 1px dotted grey;
+    margin-bottom: 4px;
+  }
+
+  .pageNumber {
+    background:#fff;
+    float:right;
+    padding:1px 0.5em;
+  }
+
+  div {
+    height: 20px;
+  }
+}

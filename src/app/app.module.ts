@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { TitlePageComponent } from './pages/title-page/title-page.component';
 import { BibliographicDescriptionComponent } from './pages/bibliographic-description/bibliographic-description.component';
 import { AffidavitComponent } from './pages/affidavit/affidavit.component';
+import { FiguresComponent } from './pages/list/figures/figures.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TitlePageComponent,
     BibliographicDescriptionComponent,
-    AffidavitComponent
+    AffidavitComponent,
+    FiguresComponent
   ],
   imports: [
     BrowserModule
