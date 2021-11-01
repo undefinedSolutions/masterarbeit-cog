@@ -7,6 +7,7 @@ import { BibliographicDescriptionComponent } from './pages/bibliographic-descrip
 import { AffidavitComponent } from './pages/affidavit/affidavit.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
 import { TablesComponent } from './pages/list/tables/tables.component';
+import { AbbreviationsComponent } from './pages/list/abbreviations/abbreviations.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TablesComponent } from './pages/list/tables/tables.component';
     BibliographicDescriptionComponent,
     AffidavitComponent,
     FiguresComponent,
-    TablesComponent
+    TablesComponent,
+    AbbreviationsComponent
   ],
   imports: [
     BrowserModule
