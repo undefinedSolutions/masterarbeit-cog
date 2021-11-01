@@ -70,14 +70,15 @@
     "string-no-newline": true,
     "string-quotes": "single",
     "unit-allowed-list": [
-      "px",
       "%",
       "deg",
-      "ms",
       "em",
+      "ms",
+      "px",
+      "s",
       "vh",
-      "vw",
-      "vmin"
+      "vmin",
+      "vw"
     ],
     "unit-case": "lower",
     "unit-no-unknown": true,

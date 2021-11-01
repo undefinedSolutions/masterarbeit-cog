@@ -21,7 +21,8 @@
       "dom"
     ],
     "noImplicitAny": false,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true, // Fix for: https://github.com/openlayers/openlayers/issues/12609
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

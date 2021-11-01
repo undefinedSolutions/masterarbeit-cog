@@ -10,6 +10,7 @@ import { TablesComponent } from './pages/list/tables/tables.component';
 import { AbbreviationsComponent } from './pages/list/abbreviations/abbreviations.component';
 import { ContentComponent } from './content/content.component';
 import { C1IntroductionComponent } from './content/c1-introduction/c1-introduction.component';
+import { C1p1TechDemoComponent } from './content/c1p1-tech-demo/c1p1-tech-demo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { C1IntroductionComponent } from './content/c1-introduction/c1-introducti
     TablesComponent,
     AbbreviationsComponent,
     ContentComponent,
-    C1IntroductionComponent
+    C1IntroductionComponent,
+    C1p1TechDemoComponent
   ],
   imports: [
     BrowserModule
