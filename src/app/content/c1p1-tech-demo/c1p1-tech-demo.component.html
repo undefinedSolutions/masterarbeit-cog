@@ -1,7 +1,18 @@
 <h3>TechDemo</h3>
+
+<app-figure
+    [id]="1"
+    [src]="'/assets/images/Logo_HSA.jpg'"
+    [caption]="'Logo der HS-Anhalt'"></app-figure>
+
 <div id="map" class="demoMap"></div>
+
 <p>Neue Abkürzung <app-abbreviation [abbreviation]="'GIS'" [description]="'Geoinformationssystem'"></app-abbreviation></p>
 <p>Neue Abkürzung <app-abbreviation [abbreviation]="'DREF91'" [description]="'Deutsches Referenznetz 1991'"></app-abbreviation></p>
 <p>Neue Abkürzung <app-abbreviation [abbreviation]="'API'" [description]="'Application Programming Interface'"></app-abbreviation></p>
 <p>Doppelte Abkürzung <app-abbreviation [abbreviation]="'GIS'" [description]="'Geoinformationssystem'"></app-abbreviation></p>
 <p>Lange Abkürzung <app-abbreviation [abbreviation]="'AdV'" [description]="'Arbeitsgemeinschaft der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland'"></app-abbreviation></p>
+
+<p>Some text that refer to the <a class="link" href="#chapter-1">chapter</a>.</p>
+
+<p>see the <a class="link" href="#figure-3">figure 3</a></p>

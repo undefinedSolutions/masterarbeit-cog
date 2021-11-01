@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 export interface InterfaceAbbreviation {
   abbreviation: string;
@@ -13,6 +13,7 @@ export class AbbreviationsService {
   data$: BehaviorSubject<Array<InterfaceAbbreviation>> = new BehaviorSubject([{abbreviation: '', description: ''}]);
 
   constructor() { }
+
   pushAbbreviation(newAbbreviation: string, newDescription:string): void {
     if (!this.data$.value.some(el => el.abbreviation === newAbbreviation)) {
       const oldData = this.data$.value

@@ -26,6 +26,7 @@ export class AppComponent implements AfterViewInit {
       )
       .then(flow => {
         this.pagedJSService.loaded.emit(true);
+        this.content.nativeElement.innerHTML = '';
       });
     }, 1000);
     

@@ -9,6 +9,7 @@ import { BibliographicDescriptionComponent } from './pages/bibliographic-descrip
 import { C1IntroductionComponent } from './content/c1-introduction/c1-introduction.component';
 import { C1p1TechDemoComponent } from './content/c1p1-tech-demo/c1p1-tech-demo.component';
 import { ContentComponent } from './content/content.component';
+import { FigureComponent } from './shared/figure/figure.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
 import { TablesComponent } from './pages/list/tables/tables.component';
 import { TitlePageComponent } from './pages/title-page/title-page.component';
@@ -23,6 +24,7 @@ import { TitlePageComponent } from './pages/title-page/title-page.component';
     C1IntroductionComponent,
     C1p1TechDemoComponent,
     ContentComponent,
+    FigureComponent,
     FiguresComponent,
     TablesComponent,
     TitlePageComponent
