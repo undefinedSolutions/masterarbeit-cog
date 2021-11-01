@@ -15,8 +15,10 @@ export class AppComponent implements AfterViewInit {
   constructor(private pagedJSService:PagedJSService){}
 
   ngAfterViewInit(): void {
-    const previewer = new Previewer();
-    previewer
+    setTimeout(() => {
+      // ToDo: needs to be dynamic afer all Parts are loaded
+      const previewer = new Previewer();
+      previewer
       .preview(
         this.content.nativeElement.innerHTML,
         ['/assets/pagedjs.css'],
@@ -24,7 +26,8 @@ export class AppComponent implements AfterViewInit {
       )
       .then(flow => {
         this.pagedJSService.loaded.emit(true);
-        console.log("preview rendered, total pages", flow.total, { flow });
       });
+    }, 1000);
+    
   }
 }

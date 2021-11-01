@@ -1,5 +1,5 @@
 <h2>Abkürzungen</h2>
-<div class="list" *ngFor="let figure of [].constructor(30); index as i">
-  <div class="abbreviation toDo">Abkürzung</div>
-  <div class="description toDo">Abkürzung description</div>
+<div class="list" *ngFor="let abbreviation of abbreviations; index as i">
+  <div class="abbreviation">{{abbreviation.abbreviation}}</div>
+  <div class="description">{{abbreviation.description}}</div>
 </div>
