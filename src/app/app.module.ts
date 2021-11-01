@@ -8,6 +8,8 @@ import { AffidavitComponent } from './pages/affidavit/affidavit.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
 import { TablesComponent } from './pages/list/tables/tables.component';
 import { AbbreviationsComponent } from './pages/list/abbreviations/abbreviations.component';
+import { ContentComponent } from './content/content.component';
+import { C1IntroductionComponent } from './content/c1-introduction/c1-introduction.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AbbreviationsComponent } from './pages/list/abbreviations/abbreviations
     AffidavitComponent,
     FiguresComponent,
     TablesComponent,
-    AbbreviationsComponent
+    AbbreviationsComponent,
+    ContentComponent,
+    C1IntroductionComponent
   ],
   imports: [
     BrowserModule
