@@ -6,6 +6,7 @@ import { TitlePageComponent } from './pages/title-page/title-page.component';
 import { BibliographicDescriptionComponent } from './pages/bibliographic-description/bibliographic-description.component';
 import { AffidavitComponent } from './pages/affidavit/affidavit.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
+import { TablesComponent } from './pages/list/tables/tables.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FiguresComponent } from './pages/list/figures/figures.component';
     TitlePageComponent,
     BibliographicDescriptionComponent,
     AffidavitComponent,
-    FiguresComponent
+    FiguresComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule
