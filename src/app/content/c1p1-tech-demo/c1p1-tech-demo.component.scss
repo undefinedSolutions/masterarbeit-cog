@@ -4,8 +4,14 @@ h3::before {
   font-size: 1em;
   margin-right: 0.6em;
 }
-
-.demoMap {
-  height:500px;
-  width:100%;
+.demoMap > .placeholderImg {
+  float: left;
+  height: 500px;
+  visibility: hidden;
+  width: 0;
+}
+.demoMap > .map {
+  clear: both;
+  height: 500px;
+  padding: 5px;
 }
