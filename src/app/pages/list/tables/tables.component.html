@@ -1,9 +1,7 @@
 <h2>Tabellen</h2>
-<div class="list" *ngFor="let figure of [].constructor(30); index as i">
+<div class="list" *ngFor="let table of tables; index as i">
   <div class="numbered">Tabelle {{i+1}}:</div>
-  <div class="description toDo">
-    Table description
-  </div>
-  <div class="pageNumber"><span class="toDo">pages number of table</span></div>
+  <div class="caption">{{table.caption}}</div>
+  <div class="pageNumber" *ngIf="table.id > 0"><a class="tableLink" href="#table-{{table.id}}"></a></div>
   <div class="dotted"> </div>
 </div>

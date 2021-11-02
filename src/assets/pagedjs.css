@@ -2,6 +2,10 @@
   content: 'Seite ' target-counter(attr(href url), page);
 }
 
+.tableLink::after {
+  content: 'Seite ' target-counter(attr(href url), page);
+}
+
 @page {
   size: A4 portrait;
 }

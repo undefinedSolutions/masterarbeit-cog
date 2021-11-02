@@ -1,3 +1,4 @@
+import { TablesService } from './../../services/tables/tables.service';
 import { Component, AfterViewInit } from '@angular/core';
 
 import Map from 'ol/Map';
@@ -14,7 +15,10 @@ import { PagedJSService } from './../../services/pagedJS/paged-js.service';
 })
 export class C1p1TechDemoComponent implements AfterViewInit {
 
-  constructor(private pagedJSService:PagedJSService) { }
+  constructor(
+    private pagedJSService:PagedJSService,
+    private tablesService:TablesService
+  ) { }
 
   ngAfterViewInit(): void {
     this.pagedJSService.loaded.subscribe((state) => {
@@ -32,5 +36,6 @@ export class C1p1TechDemoComponent implements AfterViewInit {
         });
       }
     });
+    this.tablesService.pushTable('testCaption', 1)
   }
 }

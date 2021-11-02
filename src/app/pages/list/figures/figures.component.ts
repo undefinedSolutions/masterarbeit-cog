@@ -14,7 +14,6 @@ export class FiguresComponent {
     this.figuresService.data$
     .subscribe(data => {
       this.figures = data;
-      console.log(this.figures);
     })
   }
 }
