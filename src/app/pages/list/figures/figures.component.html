@@ -1,7 +1,13 @@
 <h2>Abbildungen</h2>
 <div class="list" *ngFor="let figure of figures; index as i">
   <div class="numbered">Abbildung {{i+1}}:</div>
-  <div class="caption">{{figure.caption}}</div>
-  <div class="pageNumber" *ngIf="figure.id > 0"><a class="figureLink" href="#figure-{{figure.id}}"></a></div>
+  <div class="caption">
+    <a class="figureLink" href="#figure-{{figure.id}}">
+      {{figure.caption}}
+    </a>
+  </div>
+  <div class="pageNumber" *ngIf="figure.id > 0">
+    <a class="figureLink" href="#figure-{{figure.id}}"></a>
+  </div>
   <div class="dotted"> </div>
 </div>

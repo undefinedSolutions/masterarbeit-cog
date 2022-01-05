@@ -1,7 +1,11 @@
 <h2>Tabellen</h2>
 <div class="list" *ngFor="let table of tables; index as i">
   <div class="numbered">Tabelle {{i+1}}:</div>
-  <div class="caption">{{table.caption}}</div>
+  <div class="caption">
+    <a href="#table-{{table.id}}">
+      {{table.caption}}
+    </a>
+  </div>
   <div class="pageNumber" *ngIf="table.id > 0"><a class="tableLink" href="#table-{{table.id}}"></a></div>
   <div class="dotted"> </div>
 </div>

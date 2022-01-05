@@ -13,6 +13,8 @@ import { FigureComponent } from './shared/figure/figure.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
 import { TablesComponent } from './pages/list/tables/tables.component';
 import { TitlePageComponent } from './pages/title-page/title-page.component';
+import { TocComponent } from './pages/list/toc/toc.component';
+import { HeadlineComponent } from './shared/headline/headline.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { TitlePageComponent } from './pages/title-page/title-page.component';
     FigureComponent,
     FiguresComponent,
     TablesComponent,
-    TitlePageComponent
+    TitlePageComponent,
+    TocComponent,
+    HeadlineComponent
   ],
   imports: [
     BrowserModule

@@ -36,6 +36,6 @@ export class C1p1TechDemoComponent implements AfterViewInit {
         });
       }
     });
-    this.tablesService.pushTable('testCaption', 1)
+    this.tablesService.pushTable('testCaption BlaBla', 1)
   }
 }

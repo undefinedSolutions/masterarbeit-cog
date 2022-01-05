@@ -6,8 +6,18 @@
   content: 'Seite ' target-counter(attr(href url), page);
 }
 
+.contentLink::after {
+  content:  target-counter(attr(href url), page);
+}
+
 @page {
   size: A4 portrait;
+
+  @bottom-right {
+    content:counter(page);
+    font-size: 12px;
+    vertical-align: center;
+  }
 }
 
 @page:first {
@@ -48,11 +58,20 @@
   .ol-zoom {
     visibility: hidden;
   }
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
 @media screen {
 
   .ol-zoom {
     visibility: visible !important;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline !important;
   }
 }
 

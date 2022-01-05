@@ -1,0 +1,18 @@
+<h1>Inhalt</h1>
+<div *ngFor="let content of toc; index as i"
+    class="list">
+  <div [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3}"
+      class="numbered">
+    {{content.number}}
+  </div>
+  <div class="caption">
+    <a href="#content-{{content.id}}">
+      {{content.headline}}
+    </a>
+  </div>
+  <div *ngIf="content.id > 0"
+      class="pageNumber">
+    <a class="contentLink" href="#content-{{content.id}}"></a>
+  </div>
+  <div class="dotted"> </div>
+</div>
