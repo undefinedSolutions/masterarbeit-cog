@@ -1,5 +1,6 @@
 <h2>Abkürzungen</h2>
-<div class="list" *ngFor="let abbreviation of abbreviations; index as i">
+<div *ngFor="let abbreviation of abbreviations; index as i"
+    class="list">
   <div class="abbreviation">{{abbreviation.abbreviation}}</div>
   <div class="description">{{abbreviation.description}}</div>
 </div>

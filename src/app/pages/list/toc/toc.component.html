@@ -1,5 +1,6 @@
-<h1>Inhalt</h1>
+<h2>Inhalt</h2>
 <div *ngFor="let content of toc; index as i"
+    [ngClass]="{'listH1': content.h === 1}"
     class="list">
   <div [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3}"
       class="numbered">

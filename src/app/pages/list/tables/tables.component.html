@@ -1,5 +1,6 @@
 <h2>Tabellen</h2>
-<div class="list" *ngFor="let table of tables; index as i">
+<div *ngFor="let table of tables; index as i"
+    class="list">
   <div class="numbered">Tabelle {{i+1}}:</div>
   <div class="caption">
     <a href="#table-{{table.id}}">
