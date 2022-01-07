@@ -1,4 +1,9 @@
-<h2>Abbildungen</h2>
+<app-headline
+    [headline]="'Abbildungen'"
+    [h]="1"
+    [number]="'0'"
+    [id]="0.1"
+    [type]="'roman'"></app-headline>
 <div *ngFor="let figure of figures; index as i"
     class="list">
   <div class="numbered">Abbildung {{i+1}}:</div>

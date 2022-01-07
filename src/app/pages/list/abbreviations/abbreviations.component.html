@@ -1,4 +1,9 @@
-<h2>Abkürzungen</h2>
+<app-headline
+    [headline]="'Abkürzungen'"
+    [h]="1"
+    [number]="'0'"
+    [id]="0.3"
+    [type]="'roman'"></app-headline>
 <div *ngFor="let abbreviation of abbreviations; index as i"
     class="list">
   <div class="abbreviation">{{abbreviation.abbreviation}}</div>

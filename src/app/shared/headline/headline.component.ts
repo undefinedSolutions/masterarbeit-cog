@@ -11,10 +11,11 @@ export class HeadlineComponent implements OnInit {
   @Input() headline: string;
   @Input() id: number;
   @Input() number: string;
+  @Input() type: string;
 
   constructor(private tocService:TocService) { }
 
   ngOnInit(): void {
-    this.tocService.pushContent(this.h, this.headline, this.id, this.number);
+    this.tocService.pushContent(this.h, this.headline, this.id, this.number, this.type);
   }
 }

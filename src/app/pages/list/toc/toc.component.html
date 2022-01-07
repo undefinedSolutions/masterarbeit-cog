@@ -1,8 +1,8 @@
-<h2>Inhalt</h2>
+<h1>Inhalt</h1>
 <div *ngFor="let content of toc; index as i"
-    [ngClass]="{'listH1': content.h === 1}"
+    [ngClass]="{'listH1': content.h === 1 && content.number !== '0' }"
     class="list">
-  <div [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3}"
+  <div *ngIf="content.number !== '0'" [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3}"
       class="numbered">
     {{content.number}}
   </div>
@@ -13,7 +13,8 @@
   </div>
   <div *ngIf="content.id > 0"
       class="pageNumber">
-    <a class="contentLink" href="#content-{{content.id}}"></a>
+    <a [ngClass]="{'contentLink': content.type === 'number', 'contentLinkRoman': content.type === 'roman'}"
+        href="#content-{{content.id}}"></a>
   </div>
   <div class="dotted"> </div>
 </div>
