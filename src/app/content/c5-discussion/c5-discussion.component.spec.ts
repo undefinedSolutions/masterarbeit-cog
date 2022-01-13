@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { C1p1TechDemoComponent } from './c1p1-tech-demo.component';
+import { C5DiscussionComponent } from './c5-discussion.component';
 
-describe('C1p1TechDemoComponent', () => {
-  let component: C1p1TechDemoComponent;
-  let fixture: ComponentFixture<C1p1TechDemoComponent>;
+describe('C5DiscussionComponent', () => {
+  let component: C5DiscussionComponent;
+  let fixture: ComponentFixture<C5DiscussionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ C1p1TechDemoComponent ]
+      declarations: [ C5DiscussionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(C1p1TechDemoComponent);
+    fixture = TestBed.createComponent(C5DiscussionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

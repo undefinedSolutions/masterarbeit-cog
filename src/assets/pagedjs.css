@@ -17,6 +17,11 @@
   counter-reset: page 1;
 }
 
+p {
+  hyphens: auto;
+  text-align: justify;
+}
+
 @page {
   size: A4 portrait;
 

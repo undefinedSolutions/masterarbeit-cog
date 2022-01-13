@@ -1,3 +1,4 @@
+[![Build](https://github.com/undefinedSolutions/masterarbeit-cog/actions/workflows/actions.yml/badge.svg)](https://github.com/undefinedSolutions/masterarbeit-cog/actions/workflows/actions.yml)
 # MasterarbeitCog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.

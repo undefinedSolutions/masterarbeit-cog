@@ -7,7 +7,7 @@ import { AffidavitComponent } from './pages/affidavit/affidavit.component';
 import { AppComponent } from './app.component';
 import { BibliographicDescriptionComponent } from './pages/bibliographic-description/bibliographic-description.component';
 import { C1IntroductionComponent } from './content/c1-introduction/c1-introduction.component';
-import { C1p1TechDemoComponent } from './content/c1p1-tech-demo/c1p1-tech-demo.component';
+import { C9TechDemoComponent } from './content/c9-tech-demo/c9-tech-demo.component';
 import { ContentComponent } from './content/content.component';
 import { FigureComponent } from './shared/figure/figure.component';
 import { FiguresComponent } from './pages/list/figures/figures.component';
@@ -15,6 +15,11 @@ import { TablesComponent } from './pages/list/tables/tables.component';
 import { TitlePageComponent } from './pages/title-page/title-page.component';
 import { TocComponent } from './pages/list/toc/toc.component';
 import { HeadlineComponent } from './shared/headline/headline.component';
+import { C2StandardsComponent } from './content/c2-standards/c2-standards.component';
+import { C3DataProcessingComponent } from './content/c3-data-processing/c3-data-processing.component';
+import { C4MethodologyComponent } from './content/c4-methodology/c4-methodology.component';
+import { C5DiscussionComponent } from './content/c5-discussion/c5-discussion.component';
+import { C6SummaryComponent } from './content/c6-summary/c6-summary.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +29,19 @@ import { HeadlineComponent } from './shared/headline/headline.component';
     AppComponent,
     BibliographicDescriptionComponent,
     C1IntroductionComponent,
-    C1p1TechDemoComponent,
+    C9TechDemoComponent,
     ContentComponent,
     FigureComponent,
     FiguresComponent,
     TablesComponent,
     TitlePageComponent,
     TocComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    C2StandardsComponent,
+    C3DataProcessingComponent,
+    C4MethodologyComponent,
+    C5DiscussionComponent,
+    C6SummaryComponent
   ],
   imports: [
     BrowserModule

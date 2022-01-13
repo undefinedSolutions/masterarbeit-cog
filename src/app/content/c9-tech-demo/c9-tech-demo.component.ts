@@ -1,4 +1,4 @@
-import { TablesService } from './../../services/tables/tables.service';
+import { TablesService } from '../../services/tables/tables.service';
 import { Component, AfterViewInit } from '@angular/core';
 
 import Map from 'ol/Map';
@@ -6,14 +6,14 @@ import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 
-import { PagedJSService } from './../../services/pagedJS/paged-js.service';
+import { PagedJSService } from '../../services/pagedJS/paged-js.service';
 
 @Component({
-  selector: 'app-c1p1-tech-demo',
-  templateUrl: './c1p1-tech-demo.component.html',
-  styleUrls: ['./c1p1-tech-demo.component.scss']
+  selector: 'app-c9-tech-demo',
+  templateUrl: './c9-tech-demo.component.html',
+  styleUrls: ['./c9-tech-demo.component.scss']
 })
-export class C1p1TechDemoComponent implements AfterViewInit {
+export class C9TechDemoComponent implements AfterViewInit {
 
   constructor(
     private pagedJSService:PagedJSService,
