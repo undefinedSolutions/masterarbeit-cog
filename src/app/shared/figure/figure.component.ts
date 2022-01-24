@@ -10,6 +10,7 @@ export class FigureComponent implements OnInit {
   @Input() id: number;
   @Input() src: string;
   @Input() caption: string;
+  @Input() style: string;
 
   constructor(private figuresService:FiguresService) { }
 

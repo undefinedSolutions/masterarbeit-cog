@@ -1,3 +1,18 @@
+.sideBySide div {
+  float: left;
+  width: 49%;
+}
+.sideBySide div:first-child {
+  margin-right: 1%;
+}
+.placeholderImg {
+  float: left;
+  visibility: hidden;
+  width: 0;
+}
+
+/* Test */
+
 .figureLink::after {
   content: 'Seite ' target-counter(attr(href url), page);
 }
@@ -67,6 +82,11 @@ p {
   }
 }
 @page:nth(7) {
+  @bottom-right {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(8) {
   @bottom-right {
     content: counter(page, upper-roman);
   }
