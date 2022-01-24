@@ -10,8 +10,7 @@
     "marginwidth",
     "marginheight",
     "scrolling",
-    "style",
-    "width"
+    "style"
   ],
   "attr-name-ignore-regex": false,
   "attr-name-style": false,
@@ -29,7 +28,7 @@
   "id-class-no-ad": true,
   "id-class-style": "dash",
   "id-no-dup": true,
-  "img-req-alt": true,
+  "img-req-alt": false,
   "img-req-src": true,
   "indent-style": "spaces",
   "indent-width": 2,
