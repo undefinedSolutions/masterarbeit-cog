@@ -38,6 +38,7 @@ p {
 }
 
 @page {
+  font-size: 15px;
   size: A4 portrait;
 
   @bottom-right {

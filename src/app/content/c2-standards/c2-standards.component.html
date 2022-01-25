@@ -1,5 +1,22 @@
 <app-headline class="newPageBefore" [headline]="'Standards'" [h]="1" [number]="'2'" [id]="2"></app-headline>
+  <p>
+    Die Auswahl der untersuchten Standards wurde aufgrund Ihrer einfachen Aufarbeitung, Bereitstellung, Verwendung und weiten Verbreitung innerhalb einer der gängigen JavaScript-Bibliotheken für WebMapping getroffen.
+    Besonders OpenLayers ist eine sehr umfangreiche und einfach zu nutzende Bibliothek um Rasterdaten in einem WebGIS bereitzustellen.
+    Alle hier untersuchten Standards wurden vom dem Open Geospatial Consortium (<app-abbreviation [abbreviation]="'OGC'" [description]="'Open Geospatial Consortium'"></app-abbreviation>) erarbeitet und standardisiert, dies wird innerhalb der einzelnen Standards weiter ausgeführt.
+  </p>
+
+  <p>
+    Aufgrund der Tatsache, dass Rasterinformationen auf einer flachen Oberfläche projeziert werden, ist es üblich für ein WebGIS ein projeziertes Koordinatensystem zu verwenden.
+    Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart sowohl Rechenzeit sowohl Wartezeit des Nutzers.
+    Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die Web-Mercator- oder auch Pseudo-Mercator genannte Projektion mit dem EPSG-Code 3857 durchgesetzt. <span class="toDo">https://www.w3.org/TR/sdw-bp/</span>
+  </p>
+
+  <p>
+    Diese Arbeit hat nicht den Anspruch jeden Standard in vollen Umfang zu beleuchten, Ziel ist es vielmehr eine funktionale Lösung für die einzelnen Szenarien zu finden und diese Lösungsansätze miteinander zu vergleichen.
+  </p>
+
   <app-headline [headline]="'Tile Matrix Set'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
+
   <app-headline [headline]="'Web Map Service'" [h]="2" [number]="'2.2'" [id]="2.2"></app-headline>
   <app-headline [headline]="'Web Map Tile Service'" [h]="2" [number]="'2.3'" [id]="2.3"></app-headline>
   <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="2" [number]="'2.4'" [id]="2.4"></app-headline>
