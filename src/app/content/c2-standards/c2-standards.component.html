@@ -7,16 +7,55 @@
 
   <p>
     Aufgrund der Tatsache, dass Rasterinformationen auf einer flachen Oberfläche projeziert werden, ist es üblich für ein WebGIS ein projeziertes Koordinatensystem zu verwenden.
-    Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart sowohl Rechenzeit sowohl Wartezeit des Nutzers.
+    Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart Rechenzeit sowie Wartezeit des Nutzers.
     Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die Web-Mercator- oder auch Pseudo-Mercator genannte Projektion mit dem EPSG-Code 3857 durchgesetzt. <span class="toDo">https://www.w3.org/TR/sdw-bp/</span>
   </p>
 
   <p>
-    Diese Arbeit hat nicht den Anspruch jeden Standard in vollen Umfang zu beleuchten, Ziel ist es vielmehr eine funktionale Lösung für die einzelnen Szenarien zu finden und diese Lösungsansätze miteinander zu vergleichen.
+    Diese Arbeit hat nicht den Anspruch jeden Standard in vollen Umfang zu beleuchten, das Ziel ist es vielmehr eine funktionale Lösung für die einzelnen Szenarien zu finden und diese Lösungsansätze miteinander zu vergleichen.
   </p>
 
   <app-headline [headline]="'Tile Matrix Set'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
+  <p>
+    Der Tile Matrix Set (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>) beschreibt ein Kachelschema welches festlegt in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Dies bedeutet, dass einzelne Kacheln über keine Georeferenzierung verfügen.
+  </p>
+  <p>
+    Das Kachelschema ist ein Gitter welches standardmäßig unterteilt in Kacheln die gesamte Welt abdecken. Der Ausgangspunkt des Gitters ist die obere linke Ecke, gezählt wird in Ganzzahlen. Dies bedeutet der Ausgangspunkt hat die Position (0, 0).
+    Das Ende des Gitters ergibt sich aus der Breite der jeweiligen Dimmension - 1 (matrixWidth -1 , 0) bzw. (0, matrixWidth -1).
+    Die reale Kachegröße wird in der Einheit des gewählten Koordinatensystem angegeben, für Web-Mercator EPSG:3857 sind es Meter.
+    Die Breite und Höhe einer einzelnen Kachel sind meist 256 oder 512 Pixel, diese Werte sind nicht standardisiert und es ist ebenso möglich, dass Breite und Höhe unterschiedliche Werte besitzen, dies jedoch ist dies extrem selten.
+  </p>
+  <p class="newPageBefore">
+    Durch diese beschreibung des Standards ergibt sich die folgende Darstellung:
+  </p>
+  <app-figure
+    [id]="5"
+    [src]="'/assets/images/Standards/TMS_tileSpace.png'"
+    [caption]="'Tile Matrix - Gitter'"></app-figure>
+
+  <p>
+    Die bisherige Beschreibung des Standards beschrieb nur die XY-Dimensionen, auch Tile Matrix genannt.
+    Dies würde den Nutzer zwingen die höchstauflösenste Zoomstufe zu laden und aus dieser die Übersichten für die jeweiligen angefragten Zoomstufen zu generieren.
+    Unter Betrachtung der Bandbreite und Rechenzeit wäre dies sehr ineffizient da die Software diese zur Laufzeit <app-abbreviation [abbreviation]="'rendern'" [description]="'bezeichnet in der Computergrafik die Erzeugung eines Bildes aus Rohdaten'"></app-abbreviation> müsste.
+  </p>
+
+  <p>
+    Um dies zuvermeiden werden einzelne Zoomstufen bereitgestellt und von der Software gezielt angefordert werden.
+    Hierfür werden pro Zoomstufe eine Tile Matrix bereitgestellt welche den TMS ergeben.
+    Diese Tile Matrizen werden in der Praxis mit einer Ganzzahl angesprochen, der Standard sieht jedoch auch eine eindeutige alphanumerischen Bezeichner vor.
+    Die standardisierung sieht vor dass die Aufteilung zum Zoom nicht zwingend aus 1:4 besteht, gemeint ist hiermit dass 4 Kacheln der Zoomstufe 1 eine Kachel der Zoomstufe 0 ergeben. Dies ist jedoch in der praxis sehr oft anzutreffen, da unter dieser Methodik BoundingBoxen auf den gesamten TMS anzuwenden sind und nicht auf einzelne Tile Matrizen.
+  </p>
+
+  <app-figure
+    [id]="6"
+    [src]="'/assets/images/Standards/TMS_representation.png'"
+    [caption]="'Tile Matrix Set representation'"></app-figure>
+
+  <p class="ToDo">Well-known scale sets</p>
 
   <app-headline [headline]="'Web Map Service'" [h]="2" [number]="'2.2'" [id]="2.2"></app-headline>
+  <p class="ToDo">ToDo</p>
   <app-headline [headline]="'Web Map Tile Service'" [h]="2" [number]="'2.3'" [id]="2.3"></app-headline>
+  <p class="ToDo">ToDo</p>
   <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="2" [number]="'2.4'" [id]="2.4"></app-headline>
+  <p class="ToDo">ToDo</p>

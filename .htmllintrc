@@ -35,7 +35,7 @@
   "input-radio-req-name": true,
   "label-req-for": true,
   "lang-style": "case",
-  "line-end-style": "lf",
+  "line-end-style": false,
   "line-max-len-ignore-regex": false,
   "line-max-len": false,
   "spec-char-escape": false,
