@@ -28,13 +28,22 @@
   content:  target-counter(attr(href url), page, upper-roman);
 }
 
-.reset {
+.resetPageCounter {
   counter-reset: page 1;
 }
 
 p {
   hyphens: auto;
   text-align: justify;
+}
+
+/* Display span as footnote */
+.footnote {
+  float: footnote;
+  font-size: 13px;
+}
+[data-footnote-marker]::marker {
+  font-size: 75%;
 }
 
 @page {
@@ -45,6 +54,10 @@ p {
     content: counter(page);
     font-size: 14px;
     vertical-align: center;
+  }
+  @footnote {
+    float: bottom;
+    /* style of footnote area */
   }
 }
 @page:first {
