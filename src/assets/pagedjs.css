@@ -56,8 +56,9 @@ p {
     vertical-align: center;
   }
   @footnote {
+    background:linear-gradient(black, black) top left no-repeat;
+    background-size:25% 1px;
     float: bottom;
-    /* style of footnote area */
   }
 }
 @page:first {

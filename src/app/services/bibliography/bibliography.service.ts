@@ -33,9 +33,7 @@ export class BibliographyService {
     newTitle: string,
     newURL: string
   ): void {
-    console.log("test1");
     if (!this.data$.value.some(el => el.title === newTitle)) {
-      console.log("test2");
       let oldData = this.data$.value
       oldData = oldData.filter(e => e.title !== '');
       oldData.push({

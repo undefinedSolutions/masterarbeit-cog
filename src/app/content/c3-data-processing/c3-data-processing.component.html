@@ -1,21 +1,115 @@
 <app-headline class="newPageBefore" [headline]="'Datenverarbeitung und Bereitstellung'" [h]="1" [number]="'3'" [id]="3"></app-headline>
+<p class="toDo">toDo</p>
+
   <app-headline [headline]="'Vorraussetzungen zum ausliefern der Datensätze'" [h]="2" [number]="'3.1'" [id]="3.1"></app-headline>
+  <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Tile Matrix Set und Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
+    <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.1.2'" [id]="3.12"></app-headline>
+    <p class="toDo">toDo</p>
 
   <app-headline [headline]="'Vorbereitung der Datensätze'" [h]="2" [number]="'3.2'" [id]="3.2"></app-headline>
+  <p>
+    Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden.
+    Ziel dieser Arbeit ist es alle benötigten Schritte mithilfe von Open-source Software durchzuführen um die einzelnen Arbeitsschritte für jeden auch ohne proprietäre Software zu ermöglichen.
+  </p>
+
+  <p>
+    Die Arbeitsschritte werden nicht über eine Grafische Benutzeroberfläche (<app-abbreviation [abbreviation]="'GUI'" [description]="'Graphical user interface, Grafische Benutzeroberfläche'"></app-abbreviation>) wie sie durch QGIS bereitgestellt wird ausgeführt.
+    Diese Entscheidung wurde getroffen um mögliche eingabefehler Fehler zu vermeiden, die ergebnisse reproduzierbar zu machen und die Möglichkeit zu bieten die Vorbereitung der Daten automatisieren zu können.
+  </p>
+
+  <p>
+    Als Werkzeug hierfür eignet sich besonder GDAL, dies wird von der Open Source Geospatial Foundation (<app-abbreviation [abbreviation]="'OSGeo'" [description]="'Open Source Geospatial Foundation'"></app-abbreviation>) veröffentlicht und gepflegt und bietet die gewünschte Möglichkeit die Prozesse über das Terminal zu starten.
+    Sofern QGIS auf dem jeweiligen Computer installiert ist wird auch GDAL installiert, da QGIS selbst GDAL nutzt. Jedoch ist hier wichtig auf die installierte Version zu achten.
+  </p>
+
+  <p>
+    Stand 30.01.2022 nutzt die aktuellste Version von QGIS (3.22.3 Białowieża vom 14.01.2022) nicht die aktuellste Version von GDAL sondern die Version 3.0.4 vom 28.01.2020.
+    Somit ist es nötig, sofern ebenfalls QGIS installiert ist, eine weitere Version von GDAL zu installieren.
+    Hierbei muss jedoch die Version 3.0.4 für QGIS erhalten bleiben.
+  </p>
+  <p class="newPageBefore">
+    Dadurch war es nötig GDAL mithilfe von Anaconda (<span class="toDo">toDo https://anaconda.org/</span>) , einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
+        [author]="'Anaconda'"
+        [lastVisit]="'30.01.2022'"
+        [title]="'conda-forge / packages / gdal'"
+        [URL]="'https://anaconda.org/conda-forge/gdal'"></app-quote>.
+    Hierdurch ist es möglich mehrere Versionen einer Software zu nutzen ohne die Funktionalität zu gefährden<app-quote
+        [author]="'GeeksforGeeks'"
+        [lastVisit]="'30.01.2022'"
+        [publicationDate]="'17.05.2020'"
+        [title]="'Set up virtual environment for Python using Anaconda'"
+        [vgl]="true"
+        [URL]="'https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/'"></app-quote>.
+    Ziel dieser Arbeit ist es nicht die verschiedenen Versionen von GDAL zu vergleichen, jedoch war es bei dem TMS möglich die benötigte Rechenzeit nur durch ein Upgrade von GDAL um das <span class="toDo">toDo</span> zu verkürzen.
+  </p>
+
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.2.1'" [id]="3.21"></app-headline>
+    <p>
+      Zur Erstellung eines TMS bietet GDAL ein Python Script names gdal2tiles.py welches standartmäßig zur Verfügung gestellt wird.
+      Inputs welche nicht dem Datentypen Byte entsprechen werden automatisch zu diesen Konvertiert, dadurch kann es zu fehlerhaften Ergebnissen führen.
+      Diese Konvertierung sollte unbedingt vor dem eigentlichen erstellen des TMS erfolgen.
+    </p>
+
+    <p>
+      Daraus ergibt es sich,dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist.
+      Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
+    </p>
+
+    <p>
+      Die minimal parameter des Scripts sind:
+    </p>
+    <ul>
+      <li><span class="code">--zoom=[ZOOM]</span> Zoom levels to render (format:2-5, 10- or 10)</li>
+      <li><span class="code">input_file</span></li>
+      <li><span class="code">output_folder</span></li>
+    </ul>
+    <p>
+      <span class="code">gdal2tiles.py --zoom=2-5 input.tif output_folder</span>
+    </p>
+    <p>
+      Um die Erstellung des TMS zu beschleunigen ist es Möglich das Script in parallele Prozesse aufzuteilen, dies erfolgt über eine Eingabe an parallelen Prozessen.
+      Es Empfiehlt sich die Anzahl der Prozesse auf die Anzahl der Threads der CPU zu beschränken.
+      Die exakte Anzahl an Threads liefert folgende eingabe im Terminal:<br>
+      <span class="code">cat /proc/cpuinfo | grep processor | wc -l</span><br>
+      Das Ergebnis dieser Eingabe sollte nun an den Parameter --processes= übergeben werden.
+    </p>
+
     <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.2.2'" [id]="3.22"></app-headline>
+    <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.2.3'" [id]="3.23"></app-headline>
+    <p class="toDo">toDo</p>
 
-  <app-headline [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
+  <app-headline class="newPageBefore" [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
+  <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.3.1'" [id]="3.31"></app-headline>
-    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.3.2'" [id]="3.32"></app-headline>
-    <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.3.3'" [id]="3.33"></app-headline>
-    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.3.4'" [id]="3.34"></app-headline>
+    <p class="toDo">toDo</p>
 
-  <app-headline [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.4'" [id]="3.4"></app-headline>
+    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.3.2'" [id]="3.32"></app-headline>
+    <p class="toDo">toDo</p>
+
+    <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.3.3'" [id]="3.33"></app-headline>
+    <p class="toDo">toDo</p>
+
+    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.3.4'" [id]="3.34"></app-headline>
+    <p class="toDo">toDo</p>
+
+  <app-headline class="newPageBefore" [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.4'" [id]="3.4"></app-headline>
+  <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.4.1'" [id]="3.41"></app-headline>
+    <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.4.2'" [id]="3.42"></app-headline>
+    <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.4.3'" [id]="3.43"></app-headline>
+    <p class="toDo">toDo</p>
+
     <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.4.4'" [id]="3.44"></app-headline>
+    <p class="toDo">toDo</p>

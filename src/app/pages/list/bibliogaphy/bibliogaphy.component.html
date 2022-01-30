@@ -5,13 +5,15 @@
     [id]="7"></app-headline>
 <div *ngFor="let quote of quotes">
   <span>{{ quote.author }}</span>
-  ({{ quote.publicationDate }}) :
+  <ng-container *ngIf="quote.publicationDate">
+    ({{ quote.publicationDate }})
+  </ng-container> :
   {{ quote.title }}
-  <ng-container *ngIf="quote.chapter !== ''">
+  <ng-container *ngIf="quote.chapter">
     - Kapitel: {{ quote.chapter }}
   </ng-container>
   <a href="{{ quote.URL }}"
       rel="noopener"
       target="_blank"> {{ quote.URL }}</a>
-  <ng-container *ngIf="quote.lastVisit !== ''"> , letzter Zugriff {{ quote.lastVisit }}</ng-container>
+  <ng-container *ngIf="quote.lastVisit"> , letzter Zugriff {{ quote.lastVisit }}</ng-container>
 </div>
