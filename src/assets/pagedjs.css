@@ -11,7 +11,43 @@
   width: 0;
 }
 
-/* Test */
+/* Tabelle */
+.tableWrapper table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  break-inside: avoid;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 16px;
+  width: 100%;
+}
+
+.tableWrapper table .data {
+  text-align: right;
+}
+
+.tableWrapper table td, .tableWrapper table th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 2px 6px;
+}
+
+.tableWrapper table th {
+  background: lightgray;
+}
+
+.tableWrapper .caption {
+  font-size: 13px;
+  margin: 8px 0 15px;
+}
+
+/* Codeblocks */
+.code {
+  background: #d3d3d3;
+  font-family: 'Ubuntu Mono', monospace;
+  padding: 4px;
+}
+
+/* Links */
 
 .figureLink::after {
   content: 'Seite ' target-counter(attr(href url), page);
