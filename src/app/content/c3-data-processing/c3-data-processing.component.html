@@ -17,7 +17,7 @@
   </p>
 
   <p>
-    Die Arbeitsschritte werden nicht über eine Grafische Benutzeroberfläche (<app-abbreviation [abbreviation]="'GUI'" [description]="'Graphical user interface, Grafische Benutzeroberfläche'"></app-abbreviation>) wie sie durch QGIS bereitgestellt wird ausgeführt.
+    Die Arbeitsschritte werden nicht über eine Grafische Benutzeroberfläche (<app-abbreviation [abbreviation]="'GUI'" [description]="'Graphical user interface; de: Grafische Benutzeroberfläche'"></app-abbreviation>) wie sie durch QGIS bereitgestellt wird ausgeführt.
     Diese Entscheidung wurde getroffen um mögliche eingabefehler Fehler zu vermeiden, die ergebnisse reproduzierbar zu machen und die Möglichkeit zu bieten die Vorbereitung der Daten automatisieren zu können.
   </p>
 
@@ -32,7 +32,7 @@
     Hierbei muss jedoch die Version 3.0.4 für QGIS erhalten bleiben.
   </p>
   <p class="newPageBefore">
-    Dadurch war es nötig GDAL mithilfe von Anaconda (<span class="toDo">toDo https://anaconda.org/</span>) , einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
+    Dadurch war es nötig GDAL mithilfe von Anaconda, einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
         [author]="'Anaconda'"
         [lastVisit]="'30.01.2022'"
         [title]="'conda-forge / packages / gdal'"
@@ -55,7 +55,7 @@
     </p>
 
     <p>
-      Daraus ergibt es sich,dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist.
+      Daraus ergibt es sich, dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist.
       Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
     </p>
 
@@ -63,19 +63,52 @@
       Die minimal parameter des Scripts sind:
     </p>
     <ul>
-      <li><span class="code">--zoom=[ZOOM]</span> Zoom levels to render (format:2-5, 10- or 10)</li>
+      <li><span class="code">--zoom=[ZOOM]</span> zu erstellende Zoomstufen (format:2-5, 10- or 10)</li>
+      <li><span class="code">-s EPSG:[CODE]</span> EPSG-Code des input_file</li>
       <li><span class="code">input_file</span></li>
       <li><span class="code">output_folder</span></li>
     </ul>
     <p>
-      <span class="code">gdal2tiles.py --zoom=2-5 input.tif output_folder</span>
+      <span class="code">gdal2tiles.py --zoom=2-5 -s EPSG:3857 input.tif output_folder</span>
     </p>
     <p>
       Um die Erstellung des TMS zu beschleunigen ist es Möglich das Script in parallele Prozesse aufzuteilen, dies erfolgt über eine Eingabe an parallelen Prozessen.
       Es Empfiehlt sich die Anzahl der Prozesse auf die Anzahl der Threads der CPU zu beschränken.
       Die exakte Anzahl an Threads liefert folgende eingabe im Terminal:<br>
       <span class="code">cat /proc/cpuinfo | grep processor | wc -l</span><br>
-      Das Ergebnis dieser Eingabe sollte nun an den Parameter --processes= übergeben werden.
+      Die Ausgabe dieser Eingabe sollte nun in den oben genannten Befehlsaufruf als Parameter <span class="code">--processes=[Anzahl]</span> übergeben werden.
+    </p>
+    <p>
+      Somit ergibt sich ein kompletter aufruf des Scripts mit allen relevanten Parametern:<br>
+      <span class="code">gdal2tiles.py -p mercator -z 0-20 --processes=24 ./Ortho.tif ./Ortho-TMS/</span>
+    </p>
+
+    <p>
+      Das Script erstellt zuerst die höchste Zoomstufe (Base Tiles), danach werden dann aus diesen Daten die weiteren Kacheln (Overview Tiles) gerendert.
+      Dies bedeutet dass nach dem erstellen der Base Tiles nicht mehr das input_file verwendet wird.
+    </p>
+    <p class="code">
+      Generating Base Tiles:<br>
+      0...10...20...30...40...50...60...70...80...90...100<br>
+      Generating Overview Tiles:<br>
+      0...10...20...30...40...50...60...70...80...90...100
+    </p>
+    <p>
+      Bei dem beobachten der <app-abbreviation [abbreviation]="'CPU'" [description]="'central processing unit; de: Prozessor'"></app-abbreviation> Auslastung ist jedoch aufgefallen, dass nur ein Thread für die Erzeugung der "Overview Tiles" genutzt wird. Diese Annahme bestätigen auch weitere Nutzer in einem Ticket auf Github, dieses wurde zwar am 30.01.2022 geschlossen<app-quote
+      [author]="'Github - Herjar'"
+      [lastVisit]="'30.01.2022'"
+      [publicationDate]="'09.01.2019'"
+      [title]="'gdal2tiles.py multiprocessor option not working for overview tiles'"
+      [vgl]="true"
+      [URL]="'https://github.com/OSGeo/gdal/issues/1188'"></app-quote>, aber die Änderungen sind erst für die Version 3.5.0 vorgesehen<app-quote
+      [author]="'Github - zeevdr'"
+      [lastVisit]="'30.01.2022'"
+      [publicationDate]="'24.11.2021'"
+      [title]="'gdal2tiles parllelism'"
+      [vgl]="true"
+      [URL]="'https://github.com/OSGeo/gdal/issues/4895'"></app-quote>.
+      Ein möglicher Lösungsansatz für nun ist es die einzelnen Zoomstufen separat nacheinander zu erstellen um eine bestmögliche Auslastung der CPU zu erreichen und somit den TMS in einer kürzeren Zeit zu erstellen.
+      Dies ist jedoch nur bei der Nutzung einer CPU mit vielen Thrads ein valider Ansatz, da sonst die Zeit des erstellens der "Base Tiles" länger als das erstellen der "Overview Tiles" aus dem "Base Tiles" dauert.
     </p>
 
     <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.2.2'" [id]="3.22"></app-headline>

@@ -7,8 +7,8 @@
 
   <p>
     Aufgrund der Tatsache, dass Rasterinformationen auf einer flachen Oberfläche projeziert werden, ist es üblich für ein WebGIS ein projeziertes Koordinatensystem zu verwenden.
-    Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart Rechenzeit sowie Wartezeit des Nutzers.
-    Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die WebMercator- oder auch PseudoMercator genannte Projektion mit dem EPSG-Code 3857 durchgesetzt<app-quote
+    Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart Rechen- sowie Wartezeit des Nutzers.
+    Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die WebMercator oder auch PseudoMercator genannte Projektion mit dem EPSG-Code 3857 durchgesetzt<app-quote
         [author]="'World Wide Web Consortium'"
         [chapter]="'9. Coordinate Reference Systems (CRS)'"
         [lastVisit]="'29.01.2022'"
@@ -38,7 +38,8 @@
   <app-figure
     [id]="5"
     [src]="'/assets/images/Standards/TMS_tileSpace.png'"
-    [caption]="'Tile Matrix - Gitter'"></app-figure>
+    [caption]="'Ausführung einer Tile Matrix.'"
+    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
 
   <p>
     Die bisherige Beschreibung des Standards beschrieb nur die XY-Dimensionen, auch Tile Matrix genannt.
@@ -56,7 +57,8 @@
   <app-figure
     [id]="6"
     [src]="'/assets/images/Standards/TMS_representation.png'"
-    [caption]="'Tile Matrix Set representation'"></app-figure>
+    [caption]="'Aufbaus eines TMS.'"
+    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
 
   <p>
     Es besteht die Möglichkeit vordefinierte Kachelarchive welche meist als Well-Known Scale sets (<app-abbreviation [abbreviation]="'WKSS'" [description]="'Well-Known Scale sets'"></app-abbreviation>) bezeichnet werden zu verwenden.

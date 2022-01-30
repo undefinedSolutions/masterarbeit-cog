@@ -8,26 +8,27 @@
   <p class="toDo">toDo</p>
 
   <app-headline [headline]="'Szenarien'" [h]="2" [number]="'1.3'" [id]="1.3"></app-headline>
-  <p>Um die verschiedenen Standards besser miteinander vergleichen zu können wurden drei verschiedene Szenarien betrachtet. Hierbei handelt es sich um gängige Szenarien die das Ziel haben Geoinformationen einem Nutzer über das Internet bereitzustellen.</p>
+  <p>Um zu untersuchenden Standards besser miteinander vergleichen zu können wurden drei verschiedene Szenarien betrachtet. Hierbei handelt es sich um gängige Szenarien die das Ziel haben Geoinformationen einem Nutzer über das Internet bereitzustellen.</p>
 
   <app-headline [headline]="'Anzeigen eines Orthomosaik'" [h]="3" [number]="'1.3.1'" [id]="1.31"></app-headline>
   <p>
-    Hierfür wurden zwei Gebiete mit unterschiedlichen Auflösung, Ausdehnung und Quelle genutzt um auf diese Besonderheiten einzugehen.
+    Hierfür wurden zwei Gebiete mit unterschiedlichen Auflösung, Ausdehnung und Quelle genutzt, um auf Besonderheiten, welche diese Eigenschaften hervorrufen einzugehen.
     Dies dient dem Vergleich zwischen einem Low-Cost Ansatz mittels Drohne und einem High-Cost Ansatz mittels Gyrocopter.
   </p>
 
   <p>
-    Das erste Gebiet ist ein Industriegebiet mit dem Namen <a class="link" href="#figure-1">Lindenrain</a> welches aktuell von der Stadt Calw erschlossen wird, die Daten wurden durch eine Drohnenbefliegung in 120 Meter höhe erfasst.
+    Das erste Gebiet ist ein Industriegebiet mit dem Namen <a class="link" href="#figure-1">Lindenrain</a> welches aktuell von der Stadt Calw erschlossen wird.
+    Die Daten wurden durch eine Drohnenbefliegung in 120 Meter höhe erfasst.
     Genutzt wurde hierfür eine DJI Matrice 300 RTK und als Sensor eine DJI P1 mit 44,72 Megapixel Auflösung.
     Dieser Datensatz bedeckt eine Fläche von 26,37 Hektar bei einer Bodenauflösung von 2 cm pro Pixel.
-    Der Datensatz besteht aus 4 Kanälen (RGBA) mit dem Datentype Byte (Werte zwischen 0 und 255).
+    Der Datensatz besteht aus 4 Kanälen (<app-abbreviation [abbreviation]="'RGBA'" [description]="'red green blue alpha'"></app-abbreviation>) mit dem Datentype Byte (Werte zwischen 0 und 255).
   </p>
 
   <p>
     Das zweite Gebiet mit der Bezeichnung <a class="link" href="#figure-2">Strenzfeld</a> wurde mittels Gyrocopter der Hochschule Anhalt Institut für Geoinformation und Vermessung in einer Flughöhe von 545 Meter erfasst.
     Als Sensor wurde eine iXM-100 mit 102,06 Megapixel pro Bild genutzt.
     Der Datensatz umfasst eine Fläche von 440,18 Hektar bei einer Bodenauflösung von 5 cm pro Pixel.
-    Der Datensatz besteht aus 3 Kanälen (RGB) mit dem Datentype uint16 (Werte zwischen 0 und 65535).
+    Der Datensatz besteht aus 3 Kanälen (<app-abbreviation [abbreviation]="'RGB'" [description]="'red green blue'"></app-abbreviation>) mit dem Datentype uint16 (Werte zwischen 0 und 65535).
   </p>
 
   <div class="sideBySide">
@@ -45,7 +46,7 @@
 
   <app-headline [headline]="'Visualisierung eines Oberflächenmodell'" [h]="3" [number]="'1.3.2'" [id]="1.32"></app-headline>
   <p>
-    Die Datenquellen sind wie bereits in Szenario 1 die Drohne und der Gyrocopter, jedoch wurde hier anstelle des Orthomosaik ein Oberflächenmodell exportiert.
+    Die Datenquellen sind wie bereits in Szenario 1 die Drohne und der Gyrocopter, jedoch wurde hier anstelle des Orthomosaik ein Oberflächenmodell erstellt.
   </p>
   <p>
     Für das Gebiet des <a class="link" href="#figure-3">Lindenrain</a> wurden nicht nur Nadiraufnahmen gemacht sondern durch die Smart Oblique-Funktion der DJI P1 auch Obliqueaufnahmen, dies führt zu einer höheren Genauigkeit der Höheninformation.
@@ -61,12 +62,12 @@
     <app-figure
     [id]="3"
     [src]="'/assets/images/Einleitung/Lindenrain2750.png'"
-    [caption]="'Oberflächenmodell des Gebietes Lindenrain'"></app-figure>
+    [caption]="'Oberflächenmodell des Gebietes Lindenrain-toDo'"></app-figure>
 
     <app-figure
     [id]="4"
     [src]="'/assets/images/Einleitung/Strenzfeld12500.png'"
-    [caption]="'Oberflächenmodell des Gebietes Strenzfeld'"></app-figure>
+    [caption]="'Oberflächenmodell des Gebietes Strenzfeld-toDo'"></app-figure>
   </div>
 
 

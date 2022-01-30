@@ -11,6 +11,7 @@ export class FigureComponent implements OnInit {
   @Input() src: string;
   @Input() caption: string;
   @Input() style: string;
+  @Input() source: string;
 
   constructor(private figuresService:FiguresService) { }
 

@@ -1,4 +1,10 @@
 <div [id]="'figure-'+id">
   <img src="{{src}}" alt="{{caption}}" [style]="style">
-  <p class="caption">Abbildung {{id}}: {{caption}}</p>
+  <p class="caption">
+    Abbildung {{id}}: {{caption}}
+    <ng-container *ngIf="source"><br>
+      Quelle: {{source}}
+    </ng-container>
+
+  </p>
 </div>
