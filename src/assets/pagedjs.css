@@ -28,8 +28,16 @@
 .tableWrapper table .data {
   text-align: right;
 }
+
+.tableWrapper table .meta {
+  background: gray;
+  display: table-cell;
+  font-weight: bold;
+  vertical-align: inherit;
+}
+
 .tableWrapper table .sameCluster {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid darkgray;
 }
 
 .tableWrapper table .empty {
@@ -46,7 +54,7 @@
 }
 
 .tableWrapper table th {
-  background: lightgray;
+  background: gray;
 }
 
 .tableWrapper .caption {
