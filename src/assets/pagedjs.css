@@ -11,6 +11,10 @@
   width: 0;
 }
 
+.avoidBreak {
+  break-inside: avoid;
+}
+
 /* Tabelle */
 .tableWrapper table {
   border: 1px solid black;
@@ -23,6 +27,16 @@
 
 .tableWrapper table .data {
   text-align: right;
+}
+.tableWrapper table .sameCluster {
+  border-bottom: 1px solid lightgray;
+}
+
+.tableWrapper table .empty {
+  background: none;
+  border: solid white 1px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .tableWrapper table td, .tableWrapper table th {

@@ -1,16 +1,18 @@
 <app-headline class="newPageBefore" [headline]="'Datenverarbeitung und Bereitstellung'" [h]="1" [number]="'3'" [id]="3"></app-headline>
-<p class="toDo">toDo</p>
+<p>
+  Die Eingangsdaten müssen für einen Anwender aufgearbeitet werden, dies geschieht in mehrere Arbeitsschritten, jeder dieser Schritte wird in einem separaten Kapitel beschrieben:
+</p>
+<p>
+  Die Daten müssen vorbereitet werden. Dazu zählt das Aufarbeiten der Datensätze für die jeweiligen Tools, sowie das Erstellen der Dateien für die Standards, dies erfolgt in Kapitel <a class="link" href="#content-3.1">3.1 Vorbereitung der Datensätze</a>.
+</p>
+<p>
+  Nachdem die Dateien erstellt wurden müssen diese über einen Webserver bereitgestellt werden, dies kann innerhalb eines lokalen Netzwerkes, einem Intranet oder dem Internet erfolgen. Innerhalb dieser Arbeit werden Amazon Web Services (AWS) verwendet, mehr hierzu im Kapitel <a class="link" href="#content-3.2">3.2 Bereitstellung der Datensätze</a>.
+</p>
+<p>
+  Nach der Bereitstellung der Daten durch einen Webserver, wird in dem Kapitel <a class="link" href="#content-3.3">3.3 Nutzung der Datensätze</a> auf die Implementation der Standards in eine WebMap eingegangen. Ziel hierbei ist es die <a class="link" href="#content-1.3">Szenarien aus Kapitel 3.1</a> in einem realen Anwendungsfall darzustellen.
+</p>
 
-  <app-headline [headline]="'Vorraussetzungen zum ausliefern der Datensätze'" [h]="2" [number]="'3.1'" [id]="3.1"></app-headline>
-  <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Tile Matrix Set und Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
-    <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.1.2'" [id]="3.12"></app-headline>
-    <p class="toDo">toDo</p>
-
-  <app-headline [headline]="'Vorbereitung der Datensätze'" [h]="2" [number]="'3.2'" [id]="3.2"></app-headline>
+  <app-headline [headline]="'Vorbereitung der Datensätze'" [h]="2" [number]="'3.1'" [id]="3.1"></app-headline>
   <p>
     Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden.
     Ziel dieser Arbeit ist es alle benötigten Schritte mithilfe von Open-source Software durchzuführen um die einzelnen Arbeitsschritte für jeden auch ohne proprietäre Software zu ermöglichen.
@@ -31,7 +33,7 @@
     Somit ist es nötig, sofern ebenfalls QGIS installiert ist, eine weitere Version von GDAL zu installieren.
     Hierbei muss jedoch die Version 3.0.4 für QGIS erhalten bleiben.
   </p>
-  <p class="newPageBefore">
+  <p>
     Dadurch war es nötig GDAL mithilfe von Anaconda, einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
         [author]="'Anaconda'"
         [lastVisit]="'30.01.2022'"
@@ -47,7 +49,7 @@
     Ziel dieser Arbeit ist es nicht die verschiedenen Versionen von GDAL zu vergleichen, jedoch war es bei dem TMS möglich die benötigte Rechenzeit nur durch ein Upgrade von GDAL um das <span class="toDo">toDo</span> zu verkürzen.
   </p>
 
-    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.2.1'" [id]="3.21"></app-headline>
+    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
     <p>
       Zur Erstellung eines TMS bietet GDAL ein Python Script names gdal2tiles.py welches standartmäßig zur Verfügung gestellt wird.
       Inputs welche nicht dem Datentypen Byte entsprechen werden automatisch zu diesen Konvertiert, dadurch kann es zu fehlerhaften Ergebnissen führen.
@@ -58,16 +60,22 @@
       Daraus ergibt es sich, dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist.
       Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
     </p>
-
-    <p>
-      Die minimal parameter des Scripts sind:
+    <p class="toDo">
+      Wie werden diese angepasst...
     </p>
-    <ul>
-      <li><span class="code">--zoom=[ZOOM]</span> zu erstellende Zoomstufen (format:2-5, 10- or 10)</li>
-      <li><span class="code">-s EPSG:[CODE]</span> EPSG-Code des input_file</li>
-      <li><span class="code">input_file</span></li>
-      <li><span class="code">output_folder</span></li>
-    </ul>
+
+    <div class="avoidBreak">
+      <p>
+        Die minimal parameter des Scripts sind:
+      </p>
+      <ul>
+        <li><span class="code">--zoom=[ZOOM]</span> zu erstellende Zoomstufen (format:2-5, 10- or 10)</li>
+        <li><span class="code">-s EPSG:[CODE]</span> EPSG-Code des input_file</li>
+        <li><span class="code">input_file</span></li>
+        <li><span class="code">output_folder</span></li>
+      </ul>
+    </div>
+
     <p>
       <span class="code">gdal2tiles.py --zoom=2-5 -s EPSG:3857 input.tif output_folder</span>
     </p>
@@ -80,7 +88,7 @@
     </p>
     <p>
       Somit ergibt sich ein kompletter aufruf des Scripts mit allen relevanten Parametern:<br>
-      <span class="code">gdal2tiles.py -p mercator -z 0-20 --processes=24 ./Ortho.tif ./Ortho-TMS/</span>
+      <span class="code">gdal2tiles.py --zoom=0-20 -s EPSG:3857 --processes=24 ./Ortho.tif ./Ortho-TMS/</span>
     </p>
 
     <p>
@@ -111,14 +119,77 @@
       Dies ist jedoch nur bei der Nutzung einer CPU mit vielen Thrads ein valider Ansatz, da sonst die Zeit des erstellens der "Base Tiles" länger als das erstellen der "Overview Tiles" aus dem "Base Tiles" dauert.
     </p>
 
-    <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.2.2'" [id]="3.22"></app-headline>
+    <p>
+
+    </p>
+
+    <app-headline [headline]="'Web Map Service und Web Map Tile Service'" [h]="3" [number]="'3.1.2'" [id]="3.12"></app-headline>
     <p class="toDo">toDo</p>
 
-    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.2.3'" [id]="3.23"></app-headline>
+    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.1.3'" [id]="3.13"></app-headline>
     <p class="toDo">toDo</p>
 
-  <app-headline class="newPageBefore" [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
-  <p class="toDo">toDo</p>
+  <app-headline class="newPageBefore" [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.2'" [id]="3.2"></app-headline>
+  <p>
+    Um die Datensätze an den Nutzer  bzw. dessen Webbrowser zu senden ist es erforderlich, dass die Daten von einem Webserver bereitgestellt werden.
+    Bei dem Webserver kann es sich um einen Server handeln, welcher nur die angeforderten Daten für den Nutzer bereitstellt, bis hin zu einem Geoserver welcher von dem Webbrowser eine Anfrage über ein bestimmte Fläche erhält und die Geodaten serverseitig für den Nutzer rendert. Dadurch werden nicht die Geodaten selbst sondern ein abbild dieser an den Browser sendet.
+  </p>
+  <p>
+    Zur Auslieferung der statischer Daten wie beim TMS und COG wird nur ein einfacher WebServer wie Beispielsweise Nginx oder Apache HTTP Server benötigt.
+    Da in dieser Arbeit jedoch die Dienste von Amazon Web Services verwendet werden wird auf AWS Simple Cloud Storage (S3) zurückgegriffen.
+  </p>
+  <p>
+    AWS S3 bietet den Vorteil, dass im gegensatz zu Webhosting nur für den genutzten Speicherplatz und Traffic gezahlt wird.
+    Im Gegensatz zu Webhostings kann der Speicherplatz somit nicht voll laufen und somit zu Ausfällen führen.
+    Besonders für Projekte bei welchen der Umfang des Speicherplatzbedarfs unbekannt ist kann dies besonders von Vorteil sein.
+  </p>
+  <p>
+    Der Upload zu einem Server erfolgt meist über File Transfer Protocol (FTP) bzw. Secure File Transfer Protocol (<app-abbreviation [abbreviation]="'SFTP'" [description]="'Secure File Transfer Protocol'"></app-abbreviation>).
+    Dies ist bei AWS S3 zwar auch möglich, jedoch ist die Nutzung der AWS Command Line Interface (AWS CLI) zum programmatischen Upload besser geeignet.
+  </p>
+
+  <p>
+    Die Standards WMS und WMTS hingegen können nicht einfach über einen Webserver, welcher nur statische Dateien aus liefert, betrieben werden.
+    Diese beiden Standards benötigen einen Server welcher die Anfragen des Clients, welcher Parameter in der URL sendet, verarbeitet. Dies kann ein Properitärer ESRI ArcGIS Server [ https://enterprise.arcgis.com/de/server/ ] oder wie in dieser Arbeit verwendet ein open source Geoserver sein.
+  </p>
+
+  <p>
+    Dieser Geoserver muss auf einem Server betrieben werden.
+    Hierzu wird in dieser Arbeit ein weiterer Dienst von AWS genutzt, Elastic Compute Cloud (EC2).
+    Wie bereits bei AWS S3 hat dieser Dienst den Vorteil, dass nur für die tatsächlich genutzten Ressourcen stundengenau abgerechnet werden.
+  </p>
+
+  <p>
+    AWS bietet durch Auto Scaling (https://aws.amazon.com/de/autoscaling/) eine einfache Möglichkeit nur die Ressourcen zu nutzen, die auch tatsächlich benötigt werden.
+    Dies ist zwar nicht gegenstand dieser Arbeit, bietet aber gegenüber Dedizierten-Servern (Server welche dauerhaft mit ihrer gesamten Leistung für einen zur verfügung stehen) den Vorteil, dass bei geringer Belastung Ressourcen abgeschaltet werden und bei starker Belastung automatisch weitere Instanzen hinzugefügt werden.
+    Bei Dedicated-Servern müsste hingegen durchgehend für die zur verfügung gestellte Leistung gezahlt werden, auch wenn diese nicht benötigt wird.
+  </p>
+
+    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.2.1'" [id]="3.21"></app-headline>
+    <p class="toDo">toDo</p>
+
+    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.2.2'" [id]="3.22"></app-headline>
+    <p class="toDo">toDo</p>
+
+    <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.2.3'" [id]="3.23"></app-headline>
+    <p class="toDo">toDo</p>
+
+    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.2.4'" [id]="3.24"></app-headline>
+    <p class="toDo">toDo</p>
+
+  <app-headline class="newPageBefore" [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
+  <p>
+    Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-OpenLayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers</a>.
+    Das Repository umfasst alle Szenarien und Standards.
+    Als Grundgerüst wurden die Tutorials von OpenLayers verwendet (https://openlayers.org/en/latest/doc/tutorials/): “Building an OpenLayers Application”,
+    “Basic Concepts” und “Some Background on OpenLayers” welche eine OpenLayers anwendung mit Hintergrundkarte darstellt.
+  </p>
+
+  <p>
+    Die Abbildungen in diesem Kapitel sind nicht nur einfache Bilddateien, sondern in der WebVersion dieser Arbeit als interaktive WebMaps eingebunden, diese Arbeit ist im Internet unter der URL <a href="https://masterarbeit-cog.undefined-solutions.de/" rel="noopener" target="_blank">https://masterarbeit-cog.undefined-solutions.de</a> zu finden.
+    Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, diese sind unter <a class="toDo" href="https://masterarbeit-cog-openlayers.undefined-solutions.de/" rel="noopener" target="_blank">https://masterarbeit-cog-openlayers.undefined-solutions.de</a> zu finden.
+  </p>
+
 
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.3.1'" [id]="3.31"></app-headline>
     <p class="toDo">toDo</p>
@@ -130,19 +201,4 @@
     <p class="toDo">toDo</p>
 
     <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.3.4'" [id]="3.34"></app-headline>
-    <p class="toDo">toDo</p>
-
-  <app-headline class="newPageBefore" [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.4'" [id]="3.4"></app-headline>
-  <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.4.1'" [id]="3.41"></app-headline>
-    <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.4.2'" [id]="3.42"></app-headline>
-    <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.4.3'" [id]="3.43"></app-headline>
-    <p class="toDo">toDo</p>
-
-    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.4.4'" [id]="3.44"></app-headline>
     <p class="toDo">toDo</p>

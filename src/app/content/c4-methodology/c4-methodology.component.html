@@ -3,7 +3,112 @@
 <p class="toDo">toDo</p>
 
   <app-headline [headline]="'Benchmark Datenaufarbeitung'" [h]="2" [number]="'4.1'" [id]="4.1"></app-headline>
-  <p class="toDo">toDo</p>
+  <p>
+    Hierbei soll betrachtet werden wie groß der Aufwand ist bis die Daten für den Upload aufgearbeitet wurden.
+    Dies Umfasst zum einen die Anzahl der manuellen Arbeitsschritte wie die aufarbeitung der Eingangsdaten sowie die benötigte Rechenzeit der Aufarbeitung dieser Eingangsdaten.
+  </p>
+  <p>
+    Alle Arbeitsschritte wurden sowohl auf einer Workstation sowie auf einem Notebook durchgeführt um die jeweiligen besonderheiten der Hardware in den Daten zu verdeutlichen.
+    Aufgrund der zur verfügung stehenden Hardware wurden alle Benchmarks für die Datenaufarbeitung auf einer 8 Jahre alten Workstation Fujitsu Celsius R570-2 sowie einem 3 Jahre alten ThinkPad X1 Yoga der 3. generation durchgeführt, die relevanten spezifikationen der beiden Computer sind in der nächsten Tabelle zu entnehmen.
+  </p>
+  <div class="tableWrapper" id="table-2">
+    <table>
+      <tr>
+        <th class="empty"></th>
+        <th>Fujitsu Celsius R570-2</th>
+        <th>ThinkPad X1 Yoga</th>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          CPU
+        </td>
+        <td class="data sameCluster">
+          2x Intel Xeon X5670
+        </td>
+        <td class="data sameCluster">
+          Intel Core i7-8550U CPU
+        </td>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          Basistakt
+        </td>
+        <td class="data sameCluster">
+          2.93 GHz
+        </td>
+        <td class="data sameCluster">
+          1.80 GHz
+        </td>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          Boosttakt
+        </td>
+        <td class="data sameCluster">
+          3.33 GHz
+        </td>
+        <td class="data sameCluster">
+          4.00 GHz
+        </td>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          Kerne
+        </td>
+        <td class="data sameCluster">
+          2 x 6
+        </td>
+        <td class="data sameCluster">
+          4
+        </td>
+      </tr>
+      <tr>
+        <td class="data">
+          Threads
+        </td>
+        <td class="data">
+          2 x 12
+        </td>
+        <td class="data">
+          8
+        </td>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          Arbeitsspeicher
+        </td>
+        <td class="data sameCluster">
+
+        </td>
+        <td class="data sameCluster">
+
+        </td>
+      </tr>
+      <tr>
+        <td class="data sameCluster">
+          Kapazität
+        </td>
+        <td class="data sameCluster">
+          96 GB
+        </td>
+        <td class="data sameCluster">
+          16 GB
+        </td>
+      </tr>
+      <tr>
+        <td class="data">
+          Physikalischer Takt
+        </td>
+        <td class="data">
+          1333 MHz
+        </td>
+        <td class="data">
+          2133 MHz
+        </td>
+      </tr>
+    </table>
+    <p class="caption">Tabelle 2: Relevante Hardwarespezifikationen für GDAL</p>
+  </div>
 
   <app-headline [headline]="'Benchmark Datenabruf'" [h]="2" [number]="'4.2'" [id]="4.2"></app-headline>
   <p class="toDo">toDo</p>
