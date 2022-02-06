@@ -1,68 +1,70 @@
 <app-headline class="newPageBefore" [headline]="'Datenverarbeitung und Bereitstellung'" [h]="1" [number]="'3'" [id]="3"></app-headline>
 <p>
-  Die Eingangsdaten müssen für einen Anwender aufgearbeitet werden, dies geschieht in mehrere Arbeitsschritten, jeder dieser Schritte wird in einem separaten Kapitel beschrieben:
+  Die Eingangsdaten müssen für einen Anwender aufgearbeitet werden, dies geschieht in mehrere Arbeitsschritten. Jeder dieser Schritte wird in einem separaten Kapitel beschrieben.
 </p>
 <p>
-  Die Daten müssen vorbereitet werden. Dazu zählt das Aufarbeiten der Datensätze für die jeweiligen Tools, sowie das Erstellen der Dateien für die Standards, dies erfolgt in Kapitel <a class="link" href="#content-3.1">3.1 Vorbereitung der Datensätze</a>.
+  Die Daten müssen vorbereitet werden. Dazu zählt das Aufarbeiten der Datensätze für die jeweiligen Tools, sowie das Erstellen der Dateien für die Standards, dies erfolgt in Kapitel<a class="link" href="#content-3.1">3.1 Vorbereitung der Datensätze</a>.
 </p>
 <p>
-  Nachdem die Dateien erstellt wurden müssen diese über einen Webserver bereitgestellt werden, dies kann innerhalb eines lokalen Netzwerkes, einem Intranet oder dem Internet erfolgen. Innerhalb dieser Arbeit werden Amazon Web Services (AWS) verwendet, mehr hierzu im Kapitel <a class="link" href="#content-3.2">3.2 Bereitstellung der Datensätze</a>.
+  Nachdem die Dateien erstellt wurden müssen diese über einen Webserver bereitgestellt werden, dies kann innerhalb eines lokalen Netzwerkes, einem Intranet oder dem Internet erfolgen. Innerhalb dieser Arbeit werden Amazon Web Services (<app-abbreviation [abbreviation]="'AWS'" [description]="'Amazon Web Services'"></app-abbreviation>) verwendet, mehr hierzu in Kapitel <a class="link" href="#content-3.2">3.2 Bereitstellung der Datensätze</a>.
 </p>
 <p>
-  Nach der Bereitstellung der Daten durch einen Webserver, wird in dem Kapitel <a class="link" href="#content-3.3">3.3 Nutzung der Datensätze</a> auf die Implementation der Standards in eine WebMap eingegangen. Ziel hierbei ist es die <a class="link" href="#content-1.3">Szenarien aus Kapitel 3.1</a> in einem realen Anwendungsfall darzustellen.
+  Nach der Bereitstellung der Daten durch einen Webserver, wird in dem Kapitel <a class="link" href="#content-3.3">3.3 Nutzung der Datensätze</a> auf die Implementation der Standards in eine WebMap eingegangen.  Ziel hierbei ist es die Szenarien aus Kapitel <a class="link" href="#content-1.3">Szenarien aus Kapitel 1.3</a> in einem realen Anwendungsfall darzustellen.
 </p>
 
   <app-headline [headline]="'Vorbereitung der Datensätze'" [h]="2" [number]="'3.1'" [id]="3.1"></app-headline>
   <p>
-    Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden.
-    Ziel dieser Arbeit ist es alle benötigten Schritte mithilfe von Open-source Software durchzuführen um die einzelnen Arbeitsschritte für jeden auch ohne proprietäre Software zu ermöglichen.
+    Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden. Ziel dieser Arbeit ist es alle benötigten Schritte mithilfe von Open-source Software durchzuführen um die einzelnen Arbeitsschritte für jeden auch ohne proprietäre Software zu ermöglichen.
   </p>
 
   <p>
-    Die Arbeitsschritte werden nicht über eine Grafische Benutzeroberfläche (<app-abbreviation [abbreviation]="'GUI'" [description]="'Graphical user interface; de: Grafische Benutzeroberfläche'"></app-abbreviation>) wie sie durch QGIS bereitgestellt wird ausgeführt.
-    Diese Entscheidung wurde getroffen um mögliche eingabefehler Fehler zu vermeiden, die ergebnisse reproduzierbar zu machen und die Möglichkeit zu bieten die Vorbereitung der Daten automatisieren zu können.
+    Die Arbeitsschritte werden nicht über eine Grafische Benutzeroberfläche (<app-abbreviation [abbreviation]="'GUI'" [description]="'Graphical user interface; de: Grafische Benutzeroberfläche'"></app-abbreviation>) wie sie durch QGIS bereitgestellt wird ausgeführt. Diese Entscheidung wurde getroffen um mögliche eingabefehler Fehler zu vermeiden, die ergebnisse reproduzierbar zu machen und die Möglichkeit zu bieten die Vorbereitung der Daten automatisieren zu können.
   </p>
 
   <p>
-    Als Werkzeug hierfür eignet sich besonder GDAL, dies wird von der Open Source Geospatial Foundation (<app-abbreviation [abbreviation]="'OSGeo'" [description]="'Open Source Geospatial Foundation'"></app-abbreviation>) veröffentlicht und gepflegt und bietet die gewünschte Möglichkeit die Prozesse über das Terminal zu starten.
-    Sofern QGIS auf dem jeweiligen Computer installiert ist wird auch GDAL installiert, da QGIS selbst GDAL nutzt. Jedoch ist hier wichtig auf die installierte Version zu achten.
+    Als Werkzeug hierfür eignet sich besonder GDAL, dies wird von der Open Source Geospatial Foundation (<app-abbreviation [abbreviation]="'OSGeo'" [description]="'Open Source Geospatial Foundation'"></app-abbreviation>) veröffentlicht und gepflegt und bietet die gewünschte Möglichkeit die Prozesse über das Terminal zu starten. Sofern QGIS auf dem jeweiligen Computer installiert ist wird auch GDAL installiert, da QGIS selbst GDAL nutzt. Jedoch ist hier wichtig auf die installierte Version zu achten.
   </p>
 
   <p>
-    Stand 30.01.2022 nutzt die aktuellste Version von QGIS (3.22.3 Białowieża vom 14.01.2022) nicht die aktuellste Version von GDAL sondern die Version 3.0.4 vom 28.01.2020.
-    Somit ist es nötig, sofern ebenfalls QGIS installiert ist, eine weitere Version von GDAL zu installieren.
-    Hierbei muss jedoch die Version 3.0.4 für QGIS erhalten bleiben.
+    Stand 30.01.2022 nutzt die aktuellste Version von QGIS (3.22.3 Białowieża vom 14.01.2022) nicht die aktuellste Version von GDAL sondern die Version 3.0.4 vom 28.01.2020. Somit ist es nötig, sofern ebenfalls QGIS installiert ist, eine weitere Version von GDAL zu installieren. Hierbei muss jedoch die Version 3.0.4 für QGIS erhalten bleiben.
   </p>
   <p>
-    Dadurch war es nötig GDAL mithilfe von Anaconda, einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
+    Der  Optimized GeoTIFF generator von GDAL wurde jedoch erst in der Version 3.1 veröffentlicht.Die erstellung des COG ist durch die Version 3.0.4 somit nicht möglich, durch diese Umstände ist es nötig GDAL mithilfe von Anaconda, einer Software zum arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
         [author]="'Anaconda'"
         [lastVisit]="'30.01.2022'"
         [title]="'conda-forge / packages / gdal'"
         [URL]="'https://anaconda.org/conda-forge/gdal'"></app-quote>.
-    Hierdurch ist es möglich mehrere Versionen einer Software zu nutzen ohne die Funktionalität zu gefährden<app-quote
+        Anaconda macht es möglich mehrere Versionen einer Software zu installiert zu haben<app-quote
         [author]="'GeeksforGeeks'"
         [lastVisit]="'30.01.2022'"
         [publicationDate]="'17.05.2020'"
         [title]="'Set up virtual environment for Python using Anaconda'"
         [vgl]="true"
-        [URL]="'https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/'"></app-quote>.
-    Ziel dieser Arbeit ist es nicht die verschiedenen Versionen von GDAL zu vergleichen, jedoch war es bei dem TMS möglich die benötigte Rechenzeit nur durch ein Upgrade von GDAL um das <span class="toDo">toDo</span> zu verkürzen.
+        [URL]="'https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda/'"></app-quote> und spezifisch die Benötigte version auszuwählen ohne eine bestehende Abhängigkeit wie in diesem Fall von QGIS zu gefährden.
   </p>
 
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
     <p>
-      Zur Erstellung eines TMS bietet GDAL ein Python Script names gdal2tiles.py welches standartmäßig zur Verfügung gestellt wird.
-      Inputs welche nicht dem Datentypen Byte entsprechen werden automatisch zu diesen Konvertiert, dadurch kann es zu fehlerhaften Ergebnissen führen.
-      Diese Konvertierung sollte unbedingt vor dem eigentlichen erstellen des TMS erfolgen.
+      Zur Erstellung eines TMS bietet GDAL ein Python Script names gdal2tiles.py welches standartmäßig zur Verfügung gestellt wird. Inputs welche nicht dem Datentypen Byte entsprechen werden automatisch zu diesen Konvertiert, dadurch kann es zu fehlerhaften Ergebnissen führen. Diese Konvertierung sollte unbedingt vor dem eigentlichen erstellen des TMS erfolgen.
     </p>
 
     <p>
-      Daraus ergibt es sich, dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist.
-      Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
+      Daraus ergibt es sich, dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist. Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
     </p>
-    <p class="toDo">
-      Wie werden diese angepasst...
+    <p>
+      Um diese Datensätze aufzuarbeiten muss QGIS verwendet werden, dies ist notwendig da zuerst die Visualisierung angepasst werden muss und dies nicht mit GDAL möglich ist. Bei dem Oberflächenmodellen musste nur in den Eigenschaften die Symbologie angepasst werden. Für das Orthomosaik von dem Gebiet Strenzfeld muss die Minimum und Maximum Werte der Bänder RGB auf 0 - 65535 gesetzt werden um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter Transparenz die eingabe des “No Data Values”, dieser gibt an welche Datenwerte als Transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
     </p>
+
+    <p>
+      Nachdem die Visualisierungen angepasst sind müssen die Daten nun noch exportiert werden, wie bereits erwähnt erwartet das Script zum erstellen des TMS als Eingabewert den Datentype Byte. Dies kann beim Export der Daten erreicht werden indem der “Output mode” auf “Rendered image” gestellt wird, somit werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel ergeben die Datensätze direkt in das benötigte Koordinatensystem zu konvertieren, in unseren Szenarien WebMercator EPSG:3857, in der <a href="#figure-7">Abbildung 7</a> sind die getroffenen Einstellungen für den Export zu sehen.
+    </p>
+
+    <app-figure
+        [id]="7"
+        [src]="'/assets/images/Datenverarbeitung/SaveAs.png'"
+        [caption]="'Speichern Dialog mit Eingaben.'"
+        [source]="'Screenshot aus der Software QGIS'"
+        [style]="'width:50%;margin-left:25%;'"></app-figure>
 
     <div class="avoidBreak">
       <p>
@@ -76,24 +78,28 @@
       </ul>
     </div>
 
-    <p>
-      <span class="code">gdal2tiles.py --zoom=2-5 -s EPSG:3857 input.tif output_folder</span>
+    <p class="code">
+      gdal2tiles.py --zoom=2-5 -s EPSG:3857 input.tif output_folder
     </p>
     <p>
-      Um die Erstellung des TMS zu beschleunigen ist es Möglich das Script in parallele Prozesse aufzuteilen, dies erfolgt über eine Eingabe an parallelen Prozessen.
-      Es Empfiehlt sich die Anzahl der Prozesse auf die Anzahl der Threads der CPU zu beschränken.
-      Die exakte Anzahl an Threads liefert folgende eingabe im Terminal:<br>
-      <span class="code">cat /proc/cpuinfo | grep processor | wc -l</span><br>
+      Um die Erstellung des TMS zu beschleunigen ist es Möglich das Script in parallele Prozesse aufzuteilen, dies erfolgt über eine Eingabe an parallelen Prozessen. Es Empfiehlt sich die Anzahl der Prozesse auf die Anzahl der Threads der CPU zu beschränken. Die exakte Anzahl an Threads liefert folgende eingabe im Terminal:
+    </p>
+    <p class="code">
+      cat /proc/cpuinfo | grep processor | wc -l
+    </p>
+    <p>
       Die Ausgabe dieser Eingabe sollte nun in den oben genannten Befehlsaufruf als Parameter <span class="code">--processes=[Anzahl]</span> übergeben werden.
     </p>
     <p>
-      Somit ergibt sich ein kompletter aufruf des Scripts mit allen relevanten Parametern:<br>
-      <span class="code">gdal2tiles.py --zoom=0-20 -s EPSG:3857 --processes=24 ./Ortho.tif ./Ortho-TMS/</span>
+      Somit ergibt sich ein kompletter aufruf des Scripts mit allen relevanten Parametern:
+    </p>
+    <p class="code">
+      gdal2tiles.py --zoom=0-20 -s EPSG:3857 --processes=24 ./Ortho.tif ./Ortho-TMS/
     </p>
 
     <p>
-      Das Script erstellt zuerst die höchste Zoomstufe (Base Tiles), danach werden dann aus diesen Daten die weiteren Kacheln (Overview Tiles) gerendert.
-      Dies bedeutet dass nach dem erstellen der Base Tiles nicht mehr das input_file verwendet wird.
+      Das Script erstellt zuerst die höchste Zoomstufe (Base Tiles), danach werden dann aus diesen Daten die weiteren Kacheln (Overview Tiles) gerendert. Dies bedeutet dass nach dem erstellen der Base Tiles nicht mehr das input_file verwendet wird.
+
     </p>
     <p class="code">
       Generating Base Tiles:<br>
@@ -115,8 +121,7 @@
       [title]="'gdal2tiles parllelism'"
       [vgl]="true"
       [URL]="'https://github.com/OSGeo/gdal/issues/4895'"></app-quote>.
-      Ein möglicher Lösungsansatz für nun ist es die einzelnen Zoomstufen separat nacheinander zu erstellen um eine bestmögliche Auslastung der CPU zu erreichen und somit den TMS in einer kürzeren Zeit zu erstellen.
-      Dies ist jedoch nur bei der Nutzung einer CPU mit vielen Thrads ein valider Ansatz, da sonst die Zeit des erstellens der "Base Tiles" länger als das erstellen der "Overview Tiles" aus dem "Base Tiles" dauert.
+      n möglicher Lösungsansatz für nun ist es die einzelnen Zoomstufen separat nacheinander zu erstellen um eine bestmögliche Auslastung der CPU zu erreichen und somit den TMS in einer kürzeren Zeit zu erstellen. Dies ist jedoch nur bei der Nutzung einer CPU mit vielen Threads ein valider Ansatz, da sonst die Zeit des erstellens der "Base Tiles" länger als das erstellen der "Overview Tiles" aus dem "Base Tiles" dauert.
     </p>
 
     <p>
@@ -129,40 +134,41 @@
     <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.1.3'" [id]="3.13"></app-headline>
     <p class="toDo">toDo</p>
 
-  <app-headline class="newPageBefore" [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.2'" [id]="3.2"></app-headline>
+  <app-headline [headline]="'Bereitstellung der Datensätze'" [h]="2" [number]="'3.2'" [id]="3.2"></app-headline>
   <p>
-    Um die Datensätze an den Nutzer  bzw. dessen Webbrowser zu senden ist es erforderlich, dass die Daten von einem Webserver bereitgestellt werden.
-    Bei dem Webserver kann es sich um einen Server handeln, welcher nur die angeforderten Daten für den Nutzer bereitstellt, bis hin zu einem Geoserver welcher von dem Webbrowser eine Anfrage über ein bestimmte Fläche erhält und die Geodaten serverseitig für den Nutzer rendert. Dadurch werden nicht die Geodaten selbst sondern ein abbild dieser an den Browser sendet.
+    Um die Datensätze an den Nutzer bzw. dessen Webbrowser zu senden ist es erforderlich, dass die Daten von einem Webserver bereitgestellt werden. Bei dem Webserver kann es sich um einen Server handeln, welcher nur die angeforderten Daten für den Nutzer bereitstellt, bis hin zu einem Geoserver welcher von dem Webbrowser eine Anfrage über ein bestimmte Fläche erhält und die Geodaten serverseitig für den Nutzer rendert. Dadurch werden nicht die Geodaten selbst sondern ein abbild dieser an den Browser sendet.
   </p>
   <p>
-    Zur Auslieferung der statischer Daten wie beim TMS und COG wird nur ein einfacher WebServer wie Beispielsweise Nginx oder Apache HTTP Server benötigt.
-    Da in dieser Arbeit jedoch die Dienste von Amazon Web Services verwendet werden wird auf AWS Simple Cloud Storage (S3) zurückgegriffen.
+    Zur Auslieferung der statischer Daten wie beim TMS und COG wird nur ein einfacher WebServer wie Beispielsweise Nginx oder Apache HTTP Server benötigt. Da in dieser Arbeit jedoch die Dienste von Amazon Web Services verwendet werden wird auf AWS Simple Cloud Storage (<app-abbreviation [abbreviation]="'AWS S3'" [description]="'AWS Simple Cloud Storage'"></app-abbreviation>) zurückgegriffen.
   </p>
   <p>
-    AWS S3 bietet den Vorteil, dass im gegensatz zu Webhosting nur für den genutzten Speicherplatz und Traffic gezahlt wird.
-    Im Gegensatz zu Webhostings kann der Speicherplatz somit nicht voll laufen und somit zu Ausfällen führen.
-    Besonders für Projekte bei welchen der Umfang des Speicherplatzbedarfs unbekannt ist kann dies besonders von Vorteil sein.
+    AWS S3 bietet den Vorteil, dass im gegensatz zu Webhosting nur für den genutzten Speicherplatz und Traffic gezahlt wird. Im Gegensatz zu Webhostings kann der Speicherplatz somit nicht voll laufen und somit zu Ausfällen führen. Besonders für Projekte bei welchen der Umfang des Speicherplatzbedarfs unbekannt ist kann dies besonders von Vorteil sein.
   </p>
   <p>
-    Der Upload zu einem Server erfolgt meist über File Transfer Protocol (FTP) bzw. Secure File Transfer Protocol (<app-abbreviation [abbreviation]="'SFTP'" [description]="'Secure File Transfer Protocol'"></app-abbreviation>).
-    Dies ist bei AWS S3 zwar auch möglich, jedoch ist die Nutzung der AWS Command Line Interface (AWS CLI) zum programmatischen Upload besser geeignet.
+    Der Upload zu einem Server erfolgt meist über File Transfer Protocol (<app-abbreviation [abbreviation]="'FTP'" [description]="'File Transfer Protocol'"></app-abbreviation>) bzw. Secure File Transfer Protocol (<app-abbreviation [abbreviation]="'SFTP'" [description]="'Secure File Transfer Protocol'"></app-abbreviation>).
+    Dies ist bei AWS S3 zwar auch möglich, jedoch ist die Nutzung der AWS Command Line Interface (<app-abbreviation [abbreviation]="'AWS CLI'" [description]="'AWS Command Line Interface'"></app-abbreviation>) zum programmatischen Upload besser geeignet.
   </p>
 
   <p>
-    Die Standards WMS und WMTS hingegen können nicht einfach über einen Webserver, welcher nur statische Dateien aus liefert, betrieben werden.
-    Diese beiden Standards benötigen einen Server welcher die Anfragen des Clients, welcher Parameter in der URL sendet, verarbeitet. Dies kann ein Properitärer ESRI ArcGIS Server [ https://enterprise.arcgis.com/de/server/ ] oder wie in dieser Arbeit verwendet ein open source Geoserver sein.
+    Die Standards WMS und WMTS hingegen können nicht einfach über einen Webserver, welcher nur statische Dateien aus liefert, betrieben werden. Diese beiden Standards benötigen einen Server welcher die Anfragen des Clients, welcher Parameter in der URL sendet, verarbeitet. Dies kann ein Properitärer ESRI ArcGIS Server<app-quote
+    [author]="'ESRI'"
+    [lastVisit]="'06.02.2022'"
+    [title]="'GIS Server'"
+    [vgl]="true"
+    [URL]="'https://enterprise.arcgis.com/de/server/'"></app-quote> oder wie in dieser Arbeit verwendet ein open source Geoserver sein.
   </p>
 
   <p>
-    Dieser Geoserver muss auf einem Server betrieben werden.
-    Hierzu wird in dieser Arbeit ein weiterer Dienst von AWS genutzt, Elastic Compute Cloud (EC2).
-    Wie bereits bei AWS S3 hat dieser Dienst den Vorteil, dass nur für die tatsächlich genutzten Ressourcen stundengenau abgerechnet werden.
+    Dieser Geoserver muss auf einem Server betrieben werden. Hierzu wird in dieser Arbeit ein weiterer Dienst von AWS genutzt, Elastic Compute Cloud (<app-abbreviation [abbreviation]="'AWS EC2'" [description]="'AWS Elastic Compute Cloud'"></app-abbreviation>). Wie bereits bei AWS S3 hat dieser Dienst den Vorteil, dass nur für die tatsächlich genutzten Ressourcen stundengenau abgerechnet werden.
   </p>
 
   <p>
-    AWS bietet durch Auto Scaling (https://aws.amazon.com/de/autoscaling/) eine einfache Möglichkeit nur die Ressourcen zu nutzen, die auch tatsächlich benötigt werden.
-    Dies ist zwar nicht gegenstand dieser Arbeit, bietet aber gegenüber Dedizierten-Servern (Server welche dauerhaft mit ihrer gesamten Leistung für einen zur verfügung stehen) den Vorteil, dass bei geringer Belastung Ressourcen abgeschaltet werden und bei starker Belastung automatisch weitere Instanzen hinzugefügt werden.
-    Bei Dedicated-Servern müsste hingegen durchgehend für die zur verfügung gestellte Leistung gezahlt werden, auch wenn diese nicht benötigt wird.
+    AWS bietet durch Auto Scaling<app-quote
+    [author]="'AWS'"
+    [lastVisit]="'06.02.2022'"
+    [title]="'AWS Auto Scaling'"
+    [vgl]="true"
+    [URL]="'https://aws.amazon.com/de/autoscaling/'"></app-quote> eine einfache Möglichkeit nur die Ressourcen zu nutzen, die auch tatsächlich benötigt werden. Dies ist zwar nicht gegenstand dieser Arbeit, bietet aber gegenüber Dedizierten-Servern (Server welche dauerhaft mit ihrer gesamten Leistung für einen zur verfügung stehen) den Vorteil, dass bei geringer Belastung Ressourcen abgeschaltet werden und bei starker Belastung automatisch weitere Instanzen hinzugefügt werden. Bei Dedicated-Servern müsste hingegen durchgehend für die zur verfügung gestellte Leistung gezahlt werden, auch wenn diese nicht benötigt wird.
   </p>
 
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.2.1'" [id]="3.21"></app-headline>
@@ -177,7 +183,7 @@
     <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.2.4'" [id]="3.24"></app-headline>
     <p class="toDo">toDo</p>
 
-  <app-headline class="newPageBefore" [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
+  <app-headline [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
   <p>
     Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-OpenLayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers</a>.
     Das Repository umfasst alle Szenarien und Standards.
@@ -187,15 +193,148 @@
 
   <p>
     Die Abbildungen in diesem Kapitel sind nicht nur einfache Bilddateien, sondern in der WebVersion dieser Arbeit als interaktive WebMaps eingebunden, diese Arbeit ist im Internet unter der URL <a href="https://masterarbeit-cog.undefined-solutions.de/" rel="noopener" target="_blank">https://masterarbeit-cog.undefined-solutions.de</a> zu finden.
-    Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, diese sind unter <a class="toDo" href="https://masterarbeit-cog-openlayers.undefined-solutions.de/" rel="noopener" target="_blank">https://masterarbeit-cog-openlayers.undefined-solutions.de</a> zu finden.
+    Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, diese sind unter in den einzelnen Kapiteln zu finden.
   </p>
 
 
     <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.3.1'" [id]="3.31"></app-headline>
-    <p class="toDo">toDo</p>
+    <p>
+      Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-openlayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-openlayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-openlayers</a>. Das Repository umfasst alle Szenarien und Standards. Als Vorlage für ein Grundgerüst wurden eine Anleitung von OpenLayers verwendet "Basic Concepts"<app-quote
+      [author]="'OpenLayers'"
+      [lastVisit]="'06.02.2022'"
+      [title]="'Basic Concepts'"
+      [vgl]="true"
+      [URL]="'https://openlayers.org/en/latest/doc/tutorials/concepts.html'"></app-quote> welches eine OpenLayers anwendung mit Hintergrundkarte darstellt. Dies besteht im Wesentlichen aus einer Zeile HTML als Grundgerüst:
+    </p>
+<pre class="code">
+&lt;div id="map" style="height: 100%; width: 100%;"&gt;&lt;/div&gt;
+</pre>
+    <p>
+      Sowie dem folgenden TypeScript-Code welcher OpenStreetMap als Hintergrundkarte einbindet:
+    </p>
+<pre class="code">
+import Map from 'ol/Map';
+import View from 'ol/View';
+import OSM from 'ol/source/OSM';
+import TileLayer from 'ol/layer/Tile';
+
+const map = new Map(&lcub;
+  layers: [
+    new TileLayer(&lcub;source: new OSM()&rcub;)
+  ],
+  view: new View(&lcub;
+    center: [0, 0],
+    zoom: 2
+  &rcub;),
+  target: 'map'
+&rcub;);
+</pre>
+    <p>
+      Die Abbildungen in diesem Kapitel sind nicht nur einfache Bilddateien, sondern in der WebVersion dieser Arbeit als interaktive WebMaps eingebunden, diese Arbeit ist im Internet unter der URL <a href="https://masterarbeit-cog.undefined-solutions.de" rel="noopener" target="_blank">https://masterarbeit-cog.undefined-solutions.de</a> zu finden. Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, alle Szenarien für jeden Standard sind jedoch in den Kapiteln 3.3.1 bis 3.3.4 zu als Link zu finden.
+    </p>
 
     <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.3.2'" [id]="3.32"></app-headline>
-    <p class="toDo">toDo</p>
+    <p>
+      OpenLayers bietet die Möglichkeit weitere Layer in das Array der Karte layers hinzuzufügen. Ein Beispiel wie dies für den TMS erfolgen kann liefert OpenLayers innerhalb der Sammlung von Code-Beispielen<app-quote
+      [author]="'OpenLayers'"
+      [lastVisit]="'06.02.2022'"
+      [title]="'Example - XYZ'"
+      [vgl]="true"
+      [URL]="'https://openlayers.org/en/latest/examples/xyz.html'"></app-quote>. Die Bereitstellung für den TMS wird durch die TileLayer Klasse ermöglicht. TIleLayer werden genutzt um vorgerenderte Tiles mit spezifischer größe und basierend auf der Zoomstufe auf die Karte zu bringen.
+    </p>
+    <pre class="code">import TileLayer from 'ol/layer/Tile';</pre>
+    <p>
+      Die Klasse TileLayer besitzt den Parameter source in welchem die XYZ Klasse eingefügt wird, diese Klasse bresitzt den Parameter url in welche URL des TMS als parameter einzufügen, hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet damit diese für den Kartenausschnitt vom Server angefordert werden können.
+    </p>
+    <pre class="code">import XYZ from 'ol/source/XYZ';
+url: 'https://[domain].de/[OrdnerPfad]/&lcub;z&rcub;/&lcub;x&rcub;/&lcub;y&rcub;.png'</pre>
+    <p>
+      Aufgrund des unterschiedlichen Ausgangspunktes muss jedoch die Y-Achse invertiert werden<app-quote
+      [author]="'OpenLayers'"
+      [lastVisit]="'06.02.2022'"
+      [title]="'API - ol/source/XYZ~XYZ'"
+      [vgl]="true"
+      [URL]="'https://openlayers.org/en/latest/apidoc/module-ol_source_XYZ-XYZ.html'"></app-quote>. Diese Achse muss invertiert werden, da der Ausgangspunkt des TMS in der oberen linken Ecke befindet, jedoch der Ausgangspunkt des XYZ in der unteren linken Ecke. Daraus ergibt sich für das Orthomosaik des Strenzfeldes der folgende Parameter für die XYZ Klasse:
+    </p>
+    <pre class="code">url: 'https://masterarbeit-cog.s3.eu-central-1.amazonaws.com/tms/dsm_strenzfeld
+/&lcub;z&rcub;/&lcub;x&rcub;/&lcub;-y&rcub;.png'</pre>
+      <p>
+        Weitere sich als zielführend erwiesene Parameter sind:
+      </p>
+      <ul>
+        <li>
+          <span class="code">minZoom: 0</span> / <span class="code">maxZoom: 21</span> für die XYZ Klasse, um zu spezifizieren für welche Zoomstufen Tiles des TMS bereitgestellt sind.
+        </li>
+        <li>
+          <span class="code">extent: [Ausdehnung des Gebiets]</span> für die TileLayer Klasse, als Standard erstreckt sich die Anfragen des TileLayers über die gesamte Fläche der WebMap, wenn wie in dieser Arbeit aber nur regionen abgebildet werden ist es daher sinnvoll diese Bereiche zu definieren. Dies verhindert unnötige Anfragen der WebMap für Gebiete in welchen keine Tiles vorgehalten werden.
+        </li>
+        <li>
+          <span class="code">preload: Infinity</span> der TileLayer Klasse sorgt für eine besser Nutzererfahrung des TMS. Es werden Tiles von überliegenden Zoomstufen als Vorschau beim verschieben der Karten genutzt. Dadurch sieht der Nutzer immer den TMS auch wenn dies in einer schlechteren Auflösung erfolgt ist dieses Verhalten für die Nutzererfahrung besser als wenn er die darunterliegende Basiskarte sieht und dann darüber der TMS nachgeladen und angezeigt wird. Ebenfalls ermöglicht dieser Parameter die Anzeige des TMS über den bereitgestellten maxZoom und ist daher sehr zu empfehlen.
+        </li>
+        <li>
+          <span class="code">attributions: [Text]</span> der XYZ Klasse ermöglicht es den Ersteller des TMS zu nennen, diese Angabe wird in dem unteren rechten Bereich der Karte angezeigt.
+        </li>
+      </ul>
+      <p>
+        Durch diese optionalen Parameter ergibt sich der folgenden Code für das Ortho des Strenzfelds:
+      </p>
+      <pre class="code avoidBreak">
+const TMS = new TileLayer(&lcub;
+  extent: [
+    1299642.3081000000238419,
+    6765838.1484000002965331,
+    1304883.3142999999690801,
+    6769892.0274999998509884
+  ],
+  preload: Infinity,
+  source: new XYZ(&lcub;
+    attributions: 'Institut für Geoinformation und Vermessung (IGV),' + \
+        '&lt;a href="https://gyrocopter.afg.hs-anhalt.de/" rel="noopener"' + \
+        'target="_blank"&gt;Hochschule Anhalt&lt;/a&gt;',
+    minZoom: 0,
+    maxZoom: 21,
+    url: 'https://masterarbeit-cog.s3.eu-central-1.amazonaws.com/tms/' + \
+    'ortho_strenzfeld/&lcub;z&rcub;/&lcub;x&rcub;/&lcub;-y&rcub;.png'
+  &rcub;),
+&rcub;)
+      </pre>
+      <p>
+        Die Variable TMS wird als zweiten Eintrag in das Grundgerüst von Kapitel 3.3 eingefügt:
+      </p>
+
+      <pre class="code">
+layers: [
+  new TileLayer(&lcub;source: new OSM()&rcub;),
+  TMS
+],</pre>
+      <p>
+        Der TMS wurde nun der Karte hinzugefügt, jedoch ist die Ausgangsposition der Karte noch nicht an den TMS angepasst. Noch ist die Ausgangsposition der Karte durch den Parameter view der Klasse map definiert.
+        Dies kann durch zoomen auf die ausdehnung des TMS geändert werden. Erfolgen tut dies durch eine Methode welche durch die Klasse View bereitgestellt wird<app-quote
+        [author]="'OpenLayers'"
+        [lastVisit]="'06.02.2022'"
+        [title]="'API - ol/View~View - Method fit'"
+        [vgl]="true"
+        [URL]="'https://openlayers.org/en/latest/apidoc/module-ol_View-View.html#fit'"></app-quote>. Als optionale Parameter wurde ein Objekt hinzugefügt welches einen Abstand zu dem Kartenrand einfügt, dadurch wird der TMS nicht bis zum Fensterrand angezeigt, dies ist nur eine Verbesserung des Erscheinungsbildes.
+      </p>
+    <pre class="code">
+      map.getView().fit([
+    1299642.3081000000238419,
+    6765838.1484000002965331,
+    1304883.3142999999690801,
+    6769892.0274999998509884
+  ], &lcub; padding: [25, 25, 25, 25] &rcub;
+);</pre>
+    <p class="newPageBefore">
+      Die Implementierung des Orthomosaik des Strenzfeldes als TMS ist somit abgeschlossen und die WebMap sieht  nun wie folgt aus:
+    </p>
+    <iframe src="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/ortho_strenzfeld" width="100%"></iframe>
+    <p>
+      Alle Gebiete / Szenarien sind unter den folgenden Adressen zu finden:<br>
+      <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/ortho_lindenrain" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/ortho_lindenrain</a><br>
+      <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/ortho_strenzfeld" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/ortho_strenzfeld</a><br>
+      <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_lindenrain" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_lindenrain</a><br>
+      <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_strenzfeld" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_strenzfeld</a><br>
+    </p>
 
     <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.3.3'" [id]="3.33"></app-headline>
     <p class="toDo">toDo</p>

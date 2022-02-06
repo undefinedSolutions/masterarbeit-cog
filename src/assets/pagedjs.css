@@ -15,6 +15,12 @@
   break-inside: avoid;
 }
 
+iframe {
+  border: none;
+  height: 400px;
+  width: 100%;
+}
+
 /* Tabelle */
 .tableWrapper table {
   border: 1px solid black;
@@ -59,7 +65,8 @@
 
 .tableWrapper .caption {
   font-size: 13px;
-  margin: 8px 0 15px;
+  margin: 8px 0 15px 15px;
+  text-indent: -15px;
 }
 
 /* Codeblocks */
