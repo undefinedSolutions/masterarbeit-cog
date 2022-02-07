@@ -52,11 +52,11 @@
       Daraus ergibt es sich, dass für das Orthomosaik des Gebiets Strenzfeld ohne vorherige konvertierung von uint16 zu Byte ungeeignet ist. Ebenso müssen beide Oberflächenmodelle und die Visualisierung von mehrkanal-Bilddaten zuvor festgelegt werden, da diese ebenfalls nicht dem Datentype Byte entsprechen.
     </p>
     <p>
-      Um diese Datensätze aufzuarbeiten muss QGIS verwendet werden, dies ist notwendig da zuerst die Visualisierung angepasst werden muss und dies nicht mit GDAL möglich ist. Bei dem Oberflächenmodellen musste nur in den Eigenschaften die Symbologie angepasst werden. Für das Orthomosaik von dem Gebiet Strenzfeld muss die Minimum und Maximum Werte der Bänder RGB auf 0 - 65535 gesetzt werden um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter Transparenz die eingabe des “No Data Values”, dieser gibt an welche Datenwerte als Transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
+      Um diese Datensätze aufzuarbeiten muss QGIS verwendet werden, dies ist notwendig da zuerst die Visualisierung angepasst werden muss und dies nicht mit GDAL möglich ist. Bei dem Oberflächenmodellen musste nur in den Eigenschaften die Symbologie angepasst werden. Für das Orthomosaik von dem Gebiet Strenzfeld muss die Minimum und Maximum Werte der Bänder RGB auf 0 - 65535 gesetzt werden um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter Transparenz die eingabe des "No Data Values", dieser gibt an welche Datenwerte als Transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
     </p>
 
     <p>
-      Nachdem die Visualisierungen angepasst sind müssen die Daten nun noch exportiert werden, wie bereits erwähnt erwartet das Script zum erstellen des TMS als Eingabewert den Datentype Byte. Dies kann beim Export der Daten erreicht werden indem der “Output mode” auf “Rendered image” gestellt wird, somit werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel ergeben die Datensätze direkt in das benötigte Koordinatensystem zu konvertieren, in unseren Szenarien WebMercator EPSG:3857, in der <a href="#figure-7">Abbildung 7</a> sind die getroffenen Einstellungen für den Export zu sehen.
+      Nachdem die Visualisierungen angepasst sind müssen die Daten nun noch exportiert werden, wie bereits erwähnt erwartet das Script zum erstellen des TMS als Eingabewert den Datentype Byte. Dies kann beim Export der Daten erreicht werden indem der "Output mode" auf "Rendered image" gestellt wird, somit werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel ergeben die Datensätze direkt in das benötigte Koordinatensystem zu konvertieren, in unseren Szenarien WebMercator EPSG:3857, in der <a href="#figure-7">Abbildung 7</a> sind die getroffenen Einstellungen für den Export zu sehen.
     </p>
 
     <app-figure
@@ -185,10 +185,15 @@
 
   <app-headline [headline]="'Nutzung der Datensätze'" [h]="2" [number]="'3.3'" [id]="3.3"></app-headline>
   <p>
-    Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-OpenLayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers</a>.
-    Das Repository umfasst alle Szenarien und Standards.
-    Als Grundgerüst wurden die Tutorials von OpenLayers verwendet (https://openlayers.org/en/latest/doc/tutorials/): “Building an OpenLayers Application”,
-    “Basic Concepts” und “Some Background on OpenLayers” welche eine OpenLayers anwendung mit Hintergrundkarte darstellt.
+    Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-openlayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-OpenLayers</a>.
+  </p>
+  <p>
+    Das Repository umfasst alle Szenarien und Standards. Als Vorlage für ein Grundgerüst wurden eine Anleitung von OpenLayers verwendet<app-quote
+    [author]="'OpenLayers'"
+    [lastVisit]="'06.02.2022'"
+    [title]="'Basic Concepts'"
+    [vgl]="true"
+    [URL]="'https://openlayers.org/en/latest/doc/tutorials/concepts.html'"></app-quote> "Basic Concepts" welches eine OpenLayers anwendung mit Hintergrundkarte darstellt. Dies besteht im Wesentlichen aus einer Zeile HTML als Grundgerüst:
   </p>
 
   <p>
@@ -196,23 +201,14 @@
     Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, diese sind unter in den einzelnen Kapiteln zu finden.
   </p>
 
-
-    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.3.1'" [id]="3.31"></app-headline>
-    <p>
-      Um die Nutzung der Datensätze besser aufzuzeigen ist für die Arbeit ein Github Repository mit den Namen masterarbeit-cog-openlayers aufgesetzt worden, dies ist unter der folgenden URL zu finden: <a href="https://github.com/undefinedSolutions/masterarbeit-cog-openlayers" rel="noopener" target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-openlayers</a>. Das Repository umfasst alle Szenarien und Standards. Als Vorlage für ein Grundgerüst wurden eine Anleitung von OpenLayers verwendet "Basic Concepts"<app-quote
-      [author]="'OpenLayers'"
-      [lastVisit]="'06.02.2022'"
-      [title]="'Basic Concepts'"
-      [vgl]="true"
-      [URL]="'https://openlayers.org/en/latest/doc/tutorials/concepts.html'"></app-quote> welches eine OpenLayers anwendung mit Hintergrundkarte darstellt. Dies besteht im Wesentlichen aus einer Zeile HTML als Grundgerüst:
-    </p>
 <pre class="code">
 &lt;div id="map" style="height: 100%; width: 100%;"&gt;&lt;/div&gt;
 </pre>
-    <p>
-      Sowie dem folgenden TypeScript-Code welcher OpenStreetMap als Hintergrundkarte einbindet:
-    </p>
-<pre class="code">
+
+<p>
+  Sowie dem folgenden TypeScript-Code welcher OpenStreetMap als Hintergrundkarte einbindet:
+</p>
+<pre class="code avoidBreak">
 import Map from 'ol/Map';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
@@ -229,11 +225,13 @@ const map = new Map(&lcub;
   target: 'map'
 &rcub;);
 </pre>
-    <p>
-      Die Abbildungen in diesem Kapitel sind nicht nur einfache Bilddateien, sondern in der WebVersion dieser Arbeit als interaktive WebMaps eingebunden, diese Arbeit ist im Internet unter der URL <a href="https://masterarbeit-cog.undefined-solutions.de" rel="noopener" target="_blank">https://masterarbeit-cog.undefined-solutions.de</a> zu finden. Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, alle Szenarien für jeden Standard sind jedoch in den Kapiteln 3.3.1 bis 3.3.4 zu als Link zu finden.
-    </p>
 
-    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.3.2'" [id]="3.32"></app-headline>
+
+<p>
+  Die Abbildungen in diesem Kapitel sind nicht nur einfache Bilddateien, sondern in der WebVersion dieser Arbeit als interaktive WebMaps eingebunden, diese Arbeit ist im Internet unter der URL <a href="https://masterarbeit-cog.undefined-solutions.de" rel="noopener" target="_blank">https://masterarbeit-cog.undefined-solutions.de</a> zu finden. Alle Beispiele der jeweiligen Szenarien und Standards würden jedoch diese Arbeit sprengen, alle Szenarien für jeden Standard sind jedoch in den Kapiteln 3.3.1 bis 3.3.4 zu als Link zu finden.
+</p>
+
+    <app-headline [headline]="'Tile Matrix Set'" [h]="3" [number]="'3.3.1'" [id]="3.31"></app-headline>
     <p>
       OpenLayers bietet die Möglichkeit weitere Layer in das Array der Karte layers hinzuzufügen. Ein Beispiel wie dies für den TMS erfolgen kann liefert OpenLayers innerhalb der Sammlung von Code-Beispielen<app-quote
       [author]="'OpenLayers'"
@@ -335,6 +333,10 @@ layers: [
       <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_lindenrain" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_lindenrain</a><br>
       <a href="https://masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_strenzfeld" rel="noopener" target="_blank">masterarbeit-cog-openlayers.undefined-solutions.de/tms/dsm_strenzfeld</a><br>
     </p>
+
+
+    <app-headline [headline]="'Web Map Service'" [h]="3" [number]="'3.3.2'" [id]="3.32"></app-headline>
+    <p class="toDo">toDo</p>
 
     <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.3.3'" [id]="3.33"></app-headline>
     <p class="toDo">toDo</p>
