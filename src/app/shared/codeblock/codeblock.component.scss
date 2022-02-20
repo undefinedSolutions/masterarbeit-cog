@@ -1,0 +1,34 @@
+pre {
+  background: #d3d3d3;
+  counter-reset: linenumber;
+  margin: 25px 0;
+  padding: 10px 0;
+}
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+pre > code:not(:only-child)::before {
+  background: gray;
+  content: ' ' counter(linenumber, decimal-leading-zero) ' ';
+  counter-increment: linenumber;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-right: 5px;
+  padding: 3px 0;
+}
+pre > code:not(:only-child):first-child::before {
+  padding-top: 10px;
+}
+pre > code:not(:only-child):last-child::before {
+  padding-bottom: 10px;
+}
+
+::ng-deep {
+  .cNew {
+    color: #559ad4;
+  }
+  .cType {
+    color: #47cab1;
+  }
+}

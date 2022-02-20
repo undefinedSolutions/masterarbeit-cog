@@ -276,6 +276,7 @@ url: 'https://[domain].de/[OrdnerPfad]/&lcub;z&rcub;/&lcub;x&rcub;/&lcub;y&rcub;
       <p>
         Durch diese optionalen Parameter ergibt sich der folgenden Code für das Ortho des Strenzfelds:
       </p>
+
       <pre class="code avoidBreak">
 const TMS = new TileLayer(&lcub;
   extent: [
@@ -341,5 +342,18 @@ layers: [
     <app-headline [headline]="'Web Map Tile Service'" [h]="3" [number]="'3.3.3'" [id]="3.33"></app-headline>
     <p class="toDo">toDo</p>
 
-    <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.3.4'" [id]="3.34"></app-headline>
-    <p class="toDo">toDo</p>
+    <app-headline class="newPageBefore" [headline]="'Cloud Optimized GeoTIFF'" [h]="3" [number]="'3.3.4'" [id]="3.34"></app-headline>
+    <app-codeblock code="…
+const cog = new TileLayer({
+  source: new GeoTIFF({
+  sources: [
+    {
+      url: 'https://masterarbeit-cog.s3.eu-central-1' +
+      '.amazonaws.com/cog/ortho_lindenrain.tif'
+      },
+  ],
+  })
+})
+<a href='test'>Link </a>
+cog.getSource().setAttributions(AoiLindenrain.attributions);
+…"></app-codeblock>

@@ -1,0 +1,3 @@
+<pre class="avoidBreak">
+<ng-container *ngFor="let line of codeLines; last as isLast"><code [innerHTML]="line"></code><ng-container *ngIf="!isLast"><br></ng-container></ng-container>
+</pre>

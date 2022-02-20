@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Previewer } from 'pagedjs';
 
-
 import { PagedJSService } from './services/pagedJS/paged-js.service';
 @Component({
   selector: 'app-root',
@@ -25,8 +24,8 @@ export class AppComponent implements AfterViewInit {
         this.pdf.nativeElement
       )
       .then(flow => {
-        this.pagedJSService.loaded.emit(true);
         this.content.nativeElement.innerHTML = '';
+        this.pagedJSService.loaded.emit(true);
       });
     }, 1000);
     

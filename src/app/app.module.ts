@@ -22,6 +22,8 @@ import { C5DiscussionComponent } from './content/c5-discussion/c5-discussion.com
 import { C6SummaryComponent } from './content/c6-summary/c6-summary.component';
 import { QuoteComponent } from './shared/quote/quote.component';
 import { BibliogaphyComponent } from './pages/list/bibliogaphy/bibliogaphy.component';
+import { CodeblockComponent } from './shared/codeblock/codeblock.component';
+import { ChartComponent } from './shared/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { BibliogaphyComponent } from './pages/list/bibliogaphy/bibliogaphy.compo
     C5DiscussionComponent,
     C6SummaryComponent,
     QuoteComponent,
-    BibliogaphyComponent
+    BibliogaphyComponent,
+    CodeblockComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule
