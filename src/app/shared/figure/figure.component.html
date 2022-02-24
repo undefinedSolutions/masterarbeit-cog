@@ -1,9 +1,9 @@
 <div [id]="'figure-'+id">
   <img src="{{src}}" alt="{{caption}}" [style]="style">
   <p class="caption">
-    Abbildung {{id}}: {{caption}}
+    <span>Abbildung {{id}}:</span> {{caption}}
     <ng-container *ngIf="source"><br>
-      Quelle: {{source}}
+      <span>Quelle:</span> {{source}}
     </ng-container>
 
   </p>

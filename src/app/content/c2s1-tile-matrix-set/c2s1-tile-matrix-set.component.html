@@ -1,0 +1,120 @@
+<app-headline [headline]="'Tile Matrix Set (TMS)'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
+
+<p>
+  Der Tile Matrix Set (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>) beschreibt ein Kachelschema, welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Das bedeutet, dass einzelne Kacheln für sich über keine Georeferenzierung verfügen.
+</p>
+
+<p>
+  Das Kachelschema stellt ein Gitter dar, welches regelmäßig die gesamte Welt, unterteilt in Kacheln, abdeckt. Der Ausgangspunkt des Gitters ist die obere linke Ecke des Schemas. Gezählt wird in Ganzzahlen. So ist dem Ausgangspunkt die Position (0, 0) zuzuordnen. Das Ende des Gitters ergibt sich aus der Breite der jeweiligen Dimension subtrahiert um 1. Dies ist deshalb nötig, da die Zählung nicht bei 1 beginnt sondern bei 0. Die reale Kachelgröße (ScaleDenominator) wird in der Einheit des gewählten Koordinatensystems angegeben, für WebMercator EPSG:3857 sind es Meter. Die Breite und Höhe einer einzelnen Kachel betragen meist 256 oder 512 Pixel. Diese Werte sind nicht standardisiert, so dass es ebenso möglich ist, dass Breite und Höhe unterschiedliche Werte aufweisen, welches in der Praxis  jedoch  extrem selten auftritt.
+</p>
+
+<p>
+  Anhand dieser Beschreibung des Standards ergibt sich die folgende Darstellung:
+</p>
+
+<app-figure
+    [id]="'2-1'"
+    [src]="'/assets/images/Standards/TMS_tileSpace.png'"
+    [caption]="'Ausführung einer Tile Matrix'"
+    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
+
+<p>
+  Die bisherige Beschreibung des Standards bezieht sich nur auf die XY-Dimensionen, auch Tile Matrix genannt. Dies zwingt den Nutzer, die höchstauflösenste Zoomstufe zu laden und aus dieser die Übersichten für die jeweiligen angefragten Zoomstufen zu generieren. Unter Betrachtung der Bandbreite und Rechenzeit ist dies äußerst ineffizient, da die Software diese zur Laufzeit rendern, d.h. die Darstellung berechnen, müsste.
+</p>
+
+<p>
+  Zur Vermeidung dessen werden einzelne Zoomstufen bereitgestellt und von der Software gezielt angefordert. Dabei wird pro Zoomstufe jeweils eine Tile Matrix bereitgestellt, welche den TMS ergeben. Diese Tile Matrizen werden in der Praxis mit einer Ganzzahl angesprochen, der Standard sieht jedoch daneben auch eine eindeutige alphanumerischen Bezeichnung vor. Die Standardisierung sieht weiterhin vor, dass die Aufteilung zum Zoom nicht zwingend aus 1:4 besteht, d.h. dass 4 Kacheln der Zoomstufe 1 eine Kachel der Zoomstufe 0 ergeben.
+</p>
+
+<p>
+  <a class="link" href="#figure-2-2">Abbildung 2-2</a> stellt die entsprechende Aufteilung der Zoomstufen deutlich dar. Eine helleres Tile ist dabei einer höheren Auflösung gleichzustellen.
+</p>
+
+<app-figure
+    [id]="'2-2'"
+    [src]="'/assets/images/Standards/TMS_representation.png'"
+    [caption]="'Aufbaus eines TMS'"
+    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
+
+<p>
+  Die strikte Aufteilung von 1:4 hinsichtlich der Zoomstufen ist in der Praxis sehr häufig anzutreffen. Durch diese Methode ist die Festlegung eines bestimmten Bereiches mithilfe einer sogenannten BoundingBox für den gesamten TMS gültig und muss nicht für jede Tile Matrix bestimmt werden. Die Nutzung der Bounding Box ist bei der Anwendung von hoher Relevanz, sofern es sich bei dem abgebildeten Gebiet nicht um die gesamte Welt handelt.
+</p>
+
+<p>
+  Es besteht die Möglichkeit, vordefinierte Kachelarchive, welche meist als Well-Known Scale Sets (<app-abbreviation [abbreviation]="'WKSS'" [description]="'Well-Known Scale Sets'"></app-abbreviation>) bezeichnet werden, zu verwenden. Diese werden von den meisten JavaScript-Bibliotheken unterstützt und können somit ohne weitere Implementierung verarbeitet werden. Sie definieren das genutzte Koordinatensystem und die reale Kachelgröße für jede Zoomstufe. Ein Auszug der WKSS für das Koordinatensystem WebMercator EPSG:3857 ist der folgenden Tabelle zu entnehmen:
+</p>
+
+<div class="tableWrapper" id="table-2-1">
+  <p class="caption">
+    <span>Tabelle 2-1:</span> Auszug aus den relevanten Informationen einen WKSS<br>
+    <span>Quelle:</span> OGC - Two Dimensional Tile Matrix Set
+  </p>
+  <table>
+    <tr>
+      <th>Zoom level</th>
+      <th>Maßstab<br></th>
+      <th>Pixelgröße (m)</th>
+      <th>Breite und Höhe der Karte (pixels)</th>
+    </tr>
+    <tr>
+      <td class="data">0</td>
+      <td class="data">559082264.02871774</td>
+      <td class="data">156543.033928040</td>
+      <td class="data">256</td>
+    </tr>
+    <tr>
+      <td class="data">1</td>
+      <td class="data">279541132.01435887</td>
+      <td class="data">78271.5169640205</td>
+      <td class="data">512</td>
+    </tr>
+    <tr>
+      <td class="data">2</td>
+      <td class="data">139770566.00717943</td>
+      <td class="data">39135.7584820102</td>
+      <td class="data">1024</td>
+    </tr>
+    <tr>
+      <td class="data">&#8942;</td>
+      <td class="data">&#8942;</td>
+      <td class="data">&#8942;</td>
+      <td class="data">&#8942;</td>
+    </tr>
+    <tr>
+      <td class="data">18</td>
+      <td class="data">2132.7295838497838</td>
+      <td class="data">0.59716428347793</td>
+      <td class="data">67,108,864</td>
+    </tr>
+    <tr>
+      <td class="data">19</td>
+      <td class="data">1066.3647919248919</td>
+      <td class="data">0.29858214173896</td>
+      <td class="data">134,217,728</td>
+    </tr>
+    <tr>
+      <td class="data">20</td>
+      <td class="data">533.18239596244597</td>
+      <td class="data">0.14929107086948</td>
+      <td class="data">268,435,456</td>
+    </tr>
+    <tr>
+      <td class="data">21</td>
+      <td class="data">266.59119798122298</td>
+      <td class="data">0.07464553543474</td>
+      <td class="data">536,870,912</td>
+    </tr>
+    <tr>
+      <td class="data">22</td>
+      <td class="data">133.29559899061149</td>
+      <td class="data">0.03732276771737</td>
+      <td class="data">1,073,741,824</td>
+    </tr>
+    <tr>
+      <td class="data">23</td>
+      <td class="data">66.64779949530575</td>
+      <td class="data">0.01866138385868561</td>
+      <td class="data">2,147,483,648</td>
+    </tr>
+  </table>
+</div>

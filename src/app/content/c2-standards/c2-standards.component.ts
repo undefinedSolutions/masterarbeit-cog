@@ -1,17 +1,12 @@
-import { Component, AfterViewInit } from '@angular/core';
-
-import { TablesService } from './../../services/tables/tables.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-c2-standards',
   templateUrl: './c2-standards.component.html',
   styleUrls: ['./c2-standards.component.scss']
 })
-export class C2StandardsComponent implements AfterViewInit {
+export class C2StandardsComponent {
 
-  constructor(private tablesService:TablesService) { }
+  constructor() { }
 
-  ngAfterViewInit(): void {
-    this.tablesService.pushTable('Auszug aus den relevanten Informationen einen WKSS', 1)
-  }
 }

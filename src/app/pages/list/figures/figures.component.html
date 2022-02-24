@@ -6,11 +6,11 @@
     [type]="'roman'"></app-headline>
 <div *ngFor="let figure of figures; index as i"
     class="list">
-  <div class="numbered">Abbildung {{i+1}}:</div>
+  <div class="numbered">Abbildung {{figure.id}}:</div>
   <div class="caption">
     <a href="#figure-{{figure.id}}">{{figure.caption}}</a>
   </div>
-  <div class="pageNumber" *ngIf="figure.id > 0">
+  <div class="pageNumber" *ngIf="figure.id !== ''">
     <a class="figureLink" href="#figure-{{figure.id}}"></a>
   </div>
   <div class="dotted"> </div>

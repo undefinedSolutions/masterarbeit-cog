@@ -1,142 +1,28 @@
-<app-headline class="newPageBefore" [headline]="'Standards'" [h]="1" [number]="'2'" [id]="2"></app-headline>
-  <p>
-    Die Auswahl der untersuchten Standards wurde aufgrund Ihrer einfachen Aufarbeitung, Bereitstellung, Verwendung und weiten Verbreitung innerhalb einer der gängigen JavaScript-Bibliotheken für WebMapping getroffen. Insbesondere  OpenLayers stellt eine sehr umfangreiche und dennoch einfach zu nutzende Bibliothek dar, mithilfe derer Rasterdaten in einem WebGIS bereitgestellt werden können. Alle hier untersuchten Standards wurden vom dem Open Geospatial Consortium (<app-abbreviation [abbreviation]="'OGC'" [description]="'Open Geospatial Consortium'"></app-abbreviation>) erarbeitet und standardisiert, dies wird innerhalb der einzelnen nachfolgenden Kapitel weiter ausgeführt.
-  </p>
+<app-headline [headline]="'Standards'" [h]="1" [number]="'2'" [id]="2"></app-headline>
 
-  <p>
-    Aufgrund der Tatsache, dass Rasterinformationen auf einer flachen Oberfläche projiziert werden, ist es üblich für ein WebGIS ein projeziertes Koordinatensystem zu verwenden. Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden, dies spart Rechen- sowie Wartezeit des Nutzers. Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die WebMercator oder auch PseudoMercator genannte Projektion mit dem EPSG-Code 3857 durchgesetzt<app-quote
-        [author]="'World Wide Web Consortium'"
-        [chapter]="'9. Coordinate Reference Systems (CRS)'"
-        [lastVisit]="'29.01.2022'"
-        [publicationDate]="'28.09.2017'"
-        [title]="'Spatial Data on the Web Best Practices'"
-        [vgl]="true"
-        [URL]="'https://www.w3.org/TR/sdw-bp/'"></app-quote> .
-  </p>
+<p>
+  Die Auswahl der untersuchten Standards wurde aufgrund Ihrer einfachen Aufarbeitung, Bereitstellung, Verwendung und weiten Verbreitung innerhalb einer der gängigen JavaScript-Bibliotheken für WebMapping getroffen. Insbesondere OpenLayers stellt eine sehr umfangreiche und dennoch einfach zu nutzende Bibliothek dar, mithilfe derer Rasterdaten in einem WebGIS bereitgestellt werden können.
+</p>
 
-  <p>
-    Diese Arbeit hat nicht den Anspruch jeden Standard in vollen Umfang zu beleuchten, das Ziel ist es vielmehr eine funktionale Lösung für die einzelnen Szenarien zu finden und diese Lösungsansätze miteinander zu vergleichen.
-  </p>
+<p>
+  Aufgrund der Tatsache, dass Rasterinformationen auf einer flachen Oberfläche projiziert werden, ist es üblich, für ein WebGIS ein projiziertes Koordinatensystem zu verwenden. Dadurch wird eine Umwandlung von Pixelpositionen in Winkelmessungen vermieden. Diese Vorgehensweise spart Rechen- sowie Wartezeit des Nutzers. Als De-Facto-Standard hat sich für die Anzeige von GeoDaten die als WebMercator oder auch PseudoMercator bezeichnete Projektion mit dem EPSG-Code 3857 durchgesetzt<app-quote
+      id="2-WorldWideWebConsortium"
+      author="World Wide Web Consortium"
+      chapter="9. Coordinate Reference Systems (CRS)"
+      lastVisit="29.01.2022"
+      publicationDate="28.09.2017"
+      title="Spatial Data on the Web Best Practices"
+      [vgl]="true"
+      URL="https://www.w3.org/TR/sdw-bp/"></app-quote>.
+  Die EPSG-Codes sind von der European Petroleum Survey Group (<app-abbreviation [abbreviation]="'EPSG'" [description]="'European Petroleum Survey Group'"></app-abbreviation>) eingeführt worden, um den Koordinatensystemen eindeutige numerische Identifier zu geben und somit eine Verwechslung zwischen verschiedenen Koordinatensystem zu vermeiden<app-quote
+      id="2-ESRI"
+      author="ESRI"
+      lastVisit="24.02.2022"
+      title="Raumbezüge"
+      [vgl]="true"
+      URL="https://desktop.arcgis.com/de/arcmap/10.8/manage-data/using-sql-with-gdbs/spatial-references.htm"></app-quote>.
+</p>
 
-  <app-headline [headline]="'Tile Matrix Set'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
-  <p>
-    Der Tile Matrix Set (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>) beschreibt ein Kachelschema welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Dies bedeutet, dass einzelne Kacheln über keine Georeferenzierung verfügen.
-  </p>
-  <p>
-    Das Kachelschema ist ein Gitter, welches regelmäßig die gesamte Welt unterteilt in Kacheln abdeckt. Der Ausgangspunkt des Gitters ist die obere linke Ecke des Schemas. Gezählt wird in Ganzzahlen. Dies bedeutet, der Ausgangspunkt hat die Position (0, 0). Das Ende des Gitters ergibt sich aus der Breite der jeweiligen Dimmension subtrahiert um eins. Dies ist nötig da die Zähung nicht bei eins beginnt sondern bei null. Die reale Kachelgröße (ScaleDenominator) wird in der Einheit des gewählten Koordinatensystem angegeben, für WebMercator EPSG:3857 sind es Meter. Die Breite und Höhe einer einzelnen Kachel sind meist 256 oder 512 Pixel, diese Werte sind nicht standardisiert und es ist ebenso möglich, dass Breite und Höhe unterschiedliche Werte besitzen, dies jedoch in der Praxis ist dies extrem selten.
-  </p>
-  <p class="newPageBefore">
-    Durch diese beschreibung des Standards ergibt sich die folgende Darstellung:
-  </p>
-  <app-figure
-    [id]="5"
-    [src]="'/assets/images/Standards/TMS_tileSpace.png'"
-    [caption]="'Ausführung einer Tile Matrix.'"
-    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
-
-  <p>
-    Die bisherige Beschreibung des Standards beschrieb nur die XY-Dimensionen, auch Tile Matrix genannt. Dies würde den Nutzer zwingen die höchstauflösenste Zoomstufe zu laden und aus dieser die Übersichten für die jeweiligen angefragten Zoomstufen zu generieren. Unter Betrachtung der Bandbreite und Rechenzeit wäre dies sehr ineffizient da die Software diese zur Laufzeit <app-abbreviation [abbreviation]="'*rendern*'" [description]="'bezeichnet in der Computergrafik die Erzeugung eines Bildes aus Rohdaten'"></app-abbreviation> müsste.
-  </p>
-
-  <p>
-    Um dies zu vermeiden werden einzelne Zoomstufen bereitgestellt und von der Software gezielt angefordert. Hierfür werden pro Zoomstufe eine Tile Matrix bereitgestellt welche den TMS ergeben. Diese Tile Matrizen werden in der Praxis mit einer Ganzzahl angesprochen, der Standard sieht jedoch auch eine eindeutige alphanumerischen Bezeichnung vor. Die standardisierung sieht vor dass die Aufteilung zum Zoom nicht zwingend aus 1:4 besteht, gemeint ist hiermit dass 4 Kacheln der Zoomstufe 1 eine Kachel der Zoomstufe 0 ergeben.
-  </p>
-  <p>
-    In der <a class="link" href="#figure-6">Abbildung 6</a> ist diese Aufteilung der Zoomstufen gut zu erkennen, je heller die Tiles in dieser Abbildung werden desto hochauflösender sind diese.
-  </p>
-
-  <app-figure
-    [id]="6"
-    [src]="'/assets/images/Standards/TMS_representation.png'"
-    [caption]="'Aufbaus eines TMS.'"
-    [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
-
-  <p>
-    Die strikte Aufteilung von 1:4 im Bezug auf die Zoomstufen ist in der Praxis sehr oft anzutreffen. Durch diese Methodik ist die Festlegung eines bestimmten Bereiches, durch eine sogenannte BoundingBox für den Gesamten TMS gültig und muss nicht für jede Tile Matrix festgelegt werden. Bounding Box ist bei der Anwendung von hoher Relevanz, sofern es sich bei dem abgebildeten Gebiet nicht um die gesamte Welt handelt.
-  </p>
-
-  <p>
-    Es besteht die Möglichkeit, vordefinierte Kachelarchive, welche meist als Well-Known Scale sets (<app-abbreviation [abbreviation]="'WKSS'" [description]="'Well-Known Scale sets'"></app-abbreviation>) bezeichnet werden, zu verwenden. Diese werden von den meisten JavaScript-Bibliotheken unterstützt und können somit ohne weitere implementierung angewendet  werden. Sie definieren das genutzte Koordinatensystem und die reale Kachelgröße für jede Zoomstufe. Einen Auszug der WKSS für das Koordinatensystem WebMercator EPSG:3857 ist in der folgenden Tabelle zu entnehmen:
-  </p>
-
-  <div class="tableWrapper" id="table-1">
-    <table>
-      <tr>
-        <th>Zoom level</th>
-        <th>Maßstab<br></th>
-        <th>Pixelgröße (m)</th>
-        <th>Breite und Höhe der Karte (pixels)</th>
-      </tr>
-      <tr>
-        <td class="data">0</td>
-        <td class="data">559082264.02871774</td>
-        <td class="data">156543.033928040</td>
-        <td class="data">256</td>
-      </tr>
-      <tr>
-        <td class="data">1</td>
-        <td class="data">279541132.01435887</td>
-        <td class="data">78271.5169640205</td>
-        <td class="data">512</td>
-      </tr>
-      <tr>
-        <td class="data">2</td>
-        <td class="data">139770566.00717943</td>
-        <td class="data">39135.7584820102</td>
-        <td class="data">1024</td>
-      </tr>
-      <tr>
-        <td class="data">&#8942;</td>
-        <td class="data">&#8942;</td>
-        <td class="data">&#8942;</td>
-        <td class="data">&#8942;</td>
-      </tr>
-      <tr>
-        <td class="data">18</td>
-        <td class="data">2132.7295838497838</td>
-        <td class="data">0.59716428347793</td>
-        <td class="data">67,108,864</td>
-      </tr>
-      <tr>
-        <td class="data">19</td>
-        <td class="data">1066.3647919248919</td>
-        <td class="data">0.29858214173896</td>
-        <td class="data">134,217,728</td>
-      </tr>
-      <tr>
-        <td class="data">20</td>
-        <td class="data">533.18239596244597</td>
-        <td class="data">0.14929107086948</td>
-        <td class="data">268,435,456</td>
-      </tr>
-      <tr>
-        <td class="data">21</td>
-        <td class="data">266.59119798122298</td>
-        <td class="data">0.07464553543474</td>
-        <td class="data">536,870,912</td>
-      </tr>
-      <tr>
-        <td class="data">22</td>
-        <td class="data">133.29559899061149</td>
-        <td class="data">0.03732276771737</td>
-        <td class="data">1,073,741,824</td>
-      </tr>
-      <tr>
-        <td class="data">23</td>
-        <td class="data">66.64779949530575</td>
-        <td class="data">0.01866138385868561</td>
-        <td class="data">2,147,483,648</td>
-      </tr>
-    </table>
-    <p class="caption">
-      Tabelle 1: Auszug aus den relevanten Informationen einen WKSS<br>
-      Quelle: Two Dimensional Tile Matrix Set
-    </p>
-  </div>
-
-  <app-headline [headline]="'Web Map Service'" [h]="2" [number]="'2.2'" [id]="2.2"></app-headline>
-  <p class="toDo">toDo</p>
-  <app-headline [headline]="'Web Map Tile Service'" [h]="2" [number]="'2.3'" [id]="2.3"></app-headline>
-  <p class="toDo">toDo</p>
-  <app-headline [headline]="'Cloud Optimized GeoTIFF'" [h]="2" [number]="'2.4'" [id]="2.4"></app-headline>
-  <p class="toDo">toDo</p>
+<p>
+  Aufgrund des begrenzten Umfangs dieser Arbeit verfolgt diese nicht den Anspruch, jeden Standard in vollem Umfang zu beleuchten. Ziel ist es vielmehr, eine funktionale Lösung für die einzelnen Szenarien zu finden und diese Lösungsansätze miteinander zu vergleichen.
+</p>

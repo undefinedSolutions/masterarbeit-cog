@@ -7,6 +7,8 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 })
 export class CodeblockComponent implements AfterViewInit {
   @Input() code: string;
+  @Input() lineNumbers: boolean = true;
+  @Input() colorCode: boolean = true;
   codeLines: Array<string>
 
   keywords = [
@@ -25,16 +27,20 @@ export class CodeblockComponent implements AfterViewInit {
   ]
 
   ngAfterViewInit(): void {
-    this.codeLines = this.code.split('<').join('&lt;').split('\n')
-    this.codeLines.forEach((line, index) => {
-      let newLine = line
-      this.keywords.forEach(key => {
-        if (newLine.includes(key.word)) {
-          console.log(line, key.word)
-          newLine = newLine.split(key.word).join('<span class="'+key.class+'">'+key.word+'</span>')
-        }
-      })
-      this.codeLines[index] = newLine
-    });
+    if (this.colorCode) {
+      this.codeLines = this.code.split('<').join('&lt;').split('\n')
+      this.codeLines.forEach((line, index) => {
+        let newLine = line
+        this.keywords.forEach(key => {
+          if (newLine.includes(key.word)) {
+            console.log(line, key.word)
+            newLine = newLine.split(key.word).join('<span class="'+key.class+'">'+key.word+'</span>')
+          }
+        })
+        this.codeLines[index] = newLine
+      });
+    } else {
+      this.codeLines = this.code.split('<').join('&lt;').split('\n')
+    }
   }
 }

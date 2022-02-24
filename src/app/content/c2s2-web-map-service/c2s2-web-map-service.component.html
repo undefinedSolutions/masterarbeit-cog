@@ -1,0 +1,96 @@
+<app-headline headline="Web Map Service (WMS)" [h]="2" number="2.2" [id]="2.2"></app-headline>
+
+<p>
+  Der Web Map Service bildet im Rahmen dieser Arbeit den ältesten OGC Standard, dessen Ursprung sich in der Version 1.0.0 vom 19.04.2000 findet. Die aktuelle Version 1.3.0 wurde am 15.03.2006 veröffentlicht und ist somit seit mehr als 15 Jahren unverändert.
+</p>
+
+<p>
+  Der OGC- WMS wurde zur Standardisierung von zahlreichen anderen Institutionen übernommen, hierzu gehören beispielsweise die International Organization for Standardization (<app-abbreviation abbreviation="ISO" description="International Organization for Standardization"></app-abbreviation>) oder auch die Infrastructure for Spatial Information in the European Community (<app-abbreviation abbreviation="INSPIRE" description="Infrastructure for Spatial Information in the European Community"></app-abbreviation>). INSPIRE hat das Ziel, die Interoperabilität von Geodaten für alle Mitglieder der Europäischen Gemeinschaft zu standardisieren und mithilfe dessen den Datenaustausch für Nutzer zu vereinfachen. Insbesondere für diese Vorhaben ist es sinnvoll, sich auf bereits durch eine andere Organisation etablierte Standards zu stützen.
+</p>
+
+<p>
+  Sämtliche  Karten werden üblicherweise in Layern gestaltet. Diese Methodik wird auch vom WMS unterstützt und ermöglicht es folglich, einzelne Layer an einen Client zu senden. Die folgende Abbildung veranschaulicht den Aufbau einer Karte:
+</p>
+
+<app-figure
+    [id]="'2-3'"
+    [src]="'/assets/images/Standards/WMS_layers.png'"
+    [caption]="'Addition von Layern zur Kartendarstellung'"
+    [source]="'OGC - Introduction to WMS'"></app-figure>
+
+<p>
+  Die Kommunikation zur Abfrage der Layer von einem Server, welcher den WMS bereitstellt, erfolgt über eine HTTP-Get-Methode. Die folgenden zwei Funktionen des Servers müssen dabei mindestens gegeben sein:
+</p>
+
+<ul>
+  <li>GetCapabilities = liefert alle Informationen als XML-Dokument, welche ein Client benötigt, um einen GetMap-Request zu tätigen</li>
+  <li>GetMap = dient der Auslieferung der Daten anhand der zuvor über GetCapabilities-Request ausgegebenen Daten</li>
+</ul>
+
+<p>
+  GetCapabilities bietet neben einer Auflistung aller vom Server zur Verfügung stehenden Layer auch weitere Angaben, wie beispielsweise Metainformationen über den Betreiber des Servers, verfügbare Koordinatensysteme, Formate, optionale Funktionen und Metadata der Datensätze.
+</p>
+
+<p>
+  Ein HTTP-GET-Request selbst stellt sich aus nachfolgend dargestellten Eingaben zusammen. Hierbei dient das Fragezeichen (?) der Aufteilung zwischen URL und übermittelten Parametern. Die Parameter werden voneinander durch ein Und-Zeichen (&) separiert und setzen sich aus Key und Value zusammen, welche durch ein Gleichheitszeichen (=) getrennt werden:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/ows?
+SERVICE=WMS&
+VERSION=1.3.0&
+REQUEST=GetCapabilities"></app-codeblock>
+
+<p>
+  Die zurückerhaltenen Informationen werden anschließend genutzt, um eine GetMap-Request zu stellen, diese gliedert sich wie folgt:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/ows?
+SERVICE=WMS&
+VERSION=1.3.0&
+REQUEST=GetMap&
+LAYERS=wms:dsm_strenzfeld&
+STYLES=&
+CRS=EPSG:3857&
+BBOX=1299642,6765837,1304883,6769892&
+WIDTH=768&
+HEIGHT=490&
+FORMAT=image/png"></app-codeblock>
+
+<p>
+  Alle Werte, bis auf das Gebiet der Datenabfrage (Bounding Box (<app-abbreviation abbreviation="BBOX" description="Bounding Box"></app-abbreviation>)), stammen aus dem GetCapabilities-Response und dienen der Spezifizierung der angeforderten Geoinformation.
+</p>
+
+<p>
+  Anhand dieser Parameter lässt sich erkennen, dass der WMS im Gegensatz zum TMS eine viel größere Möglichkeit bietet, Anpassungen vorzunehmen. Eine je nach Anwendungsfall wichtige Funktionalität ist es, durch den Server die Geodaten on-the-fly in ein anderes Koordinatensystem (CRS) projizieren zu lassen. Gleichzeitig lassen sich auch das Ausgabeformat (FORMAT) oder, über den Parameter STYLE, zusätzlich die Erscheinung des Datensatzes beeinflussen.
+</p>
+
+<p>
+  Die bisher beschriebenen Anfragen müssen innerhalb der Standardisierung des OGC vorgesehen sein. Neben diesen gibt es noch eine weitere optionale Anfrage, den GetFeatureInfo-Request. Dieser ermöglicht es, Informationen des Layers anhand der Pixelposition abfragen zu können. Der Request erfolgt mittels folgender Parameter:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/ows?
+SERVICE=WMS&
+VERSION=1.3.0&
+REQUEST=GetFeatureInfo&
+LAYERS=wms:dsm_strenzfeld&
+STYLES=&
+CRS=EPSG:3857&
+BBOX=1299642,6765837,1304883,6769892&
+WIDTH=768&
+HEIGHT=490&
+FORMAT=image/png&
+QUERY_LAYERS=wms:dsm_strenzfeld&
+INFO_FORMAT=application/json&
+I=384&
+J=245"></app-codeblock>
+
+<p>
+  Wichtig ist hierbei, dass die Parameter <span class="code">I</span> (Zeile Spalte) und <span class="code">J</span> (Zeilen Reihe) nicht die Koordinaten beinhalten, sondern die Position anhand der in WIDTH und HEIGHT angeforderten Pixel.
+</p>
+<p>
+  Durch den Parameter <span class="code">INFO_FORMAT</span> kann die Rückgabe des Pixelwertes in einem für den jeweiligen Anwendungsfall passenden Format gewählt werden. Es empfiehlt sich, hierfür application/json zu verwenden, da dies eine Struktur beschreibt, welche von den gängigsten Programmiersprachen genutzt werden kann. Alternativ kann auch einfacher Text <span class="code">INFO_FORMAT=text/plain</span> oder HTML <span class="code">INFO_FORMAT=text/html</span> genutzt werden.
+</p>
+
+<p>
+  Alle hier exemplarisch genannten Aufrufe sind zwar funktional, wären jedoch für den täglichen Gebrauch eher ungeeignet, da die Requests von der Software selbst ausgeführt werden und der Nutzer sie folglich nicht selbst erzeugen muss.
+</p>

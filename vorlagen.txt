@@ -1,0 +1,22 @@
+<app-headline [headline]="'Tile Matrix Set'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
+
+<app-abbreviation abbreviation="'Abkürzung'" description="'Beschreibung der Abkürzung'"></app-abbreviation>
+
+<app-quote
+    author="ESRI"
+    chapter="9. Coordinate Reference Systems (CRS)"
+    lastVisit="29.01.2022"
+    publicationDate="28.09.2017"
+    title="Spatial Data on the Web Best Practices"
+    [vgl]="true"
+    URL="https://www.w3.org/TR/sdw-bp/"></app-quote>
+
+// Tabelle
+
+import { TablesService } from './../../services/tables/tables.service';
+
+constructor(private tablesService:TablesService) { }
+
+ngAfterViewInit(): void {
+  this.tablesService.pushTable('Beschreibung', idNumber)
+}

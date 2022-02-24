@@ -6,12 +6,12 @@
     [type]="'roman'"></app-headline>
 <div *ngFor="let table of tables; index as i"
     class="list">
-  <div class="numbered">Tabelle {{i+1}}:</div>
+  <div class="numbered">Tabelle {{table.id}}:</div>
   <div class="caption">
     <a href="#table-{{table.id}}">
       {{table.caption}}
     </a>
   </div>
-  <div class="pageNumber" *ngIf="table.id > 0"><a class="tableLink" href="#table-{{table.id}}"></a></div>
+  <div class="pageNumber" *ngIf="table.id !== ''"><a class="tableLink" href="#table-{{table.id}}"></a></div>
   <div class="dotted"> </div>
 </div>

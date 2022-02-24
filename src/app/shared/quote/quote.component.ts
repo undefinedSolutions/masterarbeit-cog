@@ -8,6 +8,7 @@ import { BibliographyService } from './../../services/bibliography/bibliography.
 })
 export class QuoteComponent implements OnInit {
   @HostBinding('attr.class') role = 'footnote';
+  @Input() id: string;
   @Input() author: string;
   @Input() title: string;
   @Input() publicationDate: string;
@@ -20,6 +21,7 @@ export class QuoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.bibliographyService.pushQuote(
+      this.id,
       this.author,
       this.chapter,
       this.lastVisit,

@@ -26,7 +26,7 @@
   "html-req-lang": false,
   "id-class-ignore-regex": false,
   "id-class-no-ad": true,
-  "id-class-style": "dash",
+  "id-class-style": false,
   "id-no-dup": true,
   "img-req-alt": false,
   "img-req-src": true,

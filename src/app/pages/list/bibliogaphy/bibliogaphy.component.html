@@ -3,7 +3,7 @@
     [h]="1"
     [number]="'0'"
     [id]="7"></app-headline>
-<div *ngFor="let quote of quotes">
+<div *ngFor="let quote of quotes" [id]="'quote-'+quote.id">
   <span>{{ quote.author }}</span>
   <ng-container *ngIf="quote.publicationDate">
     ({{ quote.publicationDate }})

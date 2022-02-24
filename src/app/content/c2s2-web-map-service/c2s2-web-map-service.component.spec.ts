@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { C4MethodologyComponent } from './c4-methodology.component';
+import { C2s2WebMapServiceComponent } from './c2s2-web-map-service.component';
 
-describe('C4MethodologyComponent', () => {
-  let component: C4MethodologyComponent;
-  let fixture: ComponentFixture<C4MethodologyComponent>;
+describe('C2s2WebMapServiceComponent', () => {
+  let component: C2s2WebMapServiceComponent;
+  let fixture: ComponentFixture<C2s2WebMapServiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ C4MethodologyComponent ]
+      declarations: [ C2s2WebMapServiceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(C4MethodologyComponent);
+    fixture = TestBed.createComponent(C2s2WebMapServiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

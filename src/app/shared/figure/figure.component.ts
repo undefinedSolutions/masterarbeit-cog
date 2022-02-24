@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./figure.component.scss']
 })
 export class FigureComponent implements OnInit {
-  @Input() id: number;
+  @Input() id: string;
   @Input() src: string;
   @Input() caption: string;
   @Input() style: string;

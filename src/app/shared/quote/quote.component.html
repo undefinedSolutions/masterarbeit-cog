@@ -2,7 +2,9 @@
   <ng-container *ngIf="vgl">
     Vgl.
   </ng-container>
-  {{ author }}
+  <a [href]="'#quote-'+id">
+    {{ author }}
+  </a>
   <ng-container *ngIf="chapter">
     - Kapitel: {{ chapter }}
   </ng-container>

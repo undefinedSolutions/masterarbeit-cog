@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 
 export interface InterfaceFigures {
   caption: string;
-  id: number;
+  id: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class FiguresService {
-  data$: BehaviorSubject<Array<InterfaceFigures>> = new BehaviorSubject([{caption: '', id: 0}]);
+  data$: BehaviorSubject<Array<InterfaceFigures>> = new BehaviorSubject([{caption: '', id: ''}]);
 
   constructor() { }
 
-  pushFigure(newCaption: string, newId: number): void {
+  pushFigure(newCaption: string, newId: string): void {
     if (!this.data$.value.some(el => el.id === newId)) {
       let oldData = this.data$.value
-      oldData = oldData.filter(e => e.id !== 0);
+      oldData = oldData.filter(e => e.id !== '');
       oldData.push({
         caption: newCaption,
         id: newId

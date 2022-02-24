@@ -22,10 +22,12 @@ iframe {
 }
 
 /* Tabelle */
+.tableWrapper {
+  break-inside: avoid;
+}
 .tableWrapper table {
   border: 1px solid black;
   border-collapse: collapse;
-  break-inside: avoid;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 16px;
   width: 100%;
@@ -65,8 +67,11 @@ iframe {
 
 .tableWrapper .caption {
   font-size: 13px;
-  margin: 8px 0 15px 15px;
+  margin: 8px 0 0 15px;
   text-indent: -15px;
+}
+.tableWrapper .caption span {
+  font-weight: bold;
 }
 
 /* Codeblocks */
@@ -115,7 +120,7 @@ p {
   font-size: 15px;
   size: A4 portrait;
 
-  @bottom-right {
+  @bottom-center {
     content: counter(page);
     font-size: 14px;
     vertical-align: center;
@@ -126,8 +131,9 @@ p {
     float: bottom;
   }
 }
+
 @page:first {
-  @bottom-right {
+  @bottom-center {
     content: none;
   }
 
@@ -137,37 +143,32 @@ p {
 }
 
 @page:nth(2) {
-  @bottom-right {
+  @bottom-center {
     content: none;
   }
 }
 @page:nth(3) {
-  @bottom-right {
+  @bottom-center {
     content: none;
   }
 }
 @page:nth(4) {
-  @bottom-right {
+  @bottom-center {
     content: counter(page, upper-roman);
   }
 }
 @page:nth(5) {
-  @bottom-right {
+  @bottom-center {
     content: counter(page, upper-roman);
   }
 }
 @page:nth(6) {
-  @bottom-right {
+  @bottom-center {
     content: counter(page, upper-roman);
   }
 }
 @page:nth(7) {
-  @bottom-right {
-    content: counter(page, upper-roman);
-  }
-}
-@page:nth(8) {
-  @bottom-right {
+  @bottom-center {
     content: counter(page, upper-roman);
   }
 }

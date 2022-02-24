@@ -1,15 +1,17 @@
 pre {
   background: #d3d3d3;
   counter-reset: linenumber;
-  margin: 25px 0;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 code {
   font-family: 'Ubuntu Mono', monospace;
 }
 
-pre > code:not(:only-child)::before {
+pre.lineNumbers {
+  padding: 10px 0;
+}
+pre.lineNumbers > code:not(:only-child)::before {
   background: gray;
   content: ' ' counter(linenumber, decimal-leading-zero) ' ';
   counter-increment: linenumber;
@@ -17,10 +19,10 @@ pre > code:not(:only-child)::before {
   margin-right: 5px;
   padding: 3px 0;
 }
-pre > code:not(:only-child):first-child::before {
+pre.lineNumbers > code:not(:only-child):first-child::before {
   padding-top: 10px;
 }
-pre > code:not(:only-child):last-child::before {
+pre.lineNumbers > code:not(:only-child):last-child::before {
   padding-bottom: 10px;
 }
 
