@@ -30,6 +30,10 @@ import { C3s1VorbereitungDerDatensaetzeInDenJeweiligenStandardsComponent } from 
 import { C3s1s1VorbereitungDesTMSComponent } from './content/c3s1s1-vorbereitung-des-tms/c3s1s1-vorbereitung-des-tms.component';
 import { C3s1s2VorbereitungDesWMSUndWMTSComponent } from './content/c3s1s2-vorbereitung-des-wmsund-wmts/c3s1s2-vorbereitung-des-wmsund-wmts.component';
 import { C3s1s3VorbereitungDesCOGComponent } from './content/c3s1s3-vorbereitung-des-cog/c3s1s3-vorbereitung-des-cog.component';
+import { C3s2BereitstellungDerDatensaetzeInDenJeweiligenStandardsComponent } from './content/c3s2-bereitstellung-der-datensaetze-in-den-jeweiligen-standards/c3s2-bereitstellung-der-datensaetze-in-den-jeweiligen-standards.component';
+import { C3s2s1BereitstellungDurchAWSS3Component } from './content/c3s2s1-bereitstellung-durch-awss3/c3s2s1-bereitstellung-durch-awss3.component';
+import { C3s2s1s1TMSInAWSS3Component } from './content/c3s2s1s1-tmsin-awss3/c3s2s1s1-tmsin-awss3.component';
+import { C3s2s1s2COGInAWSS3Component } from './content/c3s2s1s2-cogin-awss3/c3s2s1s2-cogin-awss3.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { C3s1s3VorbereitungDesCOGComponent } from './content/c3s1s3-vorbereitung
     C3s1s1VorbereitungDesTMSComponent,
     C3s1s2VorbereitungDesWMSUndWMTSComponent,
     C3s1s3VorbereitungDesCOGComponent,
+    C3s2BereitstellungDerDatensaetzeInDenJeweiligenStandardsComponent,
+    C3s2s1BereitstellungDurchAWSS3Component,
+    C3s2s1s1TMSInAWSS3Component,
+    C3s2s1s2COGInAWSS3Component,
   ],
   imports: [
     BrowserModule

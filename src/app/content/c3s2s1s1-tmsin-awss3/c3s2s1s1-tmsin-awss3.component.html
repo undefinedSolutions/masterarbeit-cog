@@ -1,0 +1,27 @@
+<app-headline headline="TMS in AWS S3" [h]="4" number="3.2.1.1" [id]="3.211"></app-headline>
+
+<p>
+  Die in <a href="#content-3.11">Kapitel 3.1.1</a> erzeugten TMS liegen nun lokal auf der Festplatte. Die Auslieferung über ein Netzwerk wäre jedoch nicht möglich und somit der Nutzerkreis auf einen Arbeitsplatz beschränkt. Ziel ist es, die Daten über das Internet den Nutzern zur Verfügung zu stellen. Hierzu werden die Daten auf einem WebServer, welcher HTTP-GET-Requests akzeptiert, platziert.
+</p>
+
+<p>
+  Das Ordnerverzeichnis der einzelnen TMS wird über den folgenden AWS CLI- Befehl auf das hierfür vorgesehene AWS S3- Bucket geladen.
+</p>
+
+<app-codeblock [lineNumbers]="false" code="aws s3 sync ./tms/ortho_strenzfeld/
+    s3://data.masterarbeit-cog.de/tms/ortho_strenzfeld"></app-codeblock>
+
+<p>
+  Anschließend können alle Tiles des TMS über die URL wie im nächsten Beispiel zu sehen, abgerufen werden.<br>
+  <a href="https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/18/139597/175346.png"
+      rel="noopener"
+      target="_blank">https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/18/139597/175346.png</a><br>
+  <a href="https://data.masterarbeit-cog.de/tms/dsm_strenzfeld/18/139597/175346.png"
+      rel="noopener"
+      target="_blank">https://data.masterarbeit-cog.de/tms/dsm_strenzfeld/18/139597/175346.png</a>
+</p>
+<app-figure
+    id="3-3"
+    src="/assets/images/Datenbereitstellung/TMS-tiles.jpg"
+    caption="Beispiel Kachel aus dem TMS ortho_strenzfeld und dsm_strenzfeld"
+    source="TMS Strenzfeld"></app-figure>

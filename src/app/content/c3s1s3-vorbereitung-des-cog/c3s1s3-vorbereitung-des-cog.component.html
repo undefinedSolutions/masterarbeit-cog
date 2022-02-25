@@ -1,13 +1,13 @@
 <app-headline [headline]="'Vorbereitung des COG'" [h]="3" [number]="'3.1.3'" [id]="3.13"></app-headline>
 
 <p>
-  Die Erstellung von COG hat in der Bibliothek GDAL mit der Version 3.1 einen eigenen “Driver” erhalten. Driver sind kleine gekapselte und hochspezialisierte Programmteile, welche es den Entwicklern von GDAL ermöglichen, die Kompatibilität zwischen den einzelnen Dateiformaten zu gewährleisten<app-quote
+  Die Erstellung von COG hat in der Bibliothek GDAL mit der Version 3.1 einen eigenen "Driver" erhalten. Driver sind kleine gekapselte und hochspezialisierte Programmteile, welche es den Entwicklern von GDAL ermöglichen, die Kompatibilität zwischen den einzelnen Dateiformaten zu gewährleisten<app-quote
   id="3-GDAL-Tutorial"
   author="GDAL: Tutorial"
   lastVisit="29.01.2022"
   title="Raster driver implementation tutorial"
   [vgl]="true"
-  URL="https://gdal.org/tutorials/raster_driver_tut.html"></app-quote>. Bei einem COG handelt es sich, wie in Kapitel 2.4 erläutert, um ein GeoTIFF mit speziellen Eigenschaften. Folglich stellt auch der COG-Driver einen zusätzlichen Driver für den GeoTIFF-Driver dar und kann ohne diesen nicht genutzt werden.
+  URL="https://gdal.org/tutorials/raster_driver_tut.html"></app-quote>. Bei einem COG handelt es sich, wie in <a href="#content-2.4">Kapitel 2.4</a> erläutert, um ein GeoTIFF mit speziellen Eigenschaften. Folglich stellt auch der COG-Driver einen zusätzlichen Driver für den GeoTIFF-Driver dar und kann ohne diesen nicht genutzt werden.
 </p>
 
 <p>
@@ -19,7 +19,7 @@
 </p>
 
 <p>
-  Dagegen werden bei den in Kapitel 1.3.1 beschriebenen Orthofotos nur die RGB-Rasterdaten an den Nutzer übermittelt, um auf dem Monitor des Nutzers als RGB-Farben wiedergegeben zu werden. Für diesen Anwendungsfall zeigt sich eine verlustbehaftete Komprimierungsmethode als ausreichend, da ein Orthomosaik zur Wiedergabe des Gebiets genutzt wird und keine Messdaten beinhaltet, welche für andere Visualisierungen genutzt werden könnten.
+  Dagegen werden bei den in <a href="#content-1.31">Kapitel 1.3.1</a> beschriebenen Orthofotos nur die RGB-Rasterdaten an den Nutzer übermittelt, um auf dem Monitor des Nutzers als RGB-Farben wiedergegeben zu werden. Für diesen Anwendungsfall zeigt sich eine verlustbehaftete Komprimierungsmethode als ausreichend, da ein Orthomosaik zur Wiedergabe des Gebiets genutzt wird und keine Messdaten beinhaltet, welche für andere Visualisierungen genutzt werden könnten.
 </p>
 
 <p>
@@ -42,7 +42,7 @@
     -of COG -co COMPRESS=DEFLATE -co NUM_THREADS=ALL_CPUS"></app-codeblock>
 
 <p>
-  Das Monitoring der CPU zeigt, dass die CPU sehr wenig ausgelastet wird. Es werden bei Nutzung der Workstation maximal 4 CPU-Threads verwendet und die Generierung des COG ist innerhalb kürzester Zeit abgeschlossen. Auf diese Beobachtung wird in Kapitel 5.4 näher eingegangen.
+  Das Monitoring der CPU zeigt, dass die CPU sehr wenig ausgelastet wird. Es werden bei Nutzung der Workstation maximal 4 CPU-Threads verwendet und die Generierung des COG ist innerhalb kürzester Zeit abgeschlossen. Auf diese Beobachtung wird in <a href="#content-5.4">Kapitel 5.4</a> näher eingegangen.
 </p>
 
 <p>
@@ -125,7 +125,7 @@ The size of all IFD headers is 20478 bytes"></app-codeblock>
   title="Cloud optimized GeoTIFF"
   [vgl]="true"
   URL="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF"></app-quote>.
-  Bei Nutzung dieser Methode muss weiterhin die Größe der Tiles bestimmt werden, welches mithilfe der Eingabe <span class="code">-co BLOCKXSIZE=512 -co BLOCKYSIZE=512 --config GDAL_TIFF_OVR_BLOCKSIZE 512</span> erfolgt. Die Kachelgröße wirkt sich besonders auf die Performance der Nutzung des COG aus, welche im Kapitel 5.4 näher erläutert wird.
+  Bei Nutzung dieser Methode muss weiterhin die Größe der Tiles bestimmt werden, welches mithilfe der Eingabe <span class="code">-co BLOCKXSIZE=512 -co BLOCKYSIZE=512 --config GDAL_TIFF_OVR_BLOCKSIZE 512</span> erfolgt. Die Kachelgröße wirkt sich besonders auf die Performance der Nutzung des COG aus, welche im <a href="#content-5.4">Kapitel 5.4</a> näher erläutert wird.
   Dieser Befehl nutzt nicht den in Version 3.1. eingeführten COG-Driver und führt aufgrund der älteren Implementierung zu größeren Datensätzen. Dennoch können diese in Openlayers unproblematische geladen werden.
 </p>
 

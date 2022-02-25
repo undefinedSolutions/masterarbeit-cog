@@ -1,0 +1,19 @@
+<app-headline headline="COG in AWS S3" [h]="4" number="3.2.1.2" [id]="3.212"></app-headline>
+
+<p>
+  Die Bereitstellung des COG erfolgt vergleichbar zur Bereitstellung der Daten für den Standard TMS. Auch hier erfolgt dies, analog zu TMS, über einen HTTP-Server. Einziger Unterschied ist, dass der TMS aus mehreren Dateien besteht und das COG nur aus einem GeoTIFF. Folglich ist der Upload-Befehl zu AWS S3 ein anderer, da hier keine komplette Ordnerstruktur kopiert werden muss:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="aws s3 cp ./cog/ortho_strenzfeld.tif
+    s3://data.masterarbeit-cog.de/cog/ortho_strenzfeld.tif"></app-codeblock>
+
+<p>
+  Zur Überprüfung, ob das COG korrekt aus AWS S3 abgelegt wurde, kann QGIS verwendet werden. Ein COG kann in QGIS über das Menü "Layer -> Add Layer -> Add Raster Layer ..." hinzugefügt werden. In dem Dialog wird anschließend von File auf Protocol: HTTP(S), cloud, etc. gewechselt und die URL des COG eingetragen. Das COG wird nun in QGIS als normaler Layer betrachtet und kann wie ein lokales File für Werkzeuge aus der Processing Toolbox verwendet werden.
+</p>
+
+<app-figure
+    id="3-4"
+    src="/assets/images/Datenbereitstellung/COG_QGIS_Style.png"
+    caption="Laden eines COG in QGIS durch angabe der URL"
+    source="Screenshot aus der Software QGIS"></app-figure>
+

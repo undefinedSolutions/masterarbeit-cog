@@ -2,7 +2,7 @@
 <div *ngFor="let content of toc; index as i"
     [ngClass]="{'listH1': content.h === 1 && content.number !== '0' }"
     class="list">
-  <div *ngIf="content.number !== '0'" [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3}"
+  <div *ngIf="content.number !== '0'" [ngClass]="{'numberedH2': content.h === 2, 'numberedH3': content.h === 3, 'numberedH4': content.h === 4}"
       class="numbered">
     {{content.number}}
   </div>

@@ -29,11 +29,11 @@
 </div>
 
 <p>
-  Alle in der Auflistung genannten GeoTIFFs sollten ein internes Tiling sowie Übersichten enthalten. Dies sind Eigenschaften, welche auch für das COG relevant sind und in Kapitel 2.4 näher beschrieben wurden.
+  Alle in der Auflistung genannten GeoTIFFs sollten ein internes Tiling sowie Übersichten enthalten. Dies sind Eigenschaften, welche auch für das COG relevant sind und in <a href="#content-2.4">Kapitel 2.4</a> näher beschrieben wurden.
 </p>
 
 <p>
-  Weiterhin ist es zu empfehlen, die Dateien im meistgenutzten Koordinatensystem abzulegen, da ein GeoServer zwar die Daten on-the-fly umprojizieren könnte, dies jedoch mit weiterer Rechenzeit verbunden wäre, während der Nutzer auf die Daten wartet. Auf diesen Umstand wird in Kapitel 5.2 im Rahmen der Vorstellung der Ergebnisse, näher eingegangen. Zusätzlich kann eine gewählte Komprimierung beschleunigend auf die Bereitstellung der Daten wirken. Dabei empfiehlt GeoServer eine Deflate Komprimierung für Rasterdaten mit Höheninformation bzw Rasterinformationen, welche nicht in RGB-Kanälen aufgebaut sind.
+  Weiterhin ist es zu empfehlen, die Dateien im meistgenutzten Koordinatensystem abzulegen, da ein GeoServer zwar die Daten on-the-fly umprojizieren könnte, dies jedoch mit weiterer Rechenzeit verbunden wäre, während der Nutzer auf die Daten wartet. Auf diesen Umstand wird in <a href="#content-5.2">Kapitel 5.2</a> im Rahmen der Vorstellung der Ergebnisse, näher eingegangen. Zusätzlich kann eine gewählte Komprimierung beschleunigend auf die Bereitstellung der Daten wirken. Dabei empfiehlt GeoServer eine Deflate Komprimierung für Rasterdaten mit Höheninformation bzw Rasterinformationen, welche nicht in RGB-Kanälen aufgebaut sind.
 </p>
 
 <p>
@@ -66,10 +66,10 @@
 
 Die Ergebnisse sollten die folgenden Merkmale enthalten, damit dieser Datensatz nachfolgend für die Verwendung in einem GeoServer genutzt werden kann:
 <ul>
-  <li><span class="code">Coordinate System is: … ID["EPSG",3857]]</span> = neues durch gdalwarp gewähltes Koordinatensystem</li>
+  <li><span class="code">Coordinate System is: ... ID["EPSG",3857]]</span> = neues durch gdalwarp gewähltes Koordinatensystem</li>
   <li><span class="code">Image Structure Metadata: COMPRESSION=DEFLATE</span> = in gdal_translate festgelegte Komprimierung</li>
   <li><span class="code">Band 1 Block=256x256 Type=Float32, ColorInterp=Gray</span> = interne Tiles mit einer größe von 256x256 Pixel</li>
-  <li><span class="code">Overviews: 11394x9542, …, 179x150</span> = durch gdaladdo hinzugefügte Übersichten</li>
+  <li><span class="code">Overviews: 11394x9542, ..., 179x150</span> = durch gdaladdo hinzugefügte Übersichten</li>
 </ul>
 
 <p>

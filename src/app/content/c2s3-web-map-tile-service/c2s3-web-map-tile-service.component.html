@@ -16,26 +16,26 @@
 </p>
 
 <p>
-  Aus dem TMS werden die in Kapitel 2.1. erwähnten Tile Matrix Sets (<app-abbreviation abbreviation="TMS" description="Tile Matrix Sets"></app-abbreviation>) und Well-known scale sets (<app-abbreviation abbreviation="WKSS" description="Well-known scale sets"></app-abbreviation>) genutzt um die Tiling-Struktur des WMTS zu beschreiben. Innerhalb des GetCapabilities-Requests wird als Response folgende Struktur als Begrenzung für jeden Layer zurückgegeben:
+  Aus dem TMS werden die in <a href="#content-2.1">Kapitel 2.1</a>. erwähnten Tile Matrix Sets (<app-abbreviation abbreviation="TMS" description="Tile Matrix Sets"></app-abbreviation>) und Well-known scale sets (<app-abbreviation abbreviation="WKSS" description="Well-known scale sets"></app-abbreviation>) genutzt um die Tiling-Struktur des WMTS zu beschreiben. Innerhalb des GetCapabilities-Requests wird als Response folgende Struktur als Begrenzung für jeden Layer zurückgegeben:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="<Layer>
-  …
+  ...
   <TileMatrixSetLink>
     <TileMatrixSet>EPSG:4326</TileMatrixSet>
     <TileMatrixSetLimits>
       <TileMatrixLimits>
-        …
+        ...
         <TileMatrix>EPSG:4326:15</TileMatrix>
         <MinTileRow>11839</MinTileRow>
         <MaxTileRow>11839</MaxTileRow>
         <MinTileCol>42798</MinTileCol>
         <MaxTileCol>42798</MaxTileCol>
-        …
+        ...
       </TileMatrixLimits>
     </TileMatrixSetLimits>
   </TileMatrixSetLink>
-  …
+  ...
 </Layer>"></app-codeblock>
 
 <p>
