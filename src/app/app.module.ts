@@ -25,6 +25,9 @@ import { C1s3s1AnzeigenEinesOrthomosaikComponent } from './content/c1s3s1-anzeig
 import { C1s3s2VisualisierungEinesOberflaechenmodellsComponent } from './content/c1s3s2-visualisierung-eines-oberflaechenmodells/c1s3s2-visualisierung-eines-oberflaechenmodells.component';
 import { C2s3WebMapTileServiceComponent } from './content/c2s3-web-map-tile-service/c2s3-web-map-tile-service.component';
 import { C2s4CloudOptimizedGeoTIFFComponent } from './content/c2s4-cloud-optimized-geo-tiff/c2s4-cloud-optimized-geo-tiff.component';
+import { C3DatenverarbeitungUndBereitstellungComponent } from './content/c3-datenverarbeitung-und-bereitstellung/c3-datenverarbeitung-und-bereitstellung.component';
+import { C3s1VorbereitungDerDatensaetzeInDenJeweiligenStandardsComponent } from './content/c3s1-vorbereitung-der-datensaetze-in-den-jeweiligen-standards/c3s1-vorbereitung-der-datensaetze-in-den-jeweiligen-standards.component';
+import { C3s1s1VorbereitungDesTMSComponent } from './content/c3s1s1-vorbereitung-des-tms/c3s1s1-vorbereitung-des-tms.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { C2s4CloudOptimizedGeoTIFFComponent } from './content/c2s4-cloud-optimiz
     C1s3s2VisualisierungEinesOberflaechenmodellsComponent,
     C2s3WebMapTileServiceComponent,
     C2s4CloudOptimizedGeoTIFFComponent,
+    C3DatenverarbeitungUndBereitstellungComponent,
+    C3s1VorbereitungDerDatensaetzeInDenJeweiligenStandardsComponent,
+    C3s1s1VorbereitungDesTMSComponent,
   ],
   imports: [
     BrowserModule

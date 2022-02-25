@@ -1,12 +1,12 @@
 <h1 [id]="'content-'+id" *ngIf="h === 1 && number !== '0'">
-  {{number}} <span>{{headline}}</span>
+  <div class="number">{{number}}</div> <div class="text">{{headline}}</div>
 </h1>
 <h1 [id]="'content-'+id" *ngIf="h === 1 && number === '0'" >
   {{headline}}
 </h1>
 <h2 [id]="'content-'+id" *ngIf="h === 2">
-  {{number}} <span>{{headline}}</span>
+  <div class="number">{{number}}</div> <div class="text">{{headline}}</div>
 </h2>
 <h3 [id]="'content-'+id" *ngIf="h === 3">
-  {{number}} <span>{{headline}}</span>
+  <div class="number">{{number}}</div> <div class="text">{{headline}}</div>
 </h3>

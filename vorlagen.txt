@@ -5,6 +5,7 @@ ng g c content/c1s3Szenarien
 <app-abbreviation abbreviation="Abkürzung" description="Beschreibung der Abkürzung"></app-abbreviation>
 
 <app-quote
+    id=""
     author="ESRI"
     chapter="9. Coordinate Reference Systems (CRS)"
     lastVisit="29.01.2022"

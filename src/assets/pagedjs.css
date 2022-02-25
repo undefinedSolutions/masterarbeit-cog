@@ -204,6 +204,10 @@ p {
   font-style: italic;
 }
 
+/* fix PageBreaks in media print */
+.pagedjs_pagebox > .pagedjs_area > .pagedjs_page_content {
+  height: calc(100% - var(--pagedjs-footnotes-height) - 5px);
+}
 /* OlStyle*/
 
 @media print {
