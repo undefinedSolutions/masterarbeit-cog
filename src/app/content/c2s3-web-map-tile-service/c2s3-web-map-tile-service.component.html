@@ -1,0 +1,99 @@
+<app-headline headline="Web Map Tile Service (WMTS)" [h]="2" number="2.3" [id]="2.3"></app-headline>
+
+<p>
+  Der Web Map Tile Service (<app-abbreviation abbreviation="WMTS" description="Web Map Tile Service"></app-abbreviation>) wurde zum 06.04.2010 in der Version 1.0.0 von der OGC standardisiert<app-quote
+  id="2-OpenGISImplementationSpecification-WMTS"
+  author="OpenGIS Implementation Specification"
+  lastVisit="25.02.2022"
+  publicationDate="06.04.2010"
+  title="OpenGIS Web Map Tile Service Implementation Standard"
+  [vgl]="true"
+  URL="https://portal.ogc.org/files/?artifact_id=35326"></app-quote>. Somit entstand dieser erst nach dem Standard  WMS und vor dem TMS. Dennoch vereint der WMTS alle bisher genannten Konzepte. Sofern nicht anders angegeben, sind sämtliche hier angewandten Informationen zum WMTS der oben erwähnten OGC-Standardisierung entnommen.
+</p>
+
+<p>
+  Sein Ziel ist es, leistungsorientiert und skalierbar die angeforderten Daten an den Nutzer auszugeben. Dies erfolgt durch die Verwendung vorgerenderter Tiles, welche ohne Bildmanipulation an den Nutzer ausgeliefert werden. Durch diese Spezifikation muss der WMTS für jeden STYLE separate Kacheln hinterlegen, da die angeforderten Rasterdaten nicht analog zum WMS on-thy-fly erzeugt werden sollten. Auch eine Umprojektion durch den Server wird somit ausgeschlossen und benötigt, wie bei dem STYLE, einen separaten Tile-Cache.
+</p>
+
+<p>
+  Aus dem TMS werden die in Kapitel 2.1. erwähnten Tile Matrix Sets (<app-abbreviation abbreviation="TMS" description="Tile Matrix Sets"></app-abbreviation>) und Well-known scale sets (<app-abbreviation abbreviation="WKSS" description="Well-known scale sets"></app-abbreviation>) genutzt um die Tiling-Struktur des WMTS zu beschreiben. Innerhalb des GetCapabilities-Requests wird als Response folgende Struktur als Begrenzung für jeden Layer zurückgegeben:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="<Layer>
+  …
+  <TileMatrixSetLink>
+    <TileMatrixSet>EPSG:4326</TileMatrixSet>
+    <TileMatrixSetLimits>
+      <TileMatrixLimits>
+        …
+        <TileMatrix>EPSG:4326:15</TileMatrix>
+        <MinTileRow>11839</MinTileRow>
+        <MaxTileRow>11839</MaxTileRow>
+        <MinTileCol>42798</MinTileCol>
+        <MaxTileCol>42798</MaxTileCol>
+        …
+      </TileMatrixLimits>
+    </TileMatrixSetLimits>
+  </TileMatrixSetLink>
+  …
+</Layer>"></app-codeblock>
+
+<p>
+  Die Zeile <span class="code">&lt;TileMatrix>EPSG:4326:15&lt;/TileMatrix></span> beschreibt das jeweilige Koordinatensystem samt Zoomstufe, in diesem Beispiel Web Mercator in der Zoomstufe 15.
+</p>
+
+<p>
+  Der GetCapabilities-Request eines WMTS setzt sich für einen GeoServer wie folgt zusammen:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/gwc/service/wmts?
+SERVICE=WMTS&
+VERSION=1.3.0&
+REQUEST=GetCapabilities"></app-codeblock>
+
+<p>
+  Nun hat der Client alle nötigen Informationen um die einzelnen Tiles anzufordern. Dies erfolgt mithilfe des folgenden GetTile-Request
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/gwc/service/wmts?
+layer=wmts%3Adsm_strenzfeld&
+style=&
+tilematrixset=WebMercatorQuad&
+Service=WMTS&
+Request=GetTile&
+Version=1.0.0&
+Format=image%2Fvnd.jpeg-png&
+TileMatrix=15&
+TileCol=17447&
+TileRow=10849"></app-codeblock>
+
+<p>
+  Dieser ähnelt dem GetMap-Request des WMS, jedoch wird hier keine BoundingBox angegeben, sondern wie bei dem TMS durch die Parameter TileCol und TileRow explizit ein Tile. Die Zoomstufe wird innerhalb des Wertes "TileMatrix" durch das letzte Zahlenpaar nach den Doppelpunkt definiert.
+</p>
+
+<p>
+  Der GetFeatureInfo-Request ist ebenfalls durch die Struktur des WMTS auf Tiles ausgebaut und sieht dadurch wie folgt aus:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/gwc/service/wmts?
+VERSION=1.0.0&
+LAYER=wmts:dsm_strenzfeld&
+STYLE=&
+TILEMATRIX=15&
+TILEMATRIXSET=WebMercatorQuad&
+SERVICE=WMTS&
+FORMAT=image/vnd.jpeg-png&
+SERVICE=WMTS&
+REQUEST=GetFeatureInfo&
+INFOFORMAT=text/html&
+TileCol=17448&
+TileRow=10850&
+I=184&
+J=92"></app-codeblock>
+
+<p>
+  Dieser Request ähnelt dem Datenabruf des WMS, jedoch bildet hier die Referenz für die Position das Tile selbst.
+</p>
+<p>
+  Wie auch beim WMS werden die Requests nicht vom Nutzer selbst erstellt, sondern programmatisch durch Interaktionen auf einer Software initiiert.
+</p>

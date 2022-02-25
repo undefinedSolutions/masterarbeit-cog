@@ -23,6 +23,7 @@ import { C2s2WebMapServiceComponent } from './content/c2s2-web-map-service/c2s2-
 import { C1s3SzenarienComponent } from './content/c1s3-szenarien/c1s3-szenarien.component';
 import { C1s3s1AnzeigenEinesOrthomosaikComponent } from './content/c1s3s1-anzeigen-eines-orthomosaik/c1s3s1-anzeigen-eines-orthomosaik.component';
 import { C1s3s2VisualisierungEinesOberflaechenmodellsComponent } from './content/c1s3s2-visualisierung-eines-oberflaechenmodells/c1s3s2-visualisierung-eines-oberflaechenmodells.component';
+import { C2s3WebMapTileServiceComponent } from './content/c2s3-web-map-tile-service/c2s3-web-map-tile-service.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { C1s3s2VisualisierungEinesOberflaechenmodellsComponent } from './content
     C1s3SzenarienComponent,
     C1s3s1AnzeigenEinesOrthomosaikComponent,
     C1s3s2VisualisierungEinesOberflaechenmodellsComponent,
+    C2s3WebMapTileServiceComponent,
   ],
   imports: [
     BrowserModule
