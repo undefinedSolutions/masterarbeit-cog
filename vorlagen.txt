@@ -2,7 +2,7 @@ ng g c content/c1s3Szenarien
 
 <app-headline headline="Einleitung" [h]="1" number="1" [id]="1"></app-headline>
 
-<app-abbreviation abbreviation="'Abkürzung'" description="'Beschreibung der Abkürzung'"></app-abbreviation>
+<app-abbreviation abbreviation="Abkürzung" description="Beschreibung der Abkürzung"></app-abbreviation>
 
 <app-quote
     author="ESRI"

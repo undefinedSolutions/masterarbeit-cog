@@ -4,6 +4,14 @@
     <span>Abbildung {{id}}:</span> {{caption}}
     <ng-container *ngIf="source"><br>
       <span>Quelle:</span> {{source}}
+    <app-quote
+      *ngIf="checkQuote()"
+      [id]="getQuote('id')"
+      [author]="getQuote('author')"
+      [lastVisit]="getQuote('lastVisit')"
+      [publicationDate]="getQuote('publicationDate')"
+      [title]="getQuote('title')"
+      [URL]="getQuote('URL')"></app-quote>
     </ng-container>
 
   </p>

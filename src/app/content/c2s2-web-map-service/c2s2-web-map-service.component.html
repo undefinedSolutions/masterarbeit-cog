@@ -1,7 +1,14 @@
 <app-headline headline="Web Map Service (WMS)" [h]="2" number="2.2" [id]="2.2"></app-headline>
 
 <p>
-  Der Web Map Service bildet im Rahmen dieser Arbeit den ältesten OGC Standard, dessen Ursprung sich in der Version 1.0.0 vom 19.04.2000 findet. Die aktuelle Version 1.3.0 wurde am 15.03.2006 veröffentlicht und ist somit seit mehr als 15 Jahren unverändert.
+  Der Web Map Service (<app-abbreviation abbreviation="WMS" description="Web Map Service"></app-abbreviation>) bildet im Rahmen dieser Arbeit den ältesten OGC Standard, dessen Ursprung sich in der Version 1.0.0 vom 19.04.2000 findet. Die aktuelle Version 1.3.0 wurde am 15.03.2006 veröffentlicht und ist somit seit mehr als 15 Jahren unverändert<app-quote
+  id="2-OpenGISImplementationSpecification-WMS"
+  author="OpenGIS Implementation Specification"
+  lastVisit="25.02.2022"
+  publicationDate="15.03.2006"
+  title="OpenGIS® Web Map Server Implementation Specification"
+  [vgl]="true"
+  URL="https://portal.ogc.org/files/?artifact_id=14416"></app-quote>. Aus dieser Version stammen auch alle für diese Arbeit verwendeten Informationen zum WMS, sofern nicht anders angegeben.
 </p>
 
 <p>
@@ -13,10 +20,11 @@
 </p>
 
 <app-figure
-    [id]="'2-3'"
-    [src]="'/assets/images/Standards/WMS_layers.png'"
-    [caption]="'Addition von Layern zur Kartendarstellung'"
-    [source]="'OGC - Introduction to WMS'"></app-figure>
+    id="2-3"
+    src="/assets/images/Standards/WMS_layers.png"
+    caption="Addition von Layern zur Kartendarstellung"
+    source="OGC - Introduction to WMS"
+    [sourceQuote]="additionVonLayernZurKartendarstellung"></app-figure>
 
 <p>
   Die Kommunikation zur Abfrage der Layer von einem Server, welcher den WMS bereitstellt, erfolgt über eine HTTP-Get-Methode. Die folgenden zwei Funktionen des Servers müssen dabei mindestens gegeben sein:
