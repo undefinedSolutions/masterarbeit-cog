@@ -26,6 +26,14 @@ export class AppComponent implements AfterViewInit {
       .then(flow => {
         this.content.nativeElement.innerHTML = '';
         this.pagedJSService.loaded.emit(true);
+
+        // Hack to avoid hissing Text on page end
+        const style = document.createElement("style");
+        style.innerText = `.pagedjs_pagebox>.pagedjs_area {
+          height: 940px;
+        }`
+        document.head.appendChild(style);
+        
       });
     }, 1000);
     
