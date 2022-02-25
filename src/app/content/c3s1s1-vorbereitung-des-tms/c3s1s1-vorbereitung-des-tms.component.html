@@ -1,4 +1,4 @@
-<app-headline [headline]="'Vorbereitung des TMS'" [h]="3" [number]="'3.1.1'" [id]="3.1.1"></app-headline>
+<app-headline [headline]="'Vorbereitung des TMS'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
 
 <p>
   Zur Erstellung eines TMS bietet GDAL ein Python Script namens gdal2tiles.py an, welches standardmäßig zur Verfügung gestellt wird. Inputs, welche nicht dem Datentypen Byte entsprechen, werden jedoch automatisch zu diesen konvertiert, wodurch es zu fehlerhaften Ergebnissen kommen kann. Diese Konvertierung sollte unbedingt vor der eigentlichen Erstellung des TMS erfolgen.
@@ -9,11 +9,11 @@
 </p>
 
 <p>
-  Um diese Datensätze aufzuarbeiten, bleibt nur die Verwendung von QGIS oder eine andere Desktop-GIS-Software. Die Notwendigkeit resultiert aus der im Vorfeld nötigen Anpassung der Visualisierung, welches nicht mithilfe von GDAL erfolgen kann. Zum Vergleich mussten bei den Oberflächenmodellen nur die Symbologie in den Eigenschaften angepasst werden. Das Orthomosaik von dem Gebiet Strenzfeld setzt  hingegen voraus, dass die Minimum- und Maximumwerte der Bänder RGB auf 0 - 65535 gesetzt werden, um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter “Transparenz” die Eingabe des “No Data Values”, welcher angibt, welche Datenwerte als transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
+  Um diese Datensätze aufzuarbeiten, bleibt nur die Verwendung von QGIS oder eine andere Desktop-GIS-Software. Die Notwendigkeit resultiert aus der im Vorfeld nötigen Anpassung der Visualisierung, welches nicht mithilfe von GDAL erfolgen kann. Zum Vergleich mussten bei den Oberflächenmodellen nur die Symbologie in den Eigenschaften angepasst werden. Das Orthomosaik von dem Gebiet Strenzfeld setzt  hingegen voraus, dass die Minimum- und Maximumwerte der Bänder RGB auf 0 - 65535 gesetzt werden, um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter "Transparenz" die Eingabe des "No Data Values", welcher angibt, welche Datenwerte als transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
 </p>
 
 <p>
-  Nachdem die Visualisierungen angepasst wurden, werden die Daten anschließend exportiert. Wie bereits erwähnt, erwartet das Script für die korrekte Erstellung des TMS als Eingabewert den Datentype Byte. Diese Einstellung kann beim Export der Daten erfolgen, indem der “Output mode” auf “Rendered image” gestellt wird. Durch diese Eingabe werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel erwiesen, die Datensätze unmittelbar in das benötigte Koordinatensystem zu konvertieren. Bezogen auf die gewählten Szenarien Web Mercator EPSG:3857 stellt Abbildung 7 die getroffenen Einstellungen für den Export dar.
+  Nachdem die Visualisierungen angepasst wurden, werden die Daten anschließend exportiert. Wie bereits erwähnt, erwartet das Script für die korrekte Erstellung des TMS als Eingabewert den Datentype Byte. Diese Einstellung kann beim Export der Daten erfolgen, indem der "Output mode" auf "Rendered image" gestellt wird. Durch diese Eingabe werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel erwiesen, die Datensätze unmittelbar in das benötigte Koordinatensystem zu konvertieren. Bezogen auf die gewählten Szenarien Web Mercator EPSG:3857 stellt Abbildung 7 die getroffenen Einstellungen für den Export dar.
 </p>
 
 <app-figure

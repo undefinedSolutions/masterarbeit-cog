@@ -28,6 +28,8 @@ import { C2s4CloudOptimizedGeoTIFFComponent } from './content/c2s4-cloud-optimiz
 import { C3DatenverarbeitungUndBereitstellungComponent } from './content/c3-datenverarbeitung-und-bereitstellung/c3-datenverarbeitung-und-bereitstellung.component';
 import { C3s1VorbereitungDerDatensaetzeInDenJeweiligenStandardsComponent } from './content/c3s1-vorbereitung-der-datensaetze-in-den-jeweiligen-standards/c3s1-vorbereitung-der-datensaetze-in-den-jeweiligen-standards.component';
 import { C3s1s1VorbereitungDesTMSComponent } from './content/c3s1s1-vorbereitung-des-tms/c3s1s1-vorbereitung-des-tms.component';
+import { C3s1s2VorbereitungDesWMSUndWMTSComponent } from './content/c3s1s2-vorbereitung-des-wmsund-wmts/c3s1s2-vorbereitung-des-wmsund-wmts.component';
+import { C3s1s3VorbereitungDesCOGComponent } from './content/c3s1s3-vorbereitung-des-cog/c3s1s3-vorbereitung-des-cog.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { C3s1s1VorbereitungDesTMSComponent } from './content/c3s1s1-vorbereitung
     C3DatenverarbeitungUndBereitstellungComponent,
     C3s1VorbereitungDerDatensaetzeInDenJeweiligenStandardsComponent,
     C3s1s1VorbereitungDesTMSComponent,
+    C3s1s2VorbereitungDesWMSUndWMTSComponent,
+    C3s1s3VorbereitungDesCOGComponent,
   ],
   imports: [
     BrowserModule
