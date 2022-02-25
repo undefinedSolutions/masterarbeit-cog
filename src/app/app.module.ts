@@ -20,6 +20,9 @@ import { ChartComponent } from './shared/chart/chart.component';
 import { C2StandardsComponent } from './content/c2-standards/c2-standards.component';
 import { C2s1TileMatrixSetComponent } from './content/c2s1-tile-matrix-set/c2s1-tile-matrix-set.component';
 import { C2s2WebMapServiceComponent } from './content/c2s2-web-map-service/c2s2-web-map-service.component';
+import { C1s3SzenarienComponent } from './content/c1s3-szenarien/c1s3-szenarien.component';
+import { C1s3s1AnzeigenEinesOrthomosaikComponent } from './content/c1s3s1-anzeigen-eines-orthomosaik/c1s3s1-anzeigen-eines-orthomosaik.component';
+import { C1s3s2VisualisierungEinesOberflaechenmodellsComponent } from './content/c1s3s2-visualisierung-eines-oberflaechenmodells/c1s3s2-visualisierung-eines-oberflaechenmodells.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { C2s2WebMapServiceComponent } from './content/c2s2-web-map-service/c2s2-
     C2StandardsComponent,
     C2s1TileMatrixSetComponent,
     C2s2WebMapServiceComponent,
+    C1s3SzenarienComponent,
+    C1s3s1AnzeigenEinesOrthomosaikComponent,
+    C1s3s2VisualisierungEinesOberflaechenmodellsComponent,
   ],
   imports: [
     BrowserModule

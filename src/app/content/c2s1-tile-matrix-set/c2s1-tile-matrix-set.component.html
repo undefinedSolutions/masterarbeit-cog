@@ -1,7 +1,18 @@
 <app-headline [headline]="'Tile Matrix Set (TMS)'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
 
 <p>
-  Der Tile Matrix Set (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>) beschreibt ein Kachelschema, welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Das bedeutet, dass einzelne Kacheln für sich über keine Georeferenzierung verfügen.
+Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genannten Informationen aus dem OGC Implementation Standard des Tile Matrix Sets (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>)<app-quote
+  id="2-OGCImplementationStandard"
+  author="OGC Implementation Standard"
+  lastVisit="25.02.2022"
+  publicationDate="06.10.2019"
+  title="OGC Two Dimensional Tile Matrix Set"
+  [vgl]="true"
+  URL="http://docs.opengeospatial.org/is/17-083r2/17-083r2.html"></app-quote>.
+</p>
+
+<p>
+  Der TMS beschreibt ein Kachelschema, welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Das bedeutet, dass einzelne Kacheln für sich über keine Georeferenzierung verfügen.
 </p>
 
 <p>
@@ -37,7 +48,7 @@
     [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
 
 <p>
-  Die strikte Aufteilung von 1:4 hinsichtlich der Zoomstufen ist in der Praxis sehr häufig anzutreffen. Durch diese Methode ist die Festlegung eines bestimmten Bereiches mithilfe einer sogenannten BoundingBox für den gesamten TMS gültig und muss nicht für jede Tile Matrix bestimmt werden. Die Nutzung der Bounding Box ist bei der Anwendung von hoher Relevanz, sofern es sich bei dem abgebildeten Gebiet nicht um die gesamte Welt handelt.
+  Die strikte Aufteilung von 1:4 hinsichtlich der Zoomstufen ist in der Praxis sehr häufig anzutreffen. Durch diese Methode ist die Festlegung eines bestimmten Bereiches mithilfe einer BoundingBox für den gesamten TMS gültig und muss nicht für jede Tile Matrix bestimmt werden. Die Nutzung der Bounding Box ist bei der Anwendung von hoher Relevanz, sofern es sich bei dem abgebildeten Gebiet nicht um die gesamte Welt handelt.
 </p>
 
 <p>

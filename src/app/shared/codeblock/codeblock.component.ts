@@ -8,7 +8,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 export class CodeblockComponent implements AfterViewInit {
   @Input() code: string;
   @Input() lineNumbers: boolean = true;
-  @Input() colorCode: boolean = true;
+  @Input() colorCode: boolean = false;
   codeLines: Array<string>
 
   keywords = [
@@ -17,13 +17,29 @@ export class CodeblockComponent implements AfterViewInit {
       class: 'cNew'
     },
     {
+      word: 'const',
+      class: 'cNew'
+    },
+    {
       word: 'TileLayer',
+      class: 'cType'
+    },
+    {
+      word: 'ImageWMS',
       class: 'cType'
     },
     {
       word: 'GeoTIFF',
       class: 'cType'
-    }
+    },
+    {
+      word: 'ImageLayer',
+      class: 'cType'
+    },
+    {
+      word: ' wms ',
+      class: 'cVariable'
+    },
   ]
 
   ngAfterViewInit(): void {

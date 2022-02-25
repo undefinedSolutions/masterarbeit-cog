@@ -28,7 +28,10 @@ pre.lineNumbers > code:not(:only-child):last-child::before {
 
 ::ng-deep {
   .cNew {
-    color: #559ad4;
+    color: #559bd4;
+  }
+  .cVariable {
+    color: #40749f;
   }
   .cType {
     color: #47cab1;

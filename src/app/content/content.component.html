@@ -1,3 +1,19 @@
+<app-headline headline="Einleitung" [h]="1" number="1" [id]="1"></app-headline>
+  <app-c1s3-szenarien></app-c1s3-szenarien>
+    <app-c1s3s1-anzeigen-eines-orthomosaik></app-c1s3s1-anzeigen-eines-orthomosaik>
+    <app-c1s3s2-visualisierung-eines-oberflaechenmodells></app-c1s3s2-visualisierung-eines-oberflaechenmodells>
+
 <app-c2-standards></app-c2-standards>
   <app-c2s1-tile-matrix-set></app-c2s1-tile-matrix-set>
   <app-c2s2-web-map-service></app-c2s2-web-map-service>
+
+<app-codeblock [lineNumbers]="false" code="const wms = new ImageLayer({
+  extent: [1299642, 6765838, 1304883, 6769892],
+  source: new ImageWMS({
+    attributions: 'Institut für Geoinformation und Vermessung (IGV), Hochschule Anhalt',
+    url: 'https://geoserver.masterarbeit-cog.de/wms',
+    params: {'LAYERS': 'wms:dsm_strenzfeld'},
+    ratio: 1,
+    serverType: 'geoserver',
+  }),
+});"></app-codeblock>
