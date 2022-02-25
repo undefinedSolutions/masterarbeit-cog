@@ -10,7 +10,11 @@
   .caption {
     background: #fff;
     float: left;
+    max-width: 400px;
+    overflow: hidden;
     padding: 1px 0.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .dotted {

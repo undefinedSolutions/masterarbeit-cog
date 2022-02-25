@@ -24,6 +24,7 @@ import { C1s3SzenarienComponent } from './content/c1s3-szenarien/c1s3-szenarien.
 import { C1s3s1AnzeigenEinesOrthomosaikComponent } from './content/c1s3s1-anzeigen-eines-orthomosaik/c1s3s1-anzeigen-eines-orthomosaik.component';
 import { C1s3s2VisualisierungEinesOberflaechenmodellsComponent } from './content/c1s3s2-visualisierung-eines-oberflaechenmodells/c1s3s2-visualisierung-eines-oberflaechenmodells.component';
 import { C2s3WebMapTileServiceComponent } from './content/c2s3-web-map-tile-service/c2s3-web-map-tile-service.component';
+import { C2s4CloudOptimizedGeoTIFFComponent } from './content/c2s4-cloud-optimized-geo-tiff/c2s4-cloud-optimized-geo-tiff.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { C2s3WebMapTileServiceComponent } from './content/c2s3-web-map-tile-serv
     C1s3s1AnzeigenEinesOrthomosaikComponent,
     C1s3s2VisualisierungEinesOberflaechenmodellsComponent,
     C2s3WebMapTileServiceComponent,
+    C2s4CloudOptimizedGeoTIFFComponent,
   ],
   imports: [
     BrowserModule

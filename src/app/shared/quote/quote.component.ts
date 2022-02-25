@@ -8,6 +8,7 @@ import { BibliographyService } from './../../services/bibliography/bibliography.
 })
 export class QuoteComponent implements OnInit {
   @HostBinding('attr.class') role = 'footnote';
+  @Input() edb: boolean = false;
   @Input() id: string;
   @Input() author: string;
   @Input() title: string;
@@ -20,15 +21,17 @@ export class QuoteComponent implements OnInit {
   constructor(private bibliographyService:BibliographyService) { }
 
   ngOnInit(): void {
-    this.bibliographyService.pushQuote(
-      this.id,
-      this.author,
-      this.chapter,
-      this.lastVisit,
-      this.publicationDate,
-      this.title,
-      this.URL
-    )
+    if(!this.edb) {
+      this.bibliographyService.pushQuote(
+        this.id,
+        this.author,
+        this.chapter,
+        this.lastVisit,
+        this.publicationDate,
+        this.title,
+        this.URL
+      )
+    }
     //this.tocService.pushContent(this.h, this.headline, this.id, this.number, this.type);
   }
 }

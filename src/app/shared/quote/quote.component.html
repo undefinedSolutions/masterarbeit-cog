@@ -1,11 +1,19 @@
 <span>
-  <ng-container *ngIf="vgl">
-    Vgl.
+  <ng-container *ngIf="!edb">
+    <ng-container *ngIf="vgl">
+      Vgl.
+    </ng-container>
+    <a [href]="'#quote-'+id">
+      {{ author }}
+    </a>
+    <ng-container *ngIf="chapter">
+      - Kapitel: {{ chapter }}
+    </ng-container>
   </ng-container>
-  <a [href]="'#quote-'+id">
-    {{ author }}
-  </a>
-  <ng-container *ngIf="chapter">
-    - Kapitel: {{ chapter }}
+
+  <ng-container *ngIf="edb">
+    <a [href]="'#quote-'+id">
+      edb.
+    </a>
   </ng-container>
 </span>
