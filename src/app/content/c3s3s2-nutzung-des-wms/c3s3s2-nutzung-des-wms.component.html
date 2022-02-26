@@ -1,0 +1,73 @@
+<app-headline headline="Nutzung des WMS" [h]="3" number="3.3.2" [id]="3.3.2"></app-headline>
+
+<p>
+  OpenLayers liefert ein sehr gutes Beispiel zur Implementierung eines WMS.<app-quote
+  id="3-OpenLayers-Examples-Single-Image-WMS"
+  author="OpenLayers"
+  chapter="Single Image WMS"
+  lastVisit="29.01.2022"
+  title="Examples"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/examples/wms-image.html"></app-quote> Durch dieses Beispiel ist es möglich, den zuvor bereitgestellten Layer über den GeoServer zu implementieren.
+</p>
+
+<p>
+  Es werden zwei Objekte verwendet, zum einen der ImageLayers, welcher die Ausdehnung des WMS als Parameter enthält, und als source das zweite Objekt, welches den ImageWMS enthält. Dieser ImageWMS verfügt über alle relevanten Parameter, um den WMS vom GeoServer abzufragen. Diese sind:
+</p>
+
+<ul>
+  <span class="code">url</span> = URL zu dem Endpoint des GeoServers für WMS-Requests
+  <span class="code">params</span> = Parameter um den gewünschten Layer festzulegen
+</ul>
+
+<p>
+  Als optionale Parameter kann die "attribution" genutzt werden, um den das Copyright bzw. den Ersteller der Daten zu nennen. Ein zusätzlicher Parameter ist "ratio", hiermit kann definiert werden, wie groß der angeforderte Bereich im Bezug auf die WebMap ist. Dabei umfasst eine ratio von 1 exakt den Bereich der WebMap, eine ratio von 2 fordert einen doppelt so großen Bereich an. Dies kann vorteilhaft sein, sofern absehbar ist, dass der Nutzer die Karte um kleine Bereiche verschiebt, denn durch die höhere ratio muss nicht bei jeder Verschiebung der Karte ein neues Bild vom WMS angefordert werden, da der Bereich noch von dem zuvor angeforderten abgedeckt wird. In dieser Arbeit wird eine ratio von 1 verwendet, um die Vergleichbarkeit zu anderen Standards zu gewährleisten.
+</p>
+
+<p>
+  Zusammengefasst sieht der Code für den Abruf eines WMS wie folgt aus:
+</p>
+
+<app-codeblock code="const wms = new ImageLayer({
+  extent: [1299642, 6765838, 1304883, 6769892],
+  source: new ImageWMS({
+    attributions: 'Institut für Geoinformation und Vermessung (IGV), ' +
+    ' Hochschule Anhalt',
+    url: 'https://geoserver.masterarbeit-cog.de/wms',
+    params: {'LAYERS': 'wms:dsm_strenzfeld'},
+    ratio: 1,
+    serverType: 'geoserver',
+  }),
+});"></app-codeblock>
+
+<p>
+  Die Variable WMS wird nun als zusätzlicher Layer der Karte hinzugefügt. Im Anschluss entsteht die folgende WebMap:
+</p>
+
+<div style="height:400px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="3-18"
+      caption="Interaktive WebMap des Oberflächenmodells Strenzfeld eingebunden als WMS"
+      source="WMS"
+      iframeID="WMS"
+      iframeStyle="height:350px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld"></app-iframe-map>
+</div>
+
+<p>
+  Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/wms/ortho_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wms/ortho_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wms/ortho_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wms/ortho_strenzfeld</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wms/dsm_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wms/dsm_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld</a><br>
+</p>

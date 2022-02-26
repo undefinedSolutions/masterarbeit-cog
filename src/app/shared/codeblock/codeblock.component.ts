@@ -49,7 +49,6 @@ export class CodeblockComponent implements AfterViewInit {
         let newLine = line
         this.keywords.forEach(key => {
           if (newLine.includes(key.word)) {
-            console.log(line, key.word)
             newLine = newLine.split(key.word).join('<span class="'+key.class+'">'+key.word+'</span>')
           }
         })

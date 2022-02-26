@@ -38,6 +38,11 @@ import { C3s2s2BereitstellungDurchGeoServerComponent } from './content/c3s2s2-be
 import { C3s2s2s1WMSImGeoServerComponent } from './content/c3s2s2s1-wmsim-geo-server/c3s2s2s1-wmsim-geo-server.component';
 import { IframeMapComponent } from './shared/iframe-map/iframe-map.component';
 import { C3s2s2s2WMTSImGeoServerComponent } from './content/c3s2s2s2-wmtsim-geo-server/c3s2s2s2-wmtsim-geo-server.component';
+import { C3s3NutzungDerDatensaetzeInDenJeweiligenStandardsComponent } from './content/c3s3-nutzung-der-datensaetze-in-den-jeweiligen-standards/c3s3-nutzung-der-datensaetze-in-den-jeweiligen-standards.component';
+import { C3s3s1NutzungDesTMSComponent } from './content/c3s3s1-nutzung-des-tms/c3s3s1-nutzung-des-tms.component';
+import { C3s3s2NutzungDesWMSComponent } from './content/c3s3s2-nutzung-des-wms/c3s3s2-nutzung-des-wms.component';
+import { C3s3s3NutzungDesWMTSComponent } from './content/c3s3s3-nutzung-des-wmts/c3s3s3-nutzung-des-wmts.component';
+import { C3s3s4NutzungDesCOGComponent } from './content/c3s3s4-nutzung-des-cog/c3s3s4-nutzung-des-cog.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +83,11 @@ import { C3s2s2s2WMTSImGeoServerComponent } from './content/c3s2s2s2-wmtsim-geo-
     C3s2s2s1WMSImGeoServerComponent,
     IframeMapComponent,
     C3s2s2s2WMTSImGeoServerComponent,
+    C3s3NutzungDerDatensaetzeInDenJeweiligenStandardsComponent,
+    C3s3s1NutzungDesTMSComponent,
+    C3s3s2NutzungDesWMSComponent,
+    C3s3s3NutzungDesWMTSComponent,
+    C3s3s4NutzungDesCOGComponent,
   ],
   imports: [
     BrowserModule

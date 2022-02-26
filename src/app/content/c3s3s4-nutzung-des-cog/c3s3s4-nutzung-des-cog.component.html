@@ -1,0 +1,103 @@
+<app-headline headline="Nutzung des COG" [h]="3" number="3.3.4" [id]="3.3.4"></app-headline>
+
+<p>
+  Die Integration von COG ist in OpenLayers in der Version 6.7.0 vom 09.09.2021 released worden und somit im Vergleich zu den anderen Standards sehr neu.<app-quote
+  id="3-OpenLayers-Release-v670"
+  author="OpenLayers"
+  chapter="v6.7.0"
+  lastVisit="29.01.2022"
+  publicationDate="09.09.2021"
+  title="Release"
+  [vgl]="true"
+  URL="https://github.com/openlayers/openlayers/releases/tag/v6.7.0"></app-quote>
+</p>
+
+<p>
+  OpenLayers nutzt hierbei eine weitere JavaScript-Bibliothek mit den Namen geotiff.js zum Laden des COG. Diese Bibliothek dient als Grundgerüst für die Abfrage des COG, OpenLayers hingegen nur für die Darstellung des COG innerhalb der WebMap.
+</p>
+
+<p>
+  Für das Hinzufügen eines RGB-COG findet sich in OpenLayers ein Beispiel.<app-quote
+  id="3-OpenLayers-Examples-COG"
+  author="OpenLayers"
+  chapter="Cloud Optimized GeoTIFF (COG)"
+  lastVisit="29.01.2022"
+  title="Examples"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/examples/cog.html"></app-quote> Die Vorgaben im Beispiel müssen nur minimal erweitert werden, da der "extent" und die vorhandenen Zoomstufen direkt aus dem IFD des COG selbst abgefragt werden. Das COG-Objekt selbst hat jedoch laut Dokumentation keinen Parameter für die "attributions", dieses muss über eine set-Methode hinzugefügt werden. Zusammengefasst ergibt sich der folgende Code für die Schaffung des COG-Objekts:
+</p>
+
+<app-codeblock code="const cog = new TileLayer({
+  source: new GeoTIFF({
+  sources: [
+    {
+      url: https://data.masterarbeit-cog.de/cog/ortho_lindenrain.tif'
+     },
+  ],
+  })
+})
+cog.getSource().setAttributions('Institut für Geoinformation und ' +
+  'Vermessung (IGV), Hochschule Anhalt');"></app-codeblock>
+
+<p>
+  Aufgrund des Umstandes, dass, wie bereits in <a href="#content-2.4">Kapitel 2.4</a> erläutert, die Pixelwerte selbst übertragen werden und nicht eine Abbildung dieser, ist es zur Visualisierung von Geoinformationen, welche nicht als RGB(A) vorliegen, bei einem COG unerlässlich, die Darstellung innerhalb des Codes festzulegen. Der Code zur Festlegung der Farbwerte der Visualisierung lautet unter Berücksichtigung dessen wie folgt:
+</p>
+
+<app-codeblock code="const styleDSM = {
+  color: [
+    'interpolate',
+    ['linear'],
+    // Angabe welches Raster-Band genutzt werden soll
+    ['band', 1],
+    // Höhenwerte gefolgt von RGB(A)-Farbwerten
+    0,
+    [0, 0, 0, 0],
+    57.34,
+    [43, 131, 186],
+    69.505,
+    [171, 221, 164],
+    81.67,
+    [255, 255, 191],
+    93.835,
+    [253, 174, 97],
+    106,
+    [215, 25, 28],
+  ],
+};"></app-codeblock>
+
+<p>
+  Das generierte Objekt wird nun als style- Parameter dem TileLayer- Objekt mitgegeben. Zur korrekten Darstellung muss dem GeoTIFF-Objekt noch der Parameter normalize: false zugewiesen werden. Ohne diesen würde OpenLayers die Raster- Band- Statistik des Datensatzes nutzen, um alle Werte in diesem Rahmen auf den Bereich 0.0 bis 1.0 zu mappen. Dies wäre jedoch für die Darstellung eines Oberflächenmodells hinderlich. Zudem würden damit auch alle exakten Werte der Raster-Informationen verloren gehen. Durch diese Anpassungen sieht nun das cog-Objekt wie folgt aus:
+</p>
+
+<app-codeblock code="const cog = new TileLayer({
+  source: new GeoTIFF({
+    normalize: false,
+    sources: [
+      {
+        url: https://data.masterarbeit-cog.de/cog/dsm_strenzfeld.tif',
+      },
+    ],
+  }),
+  style: styleDSM,
+});"></app-codeblock>
+
+<p>
+  Durch eine Visualisierung in der WebMap ergibt sich die Möglichkeit, diese ohne erneutes Laden der Daten von einem Server zu ändern. Die Funktionalität  lässt sich an der interaktiven Karte in <a href="#content-5.4">Kapitel 5.4</a> testen.
+</p>
+<p>
+  Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/cog/ortho_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/cog/ortho_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/cog/ortho_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/cog/ortho_strenzfeld</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/cog/dsm_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/cog/dsm_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld</a><br>
+</p>

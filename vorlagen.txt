@@ -28,3 +28,5 @@ constructor(private tablesService:TablesService) { }
 ngAfterViewInit(): void {
   this.tablesService.pushTable('Beschreibung', idNumber)
 }
+
+" -> &#34;

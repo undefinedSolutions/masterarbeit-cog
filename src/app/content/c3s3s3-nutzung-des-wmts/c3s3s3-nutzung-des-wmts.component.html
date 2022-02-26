@@ -1,0 +1,83 @@
+<app-headline headline="Nutzung des WMTS" [h]="3" number="3.3.3" [id]="3.3.3"></app-headline>
+
+<p>
+  Wie auch für den WMS bietet Openlayers gleichfalls ein gutes Beispiel für den WMTS.<app-quote
+  id="3-OpenLayers-Examples-WMTS"
+  author="OpenLayers"
+  chapter="WMTS"
+  lastVisit="29.01.2022"
+  title="Examples"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/examples/wmts.html"></app-quote> Für die Nutzung der Datensätze sind hier jedoch ergänzend einige weitere Parameter erforderlich, welche vor der eigentlichen Implementierung erzeugt werden müssen. Der folgende Codeblock zeigt sich als Beispiel für das Orthomosaik des Gebiets Strenzfeld:
+</p>
+
+<app-codeblock code="const projection = getProjection('EPSG:3857');
+const projectionExtent = projection.getExtent();
+const size = getWidth(projectionExtent) / 256;
+const resolutions = new Array(22);
+const matrixIds = new Array(22);
+for (let z = 0; z < 22; ++z) {
+  // generate resolutions and matrixIds arrays for this WMTS
+  resolutions[z] = size / Math.pow(2, z);
+  matrixIds[z] = z;
+}"></app-codeblock>
+
+<p>
+  In der ersten Zeile wird das hier verwendete Koordinatensystem EPSG:3857 festgelegt. Aus diesem wird die Ausdehnung abgefragt und in die Variable projectionExtent gespeichert. Auf dieser Grundlage wird anschließend die Pixelgröße der ersten Zoomstufe in Meter berechnet, diese beträgt vorliegend 156543033928040 Meter pro Pixel. In den Zeilen 4 und 5 werden zwei leere Arrays erzeugt, die Größe der Arrays entspricht der Anzahl der Zoomstufen des jeweiligen Layers.
+  Die letzten 4 Zeilen bilden eine Schleife, welche 22 mal durchlaufen wird, um die zuvor erzeugten Arrays mit den jeweiligen Werten zu befüllen. Diese Werten sind mit den Werten aus Tabelle 1 in <a href="#content-2.1">Kapitel 2.1</a>, welche alle relevanten Informationen einer TMS enthält, identisch. Zur Vermeidung von Fehlern ist es zielführender, diese Werte programmatisch zu erstellen, statt diese als Fixwerte zu hinterlegen.
+</p>
+
+<p>
+  Nachdem nun alle relevanten Informationen erzeugt wurden, wird ein TileLayer-Objekt generiert, welches den “extent” des Gebiets und als “source” ein WMTS-Objekt enthält. Der Aufbau des WMTS-Objekts lässt sich dem folgenden Codeblock entnehmen:
+</p>
+
+<app-codeblock code="const WMTSLayer = new TileLayer({
+  extent: [1299642, 6765838, 1304883, 6769892],
+  source: new WMTS({
+    attributions: 'Institut für Geoinformation und Vermessung (IGV), ' +
+    ' Hochschule Anhalt',
+    url: 'https://geoserver.masterarbeit-cog.de/gwc/service/wmts',
+    layer: 'wmts:ortho_strenzfeld',
+    matrixSet: 'WebMercatorQuad',
+    format: 'image/vnd.jpeg-png,
+    projection: projection,
+    tileGrid: new WMTSTileGrid({
+      origin: getTopLeft(projectionExtent),
+      resolutions: resolutions,
+      matrixIds: matrixIds,
+    }),
+    style: '',
+  }),
+});"></app-codeblock>
+
+<p>
+  Dem WMTS-Objekt muss das verwendete <span class="code">matrixSet</span>, <span class="code">format</span>, <span class="code">projektion</span>, <span class="code">tileGrid</span> und <span class="code">style</span> mitgeteilt werden. Ohne diese Informationen ist es nicht möglich, den WMTS abzurufen. Die erfolgreiche Implementierung des Orthomosaik Strenzfeld ist anhand der folgenden Abbildung zu erkennen.
+</p>
+
+<div style="height:400px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="3-19"
+      caption="Interaktive WebMap des Orthomosaiks Strenzfeld als WTMS eingebunden"
+      source="WMTS"
+      iframeID="WMTS"
+      iframeStyle="height:350px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/wmts/ortho_strenzfeld"></app-iframe-map>
+</div>
+
+<p>
+  Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/wmts/ortho_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wmts/ortho_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wmts/ortho_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wmts/ortho_strenzfeld</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wmts/dsm_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wmts/dsm_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/wmts/dsm_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wmts/dsm_strenzfeld</a><br>
+</p>

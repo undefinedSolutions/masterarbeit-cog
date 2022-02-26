@@ -24,7 +24,6 @@ export class IframeMapComponent implements AfterViewInit {
   loadIframe(): void {
     const test = <HTMLIFrameElement> document.getElementById(this.iframeID)  ;
     test.src = this.iframeURL;
-    console.log(test);
   }
 
   ngAfterViewInit(): void {

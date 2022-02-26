@@ -1,0 +1,49 @@
+<app-headline headline="Nutzung der Datensätze in den jeweiligen Standards" [h]="2" number="3.3" [id]="3.3"></app-headline>
+
+<p>
+  Um die Nutzung der Datensätze besser aufzeigen und erläutern zu können, ist für die vorliegende Arbeit ein Github Repository mit dem Namen masterarbeit-cog-openlayers aufgesetzt worden. Ein Repository kann als Projekt verstanden werden, es ermöglicht die Versionsverwaltung für Software-Projekte. Dieses findet sich unter der folgenden URL: 
+</p>
+
+<p style="text-align: center;">
+  <a href="https://github.com/undefinedSolutions/masterarbeit-cog-openlayers"
+      rel="noopener"
+      target="_blank">https://github.com/undefinedSolutions/masterarbeit-cog-openlayers</a>
+</p>
+
+<p>
+  Das Repository umfasst alle Szenarien und Standards. Als Vorlage für ein Grundgerüst wurde eine Anleitung von OpenLayers namens “Basic Concepts” verwendet, (https://openlayers.org/en/latest/doc/tutorials/concepts.html) welches eine OpenLayers- Anwendung mit Hintergrundkarte darstellt. Dies besteht im Wesentlichen aus einer Zeile HTML als Grundgerüst:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="<div id=&#34;map&#34; style=&#34;height: 100%; width: 100%;&#34;></div>"></app-codeblock>
+
+<p>
+  Ergänzt wird diese Zeile durch den folgenden TypeScript-Code, welcher OpenStreetMap als Hintergrundkarte einbindet:
+</p>
+
+<app-codeblock code="import Map from 'ol/Map';
+import View from 'ol/View';
+import OSM from 'ol/source/OSM';
+import TileLayer from 'ol/layer/Tile';
+
+const map = new Map({
+  layers: [
+    new TileLayer({source: new OSM()})
+  ],
+  view: new View({
+    center: [0, 0],
+    zoom: 2
+  }),
+  target: 'map'
+});"></app-codeblock>
+
+<p>
+  Die Abbildungen in diesem Kapitel sind folglich nicht nur einfache Bilddateien, sondern in der Web-Version dieser Arbeit als interaktive WebMaps eingebunden. Die Arbeit ist im Internet unter der URL 
+</p>
+<p style="text-align: center;">
+  <a href="https://masterarbeit-cog.de"
+      rel="noopener"
+      target="_blank">https://masterarbeit-cog.de</a>
+</p>
+<p>
+  zu finden. Die Betrachtung und Analyse sämtlicher Beispiele der jeweiligen Szenarien und Standards würden über den Umfang dieser Arbeit hinausgehen, demnach sind alle Szenarien für jeden Standard in den Kapiteln 3.3.1 bis 3.3.4 zu als Link zu finden.
+</p>

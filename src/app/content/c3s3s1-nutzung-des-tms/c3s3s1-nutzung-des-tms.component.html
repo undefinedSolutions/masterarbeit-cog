@@ -1,0 +1,127 @@
+<app-headline headline="Nutzung des TMS" [h]="3" number="3.3.1" [id]="3.3.1"></app-headline>
+
+<p>
+  OpenLayers befähigt den Anwender weitere Layer in das Array der Karte layers hinzuzufügen. Ein Beispiel wie dies für den TMS erfolgen kann, liefert OpenLayers innerhalb der Sammlung von Code-Beispielen.<app-quote
+  id="3-OpenLayers-Examples-XYZ"
+  author="OpenLayers"
+  chapter="XYZ"
+  lastVisit="29.01.2022"
+  title="Examples"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/examples/xyz.html"></app-quote> Die Bereitstellung für den TMS wird durch die TileLayer- Klasse ermöglicht. TIleLayer werden genutzt, um vorgerenderte Tiles mit spezifischer Größe und basierend auf der Zoomstufe auf die Karte zu bringen.
+</p>
+
+<app-codeblock [lineNumbers]="false" code="import TileLayer from 'ol/layer/Tile';"></app-codeblock>
+
+<p>
+  Die Klasse TileLayer beinhaltet den Parameter "source", in welchem die XYZ- Klasse eingefügt wird. Innerhalb dieser Klasse wiederum findet sich der Parameter "url", mithilfe dessen die URL des TMS als Parameter eingefügt werden kann. Hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet, um eine Anforderung für den Kartenausschnitt vom Server zu ermöglichen. 
+</p>
+
+<app-codeblock [lineNumbers]="false" code="import XYZ from 'ol/source/XYZ';
+url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
+
+<p>
+  Aufgrund des unterschiedlichen Ausgangspunktes muss jedoch die Y-Achse invertiert werden.<app-quote
+  id="3-OpenLayers-API-XYZ"
+  author="OpenLayers"
+  chapter="ol/source/XYZ~XYZ"
+  lastVisit="29.01.2022"
+  title="API"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/apidoc/module-ol_source_XYZ-XYZ.html"></app-quote> Diese Notwendigkeit ergibt sich aus der Tatsache, dass sich der Ausgangspunkt des TMS in der oberen linken Ecke befindet, der Ausgangspunkt des XYZ jedoch in der unteren linken Ecke. Daraus lässt sich für das Orthomosaik des Strenzfeldes der folgende Parameter für die XYZ Klasse ableiten:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="url: 'https://https://data.masterarbeit-cog.de/tms/dsm_strenzfeld/{z}/{x}/{-y}.png'"></app-codeblock>
+
+<p>
+  Weitere, sich als zielführend erwiesene, Parameter sind:
+</p>
+<ul>
+  <li><span class="code">minZoom: 0</span> / <span class="code">maxZoom: 21</span> = für die XYZ Klasse, um zu spezifizieren, für welche Zoomstufen Tiles des TMS bereitgestellt sind.</li>
+  <li><span class="code">extent: [Ausdehnung des Gebiets]</span> = für die TileLayer Klasse. Als Standard erstreckt sich die Anfrage des TileLayers über die gesamte Fläche der WebMap. Wenn jedoch, wie im Rahmen dieser Arbeit, ausschließlich Regionen abgebildet werden, ist es von großer Bedeutung, diese Bereiche zu definieren. Dies verhindert unnötige Anfragen der WebMap für Gebiete, in welchen keine Tiles vorgehalten werden.</li>
+  <li><span class="code">preload: Infinity</span> = der TileLayer Klasse sorgt für eine besser Nutzererfahrung des TMS. Es werden Tiles von überliegenden Zoomstufen als Vorschau beim Verschieben der Karten genutzt. Dadurch sieht der Nutzer immer den TMS. Selbst wenn dies in einer schlechteren Auflösung erfolgt, ist dieses Verhalten für die Nutzererfahrung besser im Vergleich zu der Ansicht der darunterliegenden Basiskarte und einer dann anschließenden Nachladung und Anzeige der TMS. Ebenfalls ermöglicht dieser Parameter die Anzeige des TMS über den bereitgestellten maxZoom und ist daher sehr zu empfehlen.</li>
+  <li><span class="code">attributions: "[Text]"</span> = der XYZ Klasse ermöglicht es, den Ersteller des TMS zu nennen, diese Angabe wird in dem unteren rechten Bereich der Karte angezeigt.</li>
+</ul>
+
+<p>
+  Durch diese optionalen Parameter ergibt sich der folgenden Code für das Ortho des Gebiets Strenzfelds:
+</p>
+
+<app-codeblock code="const TMS = new TileLayer({
+  extent: [
+    1299642.3081000000238419,
+    6765838.1484000002965331,
+    1304883.3142999999690801,
+    6769892.0274999998509884
+  ],
+  preload: Infinity,
+  source: new XYZ({
+    attributions: 'Institut für Geoinformation und Vermessung (IGV), ' +
+    ' Hochschule Anhalt',
+    minZoom: 0,
+    maxZoom: 21,
+    url: 'https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/' + 
+    '{z}/{x}/{-y}.png'
+  }),
+})"></app-codeblock>
+
+<p>
+  Die Variable TMS wird als zweiter Eintrag in das Grundgerüst von <a href="#content-3.3">Kapitel 3.3</a> eingefügt:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="layers: [
+   new TileLayer({source: new OSM()}),
+   TMS
+],"></app-codeblock>
+
+<p>
+  Der TMS wurde nun der Karte hinzugefügt, jedoch ist die Ausgangsposition der Karte noch nicht an den TMS angepasst, sondern durch den Parameter “view” der Klasse “map” definiert.
+  Dies kann durch Zoomen auf die Ausdehnung des TMS geändert werden und erfolgt durch eine Methode, welche durch die Klasse “View” bereitgestellt wird<app-quote
+  id="3-OpenLayers-API-fit"
+  author="OpenLayers"
+  chapter="ol/View~View - fit"
+  lastVisit="29.01.2022"
+  title="API"
+  [vgl]="true"
+  URL="https://openlayers.org/en/latest/apidoc/module-ol_View-View.html#fit"></app-quote> Als optionaler Parameter wurde ein Objekt als Abstand zum Kartenrand hinzugefügt, so dass der TMS nicht bis zum Fensterrand angezeigt wird. Hierbei handelt es sich um eine reine Verbesserung des Erscheinungsbildes.
+</p>
+
+<app-codeblock [lineNumbers]="false" code="map.getView().fit([
+    1299642.3081000000238419,
+    6765838.1484000002965331,
+    1304883.3142999999690801,
+    6769892.0274999998509884
+  ], { padding: [25, 25, 25, 25] }
+);"></app-codeblock>
+
+<p>
+  Die Implementierung des Orthomosaik des Strenzfeldes als TMS ist anschließend abgeschlossen und die WebMap sieht nun wie folgt aus:
+</p>
+
+<div style="height:400px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="3-17"
+      caption="Interaktive WebMap des Orthomosaiks Strenzfeld als TMS eingebunden"
+      source="TMS"
+      iframeID="tms"
+      iframeStyle="height:350px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld"></app-iframe-map>
+</div>
+
+<p>
+  Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/tms/ortho_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/tms/ortho_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/tms/dsm_lindenrain"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/tms/dsm_lindenrain</a><br>
+  <a href="https://openlayers.masterarbeit-cog.de/tms/dsm_strenzfeld"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/tms/dsm_strenzfeld</a><br>
+</p>
