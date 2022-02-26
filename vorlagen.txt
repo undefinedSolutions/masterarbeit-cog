@@ -7,6 +7,8 @@ ng g c content/c1s3Szenarien
       rel="noopener"
       target="_blank">
 
+<app-codeblock [lineNumbers]="false" code="
+
 <app-abbreviation abbreviation="Abkürzung" description="Beschreibung der Abkürzung"></app-abbreviation>
 
 <app-quote

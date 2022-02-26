@@ -1,0 +1,126 @@
+<app-headline headline="Kostenfaktor der Bereitstellung" [h]="2" number="4.4" [id]="4.4"></app-headline>
+
+<p>
+  Zur Analyse des Kostenfaktors sind drei Bereiche zur berücksichtigen:
+</p>
+
+<ul>
+  <li>Kosten für das Hosten der Daten</li>
+  <li>Kosten für die Bereitstellung von Rechenkapazitäten </li>
+  <li>Kosten für die Installation und Wartung des GeoServers</li>
+</ul>
+
+<p>
+  Die Kosten für das Hosten von Daten teilen sich ebenfalls in drei Bereiche: das Hinzufügen, das Abrufen und die Speicherung von Daten.
+</p>
+
+<p>
+  Das Hinzufügen und Abrufen wird per Requests berechnet, so entfallen auf das Hinzufügen pro 1.000 PUT-, COPY-, POST- oder LIST- Requests 0,0054 USD. Für das Abrufen entfallen pro 10.000 GET- Requests 0,0043 USD an, aufgrund des unvorhersehbaren Volumens der Nutzung wird dieser Aspekt in dieser Arbeit nicht detaillierter betrachtet.
+  Das Abrufen der Daten ist zusätzlich aufgrund der unbekannten Nutzerzahl nur sehr ungenau zu bestimmen. Somit werden hier exemplarische Seitenbesuche betrachtet, um durch eine Annäherung eine bessere Bestimmung der Request-Anzahl festzulegen.
+</p>
+
+<p>
+  Die Speicherung der Daten wird per Gigabyte pro Monat berechnet. Es gibt zwar eine Preisstaffelung, diese beginnt jedoch erst ab 50 Terabyte und liegt somit weit über den in dieser Arbeit betrachteten Datenmengen. Pro Gigabyte im Monat werden 0,0245 USD berechnet.<app-quote
+  id="4-AWS-S3pricing"
+  author="AWS"
+  chapter="S3 Preise"
+  lastVisit="29.01.2022"
+  title="Amazon S3"
+  [vgl]="true"
+  URL="https://aws.amazon.com/de/s3/pricing/"></app-quote>
+</p>
+
+<p>
+  Die Kosten für die Bereitstellung der Daten sind mithilfe einer EC2-Instanz zu erkennen. Sie sind in zwei Bereiche aufzuteilen, zum einen der Bereitstellung der Rechenleistung pro Stunde, sowie der Speichergröße der Instanz. Für den Speicher werden pro Monat und pro Gigabyte 0,119$ berechnet. Aufgrund der großen Anzahl verschiedener Instanzen, zeigt die nachfolgende Tabelle eine Auswahl unterschiedlicher von ihnen, welche für die Nutzung des GeoServers infrage kommen würden. In dieser Arbeit wird eine t3.small-Instanz verwendet. AWS bietet einen “AWS Pricing Calculator”, welcher für die monatlichen Kosten pauschal 730 Stunden im Monat ansetzt. Diese Annahme wird für diese Arbeit übernommen[Quelle: ].<app-quote
+      id="4-AWS-Calculator"
+      author="AWS"
+      chapter="Calculator"
+      lastVisit="29.01.2022"
+      title="AWS Pricing"
+      [vgl]="true"
+      URL="https://calculator.aws/"></app-quote>
+</p>
+
+<div class="tableWrapper" id="table-4-2">
+  <p class="caption">
+    <span>Tabelle 4-2:</span> Auflistung verschiedener EC2-Instanzen<br>
+    <span>Quelle:</span> AWS - EC2 Pricing<app-quote
+    id="4-AWS-EC2pricing"
+    author="AWS"
+    chapter="EC2 Preise"
+    lastVisit="29.01.2022"
+    title="AWS Pricing"
+    [vgl]="true"
+    URL="https://aws.amazon.com/de/ec2/pricing/on-demand/"></app-quote>
+  </p>
+  <table>
+    <tr>
+      <th>Instanz-Typ</th>
+      <th>vCPU</th>
+      <th>RAM</th>
+      <th>Kosten pro Stunde</th>
+      <th>Kosten im Monat</th>
+    </tr>
+    <tr>
+      <td class="data">t3.micro</td>
+      <td class="data">2</td>
+      <td class="data">1 GB</td>
+      <td class="data">0,012$</td>
+      <td class="data">8,76$</td>
+    </tr>
+    <tr>
+      <td class="data">t3.small</td>
+      <td class="data">2</td>
+      <td class="data">2 Gb</td>
+      <td class="data">0,024$</td>
+      <td class="data">17,52$</td>
+    </tr>
+    <tr>
+      <td class="data">t3.medium</td>
+      <td class="data">2</td>
+      <td class="data">4 Gb</td>
+      <td class="data">0,048$</td>
+      <td class="data">35,04$</td>
+    </tr>
+    <tr>
+      <td class="data">t3.large</td>
+      <td class="data">2</td>
+      <td class="data">8 Gb</td>
+      <td class="data">0,096$</td>
+      <td class="data">70,08$</td>
+    </tr>
+    <tr>
+      <td class="data">t3.xlarge</td>
+      <td class="data">4</td>
+      <td class="data">16 Gb</td>
+      <td class="data">0,192$</td>
+      <td class="data">140,16$</td>
+    </tr>
+    <tr>
+      <td class="data">t3.2xlarge</td>
+      <td class="data">8</td>
+      <td class="data">32 Gb</td>
+      <td class="data">0,384$</td>
+      <td class="data">280,32$</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Die Kosten für die Installation und Wartung des GeoServers hängen von den Kapazitäten und Qualifikationen des verfügbaren Personals und somit dem Umstand ab, ob dies von einem selbst durchgeführt werden kann, oder durch einen externen Dienstleister erfolgen muss.<app-quote
+  id="4-Geoserver-Providers"
+  author="Geoserver"
+  chapter="Experienced Providers"
+  lastVisit="29.01.2022"
+  title="GeoServer Commercial Support"
+  [vgl]="true"
+  URL="http://geoserver.org/support/"></app-quote> Für die Kostenbetrachtung werden für das Aufsetzen und Einrichten des GeoServers aufgrund eigener Erfahrungen 6 Stunden veranschlagt.
+</p>
+
+<p>
+  Für die Wartung, Monitoring und Updates des GeoServers werden pauschal 2 Stunden angenommen.
+</p>
+
+<p>
+  Unvorhergesehene Ereignisse, wie beispielsweise die Sicherheitslücke log4j, von welcher auch Instanzen von GeoServer betroffen waren, werden an dieser Stelle nicht berücksichtigt.
+</p>

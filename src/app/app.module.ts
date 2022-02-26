@@ -43,6 +43,12 @@ import { C3s3s1NutzungDesTMSComponent } from './content/c3s3s1-nutzung-des-tms/c
 import { C3s3s2NutzungDesWMSComponent } from './content/c3s3s2-nutzung-des-wms/c3s3s2-nutzung-des-wms.component';
 import { C3s3s3NutzungDesWMTSComponent } from './content/c3s3s3-nutzung-des-wmts/c3s3s3-nutzung-des-wmts.component';
 import { C3s3s4NutzungDesCOGComponent } from './content/c3s3s4-nutzung-des-cog/c3s3s4-nutzung-des-cog.component';
+import { C4MethodikComponent } from './content/c4-methodik/c4-methodik.component';
+import { C4s1BenchmarkDatenaufarbeitungComponent } from './content/c4s1-benchmark-datenaufarbeitung/c4s1-benchmark-datenaufarbeitung.component';
+import { C4s2BenchmarkDatenbereitstellungComponent } from './content/c4s2-benchmark-datenbereitstellung/c4s2-benchmark-datenbereitstellung.component';
+import { C4s3BenchmarkDatenabrufComponent } from './content/c4s3-benchmark-datenabruf/c4s3-benchmark-datenabruf.component';
+import { C4s4KostenfaktorDerBereitstellungComponent } from './content/c4s4-kostenfaktor-der-bereitstellung/c4s4-kostenfaktor-der-bereitstellung.component';
+import { C4s5GewichteteMatrixComponent } from './content/c4s5-gewichtete-matrix/c4s5-gewichtete-matrix.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +94,12 @@ import { C3s3s4NutzungDesCOGComponent } from './content/c3s3s4-nutzung-des-cog/c
     C3s3s2NutzungDesWMSComponent,
     C3s3s3NutzungDesWMTSComponent,
     C3s3s4NutzungDesCOGComponent,
+    C4MethodikComponent,
+    C4s1BenchmarkDatenaufarbeitungComponent,
+    C4s2BenchmarkDatenbereitstellungComponent,
+    C4s3BenchmarkDatenabrufComponent,
+    C4s4KostenfaktorDerBereitstellungComponent,
+    C4s5GewichteteMatrixComponent,
   ],
   imports: [
     BrowserModule

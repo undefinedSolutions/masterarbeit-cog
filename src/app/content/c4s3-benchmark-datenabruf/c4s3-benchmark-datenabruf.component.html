@@ -1,0 +1,84 @@
+<app-headline headline="Benchmark Datenabruf" [h]="2" number="4.3" [id]="4.3"></app-headline>
+
+<p>
+  Die Erfassung der Dauer des Datenabrufs wird in dieser Arbeit nicht anhand der Last der Server gemessen. Ziel ist es, die Standards selbst zu vergleichen und nicht verschiedene Softwarelösungen zum Ausliefern der Daten.
+</p>
+
+<p>
+  Die Erfassung der Messdaten erfolgt mithilfe des Webbrowsers Google Chrome. Dieser verfügt über Chrome DevTools, welcher dem Nutzer hilfreiche Ansichten zum Debuggen und Auswerten einer Webseite liefert. Für die Datenerfassung sind besonders die Dauer und Größe der übermittelten Daten des jeweiligen Standards relevant.
+</p>
+
+<p>
+  Diese Daten werden in den DevTools im Netzwerk-Tab angezeigt und sind filterbar. In der nachfolgenden Abbildung wurden die Daten nach der Endung .tif gefiltert, um nur die Einträge des übermittelten COG zu erhalten. Sobald ein Eintrag ausgewählt wird, können anschließend alle Informationen zu diesem Request an den Server angezeigt werden. Hier ist besonders der Timing-Tab hervorzuheben, da dieser alle zeitlichen Angaben des Requests abbildet.
+</p>
+
+<app-figure
+    id="4-1"
+    src="/assets/images/Methodik/googleChrome.png"
+    caption="Beispielhafter Screenshot des Netzwerk-Tabs mit geladenen Oberflächenmodell Strenzfeld"
+    source="Chrome DevTools"></app-figure>
+
+<p>
+  Es ist zu erkennen, dass für die initial- Auflösung der WebMap  https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld das Oberflächenmodell 4 mal per Request angefragt wird. Der in dem obigen Screenshot zu sehende Request benötigte insgesamt 136.4 Millisekunden, welche sich auf die folgenden Kategorien aufteilt:<app-quote
+  id="4-Chrome-DevTools"
+  author="Chrome Developers - Kayce Basques"
+  chapter="Timing breakdown phases explained"
+  lastVisit="29.01.2022"
+  publicationDate="13.04.2015"
+  title="Network features reference"
+  [vgl]="true"
+  URL="https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#timing-explanation"></app-quote>
+</p>
+
+<ul>
+  <li><span>Queueing</span> = der Browser stellt Anfragen in eine Warteschlange, falls es Anfragen mit höherer Priorität gibt oder der Browser kurzzeitig Speicherplatz im Festplatten-Cache zuweist.</li>
+  <li><span>Stalled</span> = die Anfrage kann aus einem der unter Queueing beschriebenen Gründe blockiert werden.</li>
+  <li><span>Request sent</span> = die Anfrage wird gesendet.</li>
+  <li><span>Waiting(TTFB)</span> = der Browser wartet auf das erste Byte einer Antwort. TTFB steht für Time To First Byte (Zeit bis zum ersten Byte).</li>
+  <li><span>Content Download</span> = der Browser empfängt die Antwort entweder unmittelbar vom Netz oder durch einen Service Worker. Dieser Wert gibt die Gesamtzeit an, die für das Lesen des Datensatzes aufgewendet wird.</li>
+</ul>
+
+<p>
+  Die Erfassung aller Messwerte bei 4 Requests wäre zwar noch innerhalb desselben Datensatzes möglich, wenn jedoch als Standard der TMS gewählt sind, sind es bereits 80 Requests einzelner Kacheln. Dadurch ist es, auch um menschliche Übertragungsfehler zu vermeiden, erforderlich, diese Daten automatisiert in eine Übersicht zu bringen.
+</p>
+
+<p>
+  Neben den im Netzwerk-Tab genannten zeitlichen Daten ist auch die übermittelte "content-length" des Response Headers relevant. Dies benennt die Datenmenge der übermittelten Antwort des Servers in bytes, zur besseren Übersicht wird diese in Megabyte umgerechnet.
+</p>
+
+<p>
+  Die Chrome DevTools bieten weiterhin die Möglichkeit, ein sogenanntes HTTP ARchive (HAR) zu erstellen [Quelle: https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#save-as-har]. Diese Datei enthält alle Informationen des Netzwerk-Tabs. Die HAR-Datei ist im Grunde ein JSON-Format, welches demnach auch mittels Python auslesbar ist. Sie befähigt den Nutzer durch ein einfaches Python-Script die benötigten Daten automatisiert aus dem JSON auszulesen und als CSV-Datei zu speichern. Vorliegend wurde ein Python-Script verwendet, um die HAR-Dateien der Requests auszulesen. Dieses ist im digitalen Anhang dieser Arbeit zu finden.
+</p>
+
+<p>
+  Alle Standards und Datensätze werden auf drei verschiedenen Zoomstufen bei einer Auflösung von 1920x1080 Pixel erfasst, welches durch die Eigenschaft der WebMap, nur benötigte Bildinformationen zu laden, relevant ist.
+</p>
+
+<p>
+  Um auch hier ein “natürliches Nutzerverhalten” zu simulieren werden die WebMaps in 4 verschiedenen Auflösungen geladen. Zum einen Bildschirmfüllend, einer Übersicht welche -4 Zoomstufen der Bildschirmfüllenden Auflösung entspricht sowie einer Nahansicht welche +4 der Bildschirmfüllenden Auflösung entspricht. Als letztes wird die bestmögliche Zoomstufe verwendet. Diese sind in der nachfolgenden Abbildung zu entnehmen:
+</p>
+
+<div class="newPageBefore">
+  <app-iframe-map
+      style="float:left; margin-right: 30px; width:285px;"
+      iframeID="Z0"
+      iframeStyle="height:200px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld?z=0"></app-iframe-map>
+  <app-iframe-map
+      style="float:left; width:285px;"
+      iframeID="Z1"
+      iframeStyle="height:200px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld?z=1"></app-iframe-map>
+</div>
+<div>
+  <app-iframe-map
+      style="float:left; margin-right: 30px; width:285px;"
+      iframeID="Z2"
+      iframeStyle="height:200px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld?z=2"></app-iframe-map>
+  <app-iframe-map
+      style="float:left; width:285px;"
+      iframeID="Z3"
+      iframeStyle="height:200px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld?z=3"></app-iframe-map>
+</div>

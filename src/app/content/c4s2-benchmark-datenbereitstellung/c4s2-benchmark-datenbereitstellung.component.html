@@ -1,0 +1,31 @@
+<app-headline headline="Benchmark Datenbereitstellung" [h]="2" number="4.2" [id]="4.2"></app-headline>
+
+<p>
+  Durch die verschiedenen Umfänge der Standards im Gesamtspeicherplatz, der Datenmenge und der Dateigröße ist es erforderlich, auch die Dauer der Datenbereitstellung zu betrachten. Dies kann ebenfalls einen erheblichen Zeitfaktor bis zur Bereitstellung der Datensätze darstellen.
+</p>
+
+<p>
+  Die Bereitstellung zu S3 erfolgt, wie in Kapitel <a href="#content-3.2">3.2</a> beschrieben, über AWS CLI. Da dies analog zuGDAL über die Kommandozeile ausgeführt werden kann, wird hierfür ebenfalls wie oben erläutert, vor dem eigentlichen Befehl <span class="code">time</span> als Parameter hinzugefügt um die für den Ablauf benötigte Zeit mit zu erfassen.
+</p>
+
+<p>
+  Bei dem Upload zu AWS S3 ist des Weiteren zu unterscheiden, ob eine einzelne Datei hochgeladen werden soll oder der gesamte Inhalt eines Ordners. Für den Upload einer separaten Datei sieht der Aufruf über AWS CLI wie folgt aus:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="time aws s3 cp ./cog/ortho_lindenrain.tif
+    s3://masterarbeit-cog/cog/ortho_lindenrain.tif"></app-codeblock>
+
+<p>
+  Diese Zeile kann für die Standards WMS, WMTS oder COG verwendet werden. Dagegen besteht ein TMS aus zu vielen Dateien, als dass diese einzeln aufgeführt werden könnten. Folglich ist für diesen Standard der Upload eines gesamten Ordners effizienter:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="time aws s3 sync ./tms/ortho_lindenrain/
+    s3://masterarbeit-cog/tms/ortho_lindenrain/"></app-codeblock>
+
+<p>
+  Da auch hier mehrere Aspekte, wie z.B. die Belastung des eigenen Internetanschlusses oder die Belastung von AWS S3 berücksichtigt werden müssen, wurden drei Uploads an unterschiedlichen Tagen und Uhrzeiten durchgeführt.
+</p>
+
+<p>
+  Relevant in diesem Zusammenhang ist auch die eigene technische Verbindung innerhalb des Netzwerkes. Die Workstation und das Notebook sind durch ein Netzwerkkabel direkt mit dem Router verbunden, eine WLAN-Verbindung könnte zu schwankenden bzw. schlechteren Upload- Geschwindigkeiten führen.
+</p>

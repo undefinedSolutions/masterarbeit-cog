@@ -1,0 +1,35 @@
+<app-headline headline="Gewichtete Matrix" [h]="2" number="4.5" [id]="4.5"></app-headline>
+
+<p>
+  Um die einzelnen Standards besser miteinander vergleichen zu können, sind neben den Kennzahlen, welche durch die bisher beschriebenen Methoden erfasst werden, auch weitere Faktoren miteinzubeziehen und zu bewerten. Diese sollen in diesem Kapitel dargelegt werden und mitsamt den Kennzahlen in eine Gewichtete Matrix einfließen. Dies ist eine Übersicht in welcher die Kennzahlen der Kriterien je nach Bedarf gewichtet werden, um für den Anwendungsfall eine Entscheidungshilfe zu ermöglichen.
+</p>
+
+<p>
+  Die individuelle Symbolisierung der einzelnen Datensätze durch den Nutzer spielt eine erhebliche Rolle. Im Idealfall erfolgt dies ohne die Erstellung neuer Datensätze oder eines weiteren Requests an einen Server. Eine weniger effektive Möglichkeit wäre es, die Datensätze durch einen Server in der neu gewählten Symbolisierung neu anzufragen.
+</p>
+
+<p>
+  Das Abfragen einzelner Rasterwerte durch Interaktion mit der WebMap stellt eine weitere, für manche Anwendungsfälle relevante, Eigenschaft dar. Sofern dies ohne Request an den Server geschieht, können dem Nutzer direkt die Daten angezeigt werden. Sollte ein Request nötig sein, ist dies mit einer Verzögerung zwischen dem Request und dem Response verbunden.
+</p>
+
+<p>
+  Sollte ein Standard in der Lage sein, durch geringere Adaptionen als ein anderer Standard ausgeliefert zu werden ist dies selbstverständlich ebenfalls von Vorteil, da hier die Datenaufarbeitung nur einmalig geschehen muss und dennoch die Möglichkeit bestehen bleibt, aus verschiedensten Standards wählen zu können.
+</p>
+
+<p>
+  Somit umfasst die Matrix die folgenden Kriterien:
+</p>
+
+<ul>
+  <li>Datenaufarbeitung (Dauer)</li>
+  <li>Datenbereitstellung (Dauer)</li>
+  <li>Datenabruf (Dauer)</li>
+  <li>Datenbereitstellung (Kosten)</li>
+  <li>Visualisierung (durch den Nutzer)</li>
+  <li>Rasterwerte abfragen (durch den Nutzer)</li>
+  <li>Interoperabilität (der Standards)</li>
+</ul>
+
+<p>
+  Allen aufgelisteten Kriterien der Matrix wird ein Wert zwischen 0 und 9 zugewiesen, die Höhe der Bewertung wird innerhalb des Kapitels 5 für jeden einzelnen Punkt und Standard differenziert erläutert und dargelegt. Aufgrund der unterschiedlichen Anwendungsfälle einer WebMap ist dabei zu bedenken, dass es nahezu unmöglich ist, eine allgemeingültige Gewichtung der Matrix vorzunehmen. Daher werden für die vorliegende Arbeit sämtliche Kriterien gleich gewichtet. In Ergänzung dazu steht es dem interessierten Nutzer offen, im Anhang der Web-Version dieser Arbeit eine eigene Gewichtung vorzunehmen.
+</p>

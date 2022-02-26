@@ -1,0 +1,135 @@
+<app-headline headline="Benchmark Datenaufarbeitung" [h]="2" number="4.1" [id]="4.1"></app-headline>
+
+<p>
+  An dieser Stelle soll näher betrachtet werden, wie groß der zeitliche Aufwand ist, bis sämtliche Daten für den Upload aufgearbeitet wurden. Bei der Untersuchung werden sowohl die Anzahl der manuellen Arbeitsschritte, sowie die Aufarbeitung der Eingangsdaten und zusätzlich die benötigte Rechenzeit der Aufarbeitung dieser Eingangsdaten berücksichtigt.
+</p>
+
+<p>
+  Alle Arbeitsschritte wurden auf einer Workstation und auf einem Notebook durchgeführt, um die Auswirkungen der jeweiligen Besonderheiten der Hardware auf die Daten zu verdeutlichen. Aufgrund der zur Verfügung stehenden Hardware, wurden alle Benchmarks für die Datenaufarbeitung auf einer 8 Jahre alten Workstation Fujitsu Celsius R670-2 sowie einem 3 Jahre alten ThinkPad X1 Yoga der 3. Generation durchgeführt. Die relevanten Spezifikationen der beiden Computer sind in der nachfolgenden Tabelle aufgeführt:
+</p>
+
+<div class="tableWrapper" id="table-4-1">
+  <p class="caption">
+    <span>Tabelle 4-1:</span> Relevante Hardware-Spezifikationen für GDAL<br>
+    <span>Quelle:</span> eigene Daten
+  </p>
+  <table>
+    <tr>
+      <th></th>
+      <th>Fujitsu Celsius R670-2<br></th>
+      <th>ThinkPad X1 Yoga</th>
+    </tr>
+    <tr>
+      <td class="data">CPU</td>
+      <td class="data">2x Intel Xeon X5670</td>
+      <td class="data">Intel Core i7-8550U CPU</td>
+    </tr>
+    <tr>
+      <td class="data">Basistakt</td>
+      <td class="data">2.93 GHz</td>
+      <td class="data">1.80 GHz</td>
+    </tr>
+    <tr>
+      <td class="data">Boosttakt</td>
+      <td class="data">3.33 GHz</td>
+      <td class="data">4.00 GHz</td>
+    </tr>
+    <tr>
+      <td class="data">Kerne</td>
+      <td class="data">2 x 6</td>
+      <td class="data">4</td>
+    </tr>
+    <tr>
+      <td class="data">Threads</td>
+      <td class="data">2 x 12</td>
+      <td class="data">8</td>
+    </tr>
+    <tr>
+      <td class="data">Arbeitsspeicher</td>
+      <td class="data">[toDo]</td>
+      <td class="data">[toDo]</td>
+    </tr>
+    <tr>
+      <td class="data">Kapazität</td>
+      <td class="data">96 GB</td>
+      <td class="data">16 GB</td>
+    </tr>
+    <tr>
+      <td class="data">Taktung</td>
+      <td class="data">1333 MHz</td>
+      <td class="data">2133 MHz</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Die Software Ubuntu bietet die Möglichkeit, ohne Installation von weiteren Paketen, die Dauer einzelner Kommandobefehle zu erfassen. Zur Ausführung wird einfach der Begriff <span class="code">time</span> vor den eigentlichen Befehl hinzugefügt. Übertragen auf den Befehl zur Erstellung eines TMS auf Kapitel 3.1 sieht der Befehl entsprechend beispielsweise wie folgt aus:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="time gdal2tiles.py --zoom=0-20 -s EPSG:3857 --processes=24
+    ./Ortho.tif ./Ortho-TMS/"></app-codeblock>
+
+<p>
+  Zur Erfassung der benötigten Zeit wurden alle für den Prozess unnötigen Programme beendet, so dass der Computer während der Abläufe nicht für andere Dinge genutzt wurde. Dadurch sollte gewährleistet werden, dass andere, nicht systemrelevanten Programme, keine weitere CPU-Leistung nutzen.
+</p>
+
+<p>
+  Nach Ende des Durchlaufs, werden von der Software neben der eigentlichen Ausgabe des Befehls drei weitere Zeilen mit der benötigten Dauer hinzugefügt, somit sieht die gesamte Ausgabe des oberen Aufrufs wie folgt aus:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="Generating Base Tiles:
+0...10...20...30...40...50...60...70...80...90...100
+Generating Overview Tiles:
+0...10...20...30...40...50...60...70...80...90...100
+
+real  13m15,202s
+user  61m12,099s
+sys   2m12,649s"></app-codeblock>
+
+<p>
+  Diese drei Zeitangaben sind komplett unterschiedlicher Natur und bedürfen einer weiteren Erklärung:<app-quote
+    id="4-StackOverflow-Time"
+    author="StackOverflow - ConcernedOfTunbridgeWells"
+    lastVisit="29.01.2022"
+    publicationDate="25.06.2019"
+    title="Real, User and Sys process time statistics"
+    [vgl]="true"
+    URL="https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1/556411#556411"></app-quote>
+</p>
+<ul>
+  <li><span class="code">real</span> = bezeichnet die tatsächliche Realzeit, die der Task benötigt hat.</li>
+  <li><span class="code">user</span> = summiert die CPU-Zeiten der einzelnen Threads. Hierdurch ergibt es sich, sofern mehrere Threads diesem Prozess zugewiesen wurden, dass diese Zeitangabe ein vielfaches der Realzeit aufweist.</li>
+  <li><span class="code">sys</span> = beschreibt die Zeit, die der Prozess für Aufgaben verwendet hat, die nur vom Betriebssystem selbst durchgeführt werden können. Dies ist in diesem Beispiel zum Lesen und Schreiben von Dateien der Fall.</li>
+</ul>
+
+<p>
+  Mithilfe dieser Zeiterfassungsmethode wurden alle erstellten Datensätze aufgezeichnet.
+  Um die Vergleichbarkeit zu gewährleisten, wurden alle Datensätze 10 mal erstellt. Dies ermöglicht es, einen Durchschnittswert zu ermitteln und somit die Datenqualität zu sicherzustellen.
+</p>
+
+<p>
+  Bei Nutzung des Notebooks ist eine besonders hohe CPU-Temperatur von 96 Grad Celsius aufgefallen. Bei einem Notebook sollte die CPU-Temperatur nicht über 90 Grad Celsius steigen.<app-quote
+  id="4-HP-Temperature"
+  author="HP"
+  chapter="What is the ideal CPU temp?"
+  lastVisit="29.01.2022"
+  publicationDate="22.07.2020"
+  title="TECH TAKES"
+  [vgl]="true"
+  URL="https://www.hp.com/us-en/shop/tech-takes/how-to-check-cpu-temperature"></app-quote> Diese hohe Temperatur führte zu dem Problem, dass die CPU nicht länger den Boosttakt von 4.00 GHz nutzen konnte. Sofern die CPU-Temperatur den kritischen Wert erreicht versucht das Betriebssystem die CPU durch eine Drosselung des Taktes auf den Basistakt von 1.80 GHz zu schützen. Dies hätte zur Folge, dass die Erstellung der Datensätze um ein vielfaches länger gedauert hätte.
+</p>
+
+<p>
+  Durch die extrem kompakte Bauform heutiger Notebooks, handelt es sich dabei um ein bekanntes Problem, welchem entgegengewirkt werden kann, indem der Lüfter des Notebooks früher mit der Kühlung der CPU beginnt. Für Thinkpads gibt es dazu eine gut funktionierende Software namens "thinkfan".<app-quote
+  id="4-ThinkPad-Wiki"
+  author="ThinkPad-Wiki"
+  lastVisit="29.01.2022"
+  publicationDate="02.09.2020"
+  title="Thinkfan"
+  [vgl]="true"
+  URL="https://thinkwiki.de/Thinkfan"></app-quote> Diese ermöglicht es, die von Ubuntu vordefinierten Temperaturschwellen für das Thinkpad X1 Yoga zu manipulieren, um einen Einsatz des CPU-Lüfters bereits bei niedrigeren Temperaturen zu gewährleisten.
+</p>
+
+<p>
+  Eine Manipulation beider CPU-Lüfter war aufgrund der guten Kühlung der Fujitsu Workstation hingegen nicht nötig, die CPUs der Workstation erreichen maximal eine Temperatur von 68 Grad Celsius.
+</p>
