@@ -1,0 +1,15 @@
+div {
+  break-inside: avoid;
+  iframe {
+    max-width: 100%;
+  }
+  .caption {
+    font-size: 13px;
+    margin: 8px 0 0 15px;
+    text-indent: -15px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

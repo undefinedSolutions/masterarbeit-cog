@@ -34,6 +34,10 @@ import { C3s2BereitstellungDerDatensaetzeInDenJeweiligenStandardsComponent } fro
 import { C3s2s1BereitstellungDurchAWSS3Component } from './content/c3s2s1-bereitstellung-durch-awss3/c3s2s1-bereitstellung-durch-awss3.component';
 import { C3s2s1s1TMSInAWSS3Component } from './content/c3s2s1s1-tmsin-awss3/c3s2s1s1-tmsin-awss3.component';
 import { C3s2s1s2COGInAWSS3Component } from './content/c3s2s1s2-cogin-awss3/c3s2s1s2-cogin-awss3.component';
+import { C3s2s2BereitstellungDurchGeoServerComponent } from './content/c3s2s2-bereitstellung-durch-geo-server/c3s2s2-bereitstellung-durch-geo-server.component';
+import { C3s2s2s1WMSImGeoServerComponent } from './content/c3s2s2s1-wmsim-geo-server/c3s2s2s1-wmsim-geo-server.component';
+import { IframeMapComponent } from './shared/iframe-map/iframe-map.component';
+import { C3s2s2s2WMTSImGeoServerComponent } from './content/c3s2s2s2-wmtsim-geo-server/c3s2s2s2-wmtsim-geo-server.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import { C3s2s1s2COGInAWSS3Component } from './content/c3s2s1s2-cogin-awss3/c3s2
     C3s2s1BereitstellungDurchAWSS3Component,
     C3s2s1s1TMSInAWSS3Component,
     C3s2s1s2COGInAWSS3Component,
+    C3s2s2BereitstellungDurchGeoServerComponent,
+    C3s2s2s1WMSImGeoServerComponent,
+    IframeMapComponent,
+    C3s2s2s2WMTSImGeoServerComponent,
   ],
   imports: [
     BrowserModule

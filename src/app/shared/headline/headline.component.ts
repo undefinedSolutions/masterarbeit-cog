@@ -1,5 +1,6 @@
-import { TocService } from './../../services/toc/toc.service';
 import { Component, OnInit, Input } from '@angular/core';
+
+import { TocService } from './../../services/toc/toc.service';
 
 @Component({
   selector: 'app-headline',

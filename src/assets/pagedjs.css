@@ -1,5 +1,5 @@
 /* List */
-ul li span:not([class]), p span:not([class]) {
+ul li span:not([class]), ol li span:not([class]), p span:not([class]) {
   font-weight: bold;
 }
 

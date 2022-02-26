@@ -1,0 +1,10 @@
+<div>
+  <iframe id="{{iframeID}}" [style]="iframeStyle"></iframe>
+  <p *ngIf="captionID"
+      class="caption">
+    <span>Abbildung {{captionID}}:</span> {{caption}}
+    <ng-container *ngIf="source"><br>
+      <span>Quelle:</span> {{source}}
+    </ng-container>
+  </p>
+</div>

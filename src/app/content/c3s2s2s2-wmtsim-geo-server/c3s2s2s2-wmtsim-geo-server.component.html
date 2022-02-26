@@ -1,0 +1,64 @@
+<app-headline headline="WMTS im GeoServer" [h]="4" number="3.2.2.2" [id]="3.222"></app-headline>
+
+<p>
+  Bevor die einzelnen Datensätze als WMTS veröffentlicht werden können, wird das gewünschte Koordinatensystem für die Ausgabe in den Caching Standards festgelegt. Als Installationsstandards sind hier WGS 84 (EPSG:4326) und WGS 84 / Pseudo Mercator (EPSG:900913) gesetzt. Bei dem hier erwähnten EPSG:900913 handelt es sich zwar um eine exakte Kopie des in dieser Arbeit verwendeten Web Mercator EPSG:3857<app-quote
+  id="3-OSM-WIKI"
+  author="OSM-Wiki"
+  lastVisit="29.01.2022"
+  publicationDate="01.01.2022"
+  title="EPSG:3857"
+  [vgl]="true"
+  URL="https://wiki.openstreetmap.org/wiki/EPSG:3857"></app-quote>, jedoch würden Requests nach dem Web Mercator nicht automatisch zu dem Pseudo Mercator weitergeleitet. Für die vorliegende Arbeit wird nur der Web Mercator (EPSG:3857) verwendet, folglich wurden alle vordefinierten Koordinatensysteme entfernt und durch den WebMercatorQuad ersetzt, welcher auf dem Web Mercator basiert. Das hier gewählte Koordinatensystem beschreibt für den WMTS das GridSet, welches in <a href="#content-2.1">Kapitel 2.1</a> bereits näher erläutert wurde. Zusätzlich sollte noch ein weiteres Standardbildformat gewählt werden, nämlich image/vnd.jpeg-png. Dies befähigt den Geoserver, sofern keine Transparenz in der Kachel benötigt wird, eine JPEG Kachel zu erstellen. Um die Ersparnis der Dateigröße zu verdeutlichen, wurde eine zufällige Kachel gewählt (z: 15, y: 17449, x: 10850 des wmts:ortho_strenzfeld). Im PNG-Datei weist diese eine Größe von 128,6 Kilobyte auf, in Form einer JPEG-Datei jedoch nur 11,1 Kilobyte. Somit kann diese kleine Änderung der Konfiguration 91,36% der Dateigröße einsparen.
+</p>
+
+<p>
+  Nachdem der Caching Standard festgelegt wurde, ist ein weiterer Arbeitsbereich mit der Bezeichnung "wmts" erstellt und, wie bereits im <a href="#content-3.221">Kapitel 3.2.2.1</a> beschrieben, die Datenspeicher und die neuen Layer erzeugt worden. Die einzige Unterscheidung, die hier zu beachten ist, ist die fehlende Deaktivierung der Checkbox bei der Option "Erzeuge einen gecachten Layer für diesen Layer". Zudem wurden die veröffentlichten sowie gecachten Zoomstufen aus das Maximum des Datensatzes beschränkt.
+</p>
+
+<app-figure
+    id="3-14"
+    src="/assets/images/Datenbereitstellung/wmts_gridSet.png"
+    caption="Festlegung des neuen GridSets"
+    source="Geoserver"></app-figure>
+
+<p>
+  Dieser Layer kann nun sowohl als WMS als auch als WMTS genutzt werden. Zur besseren Vergleichbarkeit wurden in dieser Arbeit alle Datensätze im Arbeitsbereich WMS und WMTS generiert.
+</p>
+
+<p>
+  Der GeoServer bietet zudem die Möglichkeit, den Cache bei Bedarf zu erzeugen und zu speichern. Hierdurch entsteht beim allerersten Aufruf der jeweiligen Kachel eine erhöhte Wartezeit des Nutzers. Ein Vergleich zwischen on-the-fly generierten Tiles und gecachten Tiles ist im <a href="#content-5.3">Kapitel 5.3</a> zu finden. Um diese Wartezeit zu vermeiden, empfiehlt es sich, die relevantesten Zoomstufen im Vorfeld durch den GeoServer generieren zu lassen. Die Funktionalität wird nicht durch den GeoServer bereitgestellt, sondern durch die automatisch mitinstallierte Software GeoWebCache (<app-abbreviation abbreviation="GWC" description="GeoWebCache"></app-abbreviation>).
+</p>
+
+<p>
+  So ist es dem Nutzer möglich, über eine vereinfachte GUI das Caches der WMTS-Layer zu verwalten. GWC testet die gewählten Einstellungen leider nicht auf Korrektheit, somit ist eine fehlerhafte Eingabe jederzeit möglich, beispielsweise für die Felder "Zoom start" die EInstellung 20 und für "Zoom stop" 15. Dies ist eine inkorrekte Eingabe, welche vor der ersten Iteration direkt aufgrund der falschen Reihenfolge (Zoom stop &lt; Zoom Start) abgebrochen werden würde.
+</p>
+
+<p>
+  Es wird in der GUI darauf hingewiesen, dass ein Erstellen des Caches über die Zoomstufe 20 nicht empfohlen wird. Zur weiteren Erklärung, weshalb diese Zoomstufen nicht vorgeneriert werden sollten, wird der Datensatz des Orthomosaiks Strenzfeld als Beispiel herangezogen. Der Cache für die Zoomstufe 20 beträgt bereits 820 MB. Ein Tile in der Zoomstufe 20 würde in der Zoomstufe 21 4 neue Tiles erfordern. Daraus ergibt sich aus den 820 Megabyte eine Datenmenge von 3,28 Gigabyte für die Zoomstufe 21, für eine fiktive Zoomstufe 22 würden ganze 13,12 Gigabyte Speicherplatz benötigt. Folglich ist es an dieser Stelle zweckmäßiger, den Cache on-the-fly zu erzeugen und somit nur gezielt die Tiles zu generieren. Zudem ist zu unterstellen, dass auch nicht der gesamte abgebildete Bereich für Nutzer von Relevanz sein wird, sondern vielmehr Hotspots, welche nun konkret durch den Nutzer selbst generiert werden. In der nächsten Abbildung ist die angesprochene vereinfachte GUI zum Erstellen der Tiles zu erkennen.
+</p>
+
+<app-figure
+    id="3-15"
+    src="/assets/images/Datenbereitstellung/wmts_gwc.png"
+    caption="Getroffene Einstellung für das erstellen des Caches für das Orthomosaik Strenzfeld"
+    source="GeoWebCache"></app-figure>
+
+<p>
+  Eine Vorschau ist für WMTS ebenfalls verfügbar, jedoch nicht innerhalb des GeoServers, sondern in der Übersicht von GWC welche unter der URL <a href="https://geoserver.masterarbeit-cog.de/gwc/demo"
+  rel="noopener"
+  target="_blank">https://geoserver.masterarbeit-cog.de/gwc/demo</a> abrufbar ist. Dort kann jeder vorhandene Layer angezeigt werden, wie in der folgenden Abbildung des Orthomosaiks des Gebiets Strenzfeld.
+</p>
+
+<div class="newPageBefore" style="height:400px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="3-16"
+      caption="Vorschau des Orthomosaiks Strenzfeld"
+      source="Geoserver"
+      iframeID="WMTSaf2"
+      iframeStyle="height:350px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/gwc/demo/wmts:ortho_strenzfeld?gridSet=WebMercatorQuad&format=image/vnd.jpeg-png"></app-iframe-map>
+</div>
+
+<p>
+  Nachdem nun die Breitstellung der Datensätze ausführlich und differenziert dargestellt wurde, widmet sich der folgende Abschnitt ihrer Nutzung.
+</p>

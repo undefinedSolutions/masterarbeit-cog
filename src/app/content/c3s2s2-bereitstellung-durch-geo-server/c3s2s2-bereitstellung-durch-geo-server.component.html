@@ -1,0 +1,102 @@
+<app-headline headline="Bereitstellung durch GeoServer" [h]="3" number="3.2.2" [id]="3.22"></app-headline>
+
+<p>
+  Die Bereitstellung des WMS und WMTS erfolgt mittels eines GeoServers. Um diesen zu Betreiben, wird in dieser Arbeit eine AWS EC2 Instanz genutzt. Eine AWS EC2 Instanz ist ein virtueller Server, welcher in der AWS-Infrastruktur zur Verfügung gestellt wird. Die wesentlichen Merkmale zur Installation des Geoservers werden in diesem Kapitel genannt, auf eine komplette Installationsanleitung mit allen erforderlichen Einstellungen,um den GeoServer in einer Produktionsumgebung zu betreiben wird an dieser Stelle verzichtet.
+</p>
+
+<p>
+  Über die AWS-Managementkonsole kann eine neue EC2- Instanz gestartet werden. Dieser Prozess erstreckt sich über sieben Schritte:
+</p>
+
+<ol>
+  <li><span>Choose Amazon Machine Images (AIM)</span> = hierbei handelt es sich um für EC2- Instanzen vordefinierte Images, konkret für den Geoserver eignet sich das Image "Ubuntu Server 20.04 LTS (HVM), SSD Volume Type".</li>
+  <li><span>Instance-Typ auswählen</span> = die verschieden Typen verfügen über unterschiedliche Hardware Ressourcen. Für eine Basisinstallation des GeoServer sind 2 virtuelle CPUs und 2 Gigabyte Arbeitsspeicher ausreichend, dies entspricht einer t3.small Instanz.</li>
+  <li><span>Configure Instance</span> = dient der Zugriffsverwaltung und weiteren in dieser Arbeit nicht genutzten Funktionen.</li>
+  <li><span>Speicher hinzufügen</span> = zugewiesener Speicherplatz für die Instanz. Dieser Speicherplatz wird für das Betriebssystem, die installierte Software, Daten und den Cache verwendet und sollte somit ausreichend Speicherplatz bieten. Für die vorliegende Arbeit wurden 20 GB Speicherplatz gewählt.</li>
+  <li><span>Tags hinzufügen</span> = Tags dienen der einfacheren Verwaltung von Instances.</li>
+  <li><span>Configure Security Group aus</span> = diese Gruppen beschreiben die zu öffnenden Ports. Der GeoServer wird standardmäßig auf dem Port 8080 betrieben und Secure Shell (<app-abbreviation abbreviation="SSH" description="Secure Shell"></app-abbreviation>) zur Verbindung mit dem Server auf dem Port 22. Des Weiteren werden optionale Ports freigegeben um den Geoserver über HTTP (Port 80) und HTTPS (Port 443) zu erreichen. Die folgende Abbildung zeigt die Freigaben der Instanz.</li>
+  <li><span>Prüfen</span> = dient der finalen Übersicht der getroffenen Einstellungen.</li>
+</ol>
+
+<app-figure
+    id="3-5"
+    src="/assets/images/Datenbereitstellung/Geoserver-Sicherheitsgruppen.jpg"
+    caption="Getroffene Einstellungen für die Sicherheitsgruppe"
+    source="Screenshot von AWS"></app-figure>
+
+<p>
+  Nachdem nun alle Eingaben geprüft wurden, kann die Instanz gestartet werden. Hierzu wird im Vorfeld eine private Schlüsseldatei (private Key) erzeugt, mit welcher sich Nutzer künftig beim Server anmelden können. Diese Datei ist äußerst wichtig, da sonst kein Zugriff auf das Terminal des Servers besteht. Es empfiehlt sich, diese Schlüsseldateien unter Ubuntu im pfad <span class="code">~/.ssh/</span> aufzubewahren. Damit wird ein unbeabsichtigtes Löschen vermieden, gleichzeitig ermöglicht es über die Pfadangabe den Zugriff im gesamten System.
+</p>
+
+<p>
+  Nach der Initialisierung des Servers kann sich über SSH mit diesem verbunden werden, hierzu ist der folgende SSH-Befehl notwendig:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="ssh -i ~/.ssh/Geoserver.pem
+    ubuntu@ec2-3-64-229-203.eu-central-1.compute.amazonaws.com"></app-codeblock>
+
+<p>
+  Die Instanz steht nun bereit und es kann mit der Installation des GeoServers begonnen werden. Für Linux üblich geschieht dies nur über Terminal- Eingaben:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="#Update Server
+sudo apt-get update
+sudo apt-get upgrade
+
+# Install geoserver
+sudo apt install openjdk-11-jre unzip
+
+wget https://deac-ams.dl.sourceforge.net/project/geoserver/GeoServer/2.20.2/
+    geoserver-2.20.2-bin.zip
+unzip geoserver-2.20.2-bin.zip
+rm geoserver-2.20.2-bin.zip
+
+# Remove DemoData
+cd ~/data_dir/data
+rm -r *
+cd ~/data_dir
+rm -r demo/
+
+# Start GeoServer
+~/bin/startup.sh"></app-codeblock>
+
+<p>
+  Durch diese Befehle wurde Ubuntu erfolgreich geupdated, der GeoServer installiert, alle Demo-Daten entfernt und der GeoServer gestartet<app-quote
+  id="3-Geoserver-Installation"
+  author="Geoserver"
+  chapter="Installation"
+  lastVisit="29.01.2022"
+  title="Linux binary"
+  [vgl]="true"
+  URL="https://docs.geoserver.org/stable/en/user/installation/linux.html"></app-quote>. Das Starten des Geoservers sollte jedoch nicht unmittelbar über die startup.sh-Datei erfolgen, sondern für einen bestimmten Service, dies wird in der Dokumentation des GeoServers beschrieben<app-quote
+  id="3-Geoserver-production"
+  author="Geoserver"
+  chapter="Running in a production environment"
+  lastVisit="29.01.2022"
+  title="Linux init scripts"
+  [vgl]="true"
+  URL="https://docs.geoserver.org/stable/en/user/production/linuxscript.html"></app-quote>.
+</p>
+
+<p>
+  Ebenso ist es nicht zielführend, den GeoServer nur über die Server-IP und Port zu erreichen. Nutzerfreundlicher wäre die Verwendung eines Reverse Proxy samt SSL-Zertifikat. Der Reverse Proxy befähigt den Anwender, den Geoserver ohne Angabe des Ports mit einer Domain zu erreichen. Für diese Arbeit wurde die Domain geoserver.masterarbeit-cog.de verwendet. Eine Anleitung, welche Einstellungen beim GeoServer sowie der Reverse Proxy Software NGINX getroffen werden muss, ist leicht im Internet zu finden<app-quote
+  id="3-NGINX-Geoserver"
+  author="Dev.to - Tek Bahadur Kshetri"
+  lastVisit="29.01.2022"
+  title="Using NGINX to put Geoserver HTTPS"
+  [vgl]="true"
+  URL="https://dev.to/iamtekson/using-nginx-to-put-geoserver-https-4204"></app-quote>. Somit lässt sich die Weboberfläche des Geoservers einfach durch die Adresse geoserver.masterarbeit-cog.de/web aufrufen. Das SSL-Zertifikat ermöglicht eine Verschlüsselte Kommunikation (HTTPS) zwischen dem Nutzer und dem Server. Die Verwendung von HTTPS ist aktuell als Standard anzusehen. Internet Browser warnen den Nutzer sogar, sofern es sich nur um eine HTTP-Verbindung handelt. Dies ist sinnvoll, da ohne SSL-Zertifikat einfache "Man in the Middle Attacks" </p><p> ausgeführt werden und Netzwerk-Pakete ausgetauscht werden können<app-quote
+  id="3-https-man-in-the-middle"
+  author="catchpoint"
+  lastVisit="29.01.2022"
+  publicationDate="25.04.2017"
+  title="Is HTTPS the Answer to Man in the Middle Attacks?"
+  [vgl]="true"
+  URL="https://www.catchpoint.com/blog/https-man-in-the-middle"></app-quote>. Eine Veranschaulichung des Reverse Proxy ist in der folgenden Abbildung zu finden.
+</p>
+
+<app-figure
+    id="3-6"
+    src="/assets/images/Datenbereitstellung/aws_reverseProxy.png"
+    caption="Anfrage eines Browsers an den Reverse Proxy in einer EC2 Instanz"
+    source="eigene Darstellung"></app-figure>

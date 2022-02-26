@@ -9,8 +9,7 @@
     "longdesc",
     "marginwidth",
     "marginheight",
-    "scrolling",
-    "style"
+    "scrolling"
   ],
   "attr-name-ignore-regex": false,
   "attr-name-style": false,

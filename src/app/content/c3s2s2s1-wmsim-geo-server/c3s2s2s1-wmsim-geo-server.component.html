@@ -1,0 +1,116 @@
+<app-headline headline="WMS im GeoServer" [h]="4" number="3.2.2.1" [id]="3.221"></app-headline>
+
+<p>
+  Die WMS-Dateien müssen nun auf den wie im vorherigen Kapitel beschrieben erstellten GeoServer kopiert werden. Dies kann mittels secure copy (<app-abbreviation abbreviation="scp" description="secure copy"></app-abbreviation>) erfolgen, da die AWS EC2 Instanz selbst mittels SSH genutzt werden kann. Der Befehl zum Kopieren weist Ähnlichkeiten zum SSH-Login Befehl auf:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="scp -i ~./.ssh/Geoserver.pem ./ortho_strenzfeld.tif
+    ubuntu@geoserver.masterarbeit-cog.de:~/data_dir/masterarbeit/wms/"></app-codeblock>
+
+<p>
+  Der Aufbau des secret copy-Befehls gliedert sich in die nachfolgenden Komponenten:
+</p>
+
+<ol>
+  <li>-i ~./.ssh/Geoserver.pem</li> = Pfad zum private Key für die Legitimation des Logins
+  <li>./ortho_strenzfeld.tif</li> = File für den Upload
+  <li>ubuntu</li> = Nutzer der EC2 Instanz
+  <li>geoserver.masterarbeit-cog.de</li> = URL oder IP-Addresse der EC2 Instanz
+  <li>~/data_dir/masterarbeit/wms/</li> = Pfad auf der EC2 Instanz, in der das InputFile abgelegt werden soll.
+</ol>
+
+<p>
+  Nachdem das GeoTIFF übertragen wurde, muss es nun über den GeoServer veröffentlicht werden. Der Ablauf gliedert sich in mehrere Schritte: Erstellung des Arbeitsbereichs, Hinzufügen eines Datenspeichers, Veröffentlichung eines Layers und gegebenenfalls zusätzlich die Erstellung eines Stiels zur Visualisierung. Sämtliche Arbeitsschritte erfolgen nach Anmeldung auf der WebOberfläche des GeoServers.
+</p>
+
+<p>
+  Die Veröffentlichung eines Layers ohne einen festgelegten Arbeitsbereich ist nicht möglich. Dieser kann als Sammelobjekt für mehrere Layer verstanden werden. Für den vorliegenden Standard wurde ein Arbeitsbereich mit den Namen WMS erstellt.
+</p>
+
+<p>
+  Weitere Voraussetzung für einen Layer bildet der Datenspeicher als Datenquelle im Kontext des GeoServers für einen Layer. Der GeoServer bietet als Datenquellen Vektordaten, Rasterdaten und "andere Datenquellen". Im Rahmen dieser Arbeit geht es vorwiegend um die Veröffentlichung von Rasterdaten, daher werden die beiden anderen Kategorien nicht näher betrachtet. Als Datenquelle für Rasterdaten kann ArcGrid, GeoPackage, GeoTIFF ImageMosaic oder WorldImage genutzt werden. Die in dieser Arbeit verwendete Datenquelle aus diesen Kategorien ist das GeoTIFF. Im Interface muss der Arbeitsbereich gewählt werden, ein Name der Datenquelle festgelegt und der Verbindungsparameter, welcher den Pfad zu dem GeoTIFF darstellt. Dieser muss nicht manuell ausgewählt werden, sondern kann über das "Browse..." komfortabel per GUI selektiert werden. Die nachfolgende Abbildung stellt die Eingaben beispielhaft dar:
+</p>
+
+<app-figure
+    id="3-6"
+    src="/assets/images/Datenbereitstellung/geoserver_rasterdatenquelle.png"
+    caption="Hinzufügen einer Rasterdatenquelle in der Weboberfläche des GeoServers"
+    imageStyle="padding:0 5%;"
+    source="Screenshot von Geoserver"></app-figure>
+
+<p>
+  Nachdem nun der Datenspeicher hinzugefügt wurde, kann in der Ansicht "Neuer Layer" dieser ohne Verzögerung publiziert werden. Die Publikation öffnet direkt das Interface zum Bearbeiten des Layers, in dem sich mehrere Reiter zur weiteren Bearbeitung finden: Daten, Publizierung, Ausdehnung, Kartenkachel-Cache und Security. In Daten muss ein Name für den Layer vergeben sowie das Koordinatensystem und die Bänderdetails geprüft werden. In dem Tab Publizierung können der Autor der Daten bzw. des WMS genannt werden und dessen URL zur Homepage. Ziel dieses Kapitels ist, es einen WMS zu veröffentlichen, somit muss in dem Tab Kartenkachel-Cache die Checkbox "Erzeuge einen gecachten Layer für diesen Layer" deaktiviert werden. In den Tabs Ausdehnung und Security werden keine Änderungen vorgenommen. Nach allen erforderlichen Eingaben kann der Layer nun gespeichert werden.
+</p>
+
+<app-figure
+    id="3-7"
+    src="/assets/images/Datenbereitstellung/geoserver_author.png"
+    caption="Hinterlegen der Autoren des jeweiligen Layers in der Weboberfläche des Geoservers"
+    source="Screenshot von Geoserver"></app-figure>
+
+<app-figure
+    id="3-8"
+    src="/assets/images/Datenbereitstellung/geoserver_cache.png"
+    caption="Deaktivierter Kartenkachel-Cache in der Webansicht des Geoservers"
+    source="Screenshot von Geoserver"></app-figure>
+
+<p>
+  Mithilfe der Layer-Vorschau kann der erzeugte Layer in einer OpenLayers auf Richtigkeit überprüft werden. Diese Vorschau ist auch für Nutzer, welche über keinen Login zum GeoServer verfügen, möglich. Hierfür muss nur die Domain des GeoServers geoserver.masterarbeit-cog.de/web/ aufgerufen und im linksseitigen Menü die Layer-Vorschau ausgewählt werden. In der nachfolgenden Abbildung ist ein Beispiel der Vorschau zu sehen.
+</p>
+
+<div style="height:400px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="3-9"
+      caption="Vorschau des Orthomosaiks Strenzfeld"
+      source="Geoserver"
+      iframeID="test1"
+      iframeStyle="height:350px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Aortho_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=586&height=300&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
+</div>
+
+<p>
+  Der beschriebene Ablauf wird anschließend für alle Datensätze wiederholt. Sofern es sich um ein Oberflächenmodell handelt, muss speziell für dieses jedoch ergänzend ein Stile erzeugt werden, um eine Darstellung in Graustufen zu vermeiden. Auch eine solche Ansicht ermöglicht zwar bereits eine Interpretation der Daten. Sie ist jedoch nicht immer zielführend, wie beispielhaft an dem Oberflächenmodell des Gebiets Strenzfeld in der nächsten Abbildung gezeigt wird. Hier lässt sich erkennen, dass wesentliche Details erst durch die Farbgebung deutlich werden.
+</p>
+
+<div class="newPageBefore">
+  <app-iframe-map
+      style="float:left; width:300px;"
+      iframeID="test2"
+      iframeStyle="height:350px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=300&srs=EPSG%3A3857&styles=raster&format=application/openlayers#toggle"></app-iframe-map>
+  <app-iframe-map
+      style="float:left; width:300px;"
+      iframeID="test3"
+      iframeStyle="height:350px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=300&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
+</div>
+
+<p>
+  Die Darstellung des Datensatzes sollte analog zu der in <a href="#content-3.11">Kapitel 3.1.1</a> beschriebenen Erstellung für die TMS erfolgen. Zusätzlich ist im unteren Bereich innerhalb des Properties-Dialogs das Dropdown Menü "Style" zu öffnen und hier die Option "Save Style..." zu wählen, wie die nachfolgende Abbildung zeigt. Als Dateiformat ist hier "Styled Layer Descriptor" (<app-abbreviation abbreviation="SLD" description="Styled Layer Descriptor"></app-abbreviation>) zu wählen, da dies ebenfalls vom GeoServer unterstützt wird.
+</p>
+
+<app-figure
+    id="3-11"
+    src="/assets/images/Datenbereitstellung/qgis_save-style.png"
+    caption="Save Style… eines Layers in QGIS"
+    source="QGIS"></app-figure>
+
+<p>
+  In der WebOberfläche des GeoServers ist im nächsten Schritt auf der linken Seite der Eintrag "Stile" zu wählen, welcher dem "Style" des QGIS entspricht. In diesem wird anschließend ein neuer hinzugefügt. In der Eingabemaske wird nun ein Name für den Stil eingetragen, das Format SLD gewählt und der Inhalt aus der zuvor gespeicherten Datei eingefügt. Diese Eingabe sollte dann der folgenden Abbildung entsprechen. Um diesen Stil zu speichern ohne die Eingabemaske zu verlassen, wird muss "Apply" gewählt.
+</p>
+
+<app-figure
+    id="3-12"
+    src="/assets/images/Datenbereitstellung/geoserver_stil.png"
+    caption="Erstellter Stil für das Oberflächenmodell Strenzfeld"
+    source="Geoserver"></app-figure>
+
+<p>
+  Ist die Speicherung erfolgt, muss der Stil noch dem passendem Layer hinzugefügt werden. Dies erfolgt im Tab “Publishing”, in welchem eine Selektion der gewünschten Layer vorgenommen werden kann.
+</p>
+
+<app-figure
+    id="3-13"
+    src="/assets/images/Datenbereitstellung/geoserver_apply-stil.png"
+    caption="Auswahl der vom Stil betroffenen Layer"
+    source="Geoserver"></app-figure>
