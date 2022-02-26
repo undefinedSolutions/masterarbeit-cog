@@ -1,0 +1,127 @@
+<app-headline class="newPageBefore" [headline]="'Vorstellung der Ergebnisse und Diskussion'" [h]="1" [number]="'5'" [id]="5"></app-headline>
+
+<p>
+  Der bisherige Teil der Arbeit beschäftigte sich mit dem Beschreiben, Erstellen, Bereitstellen und Nutzen der verschiedenen Standards. Im Anschluss daran wurde auf die Methodik der Datenerfassung eingegangen, um die Standards miteinander vergleichen zu können. Nun wird ein Überblick der Ergebnisse geboten, gefolgt von der gewichteten Matrix. In den einzelnen Unterkapiteln wird auf mögliche Feinheiten des jeweiligen Standards eingegangen.
+</p>
+
+<p>
+  Die Reihenfolge der Ergebnisse orientiert sich an der Struktur des 3. Kapitels. Zunächst wird die Erstellung der Datensätze beschrieben und in eine Relation zueinander hinsichtlich der Datenanzahl und Datenmenge gebracht. Darauffolgend wird die Dauer der Vorbereitung der Standards betrachtet, um einen Vergleich der unterschiedlicher Hardware vorzunehmen, gefolgt von dem Aufwand, diese Daten für den Nutzer bereitzustellen.
+</p>
+
+<p>
+  Die erzeugte Datenmenge fiel, wie in der nachfolgenden Abbildung zu erkennen ist, sehr unterschiedlich aus. Die größten Datenmengen wurden bei den Orthomosaiken der beiden Gebiete erzeugt. Dies ist damit zu begründen, dass für jede Kachel der überliegenden Zoomstufe 4 Kacheln benötigt werden, um diese eine Kachel abzudecken. Damit entsteht ein exponentielles Wachstum, welches durch die Auflösung der Orthomosaike hervorgerufen wird. Durch die in Kapitel 3.1.3 beschriebene fehlerhafte JPEG-Komprimierung des COG-Drivers bei der Erstellung ist hier eine höhere Dateigröße entstanden, welche jedoch aufgrund der Qualität der Daten akzeptabel ist.
+</p>
+
+toDo Erzeugte Datenmenge
+
+<p>
+  Die Generierung wurde auf zwei unterschiedlichen Systemen (Notebook und Workstation) durchgeführt. Diese unterscheiden sich vor allem durch ihre verbaute CPU. Während die Workstation mit 24 Threads parallel Berechnungen durchführen kann, sind es bei dem verwendeten Notebook nur 8 parallele Prozesse. Jedoch besitzt die CPU des Notebook einen höheren Boosttakt sowie Arbeitsspeicher mit schnellerer Taktung. Sofern die Software nicht darauf ausgerichtet ist, die Arbeitslast in parallele Prozesse aufzuteilen, zeigt sich jedoch das Notebook um einiges schneller. Konkret bedeutet dies, dass das Notebook bei der Generierung des TMS um das 1,33-Fache langsamer war als die Workstation. Hinsichtlich der WMS war wiederum die Workstation um das 1,05-Fache langsamer, was jedoch bei der sehr kurzen Zeiträumen für die Generierung kaum ins Gewicht fällt. Bei dem COG hingegen ist der Unterschied am stärksten erkennbar, hier benötigte die Workstation das 1,45-Fache der Zeit im Vergleich zum Notebook.
+</p>
+
+toDo Dauer der Generierung (Notebook)
+toDo Dauer der Generierung (Workstation)
+
+<p>
+  Der Upload der Daten erfolgte bei dem TMS und COG unter Nutzung von AWS S3, der WMS wurde direkt auf die EC2- Instanz hochgeladen. Durch die benötigte Zeit zum Upload der Daten und der ermittelten Datenmenge ergibt sich für den TMS eine Uploadgeschwindigkeit von 2,05 MB/s, für den WMS 4,52 MB/s und für das COG 4,61 MB/s. Dies zeigt, dass der Upload zu einer EC2- Instanz nahezu den gleichen Zeitwert aufweist, wie der Upload zu S3. Die geringe Geschwindigkeit bei dem TMS ergibt sich aus der Anzahl vieler kleiner Dateien.
+</p>
+
+toDo Dauer des Hochladens
+
+<p>
+  Als nächstes soll die Dauer des Downloads ausgewertet werden. Der Download bezieht sich dabei nur auf die Daten des jeweiligen Standards und nicht etwa auf die Hintergrundkarte oder die Dateien von OpenLayers. Am schnellsten werden selbstverständlich der TMS und WMTS geladen, denn diese beiden Standards liefern vorgerenderte Kacheln an den Nutzer aus. Zu erkennen ist, dass die Geschwindigkeit des WMTS bei den beiden Orthomosaiken höher ist als bei dem TMS. Dies ist auf das Format zurückzuführen, da der Geoserver entscheidet, ob er eine PNG- oder JPEG-Kachel ausgibt. Das COG zeigt sich schneller als der WMS, welches darin begründet ist, dass das COG nur die Daten aus dem internen Tiling an den Nutzer liefert, wohingegen der Geoserver die Daten des WMS zunächst aus dem internen Tiling rendert und anschließend das erzeugte Bild dem Nutzer zur Verfügung stellt. Dieser Schritt entfällt bei dem COG, da dies bereits von OpenLayers selbst erfolgt.
+</p>
+
+toDo Dauer des Downloads
+
+<p>
+  Das COG überträgt für die beiden Oberflächenmodelle eine extrem große Datenmenge. aufgrund der Tatsache, dass das COG nicht wie die anderen Standards Abbildungen überträgt, sondern die Rohdaten des GeoTIFFs selbst. Während die anderen Standards nur RGB bzw. RGBA-Kanäle mit Ganzzahlen von 0-255 übertragen, beinhaltet das COG die realen Höheninformationen, welche aus einer größeren Datenmenge bestehen. Bei dem TMS und WMTS ist, ähnlich wie bei der Übertragungsdauer, die Größe aufgrund des flexiblen Formats von Vorteil. Dadurch überträgt der TMS ein 4,49-Faches der Datenmenge des WMTS.
+</p>
+
+toDo Größe des Downloads
+
+<p>
+  Die nachfolgende Tabelle beinhaltet zusammenfassend die gewichtete Matrix. Wie in Kapitel 4.5 beschrieben, wurde als Standard ein Faktor von 1 für alle Kriterien festgelegtn. Diese Gewichtung kann in der Web-Version interaktiv geändert werden. Alternativ ist sie auch unter der folgenden URL zu finden.
+</p>
+
+<div class="tableWrapper" id="table-5-1">
+  <p class="caption">
+    <span>Tabelle 5-1:</span> Gewichtete Matrix mit einheits Faktor
+  </p>
+  <table>
+    <tr>
+      <th>Kriterium</th>
+      <th>Faktor</th>
+      <th>TMS</th>
+      <th>WMS</th>
+      <th>WMTS</th>
+      <th>COG</th>
+    </tr>
+    <tr>
+      <td>Datenaufarbeitung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+      <td class="data">9</td>
+      <td class="data">6</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Datenabruf (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">9</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+      <td class="data">6</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Kosten)</td>
+      <td class="data">1</td>
+      <td class="data">9</td>
+      <td class="data">3</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Visualisierung (durch den Nutzer)</td>
+      <td class="data">1</td>
+      <td class="data">0</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Rasterwerte abfragen (durch den Nutzer)</td>
+      <td class="data">1</td>
+      <td class="data">0</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Interoperabilität (der Standards)</td>
+      <td class="data">1</td>
+      <td class="data">0</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gesamtwert</td>
+      <td class="data">24</td>
+      <td class="data">39</td>
+      <td class="data">45</td>
+      <td class="data">57</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  In den nachfolgenden Abschnitten sollen die Ergebnisse der einzelnen Standards detaillierter aufgezeigt werden.
+</p>

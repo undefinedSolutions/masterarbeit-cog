@@ -1,0 +1,42 @@
+<app-headline [headline]="'Ergebnisse des WMS'" [h]="2" [number]="'5.2'" [id]="5.2"></app-headline>
+
+<p>
+  Der Geoserver bietet, wie bereits in Kapitel 3.2.2.1 beschrieben, die Möglichkeit, die Layer on-the-fly zu einem anderen Koordinatensystem zu projizieren. Dies wurde exemplarisch für das Orthomosaik Strenzfeld getestet und die hierfür benötigte Zeit verglichen. Im Durchschnitt ist der Request mit EPSG:32632 um das 1,8-Fache langsamer als der EPSG:3857. Somit sollte, wie ebenfalls bereits im Kapitel 3.2.2.1 erwähnt, die Datenquelle, sofern dies möglich ist, im abgefragten Koordinatensystem bereitgestellt werden.
+</p>
+
+toDo Vergleich on-the-fly projektion
+
+<p>
+  Die Kosten für die EC2-Instanz belaufen sich bei der in Kapitel 3.2.2 gewählten t3.small EC2-Instanz auf 0,024$. Hierdurch entstehen im Ergebnis die folgenden Gesamtkosten:
+</p>
+
+<ul>
+  <li>Rechenleistung der EC2-Instanz: 0,0151 $ x 730 Stunden im Monat = 11,02$ monatlich</li>
+  <li>Bereitstellung des Speicherplatzes: 20 GB x 0,119$ x 1 Instances = 2,38$ monatlich</li>
+</ul>
+<p>
+  Insgesamt ergibt dies monatliche Kosten in Höhe von 13,40$.
+</p>
+
+<p>
+  Mihtilfe des GeoServers lassen sich zwar verschiedene Stile erstellen und diese über den Request für einen Layer anfordern, jedoch wird hierbei immer ein neues Abbild auf dem Server erzeugt, welches an den Nutzer gesendet werden muss. Somit ist das Hinzufügen eines neuen Stiles, im Gegensatz zu dem TMS, ohne einen neuen Datensatz zu erzeugen möglich. In der nachfolgenden Abbildung ist eine interaktive WebMap zu sehen, welche in der Web-Version dieser Arbeit genutzt werden kann, um dieses Verhalten zu demonstrieren. Alternativ kann diese auch unter der folgenden URL abgerufen werden:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld_style"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld_style</a>
+</p>
+
+<div style="height:420px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="5-99"
+      caption="WebMap des Orthomosaiks Strenzfeld mit der Möglichkeit den Style ändern zu können"
+      source="WMS"
+      iframeID="WMSStyle"
+      iframeStyle="height:350px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/wms/dsm_strenzfeld_style"></app-iframe-map>
+</div>
+
+<p>
+  Wie in Kapitel 2.2 beschrieben, können weiterhin, einzelne Rasterinformationen per Request an den Geoserver abgefragt werden. hierbei kann es sich nicht nur um RGB-Werte, sondern auch die Höheninformationen des Oberflächenmodells handeln. Diese Art der Implementierung hat jedoch den Nachteil, dass pro Rasterinformation jeweils ein Request an den Geoserver notwendig ist.
+</p>

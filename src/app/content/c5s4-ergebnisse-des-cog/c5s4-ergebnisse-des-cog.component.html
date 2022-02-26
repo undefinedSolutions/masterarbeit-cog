@@ -1,0 +1,67 @@
+<app-headline [headline]="'Ergebnisse des COG'" [h]="2" [number]="'5.4'" [id]="5.4"></app-headline>
+
+<p>
+  Ein COG kann, wie in Kapitel 3.1.3 beschrieben, mit einer Kachelgröße von 512 x 512 Pixel erstellt werden. Sollte jedoch der Zusatz <span class="code">-co BLOCKXSIZE=512 -co BLOCKYSIZE=512 --config GDAL_TIFF_OVR_BLOCKSIZE 512</span> nicht vorhanden sein, wird das COG mit einer Kachelgröße von 256 x 256 Pixel erzeugt. Um den Unterschied in der Performance der Nutzung des COG darzustellen, wurde die nachfolgende Abbildung angefertigt. In dieser ist zu erkennen, dass die Nutzung der kleineren Kachelgröße zu einer 2,61-Fachen Verlängerung der Ladezeiten führt. Dies kann auf die COG-Implementierung von OpenLayers zurückgeführt werden, da die Requests nicht parallel verarbeitet werden, wie es beispielsweise bei dem TMS der Fall ist. Somit sind weniger Requests mit einer größerer Abdeckung zu bevorzugen.
+</p>
+
+toDo Vergleich Download...
+
+<p>
+  Die Kosten für die Bereitstellung des COG sind im Vergleich zu dem TMS extrem überschaubar:
+</p>
+
+<ul>
+  <li>Speicherung der TMS: 3,2 GB x 0,0245$ = 0,0784$ => 0,08$ monatlich.</li>
+  <li>Hochladen der 4 Dateien: 4 PUT-Anforderungen x 0,0000054$ pro Anfrage = 0,0000216$ => 0,00$</li>
+</ul>
+
+<p>
+  Die RGB-Rasterwerte lassen sich aktuell durch OpenLayers auch für COG-Layer auslesen. Für Layer, welche nicht in RGB(A)-Kanälen vorliegen, wie in dieser Arbeit beispielsweise die Oberflächenmodelle, gibt es aktuell noch keine Implementierung durch OpenLayers. Dieses Feature ist jedoch für die nächste Version vorgesehen und kann bereits in der neusten “Dev-Version” getestet werden.<app-quote
+  id="5-Github-tschaub"
+  author="Github-OpenLayers: tschaub"
+  lastVisit="29.01.2022"
+  publicationDate="07.02.2022"
+  title="Get pixel data"
+  [vgl]="true"
+  URL="https://github.com/openlayers/openlayers/pull/13338"></app-quote> Das Erscheinungsdatum der nächsten Version ist aktuell jedoch noch nicht absehbar. Aufgrund der Anwendbarkeit des Features in Form der “Dev-Version” , wird es dennoch in die gewichtete Matrix mit aufgenommen, da es bereits entwickelt und getestet wurde.
+</p>
+
+<p>
+  Die Visualisierung der Oberflächenmodelle erfolgt für COG direkt im Browser des Nutzers. Dadurch werden, wie in der Abbildung [toDo: in der finalen Version Link zu Abbildung Größe des Downloads] zu sehen, die meisten Daten übertragen. Gleichzeitig kann der Nutzer die Visualisierung on-the-fly ohne Request an einen Server ändern, z.B. um die Range der Visualisierung anzupassen. Diese Art der Interaktion ist in einem anderen Standard nicht umsetzbar. Ein Beispiel hierfür wird in der folgenden interaktiven WebMap dargestellt. . Alternativ ist auch diese unter der folgenden URL abrufbar:
+</p>
+<p style="text-align: center;">
+  <a href="https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld_style_range"
+      rel="noopener"
+      target="_blank">https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld_style_range</a>
+</p>
+
+<div style="height:420px; overflow: hidden; width:100%;">
+  <app-iframe-map
+      captionID="5-999"
+      caption="WebMap des Orthomosaiks Strenzfeld mit der Möglichkeit, den Style individuell anzupassen"
+      source="COG"
+      iframeID="COGStyleRange"
+      iframeStyle="height:350px;"
+      iframeURL="https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld_style_range"></app-iframe-map>
+</div>
+
+<p>
+  Ein erzeugtes COG kann mithilfe eines GeoServer-Plugins als Datenspeicher genutzt werden. Dieses kann direkt über die URL oder S3 eingebunden werden.<app-quote
+  id="5-Geoserver-COG"
+  author="GeoServer"
+  lastVisit="29.01.2022"
+  title="COG (Cloud Optimized GeoTIFF) Support"
+  [vgl]="true"
+  URL="https://docs.geoserver.org/latest/en/user/community/cog/cog.html"></app-quote> Die Einbindung über S3 hat den Vorteil, dass das AWS S3 Bucket nicht öffentlich sein muss, da hier über r access- und private- Key zur Legitimierung die Zugriffsrechte auf das Bucket angelegt und eingeschränkt werden können. In dieser Arbeit ist das Bucket für die Öffentlichkeit freigegeben, somit wurden die COG per HTTP eingebunden.
+  Die Implementierung des COG erfolgte demnach wie in der folgenden Abbildung zu erkennen.
+</p>
+
+<app-figure
+    id="5-999"
+    src="/assets/images/Ergebnisse/COG_geoserver.png"
+    caption="Hinzufügen eines COG als Datenquelle"
+    source="Geoserver"></app-figure>
+
+<p>
+  Die Beobachtungen führten zu der unerwarteten Erkenntnis, dass das Lesen des COG aus AWS S3 bei den Orthomosaiken die gleiche Dauer in Anspruch nimmt, wie das Lesen der Datenquelle von dem Speicher der EC2-Instanz. Die AWS S3 und EC2-Instanz befinden sich zwar in der gleichen AWS-Region und somit vermutlich auch im gleichen Rechenzentrum, dennoch wurde hier eine erheblich höhere Dauer des Downloads erwartet. Diese wurde durch das Ergebnis nicht bestätigt. Selbstverständlich kann dieser Datenspeicher der EC2-Instanz auch genutzt werden, um einen WMTS bereitzustellen. Sofern die Kacheln dann als Cache auf der EC2-Instanz vorliegen, verringert sich in der Konsequenz die Bereitstellung wie in Kapitel 5.3 dargestellt.
+</p>

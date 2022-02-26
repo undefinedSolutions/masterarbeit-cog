@@ -49,6 +49,11 @@ import { C4s2BenchmarkDatenbereitstellungComponent } from './content/c4s2-benchm
 import { C4s3BenchmarkDatenabrufComponent } from './content/c4s3-benchmark-datenabruf/c4s3-benchmark-datenabruf.component';
 import { C4s4KostenfaktorDerBereitstellungComponent } from './content/c4s4-kostenfaktor-der-bereitstellung/c4s4-kostenfaktor-der-bereitstellung.component';
 import { C4s5GewichteteMatrixComponent } from './content/c4s5-gewichtete-matrix/c4s5-gewichtete-matrix.component';
+import { C5VorstellungDerErgebnisseUndDiskussionComponent } from './content/c5-vorstellung-der-ergebnisse-und-diskussion/c5-vorstellung-der-ergebnisse-und-diskussion.component';
+import { C5s1ErgebnisseDesTMSComponent } from './content/c5s1-ergebnisse-des-tms/c5s1-ergebnisse-des-tms.component';
+import { C5s2ErgebnisseDesWMSComponent } from './content/c5s2-ergebnisse-des-wms/c5s2-ergebnisse-des-wms.component';
+import { C5s3ErgebnisseDesWMTSComponent } from './content/c5s3-ergebnisse-des-wmts/c5s3-ergebnisse-des-wmts.component';
+import { C5s4ErgebnisseDesCOGComponent } from './content/c5s4-ergebnisse-des-cog/c5s4-ergebnisse-des-cog.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +105,11 @@ import { C4s5GewichteteMatrixComponent } from './content/c4s5-gewichtete-matrix/
     C4s3BenchmarkDatenabrufComponent,
     C4s4KostenfaktorDerBereitstellungComponent,
     C4s5GewichteteMatrixComponent,
+    C5VorstellungDerErgebnisseUndDiskussionComponent,
+    C5s1ErgebnisseDesTMSComponent,
+    C5s2ErgebnisseDesWMSComponent,
+    C5s3ErgebnisseDesWMTSComponent,
+    C5s4ErgebnisseDesCOGComponent,
   ],
   imports: [
     BrowserModule

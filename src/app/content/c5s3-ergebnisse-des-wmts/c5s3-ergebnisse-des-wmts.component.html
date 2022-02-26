@@ -1,0 +1,44 @@
+<app-headline [headline]="'Ergebnisse des WMTS'" [h]="2" [number]="'5.3'" [id]="5.3"></app-headline>
+
+<p>
+  Für den WMTS kann ein Cache vorgerendert oder bei Abruf durch den Nutzer on-the-Fly erzeugt werden. Sofern kein Cache vorliegt, benötigt der WMTS durch die Generierung mehr Zeit für die Auslieferung der Tiles, dies wurde exemplarisch für das Orthomosaik Lindenrain durchgeführt. In der folgenden Abbildung ist der Vergleich des Requests mit und ohne vorhandenen Cache zu sehen. Die Daten zeigen, dass die Generierung die Auslieferung um das 7,68-Fache verlangsamt. Dieses Ergebnis ist verständlich, da der Server, sofern ein Cache vorhanden ist, die Daten nur an den Nutzer ausliefern muss, ohne das als Datenquelle genutzte GeoTIFF vorher zu lesen.
+</p>
+
+toDo vergleich caching on-the-fly Generierung
+
+<p>
+  Sollte das Format nicht wie in Kapitel 3.2.2.2 beschrieben von "image/png" auf "image/vnd.jpeg-png" gewechselt werden, erfordern zumindest die Orthomosaike die Übertragung einer erheblich größeren Datenmenge, wie in der nachfolgenden Abbildung exemplarisch für das Orthomosaik Strenzfeld dargestellt. Die Größe des Downloads, sofern "image/png" gewählt wurde, ist um ein 1,57-Faches größer, dieser Umstand sollte vermieden werden.
+</p>
+
+toDo Vergliech größe
+
+<p>
+  Die monatlichen Kosten sind ähnlich zu betrachten wie die des WMS in Kapitel 5.2. Zu bedenken ist jedoch auch, dass der GeoServer in der Lage ist, beide Standards, den WMS und WMTS, gleichzeitig zur Verfügung zu stellen. Sollte sich also für einen der beiden Standards entschieden werden, kann der andere der beiden ebenfalls problemlos dargestellt werden.
+</p>
+
+<p>
+  Wie bereits bei dem WMS kann auch hier der Stil über den Geoserver verändert werden, jedoch unter der Voraussetzung, für jeden Stil des WMTS einen neuen Cache zu erzeugen. Dies kann unter Umständen zu einem großen Problem führen, falls der Server über nicht genügend Speicherplatz verfügt, um alle benötigten Caches für die Nutzer abzulegen. Sollten es nur um kleine Nuancen in der Visualisierung gehen, kann dies zu vielen verschiedenen Stilen führen.
+</p>
+
+<p>
+  Ein WMTS kann auch als TMS genutzt werden. Zu diesem Zweck ist lediglich die URL des WMTS als Source-URL des TMS anzuwenden, wie in dem folgenden Codebeispiel zu sehen:
+</p>
+
+<app-codeblock [lineNumbers]="false" code="const TMS = new TileLayer({
+  extent: [1299642, 6765838, 1304883, 6769892],
+  source: new XYZ({
+    attributions: AoiStrenzfeld.attributions,
+    minZoom: 0,
+    maxZoom: 21,
+    url: 'https://geoserver.masterarbeit-cog.de/gwc/service/wmts?' +
+    'layer=wmts:ortho_strenzfeld&style=&tilematrixset=WebMercatorQuad&' +
+    'Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/vnd.jpeg-png' +
+    &TileMatrix={z}&TileCol={x}&TileRow={y}'
+  }),
+})"></app-codeblock>
+
+<p>
+  Die Ergebnisse des Vergleichs der Dauer des Downloads unter Berücksichtigung des TMS sind in der folgenden Abbildung zu sehen. Ein unerwartetes Ergebnis, ist die Geschwindigkeit des WMTS-TMS im Vergleich zu dem WMTS. Dies ist auf eine bessere Implementierung des TMS in OpenLayer zurückzuführen. Bei den beiden Oberflächenmodellen ist ebenfalls zu erkennen, dass der WMTS und TMS das “image/vnd.jpeg-png”-Format nutzen und somit die übertragenen Datenmengen geringer ausfallen. Dies erklärt auch die schnellere Übertragung des WMTS und WMTS in diesem Szenario.
+</p>
+
+todo Dauer des Downloads
