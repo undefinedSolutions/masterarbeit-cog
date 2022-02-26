@@ -14,7 +14,7 @@
 <app-codeblock [lineNumbers]="false" code="import TileLayer from 'ol/layer/Tile';"></app-codeblock>
 
 <p>
-  Die Klasse TileLayer beinhaltet den Parameter "source", in welchem die XYZ- Klasse eingefügt wird. Innerhalb dieser Klasse wiederum findet sich der Parameter "url", mithilfe dessen die URL des TMS als Parameter eingefügt werden kann. Hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet, um eine Anforderung für den Kartenausschnitt vom Server zu ermöglichen. 
+  Die Klasse TileLayer beinhaltet den Parameter "source", in welchem die XYZ- Klasse eingefügt wird. Innerhalb dieser Klasse wiederum findet sich der Parameter "url", mithilfe dessen die URL des TMS als Parameter eingefügt werden kann. Hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet, um eine Anforderung für den Kartenausschnitt vom Server zu ermöglichen.
 </p>
 
 <app-codeblock [lineNumbers]="false" code="import XYZ from 'ol/source/XYZ';
@@ -60,7 +60,7 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
     ' Hochschule Anhalt',
     minZoom: 0,
     maxZoom: 21,
-    url: 'https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/' + 
+    url: 'https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/' +
     '{z}/{x}/{-y}.png'
   }),
 })"></app-codeblock>
@@ -70,8 +70,8 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
 </p>
 
 <app-codeblock [lineNumbers]="false" code="layers: [
-   new TileLayer({source: new OSM()}),
-   TMS
+  new TileLayer({source: new OSM()}),
+  TMS
 ],"></app-codeblock>
 
 <p>
