@@ -12,7 +12,7 @@ export class C2s1TileMatrixSetComponent implements AfterViewInit {
   constructor(private tablesService:TablesService) { }
 
   ngAfterViewInit(): void {
-    this.tablesService.pushTable('Auszug aus den relevanten Informationen einen WKSS', "2-1")
+    this.tablesService.pushTable('Auszug aus den relevanten Informationen eines WKSS', "2-1")
   }
 
 }

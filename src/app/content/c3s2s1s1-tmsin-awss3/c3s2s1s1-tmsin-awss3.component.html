@@ -5,14 +5,14 @@
 </p>
 
 <p>
-  Das Ordnerverzeichnis der einzelnen TMS wird über den folgenden AWS CLI- Befehl auf das hierfür vorgesehene AWS S3- Bucket geladen.
+  Das Ordnerverzeichnis der einzelnen TMS wird über den folgenden AWS CLI- Befehl auf das hierfür vorgesehene AWS S3-Bucket geladen.
 </p>
 
 <app-codeblock [lineNumbers]="false" code="aws s3 sync ./tms/ortho_strenzfeld/
     s3://data.masterarbeit-cog.de/tms/ortho_strenzfeld"></app-codeblock>
 
 <p>
-  Anschließend können alle Tiles des TMS über die URL wie im nächsten Beispiel zu sehen, abgerufen werden.<br>
+  Anschließend können alle Tiles des TMS über die URL, wie im nächsten Beispiel zu sehen, abgerufen werden.<br>
   <a href="https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/18/139597/175346.png"
       rel="noopener"
       target="_blank">https://data.masterarbeit-cog.de/tms/ortho_strenzfeld/18/139597/175346.png</a><br>
@@ -24,4 +24,5 @@
     id="3-3"
     src="/assets/images/Datenbereitstellung/TMS-tiles.jpg"
     caption="Beispiel Kachel aus dem TMS ortho_strenzfeld und dsm_strenzfeld"
+    imageStyle="padding: 0 15%;"
     source="TMS Strenzfeld"></app-figure>

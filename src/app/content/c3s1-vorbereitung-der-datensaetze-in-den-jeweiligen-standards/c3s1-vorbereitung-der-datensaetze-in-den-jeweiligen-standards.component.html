@@ -1,7 +1,7 @@
 <app-headline [headline]="'Vorbereitung der Datensätze in den jeweiligen Standards'" [h]="2" [number]="'3.1'" [id]="3.1"></app-headline>
 
 <p>
-  Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden. Dabei ist, je nach Standard, methodisch unterschiedlich vorzugehen. Ziel dieser Arbeit ist es, alle benötigten Schritte mithilfe von Open-source Software durchzuführen, um die einzelnen Arbeitsschritte für jeden Anwender auch ohne proprietäre Software zu ermöglichen.
+  Die Datensätze müssen vor Ihrer Bereitstellung zuerst für den jeweiligen Standard aufgearbeitet werden. Dabei ist, je nach Standard, methodisch unterschiedlich vorzugehen. Ziel dieser Arbeit ist es, alle benötigten Schritte mithilfe von Open-Source Software durchzuführen, um die einzelnen Arbeitsschritte für jeden Anwender auch ohne proprietäre Software zu ermöglichen.
 </p>
 <p>
   Die Arbeitsschritte werden dabei nicht über eine Grafische Benutzeroberfläche (<app-abbreviation abbreviation="GUI" description="Grafische Benutzeroberfläche"></app-abbreviation>), wie sie durch QGIS bereitgestellt wird, ausgeführt. Diese Entscheidung wurde getroffen, um zum einen mögliche Eingabefehler zu vermeiden und die Ergebnisse reproduzierbar zu machen, und zum anderen die Möglichkeit einer Automatisierung der Vorbereitung der Daten zu bieten.
@@ -16,15 +16,15 @@
 </p>
 
 <p>
-  Der Optimized GeoTIFF- generator von GDAL wurde jedoch erst in der Version 3.1 veröffentlicht. Die Erstellung des COG ist durch die Version 3.0.4 folglich nicht möglich, daher ist es nötig, GDAL mithilfe von Anaconda, einer Software zum Arbeiten in Entwicklungsumgebungen, zu installieren<app-quote
+  Der Optimized GeoTIFF- Generator von GDAL wurde jedoch erst in der Version 3.1 veröffentlicht. Die Erstellung des COG ist durch die Version 3.0.4 folglich nicht möglich, daher ist es nötig, GDAL mithilfe von Anaconda, einer Software zum Arbeiten in Entwicklungsumgebungen, zu installieren.<app-quote
   id="3-anaconda-GDAL"
   author="GDAL"
   chapter="conda-forge / packages / gdal 3.4.1"
   lastVisit="29.01.2022"
   title="GDAL"
   [vgl]="true"
-  URL="https://anaconda.org/conda-forge/gdal"></app-quote>.
-  Anaconda ermöglicht die parallele Installation mehrerer Versionen der gleichen Software<app-quote
+  URL="https://anaconda.org/conda-forge/gdal"></app-quote>
+  Anaconda ermöglicht die parallele Installation mehrerer Versionen der gleichen Software.<app-quote
   id="3-GeeksForGeeks-anaconda"
   author="GeeksForGeeks"
   chapter="Why do we need to set up a virtual environment ?"
@@ -32,5 +32,5 @@
   publicationDate="17.05.2020"
   title="Set up virtual environment for Python using Anaconda"
   [vgl]="true"
-  URL="https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda"></app-quote>. Zudem lässt sich spezifisch die benötigte Version auswählen ohne eine bestehende Abhängigkeit, wie in diesem Fall von QGIS, zu gefährden. Diese Installationsmethode ist als "virtual environment" bekannt und bei Web-Entwicklern bzw. Data-Scientists, welche an verschiedenen Projekten arbeiten, weit verbreitet, da diese, wie in unserem Fall, meist verschiedene Versionen einer Software benötigen, um die unterschiedlichen Anforderungen der Projekte erfüllen zu können. So sollen die nachfolgenden Abschnitte die jeweils verschiedenen Methoden erklären.
+  URL="https://www.geeksforgeeks.org/set-up-virtual-environment-for-python-using-anaconda"></app-quote> Zudem lässt sich die benötigte Version spezifisch auswählen ohne eine bestehende Abhängigkeit, wie in diesem Fall von QGIS, zu gefährden. Diese Installationsmethode ist als "virtual environment" bekannt und bei Web-Entwicklern bzw. Data-Scientists, welche an verschiedenen Projekten arbeiten, weit verbreitet, da diese, wie in unserem Fall, meist verschiedene Versionen einer Software benötigen, um die unterschiedlichen Anforderungen der Projekte erfüllen zu können. So sollen die nachfolgenden Abschnitte die jeweils verschiedenen Methoden erklären.
 </p>

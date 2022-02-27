@@ -1,24 +1,24 @@
 <app-headline headline="Cloud Optimized GeoTIFF (COG)" [h]="2" number="2.4" [id]="2.4"></app-headline>
 
 <p>
-  Cloud Optimized GeoTIFF (COG) ist aktuell noch nicht durch die OGC als Standard definiert worden. Das OGC hat jedoch in Zukunft die Absicht, auch weitere Cloud Optimized Standards mit aufzunehmen und deren Verbreitung und Nutzung zu erleichtern<app-quote
+  Cloud Optimized GeoTIFF (COG) ist aktuell noch nicht durch die OGC als Standard definiert worden. Das OGC hat jedoch in Zukunft die Absicht, auch weitere Cloud Optimized Standards mit aufzunehmen und deren Verbreitung und Nutzung zu erleichtern.<app-quote
       id="2-Open Geospatial Consortium-COG"
       author="Open Geospatial Consortium"
       lastVisit="29.01.2022"
       publicationDate="03.12.2021"
       title="Towards a Cloud-Native Geospatial standards baseline"
       [vgl]="true"
-      URL="https://www.ogc.org/blog/4609"></app-quote>.
+      URL="https://www.ogc.org/blog/4609"></app-quote>
 </p>
 
 <p>
-  Das COG ermöglicht die Nutzung von zwei Methoden verschiedener Technologien. Zum einen das Speichern und Organisieren von Rasterdaten innerhalb eines GeoTIFFs und zum anderen das gezielte Abrufen von Bereichsanforderungen über HTTP Get range requests<app-quote
+  Das COG ermöglicht die Nutzung von zwei Methoden verschiedener Technologien. Zum einen das Speichern und Organisieren von Rasterdaten innerhalb eines GeoTIFFs und zum anderen das gezielte Abrufen von Bereichsanforderungen über HTTP Get range requests.<app-quote
       id="2-cogeotiff"
       author="Cloud Optimized GeoTIFF"
       lastVisit="29.01.2022"
       title="Cloud Optimized GeoTIFF in depth"
       [vgl]="true"
-      URL="https://www.cogeo.org/in-depth.html"></app-quote>.
+      URL="https://www.cogeo.org/in-depth.html"></app-quote>
 </p>
 
 <p>
@@ -33,9 +33,8 @@
     [sourceQuote]="element84"></app-figure>
 
 <p>
-  Ein weiterer Aspekt, welcher den Zugriff auf ein COG beschleunigt, ist das Speichern von Übersichten. Hierbei handelt es sich um schlechter aufgelöste Abbildungen, welche das gesamte Gebiet abdecken und auch innerhalb des COG gespeichert werden. Diese Übersichten ermöglichen es dem Nutzer, nur diejenigen Rasterdaten anzufordern ,die aktuell für eine Zoomstufe benötigt werden. So wird unnötige Netzwerklast vermieden. Technisch lässt sich dies mit dem TMS vergleichen, jedoch werden die Tiles beim COG in der inneren Struktur gespeichert.
-  <app-quote
-      [edb]="true"
+  Ein weiterer Aspekt, welcher den Zugriff auf ein COG beschleunigt, ist das Speichern von Übersichten. Hierbei handelt es sich um schlechter aufgelöste Abbildungen, welche das gesamte Gebiet abdecken und auch innerhalb des COG gespeichert werden. Diese Übersichten ermöglichen es dem Nutzer, nur diejenigen Rasterdaten anzufordern, die aktuell für eine Zoomstufe benötigt werden. So wird unnötige Netzwerklast vermieden. Technisch lässt sich dies mit dem TMS vergleichen, jedoch werden die Tiles beim COG in der inneren Struktur gespeichert.<app-quote
+      [ebd]="true"
       id="2-Element84"></app-quote>
 </p>
 
@@ -51,7 +50,7 @@
     [sourceQuote]="element84"></app-figure>
 
 <p>
-  Die Positionsangabe der Tiles erfolgt innerhalb des Headers des COG in sogenannten Image File Directory (IFD)<app-quote
+  Die Positionsangabe der Tiles erfolgt innerhalb des Headers des COG in sogenannten Image File Directory (IFD).<app-quote
   id="2-cogeotiff-Github"
   author="Cloud Optimized GeoTIFF"
   chapter="Definition"
@@ -59,14 +58,14 @@
   publicationDate="27.10.2021"
   title="Cloud optimized GeoTIFF"
   [vgl]="true"
-  URL="https://github.com/cogeotiff/cog-spec/blob/master/spec.md"></app-quote>.
+  URL="https://github.com/cogeotiff/cog-spec/blob/master/spec.md"></app-quote>
 </p>
 
 <p>
   Der Aufbau eines COG gliedert sich wie folgt:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li>Eine Signatur, entweder TIFF oder BigTIFF (falls größer als 4GB)</li>
   <li>Den Header des GeoTIFFs, IFD</li>
   <li>Werte, welche nicht in den IFD gehören; dies können zum Beispiel TileOffsets, TileByteCounts oder GeoTIFF keys sein (Optional)</li>
@@ -85,7 +84,7 @@
 </p>
 
 <p>
-  Um die benötigten Tiles an den Nutzer auszuliefern, wird eine Methode des HTTP-Servers namens HTTP Get Range- requests genutzt. Hierbei ist zu beachten, dass der HTTP-Server die Accept-Ranges: bytes unterstützt. Durch diese Methode ist es möglich, gezielt Bereiche von Bytes an den Client zu übertragen, ohne das gesamte GeoTIFF senden zu müssen.
+  Um die benötigten Tiles an den Nutzer auszuliefern, wird eine Methode des HTTP-Servers namens HTTP Get Range-requests genutzt. Hierbei ist zu beachten, dass der HTTP-Server die Accept-Ranges: bytes unterstützt. Durch diese Methode ist es möglich, gezielt Bereiche von Bytes an den Client zu übertragen, ohne das gesamte GeoTIFF senden zu müssen.
 </p>
 
 <p>
@@ -93,5 +92,5 @@
 </p>
 
 <p>
-  Aufgrund dessen ist der oben beschriebene Aufbau des COG wichtig und sollte auch stets eingehalten und überprüft werden. So wird gewährleistet, dass, zuerst der beschreibende Teil des COG gelesen wird, welcher die Positionen der Rasterdaten wiedergibt. Anhand dieser Positionsbeschreibung erkennt die Software anschließend, wo sich die für die Ansicht benötigten Daten befinden und kann diese Tiles gezielt abfragen.
+  Aufgrund dessen ist der oben beschriebene Aufbau des COG wichtig und sollte auch stets eingehalten und überprüft werden. So wird gewährleistet, dass zuerst der beschreibende Teil des COG gelesen wird, welcher die Positionen der Rasterdaten wiedergibt. Anhand dieser Positionsbeschreibung erkennt die Software anschließend, wo sich die für die Ansicht benötigten Daten befinden und kann diese Tiles gezielt abfragen.
 </p>

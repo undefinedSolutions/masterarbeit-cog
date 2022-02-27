@@ -63,7 +63,7 @@
 </div>
 
 <p>
-  Die Software Ubuntu bietet die Möglichkeit, ohne Installation von weiteren Paketen, die Dauer einzelner Kommandobefehle zu erfassen. Zur Ausführung wird einfach der Begriff <span class="code">time</span> vor den eigentlichen Befehl hinzugefügt. Übertragen auf den Befehl zur Erstellung eines TMS auf Kapitel 3.1 sieht der Befehl entsprechend beispielsweise wie folgt aus:
+  Die Software Ubuntu bietet die Möglichkeit, ohne Installation von weiteren Paketen, die Dauer einzelner Kommandobefehle zu erfassen. Zur Ausführung wird einfach der Begriff <span class="code">time</span> vor den eigentlichen Befehl hinzugefügt. Übertragen auf den Befehl zur Erstellung eines TMS auf <a href="#content-3.1">Kapitel 3.1</a> sieht der Befehl entsprechend beispielsweise wie folgt aus:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="time gdal2tiles.py --zoom=0-20 -s EPSG:3857 --processes=24
@@ -96,7 +96,7 @@ sys   2m12,649s"></app-codeblock>
     [vgl]="true"
     URL="https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1/556411#556411"></app-quote>
 </p>
-<ul>
+<ul class="avoidBreak">
   <li><span class="code">real</span> = bezeichnet die tatsächliche Realzeit, die der Task benötigt hat.</li>
   <li><span class="code">user</span> = summiert die CPU-Zeiten der einzelnen Threads. Hierdurch ergibt es sich, sofern mehrere Threads diesem Prozess zugewiesen wurden, dass diese Zeitangabe ein vielfaches der Realzeit aufweist.</li>
   <li><span class="code">sys</span> = beschreibt die Zeit, die der Prozess für Aufgaben verwendet hat, die nur vom Betriebssystem selbst durchgeführt werden können. Dies ist in diesem Beispiel zum Lesen und Schreiben von Dateien der Fall.</li>

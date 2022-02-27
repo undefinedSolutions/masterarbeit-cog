@@ -1,7 +1,7 @@
 <app-headline [headline]="'Vorbereitung des TMS'" [h]="3" [number]="'3.1.1'" [id]="3.11"></app-headline>
 
 <p>
-  Zur Erstellung eines TMS bietet GDAL ein Python Script namens gdal2tiles.py an, welches standardmäßig zur Verfügung gestellt wird. Inputs, welche nicht dem Datentypen Byte entsprechen, werden jedoch automatisch zu diesen konvertiert, wodurch es zu fehlerhaften Ergebnissen kommen kann. Diese Konvertierung sollte unbedingt vor der eigentlichen Erstellung des TMS erfolgen.
+  Zur Erstellung eines TMS bietet GDAL ein Python Script namens gdal2tiles.py an, welches standardmäßig zur Verfügung gestellt wird. Inputs, welche nicht dem Datentyp Byte entsprechen, werden jedoch automatisch zu diese konvertiert, wodurch es zu fehlerhaften Ergebnissen kommen kann. Diese Konvertierung sollte unbedingt vor der eigentlichen Erstellung des TMS erfolgen.
 </p>
 
 <p>
@@ -9,11 +9,11 @@
 </p>
 
 <p>
-  Um diese Datensätze aufzuarbeiten, bleibt nur die Verwendung von QGIS oder eine andere Desktop-GIS-Software. Die Notwendigkeit resultiert aus der im Vorfeld nötigen Anpassung der Visualisierung, welches nicht mithilfe von GDAL erfolgen kann. Zum Vergleich mussten bei den Oberflächenmodellen nur die Symbologie in den Eigenschaften angepasst werden. Das Orthomosaik von dem Gebiet Strenzfeld setzt hingegen voraus, dass die Minimum- und Maximumwerte der Bänder RGB auf 0 - 65535 gesetzt werden, um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter "Transparenz" die Eingabe des "No Data Values", welcher angibt, welche Datenwerte als transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
+  Um diese Datensätze aufzuarbeiten, bleibt nur die Verwendung von QGIS oder einer anderen Desktop-GIS-Software. Die Notwendigkeit resultiert aus der im Vorfeld nötigen Anpassung der Visualisierung, was nicht mithilfe von GDAL erfolgen kann. Zum Vergleich mussten bei den Oberflächenmodellen nur die Symbologien in den Eigenschaften angepasst werden. Das Orthomosaik des Gebietes Strenzfeld setzt hingegen voraus, dass die Minimal- und Maximalwerte der Bänder RGB auf 0 - 65535 gesetzt werden, um eine korrekte Farbwiedergabe zu gewährleisten. Ebenso erfolgte in dem Reiter "Transparenz" die Eingabe des "No Data Values", welcher angibt, welche Datenwerte als transparent dargestellt werden sollen, sofern kein Alphakanal vorhanden ist.
 </p>
 
 <p>
-  Nachdem die Visualisierungen angepasst wurden, werden die Daten anschließend exportiert. Wie bereits erwähnt, erwartet das Script für die korrekte Erstellung des TMS als Eingabewert den Datentype Byte. Diese Einstellung kann beim Export der Daten erfolgen, indem der "Output mode" auf "Rendered image" gestellt wird. Durch diese Eingabe werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel erwiesen, die Datensätze unmittelbar in das benötigte Koordinatensystem zu konvertieren. Bezogen auf die gewählten Szenarien Web Mercator EPSG:3857 stellt Abbildung 7 die getroffenen Einstellungen für den Export dar.
+  Nach der Anpassung der Visualisierung, werden die Daten anschließend exportiert. Wie bereits erwähnt, erwartet das Script für die korrekte Erstellung des TMS als Eingabewert den Datentype Byte. Diese Einstellung kann beim Export der Daten erfolgen, indem der "Output mode" auf "Rendered image" gestellt wird. Durch diese Eingabe werden alle getroffenen Einstellungen bezüglich der Visualisierung als RGBA-Werte in das Ausgabe-Raster geschrieben. Ebenso hat es sich als praktikabel erwiesen, die Datensätze unmittelbar in das benötigte Koordinatensystem zu konvertieren. Bezogen auf die gewählten Szenarien Web Mercator EPSG:3857 stellt Abbildung 7 die getroffenen Einstellungen für den Export dar.
 </p>
 
 <app-figure
@@ -27,7 +27,7 @@
   <p>
     Die Minimalparameter des Scripts sind:
   </p>
-  <ul>
+  <ul class="avoidBreak">
     <li><span class="code">--zoom=[ZOOM]</span> = zu erstellende Zoomstufen (format:2-5, 10- or 10)</li>
     <li><span class="code">-s EPSG:[CODE]</span> = EPSG-Code des inputFile</li>
     <li><span class="code">inputFile</span></li>
@@ -44,7 +44,7 @@
 <app-codeblock [lineNumbers]="false" code="cat /proc/cpuinfo | grep processor | wc -l"></app-codeblock>
 
 <p>
-  Die Ausgabe dieser Eingabe sollte nun in den oben genannten Befehlsaufruf als Parameter <span class="code">--processes=[Anzahl der Threads]</span> übergeben werden.
+  Das Ergebnis dieser Eingabe sollte nun in den oben genannten Befehlsaufruf als Parameter <span class="code">--processes=[Anzahl der Threads]</span> übergeben werden.
 </p>
 
 <p>
@@ -63,14 +63,14 @@ Generating Overview Tiles:
 0...10...20...30...40...50...60...70...80...90...100"></app-codeblock>
 
 <p>
-  Während der Beobachtung der CPU Auslastung ist jedoch aufgefallen, dass nur ein Thread für die Erzeugung der "Overview Tiles" genutzt wird. Diese Annahme bestätigen auch weitere Nutzer in einem Ticket auf Github. Dieses wurde zwar am 30.01.2022 geschlossen<app-quote
+  Während der Beobachtung der CPU Auslastung fiel jedoch auf, dass nur ein Thread für die Erzeugung der "Overview Tiles" genutzt wird. Diese Annahme bestätigten auch weitere Nutzer in einem Ticket auf Github. Dieses wurde zwar am 30.01.2022 geschlossen.<app-quote
   id="3-GitHub-GDAL-Herjar"
   author="Github-GDAL: Herjar"
   lastVisit="29.01.2022"
   publicationDate="09.01.2019"
   title="gdal2tiles.py multiprocessor option not working for overview tiles"
   [vgl]="true"
-  URL="https://github.com/OSGeo/gdal/issues/1188"></app-quote>. Die Nutzung von nur einem Thread führt, wie bereits erwähnt, zu einer längeren Bearbeitungsdauer, da hier nicht die komplette Auslastung der Threads erreicht wird. Die diesbezüglichen Änderungen sind jedoch erst für die Version 3.5.0 vorgesehen, deren Veröffentlichung zurzeit nicht absehbar ist. Ein möglicher Lösungsansatz für den jetzigen Zeitpunkt ist es, die einzelnen Zoomstufen separat nacheinander zu erstellen, um eine bestmögliche Auslastung der CPU zu erreichen und somit den TMS in einer kürzeren Zeit zu erstellen. Diese Vorgehensweise ist jedoch nur bei der Nutzung einer CPU mit vielen Threads ein valider Ansatz, da andernfalls die Dauer zur Erstellung der "Base Tiles" diejenige der Erstellung der "Overview Tiles" aus den "Base Tiles" übertrifft. In <a href="#content-5.1">Kapitel 5.1</a> werden beide Methoden miteinander verglichen. Der obige Befehlsaufruf musste wie folgt angepasst werden, um die CPU besser auszulasten. Die kleinen Zoomstufen können dabei noch immer gesammelt erzeugt werden, ab Zoomstufe 21 empfiehlt es sich jedoch, diese auszulagern und somit nur die Base Tiles erstellen zu lassen. Die Befehle lassen sich durch ein Semikolon (;) trennen, ein Zeilenumbruch ist durch ein Backslash (\) möglich:
+  URL="https://github.com/OSGeo/gdal/issues/1188"></app-quote> Die Nutzung von nur einem Thread führt, wie bereits erwähnt, zu einer längeren Bearbeitungsdauer, da hier nicht die komplette Auslastung der Threads erreicht wird. Die diesbezüglichen Änderungen sind jedoch erst für die Version 3.5.0 vorgesehen, deren Veröffentlichung zurzeit nicht absehbar ist. Ein möglicher Lösungsansatz für den jetzigen Zeitpunkt ist es, die einzelnen Zoomstufen separat nacheinander zu erstellen, um eine bestmögliche Auslastung der CPU zu erreichen und somit den TMS in einer kürzeren Zeit zu erstellen. Diese Vorgehensweise ist jedoch nur bei der Nutzung einer CPU mit vielen Threads ein valider Ansatz, da andernfalls die Dauer zur Erstellung der "Base Tiles" diejenige der Erstellung der "Overview Tiles" aus den "Base Tiles" übertrifft. In <a href="#content-5.1">Kapitel 5.1</a> werden beide Methoden miteinander verglichen. Der obige Befehlsaufruf musste wie folgt angepasst werden, um die CPU besser auszulasten. Die kleinen Zoomstufen können dabei noch immer gesammelt erzeugt werden, ab Zoomstufe 21 empfiehlt es sich jedoch, diese auszulagern und somit nur die Base Tiles erstellen zu lassen. Die Befehle lassen sich durch ein Semikolon (;) trennen, ein Zeilenumbruch ist durch ein Backslash (\) möglich:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdal2tiles.py -p mercator -s EPSG:3857 -z 0-20 --processes=24

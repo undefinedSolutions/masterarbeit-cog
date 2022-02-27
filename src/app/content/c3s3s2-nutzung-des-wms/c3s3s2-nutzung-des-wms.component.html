@@ -15,13 +15,13 @@
   Es werden zwei Objekte verwendet, zum einen der ImageLayers, welcher die Ausdehnung des WMS als Parameter enthält, und als source das zweite Objekt, welches den ImageWMS enthält. Dieser ImageWMS verfügt über alle relevanten Parameter, um den WMS vom GeoServer abzufragen. Diese sind:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <span class="code">url</span> = URL zu dem Endpoint des GeoServers für WMS-Requests
   <span class="code">params</span> = Parameter um den gewünschten Layer festzulegen
 </ul>
 
 <p>
-  Als optionale Parameter kann die "attribution" genutzt werden, um den das Copyright bzw. den Ersteller der Daten zu nennen. Ein zusätzlicher Parameter ist "ratio", hiermit kann definiert werden, wie groß der angeforderte Bereich im Bezug auf die WebMap ist. Dabei umfasst eine ratio von 1 exakt den Bereich der WebMap, eine ratio von 2 fordert einen doppelt so großen Bereich an. Dies kann vorteilhaft sein, sofern absehbar ist, dass der Nutzer die Karte um kleine Bereiche verschiebt, denn durch die höhere ratio muss nicht bei jeder Verschiebung der Karte ein neues Bild vom WMS angefordert werden, da der Bereich noch von dem zuvor angeforderten abgedeckt wird. In dieser Arbeit wird eine ratio von 1 verwendet, um die Vergleichbarkeit zu anderen Standards zu gewährleisten.
+  Als optionale Parameter kann die "attribution" genutzt werden, um den das Copyright bzw. den Ersteller der Daten zu nennen. Ein zusätzlicher Parameter ist "ratio", hiermit kann definiert werden, wie groß der angeforderte Bereich im Bezug auf die WebMap ist. Dabei umfasst eine ratio von 1 exakt den Bereich der WebMap, eine ratio von 2 fordert einen doppelt so großen Bereich an. Dies kann vorteilhaft sein, sofern absehbar ist, dass der Nutzer die Karte um kleine Bereiche verschiebt, denn durch die höhere ratio muss nicht bei jeder Verschiebung der Karte ein neues Bild vom WMS angefordert werden, da der Bereich noch vom zuvor angeforderten abgedeckt wird. In dieser Arbeit wird eine ratio von 1 verwendet, um die Vergleichbarkeit zu anderen Standards zu gewährleisten.
 </p>
 
 <p>

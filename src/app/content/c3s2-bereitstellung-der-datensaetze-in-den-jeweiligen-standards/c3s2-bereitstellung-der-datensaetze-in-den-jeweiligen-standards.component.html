@@ -1,7 +1,7 @@
 <app-headline headline="Bereitstellung der Datensätze in den jeweiligen Standards" [h]="2" number="3.2" [id]="3.2"></app-headline>
 
 <p>
-  Die Versendung der Datensätze an einen Nutzer bzw. dessen Webbrowser setzt voraus, dass die Daten von einem Webserver bereitgestellt werden. Bei diesem kann es sich sowohl um einen Server handeln, welcher ausschließlich die angeforderten Daten für den Nutzer bereitstellt, als auch um einen GeoServer, welcher von dem Webbrowser eine Anfrage über ein bestimmte Fläche erhält und die Geodaten serverseitig für den Nutzer rendert. Dadurch werden nicht die Geodaten selbst, sondern ein Abbild derer an den Browser gesendet.
+  Die Versendung der Datensätze an einen Nutzer bzw. dessen Webbrowser setzt voraus, dass die Daten von einem Webserver bereitgestellt werden. Bei diesem kann es sich sowohl um einen Server handeln, welcher ausschließlich die angeforderten Daten für den Nutzer bereitstellt, als auch um einen GeoServer, welcher vom Webbrowser eine Anfrage für eine bestimmte Fläche erhält und die Geodaten serverseitig für den Nutzer rendert. Dadurch werden nicht die Geodaten selbst, sondern ein Abbild von ihnen an den Browser gesendet.
 </p>
 
 <p>
@@ -9,7 +9,7 @@
 </p>
 
 <p>
-  AWS S3 bietet den Vorteil, dass, im Gegensatz zum Webhosting, ausschließlich für den genutzten Speicherplatz und Traffic gezahlt wird. In der Folge kommt es zu keiner Überfüllung des Speicherplatzes und dadurch entstehenden zu Ausfällen. Insbesondere im Hinblick auf Projekte, bei welchen der Bedarf des Speicherplatzes unbekannt ist, kann dies besonders von Vorteil sein.
+  AWS S3 bietet den Vorteil, dass, im Gegensatz zum Webhosting, ausschließlich für den genutzten Speicherplatz und Traffic gezahlt wird. In der Folge kommt es zu keiner Überfüllung des Speicherplatzes und damit verbundenen Ausfällen. Insbesondere im Hinblick auf Projekte, bei welchen der Bedarf des Speicherplatzes unbekannt ist, kann dies besonders von Vorteil sein.
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 </p>
 
 <p>
-  Im Vergleich dazu können die Standards WMS und WMTS hingegen nicht einfach über einen Webserver, welcher nur statische Dateien ausliefert, betrieben werden. Vielmehr benötigen sie einen Server, welcher die Anfragen des Clients, welcher Parameter in der URL sendet, verarbeitet. Hierbei kann es sich um einen Proprietärer ESRI ArcGIS Server oder, wie in dieser Arbeit verwendet, um einen open source GeoServer, handeln.
+  Im Vergleich dazu können die Standards WMS und WMTS hingegen nicht einfach über einen Webserver, welcher nur statische Dateien ausliefert, betrieben werden. Vielmehr benötigen sie einen Server, welcher die Anfragen des Clients, welcher Parameter in der URL sendet, verarbeitet. Hierbei kann es sich um einen proprietären ESRI ArcGIS Server oder, wie in dieser Arbeit verwendet, um einen Open Source GeoServer, handeln.
 </p>
 
 <p>
@@ -25,13 +25,13 @@
 </p>
 
 <p>
-  AWS bietet durch Auto Scaling eine einfache Möglichkeit, nur diejenigen Ressourcen zu nutzen, die auch tatsächlich benötigt werden<app-quote
+  AWS bietet durch Auto Scaling eine einfache Möglichkeit, nur diejenigen Ressourcen zu nutzen, die auch tatsächlich benötigt werden.<app-quote
   id="3-AWS-Auto-Scaling"
   author="AWS"
   lastVisit="29.01.2022"
   title="AWS Auto Scaling"
   [vgl]="true"
-  URL="https://aws.amazon.com/de/autoscaling/"></app-quote>. Auch wenn dies nicht Gegenstand der vorliegenden Arbeit ist, sollte es dennoch erwähnt werden, da es gegenüber Dedizierten-Servern, d.h. Servern, welche dauerhaft mit ihrer gesamten Leistung zur Verfügung stehen, den Vorteil beinhaltet, dass bei geringer Belastung Ressourcen abgeschaltet und bei starker Belastung automatisch weitere Instanzen hinzugefügt werden. Bei Dedicated-Servern müsste hingegen durchgehend für die zur Verfügung gestellte Leistung gezahlt werden, auch wenn diese nicht benötigt wird. Auf diese Möglichkeit der Preisgestaltung wird im <a href="#content-5">Kapitel 5</a> tiefer eingegangen.
+  URL="https://aws.amazon.com/de/autoscaling/"></app-quote> Auch wenn dies nicht Gegenstand der vorliegenden Arbeit ist, sollte es dennoch erwähnt werden, da es gegenüber Dedizierten-Servern, d.h. Servern, welche dauerhaft mit ihrer gesamten Leistung zur Verfügung stehen, den Vorteil bietet, dass bei geringer Belastung Ressourcen abgeschaltet und bei starker Belastung automatisch weitere Instanzen hinzugefügt werden. Bei Dedicated-Servern müsste hingegen durchgehend für die zur Verfügung gestellte Leistung gezahlt werden, auch wenn diese nicht benötigt wird. Auf diese Möglichkeit der Preisgestaltung wird im <a href="#content-5">Kapitel 5</a> näher eingegangen.
 </p>
 
 <p>

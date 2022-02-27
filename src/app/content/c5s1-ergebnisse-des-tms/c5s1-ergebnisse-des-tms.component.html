@@ -1,23 +1,58 @@
 <app-headline [headline]="'Ergebnisse des TMS'" [h]="2" [number]="'5.1'" [id]="5.1"></app-headline>
 
 <p>
-  Wie in Kapitel 3.1.1 beschrieben, wurde wurde in dieser Arbeit auch der Ansatz verfolgt, die Erstellung des TMS in einzelne Schritte aufzuteilen, um eine möglichst parallele Auslastung der Threads zu erreichen. Dies führte zu einer erheblichen Beschleunigung der Erstellung bei Nutzung der Workstation. In der nächsten Abbildung ist ein Vergleich der Generierung des Orthomosaiks Lindenrain unter Nutzung der Workstation bzw. des Notebooks zu sehen. Dieser Datensatz wurde aufgrund der hohen Auflösung und der damit einhergehenden hohen Zoomlevel gewählt. Durch die hohe Anzahl an Zoomstufen ist die Zeitersparnis der Parallelisierung höher. Die normale Generierung ist auf der Workstation um ein 2,48-Faches langsamer, wohingegen auf dem Notebook die normale Generierung nur um das 1,24-Fache langsamer ist.
+  Wie in <a href="#content-3.11">Kapitel 3.1.1</a> beschrieben, wurde wurde in dieser Arbeit auch der Ansatz verfolgt, die Erstellung des TMS in einzelne Schritte aufzuteilen, um eine möglichst parallele Auslastung der Threads zu erreichen. Dies führte zu einer erheblichen Beschleunigung der Erstellung bei Nutzung der Workstation. In der nächsten Abbildung ist ein Vergleich der Generierung des Orthomosaiks Lindenrain unter Nutzung der Workstation bzw. des Notebooks zu sehen. Dieser Datensatz wurde aufgrund der hohen Auflösung und der damit einhergehenden hohen Zoomlevel gewählt. Durch die hohe Anzahl an Zoomstufen ist die Zeitersparnis der Parallelisierung höher. Die normale Generierung ist auf der Workstation um ein 2,48-Faches langsamer, wohingegen auf dem Notebook die normale Generierung nur um das 1,24-Fache langsamer ist.
 </p>
 
-toDo Vergleich TMS Generierung
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'tmsCompareMulti'"
+      [caption]="'Vergleich TMS Generierung'"
+      captionID="5-7"
+      source="eigene Daten"
+      [data]="dataTmsCompareMulti"
+      [displayLegend]="true"
+      [setSize]="100"
+      [suffix]="' s'"
+      [suffixTooltip]="' s'">>
+  </app-chart>
+</div>
 
 <p>
-  Die nächsten beiden Abbildungen zeigen das Verhältnis der Zoomstufen zu der Anzahl der Tiles bzw. zu der Dateigröße der jeweiligen Zoomstufe des Orthomosaiks Lindenrain. Dies markiert das in Kapitel 5 angesprochene exponentielle Wachstum.
+  Die nächsten beiden Abbildungen zeigen das Verhältnis der Zoomstufen zu der Anzahl der Tiles bzw. zu der Dateigröße der jeweiligen Zoomstufe des Orthomosaiks Lindenrain. Dies markiert das in <a href="#content-5">Kapitel 5</a> angesprochene exponentielle Wachstum.
 </p>
 
-toDo Anzahl der Tiles
-toDo Größe des TMS
+<div class="chart newPageBefore" style="height: 265px;">
+  <app-chart
+      [id]="'tmsTileNumber'"
+      [caption]="'Anzahl der Tiles'"
+      captionID="5-8"
+      source="eigene Daten"
+      [data]="dataTmsTileNumber"
+      [format]="''">
+  </app-chart>
+</div>
+
+<span style="visibility: hidden;">a</span> <!-- Needed to display two charts -->
+
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'tmsSize'"
+      [caption]="'Größe des TMS ortho_lindenrain'"
+      captionID="5-9"
+      source="eigene Daten"
+      [data]="dataTmsSize"
+      [format]="'round3'"
+      [suffix]="' MB'"
+      [suffixTooltip]="' MB'">>
+  </app-chart>
+</div>
 
 <p>
   Die Kosten für die Bereitstellung der Datensätze setzen sich für das TMS wie folgt zusammen:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li>Speicherung der TMS: 9,7 GB x 0,0245$ = 0,2377$ => 0,24$ pro Monat</li>
   <li>Hochladen von 156.431 Dateien: 156.431 PUT-Anforderungen x 0,0000054 USD pro Anfrage = 0,8447 USD einmalig</li>
 </ul>

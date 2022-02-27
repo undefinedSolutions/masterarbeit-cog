@@ -1,14 +1,14 @@
 <app-headline headline="WMTS im GeoServer" [h]="4" number="3.2.2.2" [id]="3.222"></app-headline>
 
 <p>
-  Bevor die einzelnen Datensätze als WMTS veröffentlicht werden können, wird das gewünschte Koordinatensystem für die Ausgabe in den Caching Standards festgelegt. Als Installationsstandards sind hier WGS 84 (EPSG:4326) und WGS 84 / Pseudo Mercator (EPSG:900913) gesetzt. Bei dem hier erwähnten EPSG:900913 handelt es sich zwar um eine exakte Kopie des in dieser Arbeit verwendeten Web Mercator EPSG:3857<app-quote
+  Bevor die einzelnen Datensätze als WMTS veröffentlicht werden können, wird das gewünschte Koordinatensystem für die Ausgabe in den Caching Standards festgelegt. Als Installationsstandards sind hier WGS 84 (EPSG:4326) und WGS 84 / Pseudo Mercator (EPSG:900913) gesetzt. Bei dem hier erwähnten EPSG:900913 handelt es sich zwar um eine exakte Kopie des in dieser Arbeit verwendeten Web Mercator EPSG:3857,<app-quote
   id="3-OSM-WIKI"
   author="OSM-Wiki"
   lastVisit="29.01.2022"
   publicationDate="01.01.2022"
   title="EPSG:3857"
   [vgl]="true"
-  URL="https://wiki.openstreetmap.org/wiki/EPSG:3857"></app-quote>, jedoch würden Requests nach dem Web Mercator nicht automatisch zu dem Pseudo Mercator weitergeleitet. Für die vorliegende Arbeit wird nur der Web Mercator (EPSG:3857) verwendet, folglich wurden alle vordefinierten Koordinatensysteme entfernt und durch den WebMercatorQuad ersetzt, welcher auf dem Web Mercator basiert. Das hier gewählte Koordinatensystem beschreibt für den WMTS das GridSet, welches in <a href="#content-2.1">Kapitel 2.1</a> bereits näher erläutert wurde. Zusätzlich sollte noch ein weiteres Standardbildformat gewählt werden, nämlich image/vnd.jpeg-png. Dies befähigt den Geoserver, sofern keine Transparenz in der Kachel benötigt wird, eine JPEG Kachel zu erstellen. Um die Ersparnis der Dateigröße zu verdeutlichen, wurde eine zufällige Kachel gewählt (z: 15, y: 17449, x: 10850 des wmts:ortho_strenzfeld). Im PNG-Datei weist diese eine Größe von 128,6 Kilobyte auf, in Form einer JPEG-Datei jedoch nur 11,1 Kilobyte. Somit kann diese kleine Änderung der Konfiguration 91,36% der Dateigröße einsparen.
+  URL="https://wiki.openstreetmap.org/wiki/EPSG:3857"></app-quote> jedoch würden Requests nach dem Web Mercator nicht automatisch zu dem Pseudo Mercator weitergeleitet. Für die vorliegende Arbeit wird nur der Web Mercator (EPSG:3857) verwendet, folglich wurden alle vordefinierten Koordinatensysteme entfernt und durch den WebMercatorQuad ersetzt, welcher auf dem Web Mercator basiert. Das hier gewählte Koordinatensystem beschreibt für den WMTS das GridSet, welches in <a href="#content-2.1">Kapitel 2.1</a> bereits näher erläutert wurde. Zusätzlich sollte noch ein weiteres Standardbildformat gewählt werden, nämlich image/vnd.jpeg-png. Dies befähigt den Geoserver, sofern keine Transparenz in der Kachel benötigt wird, eine JPEG Kachel zu erstellen. Um die Ersparnis der Dateigröße zu verdeutlichen, wurde eine zufällige Kachel gewählt (z: 15, y: 17449, x: 10850 des wmts:ortho_strenzfeld). Im PNG-Datei weist diese eine Größe von 128,6 Kilobyte auf, in Form einer JPEG-Datei jedoch nur 11,1 Kilobyte. Somit kann diese kleine Änderung der Konfiguration 91,36% der Dateigröße einsparen.
 </p>
 
 <p>

@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, ElementRef, OnInit } from '@angular/core';
 
+import { FiguresService } from './../../services/figures/figures.service';
 import { PagedJSService } from '../../services/pagedJS/paged-js.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { PagedJSService } from '../../services/pagedJS/paged-js.service';
   templateUrl: './iframe-map.component.html',
   styleUrls: ['./iframe-map.component.scss']
 })
-export class IframeMapComponent implements AfterViewInit {
+export class IframeMapComponent implements AfterViewInit, OnInit {
   @Input() caption: string;
   @Input() captionID: string;
   @Input() source: string;
@@ -18,12 +19,19 @@ export class IframeMapComponent implements AfterViewInit {
 
   @ViewChild('myIframe') myIframe: ElementRef;
   constructor(
+    private figuresService:FiguresService,
     private pagedJSService:PagedJSService,
     ) {
   }
   loadIframe(): void {
     const test = <HTMLIFrameElement> document.getElementById(this.iframeID)  ;
     test.src = this.iframeURL;
+  }
+
+  ngOnInit(): void {
+    if (this.captionID) {
+      this.figuresService.pushFigure(this.caption, this.captionID);
+    }
   }
 
   ngAfterViewInit(): void {

@@ -1,18 +1,18 @@
 <app-headline headline="Web Map Tile Service (WMTS)" [h]="2" number="2.3" [id]="2.3"></app-headline>
 
 <p>
-  Der Web Map Tile Service (<app-abbreviation abbreviation="WMTS" description="Web Map Tile Service"></app-abbreviation>) wurde zum 06.04.2010 in der Version 1.0.0 von der OGC standardisiert<app-quote
+  Der Web Map Tile Service (<app-abbreviation abbreviation="WMTS" description="Web Map Tile Service"></app-abbreviation>) wurde zum 06.04.2010 in der Version 1.0.0 von der OGC standardisiert.<app-quote
   id="2-OpenGISImplementationSpecification-WMTS"
   author="OpenGIS Implementation Specification"
   lastVisit="25.02.2022"
   publicationDate="06.04.2010"
   title="OpenGIS Web Map Tile Service Implementation Standard"
   [vgl]="true"
-  URL="https://portal.ogc.org/files/?artifact_id=35326"></app-quote>. Somit entstand dieser erst nach dem Standard WMS und vor dem TMS. Dennoch vereint der WMTS alle bisher genannten Konzepte. Sofern nicht anders angegeben, sind sämtliche hier angewandten Informationen zum WMTS der oben erwähnten OGC-Standardisierung entnommen.
+  URL="https://portal.ogc.org/files/?artifact_id=35326"></app-quote> Somit entstand dieser erst nach dem Standard WMS und vor dem TMS. Dennoch vereint der WMTS alle bisher genannten Konzepte. Sofern nicht anders angegeben, sind sämtliche hier angewandten Informationen zum WMTS der oben erwähnten OGC-Standardisierung entnommen.
 </p>
 
 <p>
-  Sein Ziel ist es, leistungsorientiert und skalierbar die angeforderten Daten an den Nutzer auszugeben. Dies erfolgt durch die Verwendung vorgerenderter Tiles, welche ohne Bildmanipulation an den Nutzer ausgeliefert werden. Durch diese Spezifikation muss der WMTS für jeden STYLE separate Kacheln hinterlegen, da die angeforderten Rasterdaten nicht analog zum WMS on-thy-fly erzeugt werden sollten. Auch eine Umprojektion durch den Server wird somit ausgeschlossen und benötigt, wie bei dem STYLE, einen separaten Tile-Cache.
+  Sein Ziel ist es, leistungsorientiert und skalierbar die angeforderten Daten an den Nutzer auszugeben. Dies erfolgt durch die Verwendung vorgerenderter Tiles, welche ohne Bildmanipulation an den Nutzer ausgeliefert werden. Durch diese Spezifikation muss der WMTS für jeden STYLE separate Kacheln hinterlegen, da die angeforderten Rasterdaten nicht analog zum WMS on-the-fly erzeugt werden sollten. Auch eine Umprojektion durch den Server wird somit ausgeschlossen und benötigt, wie bei dem STYLE, einen separaten Tile-Cache.
 </p>
 
 <p>
@@ -68,7 +68,7 @@ TileCol=17447&
 TileRow=10849"></app-codeblock>
 
 <p>
-  Dieser ähnelt dem GetMap-Request des WMS, jedoch wird hier keine BoundingBox angegeben, sondern wie bei dem TMS durch die Parameter TileCol und TileRow explizit ein Tile. Die Zoomstufe wird innerhalb des Wertes "TileMatrix" durch das letzte Zahlenpaar nach den Doppelpunkt definiert.
+  Dieser ähnelt dem GetMap-Request des WMS, jedoch wird hier keine BoundingBox angegeben, sondern wie bei dem TMS durch die Parameter TileCol und TileRow explizit ein Tile. Die Zoomstufe wird innerhalb des Wertes "TileMatrix" durch das letzte Zahlenpaar nach dem Doppelpunkt definiert.
 </p>
 
 <p>

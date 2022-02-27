@@ -54,6 +54,8 @@ import { C5s1ErgebnisseDesTMSComponent } from './content/c5s1-ergebnisse-des-tms
 import { C5s2ErgebnisseDesWMSComponent } from './content/c5s2-ergebnisse-des-wms/c5s2-ergebnisse-des-wms.component';
 import { C5s3ErgebnisseDesWMTSComponent } from './content/c5s3-ergebnisse-des-wmts/c5s3-ergebnisse-des-wmts.component';
 import { C5s4ErgebnisseDesCOGComponent } from './content/c5s4-ergebnisse-des-cog/c5s4-ergebnisse-des-cog.component';
+import { C6ZusammenfassungComponent } from './content/c6-zusammenfassung/c6-zusammenfassung.component';
+import { C6s1ZentraleErkenntnisseComponent } from './content/c6s1-zentrale-erkenntnisse/c6s1-zentrale-erkenntnisse.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +112,8 @@ import { C5s4ErgebnisseDesCOGComponent } from './content/c5s4-ergebnisse-des-cog
     C5s2ErgebnisseDesWMSComponent,
     C5s3ErgebnisseDesWMTSComponent,
     C5s4ErgebnisseDesCOGComponent,
+    C6ZusammenfassungComponent,
+    C6s1ZentraleErkenntnisseComponent,
   ],
   imports: [
     BrowserModule

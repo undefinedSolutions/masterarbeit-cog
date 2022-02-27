@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import {
   Chart,
   ArcElement,
@@ -54,6 +54,7 @@ Chart.register(
 
 
 import { PagedJSService } from '../../services/pagedJS/paged-js.service';
+import { FiguresService } from './../../services/figures/figures.service';
 
 
 @Component({
@@ -61,32 +62,40 @@ import { PagedJSService } from '../../services/pagedJS/paged-js.service';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements AfterViewInit {
+export class ChartComponent implements AfterViewInit, OnInit {
   _that = this;
   @Input() id: string;
-  @Input() labels: string[];
+  @Input() source: string = "";
   @Input() suffix: string = "";
+  @Input() suffixTooltip: string = "";
   @Input() prefix: string = " ";
-  @Input() datasets: any;
-  @Input() title: string;
-  constructor(private pagedJSService:PagedJSService) { }
+  @Input() data: any;
+  @Input() displayLegend: boolean = false;
+  @Input() caption: string;
+  @Input() captionID: string;
+  @Input() format: string;
+  @Input() yMax: number;
+  @Input() setSize: number = 0;
 
-  loadChart(): void {
+  constructor(
+    private pagedJSService:PagedJSService,
+    private figuresService:FiguresService
+  ) { }
+
+  loadChart(): void {    
     const myChart = new Chart(this.id, {
       type: 'bar',
-      data: {
-          labels: this.labels,
-          datasets: [this.datasets]
-      },
+      data: this.data,
       options: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
           y: {
+            max: this.yMax,
             beginAtZero: true,
             ticks: {
 
-              stepSize: 0.5,
+              stepSize: this.setSize,
               // Include a dollar sign in the ticks
               callback: (value, index, ticks) => {
                   return this.prefix + value + this.suffix;
@@ -96,7 +105,7 @@ export class ChartComponent implements AfterViewInit {
         },
       plugins: {
         legend: {
-          display: false
+          display: this.displayLegend
         },
         tooltip: {
           callbacks: {
@@ -107,19 +116,44 @@ export class ChartComponent implements AfterViewInit {
                     label += ': ';
                 }
                 if (context.parsed.y !== null) {
-                    label += this.prefix + context.parsed.y.toFixed(3) + this.suffix;
+                  if (this.format === "round3") {
+                    label += this.prefix + context.parsed.y.toFixed(3) + this.suffixTooltip;
+                  } else if (this.format === "time") {
+                    label += this.prefix + this.getHHMMSS(context.parsed.y) + this.suffixTooltip;
+                  } else {
+                    label += this.prefix + context.parsed.y + this.suffixTooltip;
+                  }
                 }
                 return label;
             }
         }
         },
         title: {
-            display: true,
-            text: this.title,
+            display: false,
+            //text: this.title,
         }
       }
     }
     });
+  }
+
+  getHHMMSS(secounds: number): string {
+    const zeroPad = (num, places) => String(num).padStart(places, '0')
+
+    let tmpSec = secounds
+    const h = Math.trunc(tmpSec / 60 / 60);
+    tmpSec = tmpSec - h * 60 * 60
+    const m = Math.trunc(tmpSec / 60 )
+    tmpSec = tmpSec - m * 60
+
+    return zeroPad(h, 2)+":"+zeroPad(m,2)+":"+zeroPad(tmpSec,2)
+  }
+
+  ngOnInit(): void {
+    if (this.captionID) {
+      console.log(this.captionID)
+      this.figuresService.pushFigure(this.caption, this.captionID);
+    }
   }
 
   ngAfterViewInit(): void {

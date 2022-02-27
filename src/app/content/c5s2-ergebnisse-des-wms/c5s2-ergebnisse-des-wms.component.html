@@ -1,16 +1,28 @@
 <app-headline [headline]="'Ergebnisse des WMS'" [h]="2" [number]="'5.2'" [id]="5.2"></app-headline>
 
 <p>
-  Der Geoserver bietet, wie bereits in Kapitel 3.2.2.1 beschrieben, die Möglichkeit, die Layer on-the-fly zu einem anderen Koordinatensystem zu projizieren. Dies wurde exemplarisch für das Orthomosaik Strenzfeld getestet und die hierfür benötigte Zeit verglichen. Im Durchschnitt ist der Request mit EPSG:32632 um das 1,8-Fache langsamer als der EPSG:3857. Somit sollte, wie ebenfalls bereits im Kapitel 3.2.2.1 erwähnt, die Datenquelle, sofern dies möglich ist, im abgefragten Koordinatensystem bereitgestellt werden.
+  Der Geoserver bietet, wie bereits in <a href="#content-3.221">Kapitel 3.2.2.1</a> beschrieben, die Möglichkeit, die Layer on-the-fly zu einem anderen Koordinatensystem zu projizieren. Dies wurde exemplarisch für das Orthomosaik Strenzfeld getestet und die hierfür benötigte Zeit verglichen. Im Durchschnitt ist der Request mit EPSG:32632 um das 1,8-Fache langsamer als der EPSG:3857. Somit sollte, wie ebenfalls bereits im Kapitel 3.2.2.1 erwähnt, die Datenquelle, sofern dies möglich ist, im abgefragten Koordinatensystem bereitgestellt werden.
 </p>
 
-toDo Vergleich on-the-fly projektion
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'wmsProjektion'"
+      [caption]="'Vergleich on-the-fly projektion'"
+      captionID="5-10"
+      source="eigene Daten"
+      [data]="dataWmsProjektion"
+      [displayLegend]="true"
+      [format]="'round3'"
+      [suffix]="' s'"
+      [suffixTooltip]="' s'">>
+  </app-chart>
+</div>
 
 <p>
-  Die Kosten für die EC2-Instanz belaufen sich bei der in Kapitel 3.2.2 gewählten t3.small EC2-Instanz auf 0,024$. Hierdurch entstehen im Ergebnis die folgenden Gesamtkosten:
+  Die Kosten für die EC2-Instanz belaufen sich bei der in <a href="#content-3.22">Kapitel 3.2.2</a> gewählten t3.small EC2-Instanz auf 0,024$. Hierdurch entstehen im Ergebnis die folgenden Gesamtkosten:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li>Rechenleistung der EC2-Instanz: 0,0151 $ x 730 Stunden im Monat = 11,02$ monatlich</li>
   <li>Bereitstellung des Speicherplatzes: 20 GB x 0,119$ x 1 Instances = 2,38$ monatlich</li>
 </ul>
@@ -28,8 +40,9 @@ toDo Vergleich on-the-fly projektion
 </p>
 
 <div style="height:420px; overflow: hidden; width:100%;">
+  <img height="420" alt="placeholder" class="placeholderImg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/4gKwSUNDX1BST0ZJTEUAAQEAAAKgbGNtcwQwAABtbnRyUkdCIFhZWiAH5QAKAA0ACQAZABFhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1kZXNjAAABIAAAAEBjcHJ0AAABYAAAADZ3dHB0AAABmAAAABRjaGFkAAABrAAAACxyWFlaAAAB2AAAABRiWFlaAAAB7AAAABRnWFlaAAACAAAAABRyVFJDAAACFAAAACBnVFJDAAACFAAAACBiVFJDAAACFAAAACBjaHJtAAACNAAAACRkbW5kAAACWAAAACRkbWRkAAACfAAAACRtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACQAAAAcAEcASQBNAFAAIABiAHUAaQBsAHQALQBpAG4AIABzAFIARwBCbWx1YwAAAAAAAAABAAAADGVuVVMAAAAaAAAAHABQAHUAYgBsAGkAYwAgAEQAbwBtAGEAaQBuAABYWVogAAAAAAAA9tYAAQAAAADTLXNmMzIAAAAAAAEMQgAABd7///MlAAAHkwAA/ZD///uh///9ogAAA9wAAMBuWFlaIAAAAAAAAG+gAAA49QAAA5BYWVogAAAAAAAAJJ8AAA+EAAC2xFhZWiAAAAAAAABilwAAt4cAABjZcGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltjaHJtAAAAAAADAAAAAKPXAABUfAAATM0AAJmaAAAmZwAAD1xtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAEcASQBNAFBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEL/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCAABAAEDAREAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACP/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAVSf/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPwF//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAgEBPwF//8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQAGPwJ//8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPyF//9oADAMBAAIAAwAAABCf/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAwEBPxB//8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAgEBPxB//8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxB//9k=">
   <app-iframe-map
-      captionID="5-99"
+      captionID="5-11"
       caption="WebMap des Orthomosaiks Strenzfeld mit der Möglichkeit den Style ändern zu können"
       source="WMS"
       iframeID="WMSStyle"
@@ -38,5 +51,5 @@ toDo Vergleich on-the-fly projektion
 </div>
 
 <p>
-  Wie in Kapitel 2.2 beschrieben, können weiterhin, einzelne Rasterinformationen per Request an den Geoserver abgefragt werden. hierbei kann es sich nicht nur um RGB-Werte, sondern auch die Höheninformationen des Oberflächenmodells handeln. Diese Art der Implementierung hat jedoch den Nachteil, dass pro Rasterinformation jeweils ein Request an den Geoserver notwendig ist.
+  Wie in <a href="#content-2.2">Kapitel 2.2</a> beschrieben, können weiterhin, einzelne Rasterinformationen per Request an den Geoserver abgefragt werden. hierbei kann es sich nicht nur um RGB-Werte, sondern auch die Höheninformationen des Oberflächenmodells handeln. Diese Art der Implementierung hat jedoch den Nachteil, dass pro Rasterinformation jeweils ein Request an den Geoserver notwendig ist.
 </p>

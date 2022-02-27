@@ -19,7 +19,7 @@
     source="Chrome DevTools"></app-figure>
 
 <p>
-  Es ist zu erkennen, dass für die initial- Auflösung der WebMap  https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld das Oberflächenmodell 4 mal per Request angefragt wird. Der in dem obigen Screenshot zu sehende Request benötigte insgesamt 136.4 Millisekunden, welche sich auf die folgenden Kategorien aufteilt:<app-quote
+  Es ist zu erkennen, dass für die initial- Auflösung der WebMap https://openlayers.masterarbeit-cog.de/cog/dsm_strenzfeld das Oberflächenmodell 4 mal per Request angefragt wird. Der in dem obigen Screenshot zu sehende Request benötigte insgesamt 136.4 Millisekunden, welche sich auf die folgenden Kategorien aufteilt:<app-quote
   id="4-Chrome-DevTools"
   author="Chrome Developers - Kayce Basques"
   chapter="Timing breakdown phases explained"
@@ -30,7 +30,7 @@
   URL="https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#timing-explanation"></app-quote>
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li><span>Queueing</span> = der Browser stellt Anfragen in eine Warteschlange, falls es Anfragen mit höherer Priorität gibt oder der Browser kurzzeitig Speicherplatz im Festplatten-Cache zuweist.</li>
   <li><span>Stalled</span> = die Anfrage kann aus einem der unter Queueing beschriebenen Gründe blockiert werden.</li>
   <li><span>Request sent</span> = die Anfrage wird gesendet.</li>
@@ -47,7 +47,15 @@
 </p>
 
 <p>
-  Die Chrome DevTools bieten weiterhin die Möglichkeit, ein sogenanntes HTTP ARchive (HAR) zu erstellen [Quelle: https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#save-as-har]. Diese Datei enthält alle Informationen des Netzwerk-Tabs. Die HAR-Datei ist im Grunde ein JSON-Format, welches demnach auch mittels Python auslesbar ist. Sie befähigt den Nutzer durch ein einfaches Python-Script die benötigten Daten automatisiert aus dem JSON auszulesen und als CSV-Datei zu speichern. Vorliegend wurde ein Python-Script verwendet, um die HAR-Dateien der Requests auszulesen. Dieses ist im digitalen Anhang dieser Arbeit zu finden.
+  Die Chrome DevTools bieten weiterhin die Möglichkeit, ein sogenanntes HTTP ARchive (HAR) zu erstellen.<app-quote
+  id="4-Chrome-ExportRequestData"
+  author="Chrome Developers - Kayce Basques"
+  chapter="Export requests data"
+  lastVisit="29.01.2022"
+  publicationDate="13.04.2015"
+  title="Save all network requests to a HAR file"
+  [vgl]="true"
+  URL="https://developer.chrome.com/docs/devtools/network/reference/?utm_source=devtools#save-as-har"></app-quote> Diese Datei enthält alle Informationen des Netzwerk-Tabs. Die HAR-Datei ist im Grunde ein JSON-Format, welches demnach auch mittels Python auslesbar ist. Sie befähigt den Nutzer durch ein einfaches Python-Script die benötigten Daten automatisiert aus dem JSON auszulesen und als CSV-Datei zu speichern. Vorliegend wurde ein Python-Script verwendet, um die HAR-Dateien der Requests auszulesen. Dieses ist im digitalen Anhang dieser Arbeit zu finden.
 </p>
 
 <p>

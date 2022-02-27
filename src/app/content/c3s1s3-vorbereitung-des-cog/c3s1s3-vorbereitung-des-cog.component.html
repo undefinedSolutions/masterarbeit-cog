@@ -1,13 +1,13 @@
 <app-headline [headline]="'Vorbereitung des COG'" [h]="3" [number]="'3.1.3'" [id]="3.13"></app-headline>
 
 <p>
-  Die Erstellung von COG hat in der Bibliothek GDAL mit der Version 3.1 einen eigenen "Driver" erhalten. Driver sind kleine gekapselte und hochspezialisierte Programmteile, welche es den Entwicklern von GDAL ermöglichen, die Kompatibilität zwischen den einzelnen Dateiformaten zu gewährleisten<app-quote
+  Die Erstellung von COG hat in der Bibliothek GDAL mit der Version 3.1 einen eigenen "Driver" erhalten. Driver sind kleine gekapselte und hochspezialisierte Programmteile, welche es den Entwicklern von GDAL ermöglichen, die Kompatibilität zwischen den einzelnen Dateiformaten zu gewährleisten.<app-quote
   id="3-GDAL-Tutorial"
   author="GDAL: Tutorial"
   lastVisit="29.01.2022"
   title="Raster driver implementation tutorial"
   [vgl]="true"
-  URL="https://gdal.org/tutorials/raster_driver_tut.html"></app-quote>. Bei einem COG handelt es sich, wie in <a href="#content-2.4">Kapitel 2.4</a> erläutert, um ein GeoTIFF mit speziellen Eigenschaften. Folglich stellt auch der COG-Driver einen zusätzlichen Driver für den GeoTIFF-Driver dar und kann ohne diesen nicht genutzt werden.
+  URL="https://gdal.org/tutorials/raster_driver_tut.html"></app-quote> Bei einem COG handelt es sich, wie in <a href="#content-2.4">Kapitel 2.4</a> erläutert, um ein GeoTIFF mit speziellen Eigenschaften. Folglich stellt auch der COG-Driver einen zusätzlichen Driver für den GeoTIFF-Driver dar und kann ohne diesen nicht genutzt werden.
 </p>
 
 <p>
@@ -26,7 +26,7 @@
   Somit sind folgende Parameter für den Befehlsaufruf der Szenarien relevant:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li><span class="code">inputFile</span></li>
   <li><span class="code">outputFile</span></li>
   <li><span class="code">-of COG</span> = Wahl des korrekten Formats</li>
@@ -35,25 +35,25 @@
 </ul>
 
 <p>
-  Übertragen auf das Oberflächenmodell Lindenrain lautet der Befehlsaufruf dann wie folgend:
+  Übertragen auf das Oberflächenmodell Lindenrain lautet der Befehlsaufruf dann wie folgt:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdal_translate ./../000_inputData/dsm_lindenrain.tif ./cog/dsm_lindenrain.tif
     -of COG -co COMPRESS=DEFLATE -co NUM_THREADS=ALL_CPUS"></app-codeblock>
 
 <p>
-  Das Monitoring der CPU zeigt, dass die CPU sehr wenig ausgelastet wird. Es werden bei Nutzung der Workstation maximal 4 CPU-Threads verwendet und die Generierung des COG ist innerhalb kürzester Zeit abgeschlossen. Auf diese Beobachtung wird in <a href="#content-5.4">Kapitel 5.4</a> näher eingegangen.
+  Das Monitoring der CPU zeigt, dass diese CPU sehr wenig ausgelastet wird. Es werden bei Nutzung der Workstation maximal 4 CPU-Threads verwendet und die Generierung des COG ist innerhalb kürzester Zeit abgeschlossen. Auf diese Beobachtung wird in <a href="#content-5.4">Kapitel 5.4</a> näher eingegangen.
 </p>
 
 <p>
-  Durch die Implementierung des COG-Drivers ist es möglich, das Oberflächenmodell von Strenzfeld in einem Arbeitsschritt in ein COG zu konvertieren und von dem ursprünglichen Koordinatensystem UTM 32N EPSG:32632 in das gewünschte Koordinatensystem Web Mercator EPSG:3857 zu konvertieren.
+  Durch die Implementierung des COG-Drivers ist es möglich, das Oberflächenmodell von Strenzfeld in einem Arbeitsschritt in ein COG zu konvertieren und vom ursprünglichen Koordinatensystem UTM 32N EPSG:32632 in das gewünschte Koordinatensystem Web Mercator EPSG:3857 zu konvertieren.
 </p>
 
 <p>
   Dies wird durch den Befehl gdalwarp mit den folgenden Parametern ermöglicht:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li><span class="code">-s_srs EPSG:[CODE]</span> = Ausgangs-Koordinatensystem, sofern es nicht von GDAL erkannt wird</li>
   <li><span class="code">-t_srs EPSG:[CODE]</span> = gewünschtes Ziel-Koordinatensystem</li>
   <li><span class="code">-ts [pixelWidth] [pixelHeight]</span> = Wahl der Ziel-Pixelgröße, es empfiehlt sich, die Pixel quadratisch anzulegen</li>
@@ -73,14 +73,14 @@
     -of COG -co COMPRESS=DEFLATE -multi -wo NUM_THREADS=ALL_CPUS"></app-codeblock>
 
 <p>
-  Zur Validierung der erstellten COG kann ein Python-Script genutzt werden<app-quote
+  Zur Validierung der erstellten COG kann ein Python-Script genutzt werden.<app-quote
   id="3-cogeo-Testing"
   chapter="Testing your Cloud Optimized GeoTIFF's"
   author="Cloud Optimized GeoTIFF"
   lastVisit="29.01.2022"
   title="Utilizing Cloud Optimized GeoTIFF"
   [vgl]="true"
-  URL="https://www.cogeo.org/developers-guide.html"></app-quote>. Dieses muss nur von Github heruntergeladen werden und wird durch die folgende Befehlszeile ausgeführt:
+  URL="https://www.cogeo.org/developers-guide.html"></app-quote> Dieses muss nur von Github heruntergeladen werden und wird durch die folgende Befehlszeile ausgeführt:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="python ./python validate_cloud_optimized_geotiff.py ./cog/dsm_strenzfeld.tif"></app-codeblock>
@@ -97,18 +97,18 @@ The size of all IFD headers is 20478 bytes"></app-codeblock>
 </p>
 
 <p>
-  Neben der automatisierten Kontrolle hat sich während der ersten Testläufe es als sinnvoll erwiesen, ergänzend eine Sichtprüfung in QGIS vorzunehmen. Durch die Verwendung neuer Datenquellen und des damit einhergehenden neuen Workflows, sind Fehler in der Ausführung denkbar, welche das COG unbrauchbar machen.
+  Neben der automatisierten Kontrolle hat es sich während der ersten Testläufe als sinnvoll erwiesen, ergänzend eine Sichtprüfung in QGIS vorzunehmen. Durch die Verwendung neuer Datenquellen und des damit einhergehenden neuen Workflows, sind Fehler in der Ausführung denkbar, welche das COG unbrauchbar machen.
 </p>
 
 <p>
-  Trotz aller vorherigen präventiven Maßnahmen, ist bei der Bearbeitung der Orthomosaike erst innerhalb von OpenLayers aufgefallen, dass die verwendete JPEG-Komprimierung in der GDAL Version 3.4.1 fehlerhaft ist. Somit musste auf eine ältere Methode zurückgegriffen werden, um eie erfolgreiche Anwendung der JPEG-Komprimierung zu gewährleisten<app-quote
+  Trotz aller vorherigen präventiven Maßnahmen, ist bei der Bearbeitung der Orthomosaike erst innerhalb von OpenLayers aufgefallen, dass die verwendete JPEG-Komprimierung in der GDAL Version 3.4.1 fehlerhaft ist. Somit musste auf eine ältere Methode zurückgegriffen werden, um eine erfolgreiche Anwendung der JPEG-Komprimierung zu gewährleisten:<app-quote
   id="3-Github-ahocevar"
   author="Github-OpenLayers: ahocevar"
   lastVisit="08.02.2022"
   publicationDate="08.02.2022"
   title="COG with JPEG Compression has descending order"
   [vgl]="true"
-  URL="https://github.com/openlayers/openlayers/issues/13349#issuecomment-1032496705"></app-quote>:
+  URL="https://github.com/openlayers/openlayers/issues/13349#issuecomment-1032496705"></app-quote>
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdal_translate ./../rawData/ortho_strenzfeld_Bytes-RGBA.tif
@@ -117,16 +117,16 @@ The size of all IFD headers is 20478 bytes"></app-codeblock>
     --config GDAL_TIFF_OVR_BLOCKSIZE 512"></app-codeblock>
 
 <p>
-  Der Parameter <span class="code">-co TILES=YES</span> teilt dem Befehl mit, dass das GeoTiff intern geteilt werden soll, welches eine Voraussetzung für ein COG ist. Weiter relevant ist der Parameter <span class="code">-co COPY_SRC_OVERVIEWS=YES</span> zum Kopieren der Übersichten. Ohne diesen könnte kein korrektes COG erzeugt werden<app-quote
+  Der Parameter <span class="code">-co TILES=YES</span> teilt dem Befehl mit, dass das GeoTiff intern geteilt werden soll, welches eine Voraussetzung für ein COG ist. Weiter relevant ist der Parameter <span class="code">-co COPY_SRC_OVERVIEWS=YES</span> zum Kopieren der Übersichten. Ohne diesen könnte kein korrektes COG erzeugt werden.<app-quote
   id="3-GDAL-WIKI"
   author="GDAL-Wiki"
   lastVisit="08.02.2022"
   publicationDate="08.06.2021"
   title="Cloud optimized GeoTIFF"
   [vgl]="true"
-  URL="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF"></app-quote>.
+  URL="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF"></app-quote>
   Bei Nutzung dieser Methode muss weiterhin die Größe der Tiles bestimmt werden, welches mithilfe der Eingabe <span class="code">-co BLOCKXSIZE=512 -co BLOCKYSIZE=512 --config GDAL_TIFF_OVR_BLOCKSIZE 512</span> erfolgt. Die Kachelgröße wirkt sich besonders auf die Performance der Nutzung des COG aus, welche im <a href="#content-5.4">Kapitel 5.4</a> näher erläutert wird.
-  Dieser Befehl nutzt nicht den in Version 3.1. eingeführten COG-Driver und führt aufgrund der älteren Implementierung zu größeren Datensätzen. Dennoch können diese in Openlayers unproblematische geladen werden.
+  Dieser Befehl nutzt nicht den in Version 3.1. eingeführten COG-Driver und führt aufgrund der älteren Implementierung zu größeren Datensätzen. Dennoch können diese in Openlayers unproblematisch geladen werden.
 </p>
 
 <p>

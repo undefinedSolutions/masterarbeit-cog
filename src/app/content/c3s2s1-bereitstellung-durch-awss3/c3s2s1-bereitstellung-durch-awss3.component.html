@@ -1,27 +1,27 @@
 <app-headline headline="Bereitstellung durch AWS S3" [h]="3" number="3.2.1" [id]="3.21"></app-headline>
 
 <p>
-  Ein Nutzer kann in AWS S3 mehrere Buckets erstellen. Diese können als Kapselung für einzelne Projekte betrachtet werden und separate Benutzerrechte erhalten. Das hier erstellte Bucket soll später über die URL data.masterarbeit-cog.de genutzt werden können und über eine SSL-Verschlüsselung verfügen. Auf dieses Setup wird in dieser Arbeit nicht näher eingegangen. Der Fokus liegt auf der Erstellung und Zurverfügungstellung der Daten für die Nutzer.
+  Ein Nutzer kann in AWS S3 mehrere Buckets erstellen. Diese können als Kapselung für einzelne Projekte betrachtet werden und separate Benutzerrechte erhalten. Das hier erstellte Bucket soll später über die URL data.masterarbeit-cog.de genutzt werden können und über eine SSL-Verschlüsselung verfügen. Auf dieses Setup wird in dieser Arbeit nicht näher eingegangen. Der Fokus liegt auf der Erstellung und Abrufbarkeit der Daten durch die Nutzer.
 </p>
 
 <p>
-  Um ein Bucket zu erstellen ist es nötig, sich in der AWS-Managementkonsole anzumelden und als Service S3 auszuwählen. Hier kann nun ein neues AWS S3 Bucket erstellt werden. Dieses Bucket benötigt einen Namen Zuweisung einer AWS-Region zur Datenspeicherung. Für diese Arbeit wird ausschließlich die Region eu-central-1 verwendet. Die Wahl einer anderen AWS-Region ist nur dann folgerichtig, wenn die Hauptnutzer der Daten sich in auch innerhalb dieser geographischen Region befinden, z.B. in den USA, um eine direkte Speicherung vor Ort zu gewährleisten und damit eine regionale Übertragung zu vermeiden.
+  Um ein Bucket zu erstellen ist es nötig, sich in der AWS-Managementkonsole anzumelden und als Service S3 auszuwählen. Hier kann nun ein neues AWS S3 Bucket erstellt werden. Dieses Bucket benötigt die Namens-Zuweisung einer AWS-Region zur Datenspeicherung. Für diese Arbeit wurde ausschließlich die Region eu-central-1 verwendet. Die Wahl einer anderen AWS-Region ist nur dann folgerichtig, wenn die Hauptnutzer der Daten sich in auch innerhalb dieser geographischen Region befinden, z.B. in den USA, um eine direkte Speicherung vor Ort zu gewährleisten und damit eine regionale Übertragung zu vermeiden.
 </p>
 
 <p>
-  Ebenfalls sollte die Voreinstellung "Blockieren des gesamten öffentlichen Zugriffs" geändert werden, um allen Nutzern den Zugriff zu ermöglichen. Um den Nutzern den Zugriff auf die Daten zu gewähren, muss in den Eigenschaften des erstellen Buckets im Tab "Berechtigungen" noch die Bucket-Richtlinie<app-quote
+  Ebenfalls sollte die Voreinstellung "Blockieren des gesamten öffentlichen Zugriffs" geändert werden, um allen Nutzern den Zugriff zu ermöglichen. Um den Nutzern den Zugriff auf die Daten zu gewähren, muss in den Eigenschaften des erstellen Buckets im Tab "Berechtigungen" noch die Bucket-Richtlinieund das Cross-Origin Resource Sharing (<app-abbreviation abbreviation="CORS" description=" Cross-Origin Resource Sharing"></app-abbreviation>) bearbeitet werden.<app-quote
   id="3-AWS-Berechtigungen"
   author="AWS - Berechtigungen"
   lastVisit="08.02.2022"
   title="Richtlinien und Berechtigungen in Amazon S3"
   [vgl]="true"
-  URL="https://docs.aws.amazon.com/de_de/AmazonS3/latest/userguide/access-policy-language-overview.html"></app-quote> und das Cross-Origin Resource Sharing (<app-abbreviation abbreviation="CORS" description=" Cross-Origin Resource Sharing"></app-abbreviation>)<app-quote
+  URL="https://docs.aws.amazon.com/de_de/AmazonS3/latest/userguide/access-policy-language-overview.html"></app-quote>&nbsp;<app-quote
   id="3-AWS-CORS"
   author="AWS - CORS"
   lastVisit="08.02.2022"
   title="Cross-Origin Resource Sharing (CORS) konfigurieren"
   [vgl]="true"
-  URL="https://docs.aws.amazon.com/de_de/AmazonS3/latest/userguide/enabling-cors-examples.html"></app-quote> bearbeitet werden. Die getroffenen Einstellungen lassen sich aus den folgenden Abbildungen entnehmen:
+  URL="https://docs.aws.amazon.com/de_de/AmazonS3/latest/userguide/enabling-cors-examples.html"></app-quote> Die getroffenen Einstellungen lassen sich aus den folgenden Abbildungen entnehmen:
 </p>
 
 <app-figure
@@ -35,13 +35,13 @@
 </p>
 
 <p>
-  Das Hinzufügen von weiteren Daten kann zwar über die Weboberfläche von AWS S3 erfolgen, es empfiehlt sich jedoch die Nutzung der AWS Command Line Interface (<app-abbreviation abbreviation="AWS CLI" description="AWS Command Line Interface"></app-abbreviation>). Diese kann unter Ubuntu durch die folgenden Befehle installiert werden<app-quote
+  Das Hinzufügen von weiteren Daten kann zwar über die Weboberfläche von AWS S3 erfolgen, es empfiehlt sich jedoch die Nutzung der AWS Command Line Interface (<app-abbreviation abbreviation="AWS CLI" description="AWS Command Line Interface"></app-abbreviation>). Diese kann unter Ubuntu durch die folgenden Befehle installiert werden:<app-quote
     id="3-AWS-CLI"
     author="AWS - CLI"
     lastVisit="29.01.2022"
     title="Installing or updating the latest version of the AWS CLI"
     [vgl]="true"
-    URL="https://docs.aws.amazon.com/de_de/cli/latest/userguide/getting-started-install.html"></app-quote>:
+    URL="https://docs.aws.amazon.com/de_de/cli/latest/userguide/getting-started-install.html"></app-quote>
 </p>
 
 <app-codeblock [lineNumbers]="false" code="curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
@@ -50,5 +50,5 @@ unzip awscliv2.zip
 sudo ./aws/install"></app-codeblock>
 
 <p>
-  Nach Abschluss der Installation, erfolgt die Konfiguration um das erstellte Bucket erreichen zu können. Hierfür ist es nötig, den eigenen access und private Key zur Verfügung zu haben, dieser kann jederzeit aus der AWS-Managementkonsole ausgelesen werden. Die Konfiguration erfolgt durch <span class="code">aws configure</span> im Ubuntu-Terminal. Dieser Befehl fordert den Nutzer zur Eingabe der eben erwähnten Keys auf. Nach Abschluss der Konfiguration kann diese durch <span class="code">aws s3 ls</span> geprüft werden. Es wird nun eine Liste aller verfügbaren Buckets ausgeben.
+  Nach Abschluss der Installation, erfolgt die Konfiguration um das erstellte Bucket erreichen zu können. Hierfür ist es nötig, den eigenen access und private Key zur Verfügung zu haben; dieser kann jederzeit aus der AWS-Managementkonsole ausgelesen werden. Die Konfiguration erfolgt durch <span class="code">aws configure</span> im Ubuntu-Terminal. Dieser Befehl fordert den Nutzer zur Eingabe der eben erwähnten Keys auf. Nach Abschluss der Konfiguration kann diese durch <span class="code">aws s3 ls</span> geprüft werden. Es wird nun eine Liste aller verfügbaren Buckets ausgeben.
 </p>

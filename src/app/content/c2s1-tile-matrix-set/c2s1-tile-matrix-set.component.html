@@ -1,22 +1,22 @@
 <app-headline [headline]="'Tile Matrix Set (TMS)'" [h]="2" [number]="'2.1'" [id]="2.1"></app-headline>
 
 <p>
-Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genannten Informationen aus dem OGC Implementation Standard des Tile Matrix Sets (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>)<app-quote
+Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genannten Informationen aus dem OGC Implementation Standard des Tile Matrix Sets (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>).<app-quote
   id="2-OGCImplementationStandard-TMS"
   author="OGC Implementation Standard"
   lastVisit="25.02.2022"
   publicationDate="06.10.2019"
   title="OGC Two Dimensional Tile Matrix Set"
   [vgl]="true"
-  URL="http://docs.opengeospatial.org/is/17-083r2/17-083r2.html"></app-quote>.
+  URL="http://docs.opengeospatial.org/is/17-083r2/17-083r2.html"></app-quote>
 </p>
 
 <p>
-  Der TMS beschreibt ein Kachelschema, welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über Ihre Position innerhalb der Matrix georeferenziert werden können. Das bedeutet, dass einzelne Kacheln für sich über keine Georeferenzierung verfügen.
+  Der TMS beschreibt ein Kachelschema, welches festlegt, in welcher Form einzelne Tiles in einem Ordnersystem abgelegt werden, damit diese über ihre Position innerhalb der Matrix georeferenziert werden können. Das bedeutet, dass einzelne Kacheln für sich über keine Georeferenzierung verfügen.
 </p>
 
 <p>
-  Das Kachelschema stellt ein Gitter dar, welches regelmäßig die gesamte Welt, unterteilt in Kacheln, abdeckt. Der Ausgangspunkt des Gitters ist die obere linke Ecke des Schemas. Gezählt wird in Ganzzahlen. So ist dem Ausgangspunkt die Position (0, 0) zuzuordnen. Das Ende des Gitters ergibt sich aus der Breite der jeweiligen Dimension subtrahiert um 1. Dies ist deshalb nötig, da die Zählung nicht bei 1 beginnt sondern bei 0. Die reale Kachelgröße (ScaleDenominator) wird in der Einheit des gewählten Koordinatensystems angegeben, für WebMercator EPSG:3857 sind es Meter. Die Breite und Höhe einer einzelnen Kachel betragen meist 256 oder 512 Pixel. Diese Werte sind nicht standardisiert, so dass es ebenso möglich ist, dass Breite und Höhe unterschiedliche Werte aufweisen, welches in der Praxis jedoch extrem selten auftritt.
+  Das Kachelschema stellt ein Gitter dar, welches regelmäßig die gesamte Welt, unterteilt in Kacheln, abdeckt. Der Ausgangspunkt des Gitters ist die obere linke Ecke des Schemas. Gezählt wird in Ganzzahlen. So ist dem Ausgangspunkt die Position (0, 0) zuzuordnen. Das Ende des Gitters ergibt sich aus der Breite der jeweiligen Dimension subtrahiert um 1. Dies ist nötig, da die Zählung nicht bei 1 beginnt sondern bei 0. Die reale Kachelgröße (ScaleDenominator) wird in der Einheit des gewählten Koordinatensystems angegeben, für WebMercator EPSG:3857 sind es Meter. Die Breite und Höhe einer einzelnen Kachel beträgt meist 256 oder 512 Pixel. Diese Werte sind nicht standardisiert, so dass es ebenso möglich ist, dass Breite und Höhe unterschiedliche Werte aufweisen, welches in der Praxis jedoch extrem selten auftritt.
 </p>
 
 <p>
@@ -30,11 +30,11 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
     [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
 
 <p>
-  Die bisherige Beschreibung des Standards bezieht sich nur auf die XY-Dimensionen, auch Tile Matrix genannt. Dies zwingt den Nutzer, die höchstauflösenste Zoomstufe zu laden und aus dieser die Übersichten für die jeweiligen angefragten Zoomstufen zu generieren. Unter Betrachtung der Bandbreite und Rechenzeit ist dies äußerst ineffizient, da die Software diese zur Laufzeit rendern, d.h. die Darstellung berechnen, müsste.
+  Die bisherige Beschreibung des Standards bezieht sich nur auf die XY-Dimensionen, auch Tile Matrix genannt. Dies zwingt den Nutzer, die höchstauflösendste Zoomstufe zu laden und aus dieser die Übersichten für die jeweils angefragten Zoomstufen zu generieren. Unter Betrachtung der Bandbreite und Rechenzeit ist dies äußerst ineffizient, da die Software diese zur Laufzeit rendern, d.h. die Darstellung berechnen muss.
 </p>
 
 <p>
-  Zur Vermeidung dessen werden einzelne Zoomstufen bereitgestellt und von der Software gezielt angefordert. Dabei wird pro Zoomstufe jeweils eine Tile Matrix bereitgestellt, welche den TMS ergeben. Diese Tile Matrizen werden in der Praxis mit einer Ganzzahl angesprochen, der Standard sieht jedoch daneben auch eine eindeutige alphanumerischen Bezeichnung vor. Die Standardisierung sieht weiterhin vor, dass die Aufteilung zum Zoom nicht zwingend aus 1:4 besteht, d.h. dass 4 Kacheln der Zoomstufe 1 eine Kachel der Zoomstufe 0 ergeben.
+  Zur Vermeidung dessen werden einzelne Zoomstufen bereitgestellt und von der Software gezielt angefordert. Dabei wird pro Zoomstufe jeweils eine Tile Matrix bereitgestellt, welche den TMS ergeben. Diese Tile Matrizen werden in der Praxis mit einer Ganzzahl angesprochen, der Standard sieht jedoch daneben auch eine eindeutige alphanumerische Bezeichnung vor. Die Standardisierung sieht weiterhin vor, dass die Aufteilung zum Zoom nicht zwingend aus 1:4 besteht, d.h. dass 4 Kacheln der Zoomstufe 1 eine Kachel der Zoomstufe 0 ergeben.
 </p>
 
 <p>
@@ -44,7 +44,7 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
 <app-figure
     [id]="'2-2'"
     [src]="'/assets/images/Standards/TMS_representation.png'"
-    [caption]="'Aufbaus eines TMS'"
+    [caption]="'Aufbau eines TMS'"
     [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
 
 <p>
@@ -57,7 +57,7 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
 
 <div class="tableWrapper" id="table-2-1">
   <p class="caption">
-    <span>Tabelle 2-1:</span> Auszug aus den relevanten Informationen einen WKSS<br>
+    <span>Tabelle 2-1:</span> Auszug aus den relevanten Informationen eines WKSS<br>
     <span>Quelle:</span> OGC - Two Dimensional Tile Matrix Set
   </p>
   <table>

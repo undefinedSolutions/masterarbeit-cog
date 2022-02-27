@@ -1,7 +1,7 @@
 <app-headline [headline]="'Vorbereitung des WMS und WMTS'" [h]="3" [number]="'3.1.2'" [id]="3.12"></app-headline>
 
 <p>
-  In diesem Kapitel betrachten wir die nötigen Entscheidungs- und Arbeitsschritte um die Daten für die Veröffentlichung über die Software GeoServer vorzubereiten. Diese wird das GeoTIFF lesen und die geforderten Bereiche für den WMS bzw. WMTS ausliefern. Der Prozess sollte so effizient wie möglich ablaufen, um die Wartezeit des Nutzers zu verringern.
+  In diesem Kapitel betrachten wir die nötigen Entscheidungs- und Arbeitsschritte, um die Daten für die Veröffentlichung über die Software GeoServer vorzubereiten. Diese wird das GeoTIFF lesen und die geforderten Bereiche für den WMS bzw. WMTS ausliefern. Der Prozess sollte so effizient wie möglich ablaufen, um die Wartezeit des Nutzers zu verringern.
 </p>
 
 <p>
@@ -10,21 +10,21 @@
 
 <div class="avoidBreak">
   <p>
-    Es gibt folgende Möglichkeiten GeoTiffs aufzuarbeiten. Grundlage für die Entscheidung für eine der Methoden bildet die Dateigröße<app-quote
+    Es gibt folgende Möglichkeiten, GeoTiffs aufzuarbeiten. Grundlage für die Entscheidung für eine der Methoden bildet die Dateigröße:<app-quote
     id="3-GeoSolutions"
     author="GeoSolutions: Simone Giannecchini"
     lastVisit="29.01.2022"
     publicationDate="28.05.2020"
     title="Best Practices for Optimizing Performance with GeoServer"
     [vgl]="true"
-    URL="https://www.geosolutionsgroup.com/news/geoserver-performance-2020-webinar/"></app-quote>:
+    URL="https://www.geosolutionsgroup.com/news/geoserver-performance-2020-webinar/"></app-quote>
   </p>
 
-  <ul>
-    <li>kleiner als 4 Gigabyte: Aufarbeitung einer einzelnen GeoTIFF- Datei</li>
-    <li>kleiner als 20 Gigabyte: Aufarbeitung einer einzelnen BigTIFF - GeoTIFF Datei</li>
-    <li>kleiner als 500 Gigabyte: Erstellung eines Mosaik aus einzelnen BigTIFF - GeoTIFFs</li>
-    <li>Alles weitere sollte als ImagePyramid erstellt werden, auf welche in dieser Arbeit nicht näher eingegangen wird.</li>
+  <ul class="avoidBreak">
+    <li>kleiner als 4 Gigabyte: Aufarbeitung einer einzelnen GeoTIFF-Datei</li>
+    <li>kleiner als 20 Gigabyte: Aufarbeitung eines einzelnen BigTIFF-GeoTIFFs</li>
+    <li>kleiner als 500 Gigabyte: Erstellung eines Mosaiks aus einzelnen BigTIFF-GeoTIFFs</li>
+    <li>Alles weitere sollte als ImagePyramid erstellt werden, auf welche in dieser Arbeit nicht näher eingegangen wird</li>
   </ul>
 </div>
 
@@ -45,7 +45,7 @@
     -multi -wo NUM_THREADS=ALL_CPUS"></app-codeblock>
 
 <p>
-  Durch diese Umprojektion enthält das erstellte GeoTIFF keine Übersichten. Um diese zu generieren kann entweder QGIS verwendet werden oder der folgende GDAL- Befehl:
+  Durch diese Umprojektion enthält das erstellte GeoTIFF keine Übersichten. Um diese zu generieren kann entweder QGIS verwendet werden oder der folgende GDAL-Befehl:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdaladdo -r average ./dsm_strenzfeld_input.tif
@@ -65,22 +65,22 @@
 <app-codeblock [lineNumbers]="false" code="gdalinfo ./wms/dsm_strenzfeld.tif"></app-codeblock>
 
 Die Ergebnisse sollten die folgenden Merkmale enthalten, damit dieser Datensatz nachfolgend für die Verwendung in einem GeoServer genutzt werden kann:
-<ul>
+<ul class="avoidBreak">
   <li><span class="code">Coordinate System is: ... ID["EPSG",3857]]</span> = neues durch gdalwarp gewähltes Koordinatensystem</li>
   <li><span class="code">Image Structure Metadata: COMPRESSION=DEFLATE</span> = in gdal_translate festgelegte Komprimierung</li>
-  <li><span class="code">Band 1 Block=256x256 Type=Float32, ColorInterp=Gray</span> = interne Tiles mit einer größe von 256x256 Pixel</li>
+  <li><span class="code">Band 1 Block=256x256 Type=Float32, ColorInterp=Gray</span> = interne Tiles mit einer Größe von 256x256 Pixel</li>
   <li><span class="code">Overviews: 11394x9542, ..., 179x150</span> = durch gdaladdo hinzugefügte Übersichten</li>
 </ul>
 
 <p>
-  Eine Besonderheit des GeoServers ist bei der JPEG Komprimierung zu berücksichtigen: Diese kann nur mit RGB-Kanälen verwendet werden<app-quote
+  Eine Besonderheit des GeoServers ist bei der JPEG Komprimierung zu berücksichtigen: Diese kann nur mit RGB-Kanälen verwendet werden.<app-quote
   id="3-StackExchange-reexyyl"
   author="StackExchange: reexyyl"
   lastVisit="29.01.2022"
   publicationDate="13.05.2020"
   title="GeoServer fails to read a JPEG compressed TIFF with alpha band"
   [vgl]="true"
-  URL="https://gis.stackexchange.com/a/361481"></app-quote>. Dadurch ist es notwendig, die Orthomosaike in RGB-Bänder mit Masken zu konvertieren. Dies erfolgt durch den folgenden GDAL-Befehl:
+  URL="https://gis.stackexchange.com/a/361481"></app-quote> Dadurch ist es notwendig, die Orthomosaike in RGB-Bänder mit Masken zu konvertieren. Dies erfolgt durch den folgenden GDAL-Befehl:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdal_translate ./ortho_lindenrain.tif ./ortho_lindenrain_input.tif
@@ -88,12 +88,12 @@ Die Ergebnisse sollten die folgenden Merkmale enthalten, damit dieser Datensatz 
     --config GDAL_TIFF_INTERNAL_MASK YES"></app-codeblock>
 
 <p>
-  Diese Vorgehensweise führt zwar zu dem Nachteil, dass jedes Band nun eine eigene Maske erhält, welche die Transparenz des jeweiligen Kanals gewährleistet. Somit wird diese Information der Transparenz für jeden Kanal gespeichert. Dies ist eine Redundanz, welche aufgrund der RGB-Kanäle benötigt wird. Eine mögliche Alternative wäre die Ausführung einer DEFLATE-Komprimierung, dies würde jedoch einen weitaus größeren Datensatz mit 8,8 GB erzeugen. Da der durch den oben genannten Befehl generierte Datensatz nur eine Größe von 435,7 MB aufweist, ist die Konvertierung von RGBA zu RGB mit Masken der DEFLATE-Komprimierung vorzuziehen. Zur Erstellung der internen Tiles wird der gleiche GDAL-Befehl wie für das Oberflächenmodell verwendet, mit dem Unterschied, dass als Dateiformat zur Komprimierung nun JPEG zu wählen ist:
+  Diese Vorgehensweise hat zwar den Nachteil, dass jedes Band nun eine eigene Maske erhält, welche die Transparenz des jeweiligen Kanals gewährleistet. Somit wird diese Information der Transparenz für jeden Kanal gespeichert. Dies ist eine Redundanz, welche aufgrund der RGB-Kanäle benötigt wird. Eine mögliche Alternative wäre die Ausführung einer DEFLATE-Komprimierung, dies würde jedoch einen weitaus größeren Datensatz mit 8,8 GB erzeugen. Da der durch den oben genannten Befehl generierte Datensatz nur eine Größe von 435,7 MB aufweist, ist die Konvertierung von RGBA zu RGB mit Masken der DEFLATE-Komprimierung vorzuziehen. Zur Erstellung der internen Tiles wird der gleiche GDAL-Befehl wie für das Oberflächenmodell verwendet, mit dem Unterschied, dass als Dateiformat zur Komprimierung nun JPEG zu wählen ist:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="gdal_translate ./ortho_strenzfeld_input.tif ./wms/ortho_strenzfeld.tif
     -of COG -co COMPRESS=JPEG -co NUM_THREADS=ALL_CPUS"></app-codeblock>
 
 <p>
-  Analog zu der Beschreibung des Datensatzes "dsm_strenzfeld.tif", müssen an dieser Stelle ebenfalls die geforderten Merkmale geprüft werden.
+  Analog zur Beschreibung des Datensatzes "dsm_strenzfeld.tif", müssen an dieser Stelle ebenfalls die geforderten Merkmale geprüft werden.
 </p>

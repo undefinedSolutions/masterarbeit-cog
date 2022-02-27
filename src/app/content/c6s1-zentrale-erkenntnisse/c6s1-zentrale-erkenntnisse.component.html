@@ -1,0 +1,309 @@
+<app-headline [headline]="'Zentrale Erkenntnisse'" [h]="2" [number]="'6.1'" [id]="6.1"></app-headline>
+
+<p>
+  Das Ziel welches, mit dieser Arbeit verfolgt wurde, war es, eine Tendenz für einen zu präferierenden Standard zu erarbeiten. Aufgrund der unterschiedlichen Kriterien für die gewichtete Matrix ist dies jedoch nicht ohne weitere Informationen zu dem jeweiligen Anwendungsfall möglich. Daher sollen im Folgenden einige mögliche Anwendungsfälle beleuchtet werden.
+</p>
+
+<p>
+  Es gilt auch zu berücksichtigen, dass einige Standards für die Implementation in eine WebMap mehr Erfahrung benötigten als andere. Als Beispiel soll hier das COG genutzt werden, in OpenLayers ist dies eine relativ neue Methode, welche eine noch relativ kleine Verbreitung in der Nutzerschaft vorweist. Andere JavaScript-Bilbiotheken, wie zum beispiel Leaflet, unterstützen diese Datenquelle nur mithilfe eines Plugins.<app-quote
+  id="6-Github-GeoTIFF"
+  author="Github - GeoTIFF"
+  lastVisit="29.01.2022"
+  publicationDate="17.01.2022"
+  title="GeoTIFF / georaster-layer-for-leaflet-example"
+  [vgl]="true"
+  URL="https://github.com/GeoTIFF/georaster-layer-for-leaflet-example"></app-quote> All diese Faktoren sind weitere "layer of complexity", deren Beschreibung über den Rahmen dieser Arbeit hinausgegangen wären.
+</p>
+
+<p>
+  Die Anwendungsfälle auf welche beispielsweise eingegangen wird, sind:
+</p>
+
+<ul class="avoidBreak">
+  <li>die Darstellung weniger Orthomosaike mit geringem Budget (Referenzprojekt eines Drohnenpiloten)</li>
+  <li>die Erstellung von 20 Orthomosaiken am Tag und dem Hosten dieser für ein Jahr (Datenprovider)</li>
+  <li>die Darstellung von Höheninformationen mit der Bedingung, diese on-the-fly zu manipulieren und einzelne Höhen abfragen zu können (Tiefbau-Dokumentation bzw. Erdarbeiten)</li>
+</ul>
+
+<p>
+  Das erste Anwendungsbeispiel ist die Implementierung einer interaktiven WebMap in die Homepage eines Drohnenpiloten, Ziel ist es, die Datenqualität zu präsentieren. Dadurch wird der Fokus zum einen auf möglichst geringe Kosten gesetzt, denn die Nutzung von WebMaps dient zwar der Neukundengewinnung, bildet jedoch nicht das Kerngeschäft in diesem Beispiel. Essenziell ist jedoch die Geschwindigkeit um Daten zu präsentieren. Für diesen Anwendungsfall wurden die Faktoren der Matrix wie folgt angepasst.
+</p>
+
+<div class="tableWrapper" id="table-6-1">
+  <p class="caption">
+    <span>Tabelle 6-1:</span> ToDo
+  </p>
+  <table>
+    <tr>
+      <th>Kriterium</th>
+      <th>Faktor</th>
+      <th>TMS</th>
+      <th>WMS</th>
+      <th>WMTS</th>
+      <th>COG</th>
+    </tr>
+    <tr>
+      <td>Datenaufarbeitung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+      <td class="data">9</td>
+      <td class="data">6</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Datenabruf (Dauer)</td>
+      <td class="data">6</td>
+      <td class="data">54</td>
+      <td class="data">18</td>
+      <td class="data">54</td>
+      <td class="data">36</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Kosten)</td>
+      <td class="data">9</td>
+      <td class="data">81</td>
+      <td class="data">27</td>
+      <td class="data">27</td>
+      <td class="data">81</td>
+    </tr>
+    <tr>
+      <td>Visualisierung (durch den Nutzer)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td>Rasterwerte abfragen (durch den Nutzer)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td>Interoperabilität (der Standards)</td>
+      <td class="data">1</td>
+      <td class="data">0</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gesamtwert</td>
+      <td class="data">141</td>
+      <td class="data">60</td>
+      <td class="data">96</td>
+      <td class="data">132</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Somit wäre die faktisch ideale Wahl ein einfacher TMS, dieser ist einfach zu erstellen und kann ebenso einfach in ein WebGIS als Layer eingebunden werden.
+</p>
+
+<p>
+  Als nächster Anwendungsfall soll ein fiktives Unternehmen betrachtet werden, welches hochauflösende Orthomosaike für Kunden erfasst und für ein Jahr in einem eigenen WebGIS auf Basis von OpenLayers zur Verfügung stellt. Als Anzahl neuer Orthomosaike pro Tag werden 20 Stück angenommen. Dies bedeutet, in einem Jahr summiert sich dies auf rund 7120 Stück, bevor die ersten Mosaike offline genommen werden können. Somit liegt derFokus auf den Faktoren Dauer der Datenaufarbeitung und Kosten der Datenbereitstellung. Die Dauer der Datenbereistellung und die Dauer des Datenabrufes sind zwar nach wie vor relevant, jedoch gegenüber der beiden zuvor genannten Punkte nachrangig.
+</p>
+
+<p>
+  Was in der Matrix nicht berücksichtigt wurde, ist die automatisierte Datenverarbeitung, welche zwar auch mit dem Geoserver über eine REST-API möglich ist, jedoch einiges an vorherigem Entwicklungsaufwand benötigt.<app-quote
+  id="6-Geoserver-REST-API"
+  author="Geoserver"
+  chapter="Usage of the API for search and integrated OGC service publishing"
+  lastVisit="29.01.2022"
+  title="Automation with the administration REST API"
+  [vgl]="true"
+  URL="https://docs.geoserver.org/latest/en/user/community/opensearch-eo/automation.html#usage-of-the-api-for-search-and-integrated-ogc-service-publishing"></app-quote>
+</p>
+
+<div class="tableWrapper" id="table-6-2">
+  <p class="caption">
+    <span>Tabelle 6-2:</span> toDo
+  </p>
+  <table>
+    <tr>
+      <th>Kriterium</th>
+      <th>Faktor</th>
+      <th>TMS</th>
+      <th>WMS</th>
+      <th>WMTS</th>
+      <th>COG</th>
+    </tr>
+    <tr>
+      <td>Datenaufarbeitung (Dauer)</td>
+      <td class="data">9</td>
+      <td class="data">27</td>
+      <td class="data">81</td>
+      <td class="data">81</td>
+      <td class="data">54</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Dauer)</td>
+      <td class="data">6</td>
+      <td class="data">18</td>
+      <td class="data">36</td>
+      <td class="data">36</td>
+      <td class="data">54</td>
+    </tr>
+    <tr>
+      <td>Datenabruf (Dauer)</td>
+      <td class="data">6</td>
+      <td class="data">54</td>
+      <td class="data">18</td>
+      <td class="data">54</td>
+      <td class="data">36</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Kosten)</td>
+      <td class="data">9</td>
+      <td class="data">81</td>
+      <td class="data">27</td>
+      <td class="data">27</td>
+      <td class="data">81</td>
+    </tr>
+    <tr>
+      <td>Visualisierung (durch den Nutzer)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td>Rasterwerte abfragen (durch den Nutzer)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td>Interoperabilität (der Standards)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gesamtwert</td>
+      <td class="data">180</td>
+      <td class="data">162</td>
+      <td class="data">198</td>
+      <td class="data">225</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Für diese Massen an Daten ist die Nutzung das COG ideal, es benötigt nicht mehr als einen HTTP-Server und unter Verwendung des in <a href="#content-3.21">Kapitel 3.2.1</a> vorgestellten Setup kann dieser auch Problemlos von selbst auf die erforderliche Größe skalieren. Nach einem Jahr können die GeoTiffs automatisiert entweder in ein Archiv verschoben oder gelöscht werden.
+</p>
+
+<p>
+  Das letzte Anwendungsbeispiel stellt ein Tiefbauunternehmen dar, welches monatlich ein Großprojekt erfassen lässt und das Oberflächenmodell in einer Interaktiven WebMap zur Verfügung stellt. Diese fiktive WebMap befähigt dazu, verschiedene zeitlich unterschiedliche Oberflächenmodelle miteinander zu vergleichen. Um eine bessere Visuelle Unterscheidung kleinster Verschiedenheiten darzustellen, muss es dem Nutzer ermöglicht werden, die "Range" der Visualisierung anpassen zu können. Ebenso sollte er einzelne Höheninformationen abfragen können. Aufgrund der soeben beschrieben Anforderungen, ist das wichtigste Kriterium die Visualisierung durch den Nutzer und die Abfrage von Rasterwerten. Auch die Dauer des Datenabrufs sollte effizient sein.
+</p>
+
+<div class="tableWrapper" id="table-6-3">
+  <p class="caption">
+    <span>Tabelle 6-3:</span> toDo
+  </p>
+  <table>
+    <tr>
+      <th>Kriterium</th>
+      <th>Faktor</th>
+      <th>TMS</th>
+      <th>WMS</th>
+      <th>WMTS</th>
+      <th>COG</th>
+    </tr>
+    <tr>
+      <td>Datenaufarbeitung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+      <td class="data">9</td>
+      <td class="data">6</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Dauer)</td>
+      <td class="data">1</td>
+      <td class="data">3</td>
+      <td class="data">6</td>
+      <td class="data">6</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Datenabruf (Dauer)</td>
+      <td class="data"> 6</td>
+      <td class="data">54</td>
+      <td class="data">18</td>
+      <td class="data">54</td>
+      <td class="data">36</td>
+    </tr>
+    <tr>
+      <td>Datenbereitstellung (Kosten)</td>
+      <td class="data">1</td>
+      <td class="data">9</td>
+      <td class="data">3</td>
+      <td class="data">3</td>
+      <td class="data">9</td>
+    </tr>
+    <tr>
+      <td>Visualisierung (durch den Nutzer)</td>
+      <td class="data">9</td>
+      <td class="data">0</td>
+      <td class="data">54</td>
+      <td class="data">54</td>
+      <td class="data">81</td>
+    </tr>
+    <tr>
+      <td>Rasterwerte abfragen (durch den Nutzer)</td>
+      <td class="data">9</td>
+      <td class="data">0</td>
+      <td class="data">54</td>
+      <td class="data">54</td>
+      <td class="data">81</td>
+    </tr>
+    <tr>
+      <td>Interoperabilität (der Standards)</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+      <td class="data">0</td>
+    </tr>
+    <tr>
+      <td colspan="2">Gesamtwert</td>
+      <td class="data">69</td>
+      <td class="data">144</td>
+      <td class="data">180</td>
+      <td class="data">222</td>
+    </tr>
+  </table>
+</div>
+
+<p>
+  Bedingt durch das Erfordernis, die "Range" der Visualisierung anpassen zu können, bleibt nur das COG, diese Art der Implementierung ist mit keinem der anderen Standards möglich.
+</p>
+
+<p>
+  Die beschriebenen Anwendungsfälle beziehen sich nur auf den Fachbereich WebGIS. Sofern dieser jedoch verlassen wird und ebenfalls Desktop GIS-Software betrachtet wird, könnten ganz andere Anforderungen benötigt werden. ArcMap und ArcGIS Pro sind in Unternehmen und Behörden weit verbreitet, somit kann es auch eine Anforderung sein, eine dieser Software mit Daten zu versorgen. Das COG kann von der Software zwar gelesen werden, jedoch nicht über das HTTP(S)-Protokoll, dies würde ein zusätzliches Herunterladen der Datensätze erfordern.<app-quote
+  id="6-StackExchange"
+  author="StackExchange - matt wilkie"
+  lastVisit="29.01.2022"
+  publicationDate="15.06.2021"
+  title="Loading Cloud Optimized GeoTIFF in ArcGIS Pro"
+  [vgl]="true"
+  URL="https://gis.stackexchange.com/a/401577"></app-quote> Somit müsste in diesem Anwendungsfall die in <a href="#content-5.4">Kapitel 5.4</a> beschriebene Lösung, das COG über den Geoserver als WMS auszuliefern, zurückgegriffen oder direkt ein anderer Standard in Betracht gezogen werden.
+</p>

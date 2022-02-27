@@ -1,7 +1,7 @@
 <app-headline headline="WMS im GeoServer" [h]="4" number="3.2.2.1" [id]="3.221"></app-headline>
 
 <p>
-  Die WMS-Dateien müssen nun auf den wie im vorherigen Kapitel beschrieben erstellten GeoServer kopiert werden. Dies kann mittels secure copy (<app-abbreviation abbreviation="scp" description="secure copy"></app-abbreviation>) erfolgen, da die AWS EC2 Instanz selbst mittels SSH genutzt werden kann. Der Befehl zum Kopieren weist Ähnlichkeiten zum SSH-Login Befehl auf:
+  Die WMS-Dateien müssen nun auf den - wie im vorherigen Kapitel beschrieben - erstellten GeoServer kopiert werden. Dies kann mittels secure copy (<app-abbreviation abbreviation="scp" description="Secure copy"></app-abbreviation>) erfolgen, da die AWS EC2 Instanz selbst mittels SSH genutzt werden kann. Der Befehl zum Kopieren weist Ähnlichkeiten zum SSH-Login Befehl auf:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="scp -i ~./.ssh/Geoserver.pem ./ortho_strenzfeld.tif
@@ -11,24 +11,24 @@
   Der Aufbau des secret copy-Befehls gliedert sich in die nachfolgenden Komponenten:
 </p>
 
-<ol>
+<ol class="avoidBreak">
   <li>-i ~./.ssh/Geoserver.pem</li> = Pfad zum private Key für die Legitimation des Logins
   <li>./ortho_strenzfeld.tif</li> = File für den Upload
   <li>ubuntu</li> = Nutzer der EC2 Instanz
   <li>geoserver.masterarbeit-cog.de</li> = URL oder IP-Addresse der EC2 Instanz
-  <li>~/data_dir/masterarbeit/wms/</li> = Pfad auf der EC2 Instanz, in der das InputFile abgelegt werden soll.
+  <li>~/data_dir/masterarbeit/wms/</li> = Pfad auf der EC2 Instanz, in der das InputFile abgelegt werden soll
 </ol>
 
 <p>
-  Nachdem das GeoTIFF übertragen wurde, muss es nun über den GeoServer veröffentlicht werden. Der Ablauf gliedert sich in mehrere Schritte: Erstellung des Arbeitsbereichs, Hinzufügen eines Datenspeichers, Veröffentlichung eines Layers und gegebenenfalls zusätzlich die Erstellung eines Stiels zur Visualisierung. Sämtliche Arbeitsschritte erfolgen nach Anmeldung auf der WebOberfläche des GeoServers.
+  Nachdem das GeoTIFF übertragen wurde, muss es nun über den GeoServer veröffentlicht werden. Der Ablauf gliedert sich in mehrere Schritte: Erstellung des Arbeitsbereichs, Hinzufügen eines Datenspeichers, Veröffentlichung eines Layers und gegebenenfalls zusätzlich die Erstellung eines Stils zur Visualisierung. Sämtliche Arbeitsschritte erfolgen nach Anmeldung auf der WebOberfläche des GeoServers.
 </p>
 
 <p>
-  Die Veröffentlichung eines Layers ohne einen festgelegten Arbeitsbereich ist nicht möglich. Dieser kann als Sammelobjekt für mehrere Layer verstanden werden. Für den vorliegenden Standard wurde ein Arbeitsbereich mit den Namen WMS erstellt.
+  Die Veröffentlichung eines Layers ohne einen festgelegten Arbeitsbereich ist nicht möglich. Dieser kann als Sammelobjekt für mehrere Layer verstanden werden. Für den vorliegenden Standard wurde ein Arbeitsbereich mit dem Namen WMS erstellt.
 </p>
 
 <p>
-  Weitere Voraussetzung für einen Layer bildet der Datenspeicher als Datenquelle im Kontext des GeoServers für einen Layer. Der GeoServer bietet als Datenquellen Vektordaten, Rasterdaten und "andere Datenquellen". Im Rahmen dieser Arbeit geht es vorwiegend um die Veröffentlichung von Rasterdaten, daher werden die beiden anderen Kategorien nicht näher betrachtet. Als Datenquelle für Rasterdaten kann ArcGrid, GeoPackage, GeoTIFF ImageMosaic oder WorldImage genutzt werden. Die in dieser Arbeit verwendete Datenquelle aus diesen Kategorien ist das GeoTIFF. Im Interface muss der Arbeitsbereich gewählt werden, ein Name der Datenquelle festgelegt und der Verbindungsparameter, welcher den Pfad zu dem GeoTIFF darstellt. Dieser muss nicht manuell ausgewählt werden, sondern kann über das "Browse..." komfortabel per GUI selektiert werden. Die nachfolgende Abbildung stellt die Eingaben beispielhaft dar:
+  Weitere Voraussetzung für einen Layer bildet der Datenspeicher als Datenquelle im Kontext des GeoServers für einen Layer. Der GeoServer bietet als Datenquellen Vektordaten, Rasterdaten und "andere Datenquellen". Im Rahmen dieser Arbeit geht es vorwiegend um die Veröffentlichung von Rasterdaten, daher werden die beiden anderen Kategorien nicht näher betrachtet. Als Datenquelle für Rasterdaten kann ArcGrid, GeoPackage, GeoTIFF ImageMosaic oder WorldImage genutzt werden. Die in dieser Arbeit verwendete Datenquelle aus diesen Kategorien ist das GeoTIFF. Im Interface muss der Arbeitsbereich gewählt werden, ein Name der Datenquelle festgelegt und der Verbindungsparameter, welcher den Pfad zu dem GeoTIFF darstellt, benannt werden. Diesen muss man nicht manuell auswählen, sondern kann ihn über das "Browse..." komfortabel per GUI selektieren. Die nachfolgende Abbildung stellt die Eingaben beispielhaft dar:
 </p>
 
 <app-figure
@@ -39,7 +39,7 @@
     source="Screenshot von Geoserver"></app-figure>
 
 <p>
-  Nachdem nun der Datenspeicher hinzugefügt wurde, kann in der Ansicht "Neuer Layer" dieser ohne Verzögerung publiziert werden. Die Publikation öffnet direkt das Interface zum Bearbeiten des Layers, in dem sich mehrere Reiter zur weiteren Bearbeitung finden: Daten, Publizierung, Ausdehnung, Kartenkachel-Cache und Security. In Daten muss ein Name für den Layer vergeben sowie das Koordinatensystem und die Bänderdetails geprüft werden. In dem Tab Publizierung können der Autor der Daten bzw. des WMS genannt werden und dessen URL zur Homepage. Ziel dieses Kapitels ist, es einen WMS zu veröffentlichen, somit muss in dem Tab Kartenkachel-Cache die Checkbox "Erzeuge einen gecachten Layer für diesen Layer" deaktiviert werden. In den Tabs Ausdehnung und Security werden keine Änderungen vorgenommen. Nach allen erforderlichen Eingaben kann der Layer nun gespeichert werden.
+  Nachdem nun der Datenspeicher hinzugefügt wurde, kann dieser in der Ansicht "Neuer Layer" dieser ohne Verzögerung publiziert werden. Die Publikation öffnet direkt das Interface zum Bearbeiten des Layers, in dem sich mehrere Reiter zur weiteren Bearbeitung finden: Daten, Publizierung, Ausdehnung, Kartenkachel-Cache und Security. In Daten muss ein Name für den Layer vergeben sowie das Koordinatensystem und die Bänderdetails geprüft werden. Im Tab Publizierung können der Autor der Daten bzw. des WMS genannt werden und dessen URL zur Homepage. Ziel dieses Kapitels ist es, einen WMS zu veröffentlichen, somit muss in dem Tab Kartenkachel-Cache die Checkbox "Erzeuge einen gecachten Layer für diesen Layer" deaktiviert werden. In den Tabs Ausdehnung und Security werden keine Änderungen vorgenommen. Nach allen erforderlichen Eingaben kann der Layer nun gespeichert werden.
 </p>
 
 <app-figure
@@ -55,7 +55,7 @@
     source="Screenshot von Geoserver"></app-figure>
 
 <p>
-  Mithilfe der Layer-Vorschau kann der erzeugte Layer in einer OpenLayers auf Richtigkeit überprüft werden. Diese Vorschau ist auch für Nutzer, welche über keinen Login zum GeoServer verfügen, möglich. Hierfür muss nur die Domain des GeoServers geoserver.masterarbeit-cog.de/web/ aufgerufen und im linksseitigen Menü die Layer-Vorschau ausgewählt werden. In der nachfolgenden Abbildung ist ein Beispiel der Vorschau zu sehen.
+  Mithilfe der Layer-Vorschau kann der erzeugte Layer in OpenLayers auf Richtigkeit überprüft werden. Diese Vorschau ist auch für Nutzer, welche über keinen Login zum GeoServer verfügen, möglich. Hierfür muss nur die Domain des GeoServers geoserver.masterarbeit-cog.de/web/ aufgerufen und im linksseitigen Menü die Layer-Vorschau ausgewählt werden. In der nachfolgenden Abbildung ist ein Beispiel der Vorschau zu sehen.
 </p>
 
 <div style="height:400px; overflow: hidden; width:100%;">

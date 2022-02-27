@@ -1,18 +1,18 @@
 <app-headline headline="Web Map Service (WMS)" [h]="2" number="2.2" [id]="2.2"></app-headline>
 
 <p>
-  Der Web Map Service (<app-abbreviation abbreviation="WMS" description="Web Map Service"></app-abbreviation>) bildet im Rahmen dieser Arbeit den ältesten OGC Standard, dessen Ursprung sich in der Version 1.0.0 vom 19.04.2000 findet. Die aktuelle Version 1.3.0 wurde am 15.03.2006 veröffentlicht und ist somit seit mehr als 15 Jahren unverändert<app-quote
+  Der Web Map Service (<app-abbreviation abbreviation="WMS" description="Web Map Service"></app-abbreviation>) bildet im Rahmen dieser Arbeit den ältesten OGC Standard, dessen Ursprung sich in der Version 1.0.0 vom 19.04.2000 findet. Die aktuelle Version 1.3.0 wurde am 15.03.2006 veröffentlicht und ist somit seit mehr als 15 Jahren unverändert.<app-quote
   id="2-OpenGISImplementationSpecification-WMS"
   author="OpenGIS Implementation Specification"
   lastVisit="25.02.2022"
   publicationDate="15.03.2006"
   title="OpenGIS Web Map Server Implementation Specification"
   [vgl]="true"
-  URL="https://portal.ogc.org/files/?artifact_id=14416"></app-quote>. Aus dieser Version stammen auch alle für diese Arbeit verwendeten Informationen zum WMS, sofern nicht anders angegeben.
+  URL="https://portal.ogc.org/files/?artifact_id=14416"></app-quote> Aus dieser Version stammen auch alle für diese Arbeit verwendeten Informationen zum WMS, sofern nicht anders angegeben.
 </p>
 
 <p>
-  Der OGC-WMS wurde zur Standardisierung von zahlreichen anderen Institutionen übernommen, hierzu gehören beispielsweise die International Organization for Standardization (<app-abbreviation abbreviation="ISO" description="International Organization for Standardization"></app-abbreviation>) oder auch die Infrastructure for Spatial Information in the European Community (INSPIRE). INSPIRE hat das Ziel, die Interoperabilität von Geodaten für alle Mitglieder der Europäischen Gemeinschaft zu standardisieren und mithilfe dessen den Datenaustausch für Nutzer zu vereinfachen. Insbesondere für diese Vorhaben ist es sinnvoll, sich auf bereits durch eine andere Organisation etablierte Standards zu stützen.
+  Der OGC-WMS wurde zur Standardisierung von zahlreichen anderen Institutionen übernommen, hierzu gehören beispielsweise die International Organization for Standardization (<app-abbreviation abbreviation="ISO" description="International Organization for Standardization"></app-abbreviation>) oder auch die Infrastructure for Spatial Information in the European Community (INSPIRE). INSPIRE hat das Ziel, die Interoperabilität von Geodaten für alle Mitglieder der Europäischen Gemeinschaft zu standardisieren und hierdurch dessen den Datenaustausch für Nutzer zu vereinfachen. Insbesondere für diese Vorhaben ist es sinnvoll, sich auf bereits durch eine andere Organisation etablierte Standards zu stützen.
 </p>
 
 <p>
@@ -30,13 +30,13 @@
   Die Kommunikation zur Abfrage der Layer von einem Server, welcher den WMS bereitstellt, erfolgt über eine HTTP-Get-Methode. Die folgenden zwei Funktionen des Servers müssen dabei mindestens gegeben sein:
 </p>
 
-<ul>
+<ul class="avoidBreak">
   <li><span>GetCapabilities</span> = liefert alle Informationen als XML-Dokument, welche ein Client benötigt, um einen GetMap-Request zu tätigen</li>
   <li><span>GetMap</span> = dient der Auslieferung der Daten anhand der zuvor über GetCapabilities-Request ausgegebenen Daten</li>
 </ul>
 
 <p>
-  GetCapabilities bietet neben einer Auflistung aller vom Server zur Verfügung stehenden Layer auch weitere Angaben, wie beispielsweise Metainformationen über den Betreiber des Servers, verfügbare Koordinatensysteme, Formate, optionale Funktionen und Metadata der Datensätze.
+  GetCapabilities bietet neben einer Auflistung aller vom Server zur Verfügung stehenden Layer auch weitere Angaben, wie beispielsweise Metainformationen über den Betreiber des Servers, verfügbare Koordinatensysteme, Formate, optionale Funktionen und die Metadaten der Datensätze.
 </p>
 
 <p>
@@ -69,11 +69,11 @@ FORMAT=image/png"></app-codeblock>
 </p>
 
 <p>
-  Anhand dieser Parameter lässt sich erkennen, dass der WMS im Gegensatz zum TMS eine viel größere Möglichkeit bietet, Anpassungen vorzunehmen. Eine je nach Anwendungsfall wichtige Funktionalität ist es, durch den Server die Geodaten on-the-fly in ein anderes Koordinatensystem (CRS) projizieren zu lassen. Gleichzeitig lassen sich auch das Ausgabeformat (FORMAT) oder, über den Parameter STYLE, zusätzlich die Erscheinung des Datensatzes beeinflussen.
+  Anhand dieser Parameter lässt sich erkennen, dass der WMS im Gegensatz zum TMS viel größere Möglichkeiten bietet, Anpassungen vorzunehmen. Eine je nach Anwendungsfall wichtige Funktionalität ist es, durch den Server die Geodaten on-the-fly in ein anderes Koordinatensystem (CRS) projizieren zu lassen. Gleichzeitig lassen sich auch das Ausgabeformat (FORMAT) oder, über den Parameter STYLE, zusätzlich die Erscheinung des Datensatzes beeinflussen.
 </p>
 
 <p>
-  Die bisher beschriebenen Anfragen müssen innerhalb der Standardisierung des OGC vorgesehen sein. Neben diesen gibt es noch eine weitere optionale Anfrage, den GetFeatureInfo-Request. Dieser ermöglicht es, Informationen des Layers anhand der Pixelposition abfragen zu können. Der Request erfolgt mittels folgender Parameter:
+  Die bisher beschriebenen Anfragen müssen innerhalb der Standardisierung des OGC vorgesehen sein. Neben diesen gibt es noch eine weitere optionale Anfrage, der GetFeatureInfo-Request. Dieser ermöglicht es, Informationen des Layers anhand der Pixelposition abfragen zu können. Der Request erfolgt mittels folgender Parameter:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/ows?
@@ -96,7 +96,7 @@ J=245"></app-codeblock>
   Wichtig ist hierbei, dass die Parameter <span class="code">I</span> (Zeile Spalte) und <span class="code">J</span> (Zeilen Reihe) nicht die Koordinaten beinhalten, sondern die Position anhand der in WIDTH und HEIGHT angeforderten Pixel.
 </p>
 <p>
-  Durch den Parameter <span class="code">INFO_FORMAT</span> kann die Rückgabe des Pixelwertes in einem für den jeweiligen Anwendungsfall passenden Format gewählt werden. Es empfiehlt sich, hierfür application/json zu verwenden, da dies eine Struktur beschreibt, welche von den gängigsten Programmiersprachen genutzt werden kann. Alternativ kann auch einfacher Text <span class="code">INFO_FORMAT=text/plain</span> oder HTML <span class="code">INFO_FORMAT=text/html</span> genutzt werden.
+  Durch den Parameter <span class="code">INFO_FORMAT</span> kann die Rückgabe des Pixelwertes in einem für den jeweiligen Anwendungsfall passenden Format gewählt werden. Es empfiehlt sich, hierfür application/json zu verwenden, da dies eine Struktur beschreibt, welche von den gängigsten Programmiersprachen genutzt werden kann. Alternativ kann auch einfacher Text <span class="code">INFO_FORMAT=text/plain</span> oder HTML <span class="code">INFO_FORMAT=text/html</span> verwendet werden.
 </p>
 
 <p>

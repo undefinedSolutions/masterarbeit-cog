@@ -1,5 +1,6 @@
-import { FiguresService } from './../../services/figures/figures.service';
 import { Component, OnInit, Input } from '@angular/core';
+
+import { FiguresService } from './../../services/figures/figures.service';
 
 @Component({
   selector: 'app-figure',

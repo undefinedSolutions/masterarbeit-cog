@@ -4,16 +4,40 @@
   Für den WMTS kann ein Cache vorgerendert oder bei Abruf durch den Nutzer on-the-Fly erzeugt werden. Sofern kein Cache vorliegt, benötigt der WMTS durch die Generierung mehr Zeit für die Auslieferung der Tiles, dies wurde exemplarisch für das Orthomosaik Lindenrain durchgeführt. In der folgenden Abbildung ist der Vergleich des Requests mit und ohne vorhandenen Cache zu sehen. Die Daten zeigen, dass die Generierung die Auslieferung um das 7,68-Fache verlangsamt. Dieses Ergebnis ist verständlich, da der Server, sofern ein Cache vorhanden ist, die Daten nur an den Nutzer ausliefern muss, ohne das als Datenquelle genutzte GeoTIFF vorher zu lesen.
 </p>
 
-toDo vergleich caching on-the-fly Generierung
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'wmtsNoCache'"
+      [caption]="'Vergleich Caching und on-the-fly Generierung'"
+      captionID="5-12"
+      source="eigene Daten"
+      [data]="dataWmtsNoCache"
+      [displayLegend]="true"
+      [format]="'round3'"
+      [suffix]="' s'"
+      [suffixTooltip]="' s'">>
+  </app-chart>
+</div>
 
 <p>
-  Sollte das Format nicht wie in Kapitel 3.2.2.2 beschrieben von "image/png" auf "image/vnd.jpeg-png" gewechselt werden, erfordern zumindest die Orthomosaike die Übertragung einer erheblich größeren Datenmenge, wie in der nachfolgenden Abbildung exemplarisch für das Orthomosaik Strenzfeld dargestellt. Die Größe des Downloads, sofern "image/png" gewählt wurde, ist um ein 1,57-Faches größer, dieser Umstand sollte vermieden werden.
+  Sollte das Format nicht wie in <a href="#content-3.222">Kapitel 3.2.2.2</a> beschrieben von "image/png" auf "image/vnd.jpeg-png" gewechselt werden, erfordern zumindest die Orthomosaike die Übertragung einer erheblich größeren Datenmenge, wie in der nachfolgenden Abbildung exemplarisch für das Orthomosaik Strenzfeld dargestellt. Die Größe des Downloads, sofern "image/png" gewählt wurde, ist um ein 1,57-Faches größer, dieser Umstand sollte vermieden werden.
 </p>
 
-toDo Vergliech größe
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'wmtsPNG'"
+      [caption]="'Größenvergleich des Downloads image/vnd.jpeg-png mit image/png'"
+      captionID="5-13"
+      source="eigene Daten"
+      [data]="dataWmtsPNG"
+      [displayLegend]="true"
+      [format]="'round3'"
+      [suffix]="' MB'"
+      [suffixTooltip]="' MB'">>
+  </app-chart>
+</div>
 
 <p>
-  Die monatlichen Kosten sind ähnlich zu betrachten wie die des WMS in Kapitel 5.2. Zu bedenken ist jedoch auch, dass der GeoServer in der Lage ist, beide Standards, den WMS und WMTS, gleichzeitig zur Verfügung zu stellen. Sollte sich also für einen der beiden Standards entschieden werden, kann der andere der beiden ebenfalls problemlos dargestellt werden.
+  Die monatlichen Kosten sind ähnlich zu betrachten wie die des WMS in <a href="#content-5.2">Kapitel 5.2</a>. Zu bedenken ist jedoch auch, dass der GeoServer in der Lage ist, beide Standards, den WMS und WMTS, gleichzeitig zur Verfügung zu stellen. Sollte sich also für einen der beiden Standards entschieden werden, kann der andere der beiden ebenfalls problemlos dargestellt werden.
 </p>
 
 <p>
@@ -38,7 +62,20 @@ toDo Vergliech größe
 })"></app-codeblock>
 
 <p>
-  Die Ergebnisse des Vergleichs der Dauer des Downloads unter Berücksichtigung des TMS sind in der folgenden Abbildung zu sehen. Ein unerwartetes Ergebnis, ist die Geschwindigkeit des WMTS-TMS im Vergleich zu dem WMTS. Dies ist auf eine bessere Implementierung des TMS in OpenLayer zurückzuführen. Bei den beiden Oberflächenmodellen ist ebenfalls zu erkennen, dass der WMTS und TMS das “image/vnd.jpeg-png”-Format nutzen und somit die übertragenen Datenmengen geringer ausfallen. Dies erklärt auch die schnellere Übertragung des WMTS und WMTS in diesem Szenario.
+  Die Ergebnisse des Vergleichs der Dauer des Downloads unter Berücksichtigung des TMS sind in der folgenden Abbildung zu sehen. Ein unerwartetes Ergebnis, ist die Geschwindigkeit des WMTS-TMS im Vergleich zu dem WMTS. Dies ist auf eine bessere Implementierung des TMS in OpenLayer zurückzuführen. Bei den beiden Oberflächenmodellen ist ebenfalls zu erkennen, dass der WMTS und TMS das "image/vnd.jpeg-png"-Format nutzen und somit die übertragenen Datenmengen geringer ausfallen. Dies erklärt auch die schnellere Übertragung des WMTS und WMTS in diesem Szenario.
 </p>
 
-todo Dauer des Downloads
+<div class="chart" style="height: 265px;">
+  <app-chart
+      [id]="'wmtsNetworkTime'"
+      [caption]="'Dauer des Downloads'"
+      captionID="5-14"
+      source="eigene Daten"
+      [data]="datawmtsNetworkTime"
+      [displayLegend]="true"
+      [format]="'round3'"
+      [setSize]="0.1"
+      [suffix]="' s'"
+      [suffixTooltip]="' s'">
+  </app-chart>
+</div>
