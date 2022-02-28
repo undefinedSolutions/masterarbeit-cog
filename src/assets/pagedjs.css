@@ -43,7 +43,7 @@ iframe {
 }
 
 .tableWrapper table .meta {
-  background: gray;
+  background: #d3d3d3;
   display: table-cell;
   font-weight: bold;
   vertical-align: inherit;
@@ -67,7 +67,7 @@ iframe {
 }
 
 .tableWrapper table th {
-  background: gray;
+  background: #d3d3d3;
 }
 
 .tableWrapper .caption {
@@ -219,16 +219,6 @@ p {
   }
 }
 
-@page:nth(105) {
-  @bottom-center {
-    content: counter(page, upper-roman);
-  }
-}
-@page:nth(106) {
-  @bottom-center {
-    content: counter(page, upper-roman);
-  }
-}
 @page:nth(107) {
   @bottom-center {
     content: counter(page, upper-roman);
@@ -260,6 +250,11 @@ p {
   }
 }
 @page:nth(113) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(114) {
   @bottom-center {
     content: counter(page, upper-roman);
   }
