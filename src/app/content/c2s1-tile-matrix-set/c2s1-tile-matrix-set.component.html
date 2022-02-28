@@ -4,7 +4,7 @@
 Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genannten Informationen aus dem OGC Implementation Standard des Tile Matrix Sets (<app-abbreviation [abbreviation]="'TMS'" [description]="'Tile Matrix Set'"></app-abbreviation>).<app-quote
   id="2-OGCImplementationStandard-TMS"
   author="OGC Implementation Standard"
-  lastVisit="25.02.2022"
+  lastVisit="14.12.2021"
   publicationDate="06.10.2019"
   title="OGC Two Dimensional Tile Matrix Set"
   [vgl]="true"
@@ -25,6 +25,7 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
 
 <app-figure
     [id]="'2-1'"
+    [sort]="2.01"
     [src]="'/assets/images/Standards/TMS_tileSpace.png'"
     [caption]="'Ausführung einer Tile Matrix'"
     [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
@@ -43,6 +44,7 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
 
 <app-figure
     [id]="'2-2'"
+    [sort]="2.02"
     [src]="'/assets/images/Standards/TMS_representation.png'"
     [caption]="'Aufbau eines TMS'"
     [source]="'OGC - Two Dimensional Tile Matrix Set'"></app-figure>
@@ -52,7 +54,11 @@ Sofern keine anderen Quellen genannt werden, stammen alle in dieser Arbeit genan
 </p>
 
 <p>
-  Es besteht die Möglichkeit, vordefinierte Kachelarchive, welche meist als Well-Known Scale Sets (<app-abbreviation [abbreviation]="'WKSS'" [description]="'Well-Known Scale Sets'"></app-abbreviation>) bezeichnet werden, zu verwenden. Diese werden von den meisten JavaScript-Bibliotheken unterstützt und können somit ohne weitere Implementierung verarbeitet werden. Sie definieren das genutzte Koordinatensystem und die reale Kachelgröße für jede Zoomstufe. Ein Auszug der WKSS für das Koordinatensystem WebMercator EPSG:3857 ist der folgenden Tabelle zu entnehmen:
+  Es besteht die Möglichkeit, vordefinierte Kachelarchive, welche meist als Well-Known Scale Sets (<app-abbreviation [abbreviation]="'WKSS'" [description]="'Well-Known Scale Sets'"></app-abbreviation>) bezeichnet werden, zu verwenden. Diese werden von den meisten JavaScript-Bibliotheken unterstützt und können somit ohne weitere Implementierung verarbeitet werden. Sie definieren das genutzte Koordinatensystem und die reale Kachelgröße für jede Zoomstufe.
+</p>
+
+<p class="newPageBefore">
+  Ein Auszug der WKSS für das Koordinatensystem WebMercator EPSG:3857 ist der folgenden Tabelle zu entnehmen:
 </p>
 
 <div class="tableWrapper" id="table-2-1">

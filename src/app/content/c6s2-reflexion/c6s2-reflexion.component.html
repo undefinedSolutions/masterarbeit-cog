@@ -1,0 +1,28 @@
+<app-headline [headline]="'Reflexion '" [h]="2" [number]="'6.2'" [id]="6.2"></app-headline>
+
+<p>
+  Das Ziel dieser Arbeit war es, die untersuchten Standards in den fachlichen Kontext zu setzen. Durch die Komplexität der einzelnen Standards stellte sich dies jedoch als große Herausforderung dar. Wie bereits zu Beginn erwähnt, war es im Vorfeld dieser Arbeit nicht möglich, einen technischen Vergleich der untersuchten Standards zu finden, und somit die Entscheidung welchen es zu nutzen gilt, zu vereinfachen. Für die einzelnen Standards gibt es zwar im Internet “best practices”, wie beispielsweise den Eintrag Cloud optimized GeoTIFF in das GDAL-Wiki.<app-quote
+      id="6-GDAL-Wiki"
+      author="GDAL-Wiki"
+      chapter="How to generate it with GDAL"
+      lastVisit="04.02.2022"
+      publicationDate="08.06.2021"
+      title="Cloud optimized GeoTIFF"
+      [vgl]="true"
+      URL="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL"></app-quote> Diese müssen jedoch immer auf ihre Aktualität geprüft werden, um keine veralteten Informationen zu nutzen. Des Weiteren können die genutzten Daten in den “best practices”- Anwendungen sich von den eigenen unterscheiden. Das oben genannte Beispiel beinhaltet als Input ein GeoTIFF mit RGB-Bändern. Das Orthomosaik des Lindenrain weist jedoch RGBA-Bänder auf. Dies führt zu einer Fehlermeldung von GDAL, da der verwendete Befehl nur RGB-Bänder akzeptiert. Diese Fehlermeldung kann den einen oder anderen Nutzer einige Zeit kosten, bis er eine akzeptable Lösung gefunden hat.
+</p>
+
+<p>
+  Erschwert wurden die Untersuchungen in dieser Arbeit zudem durch Feinheiten bei der Erstellung. Als Beispiel sei hierfür die Erstellung eines COG mit JPEG-Komprimierung genannt, dies war, wie in Kapitel 3.1.4 beschrieben, nicht mit dem aktuellen GDAL-COG-Driver möglich. Ein Workaround konnte zwar durch die extrem hilfreiche Entwickler-Community auf GIthub bereitgestellt werden, jedoch nur unter Inkaufnahme einer größeren Datenmenge.<app-quote
+  id="6-Github-ahocevar"
+  author="Github-OpenLayers: ahocevar"
+  lastVisit="09.02.2022"
+  publicationDate="08.02.2022"
+  title="COG with JPEG Compression has descending order"
+  [vgl]="true"
+  URL="https://github.com/openlayers/openlayers/issues/13349#issuecomment-1032496705"></app-quote>
+</p>
+
+<p>
+  Die Arbeit an einem WebGIS ist ein extrem schmaler Grad zwischen zwei hochkomplexen Bereichen. Zum einen die Informatik, bzw. um genauer zu werden, die WebEntwicklung. Der andere Bereich ist der Bereich der Geoinformationssysteme. Es wird Fachkenntnis aus beiden Bereichen benötigt um die hochkomplexe Fragestellung, welcher Standard für den jeweiligen Anwendungsfall am zielführendsten ist, benötigt. Die in Kapitel 5 zusammengefassten Erkenntnisse können hier in Zukunft als Grundlage auch andere Entscheidungsträgern und Entwickler bei ihrer Arbeit unterstützen.
+</p>

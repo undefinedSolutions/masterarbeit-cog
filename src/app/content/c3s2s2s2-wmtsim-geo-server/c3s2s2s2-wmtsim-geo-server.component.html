@@ -4,7 +4,7 @@
   Bevor die einzelnen Datensätze als WMTS veröffentlicht werden können, wird das gewünschte Koordinatensystem für die Ausgabe in den Caching Standards festgelegt. Als Installationsstandards sind hier WGS 84 (EPSG:4326) und WGS 84 / Pseudo Mercator (EPSG:900913) gesetzt. Bei dem hier erwähnten EPSG:900913 handelt es sich zwar um eine exakte Kopie des in dieser Arbeit verwendeten Web Mercator EPSG:3857,<app-quote
   id="3-OSM-WIKI"
   author="OSM-Wiki"
-  lastVisit="29.01.2022"
+  lastVisit="02.02.2022"
   publicationDate="01.01.2022"
   title="EPSG:3857"
   [vgl]="true"
@@ -16,7 +16,8 @@
 </p>
 
 <app-figure
-    id="3-14"
+    id="3-15"
+    [sort]="3.15"
     src="/assets/images/Datenbereitstellung/wmts_gridSet.png"
     caption="Festlegung des neuen GridSets"
     source="Geoserver"></app-figure>
@@ -38,20 +39,30 @@
 </p>
 
 <app-figure
-    id="3-15"
+    id="3-16"
+    [sort]="3.16"
     src="/assets/images/Datenbereitstellung/wmts_gwc.png"
     caption="Getroffene Einstellung für das erstellen des Caches für das Orthomosaik Strenzfeld"
     source="GeoWebCache"></app-figure>
 
 <p>
-  Eine Vorschau ist für WMTS ebenfalls verfügbar, jedoch nicht innerhalb des GeoServers, sondern in der Übersicht von GWC welche unter der URL <a href="https://geoserver.masterarbeit-cog.de/gwc/demo"
+  Eine Vorschau ist für WMTS ebenfalls verfügbar, jedoch nicht innerhalb des GeoServers, sondern in der Übersicht von GWC welche unter der URL
+</p>
+
+<p style="padding-left: 35px;">
+  <a href="https://geoserver.masterarbeit-cog.de/gwc/demo"
   rel="noopener"
-  target="_blank">https://geoserver.masterarbeit-cog.de/gwc/demo</a> abrufbar ist. Dort kann jeder vorhandene Layer angezeigt werden, wie in der folgenden Abbildung des Orthomosaiks des Gebiets Strenzfeld.
+  target="_blank">https://geoserver.masterarbeit-cog.de/gwc/demo</a>
+</p>
+
+<p>
+  abrufbar ist. Dort kann jeder vorhandene Layer angezeigt werden, wie in der folgenden Abbildung des Orthomosaiks des Gebiets Strenzfeld.
 </p>
 
 <div class="newPageBefore" style="height:400px; overflow: hidden; width:100%;">
   <app-iframe-map
-      captionID="3-16"
+      captionID="3-17"
+      [sort]="3.17"
       caption="Vorschau des Orthomosaiks Strenzfeld"
       source="Geoserver"
       iframeID="WMTSaf2"

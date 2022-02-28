@@ -5,7 +5,7 @@
   id="3-OpenLayers-Examples-WMTS"
   author="OpenLayers"
   chapter="WMTS"
-  lastVisit="29.01.2022"
+  lastVisit="16.01.2022"
   title="Examples"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/examples/wmts.html"></app-quote> Für die Nutzung der Datensätze sind hier jedoch ergänzend einige weitere Parameter erforderlich, welche vor der eigentlichen Implementierung erzeugt werden müssen. Der folgende Codeblock zeigt sich als Beispiel für das Orthomosaik des Gebiets Strenzfeld:
@@ -28,7 +28,10 @@ for (let z = 0; z < 22; ++z) {
 </p>
 
 <p>
-  Nachdem nun alle relevanten Informationen erzeugt wurden, wird ein TileLayer-Objekt generiert, welches den "extent" des Gebiets und als "source" ein WMTS-Objekt enthält. Der Aufbau des WMTS-Objekts lässt sich dem folgenden Codeblock entnehmen:
+  Nachdem nun alle relevanten Informationen erzeugt wurden, wird ein TileLayer-Objekt generiert, welches den "extent" des Gebiets und als "source" ein WMTS-Objekt enthält.
+</p>
+<p class="newPageBefore">
+  Der Aufbau des WMTS-Objekts lässt sich dem folgenden Codeblock entnehmen:
 </p>
 
 <app-codeblock code="const WMTSLayer = new TileLayer({
@@ -56,7 +59,8 @@ for (let z = 0; z < 22; ++z) {
 
 <div style="height:400px; overflow: hidden; width:100%;">
   <app-iframe-map
-      captionID="3-19"
+      captionID="3-20"
+      [sort]="3.20"
       caption="Interaktive WebMap des Orthomosaiks Strenzfeld als WTMS eingebunden"
       source="WMTS"
       iframeID="WMTS"
@@ -64,10 +68,10 @@ for (let z = 0; z < 22; ++z) {
       iframeURL="https://openlayers.masterarbeit-cog.de/wmts/ortho_strenzfeld"></app-iframe-map>
 </div>
 
-<p>
+<p class="newPageBefore">
   Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
 </p>
-<p style="text-align: center;">
+<p style="padding-left: 35px;">
   <a href="https://openlayers.masterarbeit-cog.de/wmts/ortho_lindenrain"
       rel="noopener"
       target="_blank">https://openlayers.masterarbeit-cog.de/wmts/ortho_lindenrain</a><br>

@@ -5,7 +5,7 @@
   id="3-OpenLayers-Release-v670"
   author="OpenLayers"
   chapter="v6.7.0"
-  lastVisit="29.01.2022"
+  lastVisit="10.01.2022"
   publicationDate="09.09.2021"
   title="Release"
   [vgl]="true"
@@ -21,7 +21,7 @@
   id="3-OpenLayers-Examples-COG"
   author="OpenLayers"
   chapter="Cloud Optimized GeoTIFF (COG)"
-  lastVisit="29.01.2022"
+  lastVisit="10.01.2022"
   title="Examples"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/examples/cog.html"></app-quote> Die Vorgaben im Beispiel müssen nur minimal erweitert werden, da der "extent" und die vorhandenen Zoomstufen direkt aus dem IFD des COG selbst abgefragt werden. Das COG-Objekt selbst hat jedoch laut Dokumentation keinen Parameter für die "attributions", dieses muss über eine set-Methode hinzugefügt werden. Zusammengefasst ergibt sich der folgende Code für die Schaffung des COG-Objekts:
@@ -40,7 +40,10 @@ cog.getSource().setAttributions('Institut für Geoinformation und ' +
   'Vermessung (IGV), Hochschule Anhalt');"></app-codeblock>
 
 <p>
-  Aufgrund des Umstandes, dass, wie bereits in <a href="#content-2.4">Kapitel 2.4</a> erläutert, die Pixelwerte selbst übertragen werden und nicht eine Abbildung dieser, ist es zur Visualisierung von Geoinformationen, welche nicht als RGB(A) vorliegen, bei einem COG unerlässlich, die Darstellung innerhalb des Codes festzulegen. Der Code zur Festlegung der Farbwerte der Visualisierung lautet unter Berücksichtigung dessen wie folgt:
+  Aufgrund des Umstandes, dass, wie bereits in <a href="#content-2.4">Kapitel 2.4</a> erläutert, die Pixelwerte selbst übertragen werden und nicht eine Abbildung dieser, ist es zur Visualisierung von Geoinformationen, welche nicht als RGB(A) vorliegen, bei einem COG unerlässlich, die Darstellung innerhalb des Codes festzulegen.
+</p>
+<p class="newPageBefore">
+  Der Code zur Festlegung der Farbwerte der Visualisierung lautet unter Berücksichtigung dessen wie folgt:
 </p>
 
 <app-codeblock code="const styleDSM = {
@@ -66,7 +69,7 @@ cog.getSource().setAttributions('Institut für Geoinformation und ' +
 };"></app-codeblock>
 
 <p>
-  Das generierte Objekt wird nun als style- Parameter dem TileLayer- Objekt mitgegeben. Zur korrekten Darstellung muss dem GeoTIFF-Objekt noch der Parameter normalize: false zugewiesen werden. Ohne diesen würde OpenLayers die Raster- Band- Statistik des Datensatzes nutzen, um alle Werte in diesem Rahmen auf den Bereich 0.0 bis 1.0 zu mappen. Dies wäre jedoch für die Darstellung eines Oberflächenmodells hinderlich. Zudem würden damit auch alle exakten Werte der Raster-Informationen verloren gehen. Durch diese Anpassungen sieht nun das cog-Objekt wie folgt aus:
+  Das generierte Objekt wird nun als style- Parameter dem TileLayer- Objekt mitgegeben. Zur korrekten Darstellung muss dem GeoTIFF-Objekt noch der Parameter <span class="code">normalize: false</span> zugewiesen werden. Ohne diesen würde OpenLayers die Raster- Band- Statistik des Datensatzes nutzen, um alle Werte in diesem Rahmen auf den Bereich 0.0 bis 1.0 zu mappen. Dies wäre jedoch für die Darstellung eines Oberflächenmodells hinderlich. Zudem würden damit auch alle exakten Werte der Raster-Informationen verloren gehen. Durch diese Anpassungen sieht nun das cog-Objekt wie folgt aus:
 </p>
 
 <app-codeblock code="const cog = new TileLayer({
@@ -87,7 +90,7 @@ cog.getSource().setAttributions('Institut für Geoinformation und ' +
 <p>
   Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
 </p>
-<p style="text-align: center;">
+<p style="padding-left: 35px;">
   <a href="https://openlayers.masterarbeit-cog.de/cog/ortho_lindenrain"
       rel="noopener"
       target="_blank">https://openlayers.masterarbeit-cog.de/cog/ortho_lindenrain</a><br>

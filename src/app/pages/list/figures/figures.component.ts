@@ -13,7 +13,8 @@ export class FiguresComponent {
   constructor(private figuresService:FiguresService) {
     this.figuresService.data$
     .subscribe(data => {
-      this.figures = data;
+      this.figures = data.sort((a, b) => (a.sort < b.sort) ? -1 : 1);
     })
+    
   }
 }

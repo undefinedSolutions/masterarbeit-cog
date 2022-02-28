@@ -5,7 +5,7 @@
   id="3-OpenLayers-Examples-XYZ"
   author="OpenLayers"
   chapter="XYZ"
-  lastVisit="29.01.2022"
+  lastVisit="11.01.2022"
   title="Examples"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/examples/xyz.html"></app-quote> Die Bereitstellung für den TMS wird durch die TileLayer- Klasse ermöglicht. TIleLayer werden genutzt, um vorgerenderte Tiles mit spezifischer Größe und basierend auf der Zoomstufe auf die Karte zu bringen.
@@ -13,8 +13,8 @@
 
 <app-codeblock [lineNumbers]="false" code="import TileLayer from 'ol/layer/Tile';"></app-codeblock>
 
-<p>
-  Die Klasse TileLayer beinhaltet den Parameter "source", in welchem die XYZ- Klasse eingefügt wird. Innerhalb dieser Klasse wiederum findet sich der Parameter "url", mithilfe dessen die URL des TMS als Parameter eingefügt werden kann. Hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet, um eine Anforderung für den Kartenausschnitt vom Server zu ermöglichen.
+<p class="fullLine">
+  Die Klasse TileLayer beinhaltet den Parameter "source", in welchem die XYZ- Klasse eingefügt wird. Innerhalb dieser Klasse wiederum findet sich der</p><p>Parameter "url", mithilfe dessen die URL des TMS als Parameter eingefügt werden kann. Hierbei werden Platzhalter für die X-, Y-, Z-Achseln verwendet, um eine Anforderung für den Kartenausschnitt vom Server zu ermöglichen.
 </p>
 
 <app-codeblock [lineNumbers]="false" code="import XYZ from 'ol/source/XYZ';
@@ -25,13 +25,14 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
   id="3-OpenLayers-API-XYZ"
   author="OpenLayers"
   chapter="ol/source/XYZ~XYZ"
-  lastVisit="29.01.2022"
+  lastVisit="11.01.2022"
   title="API"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/apidoc/module-ol_source_XYZ-XYZ.html"></app-quote> Diese Notwendigkeit ergibt sich aus der Tatsache, dass sich der Ausgangspunkt des TMS in der oberen linken Ecke befindet, der Ausgangspunkt des XYZ jedoch in der unteren linken Ecke. Daraus lässt sich für das Orthomosaik des Strenzfeldes der folgende Parameter für die XYZ Klasse ableiten:
 </p>
 
-<app-codeblock [lineNumbers]="false" code="url: 'https://https://data.masterarbeit-cog.de/tms/dsm_strenzfeld/{z}/{x}/{-y}.png'"></app-codeblock>
+<app-codeblock [lineNumbers]="false" code="url: 'https://https://data.masterarbeit-cog.de/tms/'+
+    'dsm_strenzfeld/{z}/{x}/{-y}.png'"></app-codeblock>
 
 <p>
   Weitere, sich als zielführend erwiesene, Parameter sind:
@@ -43,7 +44,7 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
   <li><span class="code">attributions: "[Text]"</span> = der XYZ Klasse ermöglicht es, den Ersteller des TMS zu nennen, diese Angabe wird in dem unteren rechten Bereich der Karte angezeigt.</li>
 </ul>
 
-<p>
+<p class="newPageBefore">
   Durch diese optionalen Parameter ergibt sich der folgenden Code für das Ortho des Gebiets Strenzfelds:
 </p>
 
@@ -80,13 +81,13 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
   id="3-OpenLayers-API-fit"
   author="OpenLayers"
   chapter="ol/View~View - fit"
-  lastVisit="29.01.2022"
+  lastVisit="11.01.2022"
   title="API"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/apidoc/module-ol_View-View.html#fit"></app-quote> Als optionaler Parameter wurde ein Objekt als Abstand zum Kartenrand hinzugefügt, so dass der TMS nicht bis zum Fensterrand angezeigt wird. Hierbei handelt es sich um eine reine Verbesserung des Erscheinungsbildes.
 </p>
 
-<app-codeblock [lineNumbers]="false" code="map.getView().fit([
+<app-codeblock class="newPageBefore" [lineNumbers]="false" code="map.getView().fit([
     1299642.3081000000238419,
     6765838.1484000002965331,
     1304883.3142999999690801,
@@ -100,7 +101,8 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
 
 <div style="height:400px; overflow: hidden; width:100%;">
   <app-iframe-map
-      captionID="3-17"
+      captionID="3-18"
+      [sort]="3.18"
       caption="Interaktive WebMap des Orthomosaiks Strenzfeld als TMS eingebunden"
       source="TMS"
       iframeID="tms"
@@ -111,7 +113,7 @@ url: 'https://[domain].de/[OrdnerPfad]{z}/{x}/{y}.png'"></app-codeblock>
 <p>
   Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
 </p>
-<p style="text-align: center;">
+<p style="padding-left: 35px;">
   <a href="https://openlayers.masterarbeit-cog.de/tms/ortho_lindenrain"
       rel="noopener"
       target="_blank">https://openlayers.masterarbeit-cog.de/tms/ortho_lindenrain</a><br>

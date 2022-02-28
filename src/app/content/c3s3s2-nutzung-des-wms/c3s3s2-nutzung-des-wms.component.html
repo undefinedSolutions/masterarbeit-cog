@@ -5,7 +5,7 @@
   id="3-OpenLayers-Examples-Single-Image-WMS"
   author="OpenLayers"
   chapter="Single Image WMS"
-  lastVisit="29.01.2022"
+  lastVisit="14.01.2022"
   title="Examples"
   [vgl]="true"
   URL="https://openlayers.org/en/latest/examples/wms-image.html"></app-quote> Durch dieses Beispiel ist es möglich, den zuvor bereitgestellten Layer über den GeoServer zu implementieren.
@@ -40,13 +40,14 @@
   }),
 });"></app-codeblock>
 
-<p>
+<p class="newPageBefore">
   Die Variable WMS wird nun als zusätzlicher Layer der Karte hinzugefügt. Im Anschluss entsteht die folgende WebMap:
 </p>
 
-<div style="height:400px; overflow: hidden; width:100%;">
+<div style="height:425px; overflow: hidden; width:100%;">
   <app-iframe-map
-      captionID="3-18"
+      captionID="3-19"
+      [sort]="3.19"
       caption="Interaktive WebMap des Oberflächenmodells Strenzfeld eingebunden als WMS"
       source="WMS"
       iframeID="WMS"
@@ -57,7 +58,7 @@
 <p>
   Alle Gebiete / Szenarien sind interaktiv gestaltet und unter den folgenden Adressen zu finden:
 </p>
-<p style="text-align: center;">
+<p style="padding-left: 35px;">
   <a href="https://openlayers.masterarbeit-cog.de/wms/ortho_lindenrain"
       rel="noopener"
       target="_blank">https://openlayers.masterarbeit-cog.de/wms/ortho_lindenrain</a><br>

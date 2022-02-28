@@ -28,11 +28,15 @@
 </p>
 
 <p>
-  Weitere Voraussetzung für einen Layer bildet der Datenspeicher als Datenquelle im Kontext des GeoServers für einen Layer. Der GeoServer bietet als Datenquellen Vektordaten, Rasterdaten und "andere Datenquellen". Im Rahmen dieser Arbeit geht es vorwiegend um die Veröffentlichung von Rasterdaten, daher werden die beiden anderen Kategorien nicht näher betrachtet. Als Datenquelle für Rasterdaten kann ArcGrid, GeoPackage, GeoTIFF ImageMosaic oder WorldImage genutzt werden. Die in dieser Arbeit verwendete Datenquelle aus diesen Kategorien ist das GeoTIFF. Im Interface muss der Arbeitsbereich gewählt werden, ein Name der Datenquelle festgelegt und der Verbindungsparameter, welcher den Pfad zu dem GeoTIFF darstellt, benannt werden. Diesen muss man nicht manuell auswählen, sondern kann ihn über das "Browse..." komfortabel per GUI selektieren. Die nachfolgende Abbildung stellt die Eingaben beispielhaft dar:
+  Weitere Voraussetzung für einen Layer bildet der Datenspeicher als Datenquelle im Kontext des GeoServers für einen Layer. Der GeoServer bietet als Datenquellen Vektordaten, Rasterdaten und "andere Datenquellen". Im Rahmen dieser Arbeit geht es vorwiegend um die Veröffentlichung von Rasterdaten, daher werden die beiden anderen Kategorien nicht näher betrachtet. Als Datenquelle für Rasterdaten kann ArcGrid, GeoPackage, GeoTIFF ImageMosaic oder WorldImage genutzt werden. Die in dieser Arbeit verwendete Datenquelle aus diesen Kategorien ist das GeoTIFF. Im Interface muss der Arbeitsbereich gewählt werden, ein Name der Datenquelle festgelegt und der Verbindungsparameter, welcher den Pfad zu dem GeoTIFF darstellt, benannt werden. Diesen muss man nicht manuell auswählen, sondern kann ihn über das "Browse..." komfortabel per GUI selektieren.
+</p>
+<p class="newPageBefore">
+  Die nachfolgende Abbildung stellt die Eingaben beispielhaft dar:
 </p>
 
 <app-figure
-    id="3-6"
+    id="3-7"
+    [sort]="3.07"
     src="/assets/images/Datenbereitstellung/geoserver_rasterdatenquelle.png"
     caption="Hinzufügen einer Rasterdatenquelle in der Weboberfläche des GeoServers"
     imageStyle="padding:0 5%;"
@@ -43,13 +47,15 @@
 </p>
 
 <app-figure
-    id="3-7"
+    id="3-8"
+    [sort]="3.08"
     src="/assets/images/Datenbereitstellung/geoserver_author.png"
     caption="Hinterlegen der Autoren des jeweiligen Layers in der Weboberfläche des Geoservers"
     source="Screenshot von Geoserver"></app-figure>
 
 <app-figure
-    id="3-8"
+    id="3-9"
+    [sort]="3.09"
     src="/assets/images/Datenbereitstellung/geoserver_cache.png"
     caption="Deaktivierter Kartenkachel-Cache in der Webansicht des Geoservers"
     source="Screenshot von Geoserver"></app-figure>
@@ -58,31 +64,36 @@
   Mithilfe der Layer-Vorschau kann der erzeugte Layer in OpenLayers auf Richtigkeit überprüft werden. Diese Vorschau ist auch für Nutzer, welche über keinen Login zum GeoServer verfügen, möglich. Hierfür muss nur die Domain des GeoServers geoserver.masterarbeit-cog.de/web/ aufgerufen und im linksseitigen Menü die Layer-Vorschau ausgewählt werden. In der nachfolgenden Abbildung ist ein Beispiel der Vorschau zu sehen.
 </p>
 
-<div style="height:400px; overflow: hidden; width:100%;">
+<div style="height:330px; overflow: hidden; width:100%;">
   <app-iframe-map
-      captionID="3-9"
+      captionID="3-10"
+      [sort]="3.10"
       caption="Vorschau des Orthomosaiks Strenzfeld"
       source="Geoserver"
       iframeID="test1"
-      iframeStyle="height:350px;"
-      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Aortho_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=586&height=300&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
+      iframeStyle="height:300px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Aortho_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=586&height=250&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
 </div>
 
 <p>
   Der beschriebene Ablauf wird anschließend für alle Datensätze wiederholt. Sofern es sich um ein Oberflächenmodell handelt, muss speziell für dieses jedoch ergänzend ein Stile erzeugt werden, um eine Darstellung in Graustufen zu vermeiden. Auch eine solche Ansicht ermöglicht zwar bereits eine Interpretation der Daten. Sie ist jedoch nicht immer zielführend, wie beispielhaft an dem Oberflächenmodell des Gebiets Strenzfeld in der nächsten Abbildung gezeigt wird. Hier lässt sich erkennen, dass wesentliche Details erst durch die Farbgebung deutlich werden.
 </p>
 
-<div class="newPageBefore">
+<div id="figure-3-11">
   <app-iframe-map
       style="float:left; width:300px;"
       iframeID="test2"
-      iframeStyle="height:350px;"
-      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=300&srs=EPSG%3A3857&styles=raster&format=application/openlayers#toggle"></app-iframe-map>
+      iframeStyle="height:300px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=250&srs=EPSG%3A3857&styles=raster&format=application/openlayers#toggle"></app-iframe-map>
   <app-iframe-map
       style="float:left; width:300px;"
       iframeID="test3"
-      iframeStyle="height:350px;"
-      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=300&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
+      iframeStyle="height:300px;"
+      iframeURL="https://geoserver.masterarbeit-cog.de/wms/wms?service=WMS&version=1.1.0&request=GetMap&layers=wms%3Adsm_strenzfeld&bbox=1299642.3081%2C6765838.1484%2C1304883.3143%2C6769892.0275&width=280&height=250&srs=EPSG%3A3857&styles=&format=application/openlayers#toggle"></app-iframe-map>
+  <p class="caption">
+    <span>Abbildung 3-11:</span> Oberflächenmodell, links ohne und rechts mit Stil<br>
+    <span>Quelle:</span> WMS
+  </p>
 </div>
 
 <p>
@@ -90,7 +101,8 @@
 </p>
 
 <app-figure
-    id="3-11"
+    id="3-12"
+    [sort]="3.12"
     src="/assets/images/Datenbereitstellung/qgis_save-style.png"
     caption="Save Style… eines Layers in QGIS"
     source="QGIS"></app-figure>
@@ -100,7 +112,8 @@
 </p>
 
 <app-figure
-    id="3-12"
+    id="3-13"
+    [sort]="3.13"
     src="/assets/images/Datenbereitstellung/geoserver_stil.png"
     caption="Erstellter Stil für das Oberflächenmodell Strenzfeld"
     source="Geoserver"></app-figure>
@@ -110,7 +123,8 @@
 </p>
 
 <app-figure
-    id="3-13"
+    id="3-14"
+    [sort]="3.14"
     src="/assets/images/Datenbereitstellung/geoserver_apply-stil.png"
     caption="Auswahl der vom Stil betroffenen Layer"
     source="Geoserver"></app-figure>

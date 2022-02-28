@@ -9,6 +9,7 @@ import { PagedJSService } from '../../services/pagedJS/paged-js.service';
   styleUrls: ['./iframe-map.component.scss']
 })
 export class IframeMapComponent implements AfterViewInit, OnInit {
+  @Input() sort: number = 0;
   @Input() caption: string;
   @Input() captionID: string;
   @Input() source: string;
@@ -30,7 +31,7 @@ export class IframeMapComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     if (this.captionID) {
-      this.figuresService.pushFigure(this.caption, this.captionID);
+      this.figuresService.pushFigure(this.caption, this.captionID, this.sort);
     }
   }
 

@@ -1,4 +1,4 @@
-<app-headline class="newPageBefore" [headline]="'Vorstellung der Ergebnisse und Diskussion'" [h]="1" [number]="'5'" [id]="5"></app-headline>
+<app-headline [headline]="'Vorstellung der Ergebnisse und Diskussion'" [h]="1" [number]="'5'" [id]="5"></app-headline>
 
 <p>
   Der bisherige Teil der Arbeit beschäftigte sich mit dem Beschreiben, Erstellen, Bereitstellen und Nutzen der verschiedenen Standards. Im Anschluss daran wurde auf die Methodik der Datenerfassung eingegangen, um die Standards miteinander vergleichen zu können. Nun wird ein Überblick der Ergebnisse geboten, gefolgt von der gewichteten Matrix. In den einzelnen Unterkapiteln wird auf mögliche Feinheiten des jeweiligen Standards eingegangen.
@@ -17,6 +17,7 @@
       [id]="'allFileSize'"
       caption="Erzeuge Datenmenge"
       captionID="5-1"
+      [sort]="5.01"
       source="eigene Daten"
       [data]="dataFileSize"
       [displayLegend]="true"
@@ -27,7 +28,7 @@
   </app-chart>
 </div>
 
-<p>
+<p class="newPageBefore">
   Die Generierung wurde auf zwei unterschiedlichen Systemen (Notebook und Workstation) durchgeführt. Diese unterscheiden sich vor allem durch ihre verbaute CPU. Während die Workstation mit 24 Threads parallel Berechnungen durchführen kann, sind es bei dem verwendeten Notebook nur 8 parallele Prozesse. Jedoch besitzt die CPU des Notebook einen höheren Boosttakt sowie Arbeitsspeicher mit schnellerer Taktung. Sofern die Software nicht darauf ausgerichtet ist, die Arbeitslast in parallele Prozesse aufzuteilen, zeigt sich jedoch das Notebook um einiges schneller. Konkret bedeutet dies, dass das Notebook bei der Generierung des TMS um das 1,33-Fache langsamer war als die Workstation. Hinsichtlich der WMS war wiederum die Workstation um das 1,05-Fache langsamer, was jedoch bei der sehr kurzen Zeiträumen für die Generierung kaum ins Gewicht fällt. Bei dem COG hingegen ist der Unterschied am stärksten erkennbar, hier benötigte die Workstation das 1,45-Fache der Zeit im Vergleich zum Notebook.
 </p>
 
@@ -36,6 +37,7 @@
       [id]="'allGenerationTimeNotebook'"
       caption="Dauer des Generierung (Notebook)"
       captionID="5-2"
+      [sort]="5.02"
       source="eigene Daten"
       [data]="dataGenerationTimeNotebook"
       [displayLegend]="true"
@@ -52,6 +54,7 @@
       [id]="'allGenerationTimeWorkstation'"
       [caption]="'Dauer des Generierung (Workstation)'"
       captionID="5-3"
+      [sort]="5.03"
       source="eigene Daten"
       [data]="dataGenerationTimeWorkstation"
       [displayLegend]="true"
@@ -71,6 +74,7 @@
       [id]="'allUploadTime'"
       [caption]="'Dauer des Hochladens'"
       captionID="5-4"
+      [sort]="5.04"
       source="eigene Daten"
       [data]="dataUploadTime"
       [displayLegend]="true"
@@ -90,6 +94,7 @@
       [id]="'allNetworkTime'"
       [caption]="'Dauer des Downloads'"
       captionID="5-5"
+      [sort]="5.05"
       source="eigene Daten"
       [data]="dataNetworkTime"
       [displayLegend]="true"
@@ -109,6 +114,7 @@
       [id]="'allNetworkSize'"
       [caption]="'Größe des Downloads'"
       captionID="5-6"
+      [sort]="5.06"
       source="eigene Daten"
       [data]="dataNetworkSize"
       [displayLegend]="true"
@@ -119,10 +125,13 @@
 </div>
 
 <p>
-  Die nachfolgende Tabelle beinhaltet zusammenfassend die gewichtete Matrix. Wie in <a href="#content-4.5">Kapitel 4.5</a> beschrieben, wurde als Standard ein Faktor von 1 für alle Kriterien festgelegtn. Diese Gewichtung kann in der Web-Version interaktiv geändert werden. Alternativ ist sie auch unter der folgenden URL zu finden.
+  Die nachfolgende Tabelle beinhaltet zusammenfassend die gewichtete Matrix. Wie in <a href="#content-4.5">Kapitel 4.5</a> beschrieben, wurde als Standard ein Faktor von 1 für alle Kriterien festgelegtn.
 </p>
 
-<div class="tableWrapper" id="table-5-1">
+<p class="newPageBefore" style="height: 0; visibility: hidden;">
+  Hide ME!
+</p>
+<div  class="tableWrapper" id="table-5-1">
   <p class="caption">
     <span>Tabelle 5-1:</span> Gewichtete Matrix mit einheits Faktor
   </p>

@@ -1,0 +1,45 @@
+<app-headline headline="Einleitung" [h]="1" number="1" [id]="1"></app-headline>
+
+<p>
+  WebGIS bzw. WebMap sind heutzutage nahezu überall vertreten und begleiten uns selbstverständlich und unbewusst im Alltag. Angefangen bei der Suche nach einem nahegelegenen Restaurant oder der Suche nach einem Hotel bis hin zu einfachen Wegbeschreibungen wurden die klassischen Karten und Printmedien als Informationsquelle längst digital ersetzt. Bürger können sich über Geoportale ihrer Gemeinde, Landkreis oder Bundeslandes über Fachthemen informieren, und sowohl regional als auch überregional jeden Ort betrachten. All diese Anwendungsbeispiele kommen jedem bekannt vor und wurden gewiss bereits genutzt. Die Navigation erfolgt fast ausschließlich über das Smartphone. Jedoch: um hier überhaupt eine Orientierung zu gewährleisten, wird eine Hintergrundkarte benötigt.
+</p>
+
+<p>
+  Wie wird jedoch die Hintergrundkarte der Navigation oder die Information des Geoportals geladen? Welche Technologien stecken dahinter und wie gestaltet sich der Prozess, um diese aufzuarbeiten?
+</p>
+
+<p>
+  Die Zurverfügungstellung der Daten setzt eine umfangreiche Vorarbeit durch Fachpersonal voraus. Sie werden zunächst aufgearbeitet und anschließend auf Servern bereitgestellt. Diese Server sind über das Internet erreichbar und der Nutzer kann letztlich auf die Informationen in seinem Webbrowser bzw. Smartphone zugreifen.
+</p>
+
+<p>
+  Mit fortschreitender Entwicklung haben sich jedoch mehr und mehr unterschiedliche Standards zur Übermittlung von Karteninformationen etabliert. Somit stellt sich die Frage, welcher dieser Standards am geeignetsten ist, um den Nutzern Informationen so einfach wie möglich bereitzustellen und gleichzeitig Entwickler zu befähigen, diese ebenfalls so einfach wie möglich vorzubereiten und zu hinterlegen.
+</p>
+
+<p>
+  Diese Fragestellung begegnete mir im Jahr 2021 während eines Projektes, an welchem ich als WebGIS-Entwickler beteiligt war. Konkret ging es um die Einbindung von eigenen Rasterdaten in die Google Maps JavaScript API. Bei dem Unternehmen, in welchem dieses Projekt umgesetzt wurde, handelt es sich um einen Full Service Partner für Drohnendienstleistungen. Dieses führt im Auftrag von Kunden Drohnenbefliegungen durch und stellt die Daten den Kunden in einer eigenen Plattform zur Verfügung. Dadurch konnte im Vorfeld nicht abgeschätzt werden, welche Datenmengen im Laufe des Betriebs entstehen würden.
+</p>
+
+<p>
+  Seit 2012 bin bin ich hauptberuflich im GIS-Umfeld tätig und seit 2015 als WebGIS-Entwickler. Doch eine Aussage darüber, welcher Standard für dieses Projekt die beste Lösung bietet, konnte im Vorfeld nicht getroffen werden. Gleichzeitig konnte ein direkter Vergleich zwischen den einzelnen Standards für ein WebGIS nicht gefunden werden. Die einzige Quelle, die eine Annäherung an die Problematik ermöglichte, war das Paper "Task 51 - Cloud-Optimized Format Study” der NASA.<app-quote
+  id="1"
+  author="NASA Technical Reports Server"
+  publicationDate="30.01.2020"
+  lastVisit="16.12.2021"
+  title="Task 51 - Cloud-Optimized Format Study"
+  [vgl]="true"
+  URL="https://ntrs.nasa.gov/api/citations/20200001178/downloads/20200001178.pdf"></app-quote> Doch auch dieses vergleicht nicht die klassischen OGC-Standards und somit konnten aus diesem nur die Erkenntnisse bezüglich des Cloud Optimized GeoTIFF genutzt werden.
+</p>
+
+<p>
+  Um die oben genannte Fragestellung beantworten zu können, ist es erforderlich, sämtliche zu der endgültigen Zurverfügungstellung erforderlichen Arbeitsschritte zu untersuchen und dabei auch auf die erforderliche Dauer und die entstehenden Kosten einzugehen. Die vorliegende Arbeit soll in Form eines Versuchs die Standards bezüglich ihrer Anwendbarkeit analysieren und die einzelnen Elemente auswerten.
+  Einen aktuellen Forschungsstand zum Vergleich der einzelnen Standards hat es, zum Zeitpunkt dieser Arbeit nicht gegeben. Aufgrund dieser Tatsache und der eigenen Erfahrung ist die Motivation entstanden, dieser Fragestellung nachzugehen und mit dieser Arbeit eben jenen aktuellen Forschungsstand zu schaffen, welcher Entwickler bei der Auswahl des passenden Standards unterstützt.
+</p>
+
+<p>
+  Dabei ist generell ist zu erwähnen, dass in dieser Arbeit die Quellen überwiegend aus Internetquellen bestehen. Dies ist auf den Umstand zurückzuführen, dass es für den Vergleich der Standards keine theoretischen Quellen vorhanden sind. Die Entwicklung von WebMaps wird im Allgemeinen weniger durch traditionelle institutionelle Forschung, sondern stark über die Anwender- Community getrieben und findet überwiegend auf den Plattformen Twitter, GitHub, Stack Overflow oder einzelnen Websites der Projekte bzw. Unternehmen statt.
+</p>
+
+<p>
+  Die verwendeten Programme und Quellen sind aufgrund der besseren Nachvollziehbarkeit in der Englischen Sprache verfasst. Dies führt teilweise zu einer ungewöhnlichen und unschönen "Denglisch"-Sprache, ist aber aus meiner Sicht für die Nachvollzieh- und Reproduzierbarkeit einer wissenschaftlichen Arbeit notwendig bzw. unumgänglich.
+</p>

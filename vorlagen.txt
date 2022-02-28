@@ -3,9 +3,7 @@ ng g c content/c1s3Szenarien
 <app-headline headline="Einleitung" [h]="1" number="1" [id]="1"></app-headline>
 <a href="#content-3.1">
 
-<a href="URL"
-      rel="noopener"
-      target="_blank">
+<a href="URL" rel="noopener" target="_blank">
 
 <app-codeblock [lineNumbers]="false" code="
 

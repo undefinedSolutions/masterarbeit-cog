@@ -4,7 +4,7 @@
   Die Erstellung von COG hat in der Bibliothek GDAL mit der Version 3.1 einen eigenen "Driver" erhalten. Driver sind kleine gekapselte und hochspezialisierte Programmteile, welche es den Entwicklern von GDAL ermöglichen, die Kompatibilität zwischen den einzelnen Dateiformaten zu gewährleisten.<app-quote
   id="3-GDAL-Tutorial"
   author="GDAL: Tutorial"
-  lastVisit="29.01.2022"
+  lastVisit="17.01.2022"
   title="Raster driver implementation tutorial"
   [vgl]="true"
   URL="https://gdal.org/tutorials/raster_driver_tut.html"></app-quote> Bei einem COG handelt es sich, wie in <a href="#content-2.4">Kapitel 2.4</a> erläutert, um ein GeoTIFF mit speziellen Eigenschaften. Folglich stellt auch der COG-Driver einen zusätzlichen Driver für den GeoTIFF-Driver dar und kann ohne diesen nicht genutzt werden.
@@ -64,7 +64,7 @@
   <li><span class="code">-co NUM_THREADS=ALL_CPUS</span> = Angabe, die gesamte CPU zu nutzen</li>
 </ul>
 
-<p>
+<p class="newPageBefore">
   Daraus ergibt sich folgende Eingabe mit Werten für die jeweiligen Parameter:
 </p>
 
@@ -77,7 +77,7 @@
   id="3-cogeo-Testing"
   chapter="Testing your Cloud Optimized GeoTIFF's"
   author="Cloud Optimized GeoTIFF"
-  lastVisit="29.01.2022"
+  lastVisit="17.01.2022"
   title="Utilizing Cloud Optimized GeoTIFF"
   [vgl]="true"
   URL="https://www.cogeo.org/developers-guide.html"></app-quote> Dieses muss nur von Github heruntergeladen werden und wird durch die folgende Befehlszeile ausgeführt:
@@ -104,7 +104,7 @@ The size of all IFD headers is 20478 bytes"></app-codeblock>
   Trotz aller vorherigen präventiven Maßnahmen, ist bei der Bearbeitung der Orthomosaike erst innerhalb von OpenLayers aufgefallen, dass die verwendete JPEG-Komprimierung in der GDAL Version 3.4.1 fehlerhaft ist. Somit musste auf eine ältere Methode zurückgegriffen werden, um eine erfolgreiche Anwendung der JPEG-Komprimierung zu gewährleisten:<app-quote
   id="3-Github-ahocevar"
   author="Github-OpenLayers: ahocevar"
-  lastVisit="08.02.2022"
+  lastVisit="09.02.2022"
   publicationDate="08.02.2022"
   title="COG with JPEG Compression has descending order"
   [vgl]="true"
@@ -120,7 +120,7 @@ The size of all IFD headers is 20478 bytes"></app-codeblock>
   Der Parameter <span class="code">-co TILES=YES</span> teilt dem Befehl mit, dass das GeoTiff intern geteilt werden soll, welches eine Voraussetzung für ein COG ist. Weiter relevant ist der Parameter <span class="code">-co COPY_SRC_OVERVIEWS=YES</span> zum Kopieren der Übersichten. Ohne diesen könnte kein korrektes COG erzeugt werden.<app-quote
   id="3-GDAL-WIKI"
   author="GDAL-Wiki"
-  lastVisit="08.02.2022"
+  lastVisit="09.02.2022"
   publicationDate="08.06.2021"
   title="Cloud optimized GeoTIFF"
   [vgl]="true"

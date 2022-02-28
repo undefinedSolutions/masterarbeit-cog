@@ -14,6 +14,7 @@
 
 <app-figure
     id="4-1"
+    [sort]="4.01"
     src="/assets/images/Methodik/googleChrome.png"
     caption="Beispielhafter Screenshot des Netzwerk-Tabs mit geladenen Oberflächenmodell Strenzfeld"
     source="Chrome DevTools"></app-figure>
@@ -23,7 +24,7 @@
   id="4-Chrome-DevTools"
   author="Chrome Developers - Kayce Basques"
   chapter="Timing breakdown phases explained"
-  lastVisit="29.01.2022"
+  lastVisit="16.02.2022"
   publicationDate="13.04.2015"
   title="Network features reference"
   [vgl]="true"
@@ -34,7 +35,7 @@
   <li><span>Queueing</span> = der Browser stellt Anfragen in eine Warteschlange, falls es Anfragen mit höherer Priorität gibt oder der Browser kurzzeitig Speicherplatz im Festplatten-Cache zuweist.</li>
   <li><span>Stalled</span> = die Anfrage kann aus einem der unter Queueing beschriebenen Gründe blockiert werden.</li>
   <li><span>Request sent</span> = die Anfrage wird gesendet.</li>
-  <li><span>Waiting(TTFB)</span> = der Browser wartet auf das erste Byte einer Antwort. TTFB steht für Time To First Byte (Zeit bis zum ersten Byte).</li>
+  <li><span>Waiting(<app-abbreviation abbreviation="TTFB" description="Time to First Byte"></app-abbreviation>)</span> = der Browser wartet auf das erste Byte einer Antwort. TTFB steht für Time To First Byte (Zeit bis zum ersten Byte).</li>
   <li><span>Content Download</span> = der Browser empfängt die Antwort entweder unmittelbar vom Netz oder durch einen Service Worker. Dieser Wert gibt die Gesamtzeit an, die für das Lesen des Datensatzes aufgewendet wird.</li>
 </ul>
 
@@ -47,11 +48,11 @@
 </p>
 
 <p>
-  Die Chrome DevTools bieten weiterhin die Möglichkeit, ein sogenanntes HTTP ARchive (HAR) zu erstellen.<app-quote
+  Die Chrome DevTools bieten weiterhin die Möglichkeit, ein sogenanntes HTTP ARchive (<app-abbreviation abbreviation="HAR" description="HTTP ARchive"></app-abbreviation>) zu erstellen.<app-quote
   id="4-Chrome-ExportRequestData"
   author="Chrome Developers - Kayce Basques"
   chapter="Export requests data"
-  lastVisit="29.01.2022"
+  lastVisit="16.02.2022"
   publicationDate="13.04.2015"
   title="Save all network requests to a HAR file"
   [vgl]="true"
@@ -63,10 +64,13 @@
 </p>
 
 <p>
-  Um auch hier ein "natürliches Nutzerverhalten" zu simulieren werden die WebMaps in 4 verschiedenen Auflösungen geladen. Zum einen Bildschirmfüllend, einer Übersicht welche -4 Zoomstufen der Bildschirmfüllenden Auflösung entspricht sowie einer Nahansicht welche +4 der Bildschirmfüllenden Auflösung entspricht. Als letztes wird die bestmögliche Zoomstufe verwendet. Diese sind in der nachfolgenden Abbildung zu entnehmen:
+  Um auch hier ein "natürliches Nutzerverhalten" zu simulieren werden die WebMaps in 4 verschiedenen Auflösungen geladen. Zum einen Bildschirmfüllend, einer Übersicht welche -4 Zoomstufen der Bildschirmfüllenden Auflösung entspricht sowie einer Nahansicht welche +4 der Bildschirmfüllenden Auflösung entspricht. Als letztes wird die bestmögliche Zoomstufe verwendet.
+</p>
+<p class="newPageBefore">
+  Diese sind in der nachfolgenden Abbildung zu entnehmen:
 </p>
 
-<div class="newPageBefore">
+<div id="figure-4-2">
   <app-iframe-map
       style="float:left; margin-right: 30px; width:285px;"
       iframeID="Z0"
@@ -89,4 +93,8 @@
       iframeID="Z3"
       iframeStyle="height:200px;"
       iframeURL="https://openlayers.masterarbeit-cog.de/tms/ortho_strenzfeld?z=3"></app-iframe-map>
+  <p class="caption">
+    <span>Abbildung 4-2:</span> Veranschaulichung der genutzten Zoomstufen<br>
+    <span>Quelle:</span> TMS
+  </p>
 </div>

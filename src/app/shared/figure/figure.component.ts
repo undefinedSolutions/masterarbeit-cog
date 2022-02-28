@@ -8,6 +8,7 @@ import { FiguresService } from './../../services/figures/figures.service';
   styleUrls: ['./figure.component.scss']
 })
 export class FigureComponent implements OnInit {
+  @Input() sort: number = 0;
   @Input() id: string;
   @Input() src: string;
   @Input() caption: string;
@@ -18,7 +19,7 @@ export class FigureComponent implements OnInit {
   constructor(private figuresService:FiguresService) { }
 
   ngOnInit(): void {
-    this.figuresService.pushFigure(this.caption, this.id);
+    this.figuresService.pushFigure(this.caption, this.id, this.sort);
   }
 
   getQuote(key): string {

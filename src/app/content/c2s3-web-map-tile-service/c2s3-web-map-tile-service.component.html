@@ -4,14 +4,14 @@
   Der Web Map Tile Service (<app-abbreviation abbreviation="WMTS" description="Web Map Tile Service"></app-abbreviation>) wurde zum 06.04.2010 in der Version 1.0.0 von der OGC standardisiert.<app-quote
   id="2-OpenGISImplementationSpecification-WMTS"
   author="OpenGIS Implementation Specification"
-  lastVisit="25.02.2022"
+  lastVisit="22.12.2021"
   publicationDate="06.04.2010"
   title="OpenGIS Web Map Tile Service Implementation Standard"
   [vgl]="true"
   URL="https://portal.ogc.org/files/?artifact_id=35326"></app-quote> Somit entstand dieser erst nach dem Standard WMS und vor dem TMS. Dennoch vereint der WMTS alle bisher genannten Konzepte. Sofern nicht anders angegeben, sind sämtliche hier angewandten Informationen zum WMTS der oben erwähnten OGC-Standardisierung entnommen.
 </p>
 
-<p>
+<p class="newPageBefore">
   Sein Ziel ist es, leistungsorientiert und skalierbar die angeforderten Daten an den Nutzer auszugeben. Dies erfolgt durch die Verwendung vorgerenderter Tiles, welche ohne Bildmanipulation an den Nutzer ausgeliefert werden. Durch diese Spezifikation muss der WMTS für jeden STYLE separate Kacheln hinterlegen, da die angeforderten Rasterdaten nicht analog zum WMS on-the-fly erzeugt werden sollten. Auch eine Umprojektion durch den Server wird somit ausgeschlossen und benötigt, wie bei dem STYLE, einen separaten Tile-Cache.
 </p>
 
@@ -51,8 +51,8 @@ SERVICE=WMTS&
 VERSION=1.3.0&
 REQUEST=GetCapabilities"></app-codeblock>
 
-<p>
-  Nun hat der Client alle nötigen Informationen um die einzelnen Tiles anzufordern. Dies erfolgt mithilfe des folgenden GetTile-Request
+<p class="newPageBefore">
+  Nun hat der Client alle nötigen Informationen um die einzelnen Tiles anzufordern. Dies erfolgt mithilfe des folgenden GetTile-Request:
 </p>
 
 <app-codeblock [lineNumbers]="false" code="https://geoserver.masterarbeit-cog.de/gwc/service/wmts?

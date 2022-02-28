@@ -1,25 +1,27 @@
-<app-headline headline="Anzeigen eines Orthomosaiks" [h]="3" number="1.3.1" [id]="1.31"></app-headline>
+<app-headline headline="Anzeigen eines Orthomosaiks" [h]="3" number="1.2.1" [id]="1.21"></app-headline>
 <p>
   Ein Orthomosaik ist eine Abbildung, welche aus mehreren Fotos (Mosaik) erzeugt wurde. Charakteristisch für ein Orthomosaik ist, dass alle perspektivischen Verzerrungen durch eine Orthogonalprojektion entfernt werden. Dies bedeutet, dass jederzeit eine Draufsicht auf das Orthomosaik dargestellt wird. Zur Veranschaulichung wurden zwei Gebiete mit unterschiedlicher Auflösung, Ausdehnung und Quelle genutzt, um auf Besonderheiten, welche diese Eigenschaften hervorrufen, eingehen zu können. Dies ermöglicht einen Vergleich zwischen einem Low-Cost Ansatz mittels Drohne und einem High-Cost Ansatz mittels Gyrocopter.
 </p>
 
 <p>
-  Das erste Gebiet ist ein Industriegebiet mit dem Namen Lindenrain, welches aktuell von der Stadt Calw erschlossen wird. Die Daten wurden durch eine Drohnenbefliegung in 120 Meter Höhe erfasst. Genutzt wurde hierfür eine Drohne des Herstellers DJI mit der Modellbezeichnung Matrice 300 RTK und als Sensor eine Kamera von DJI (Zenmuse P1 mit 44,72 Megapixel Auflösung), welche speziell für die Luftbildvermessung geeignet ist. Dieser Datensatz bedeckt eine Fläche von 26,37 Hektar bei einer Bodenauflösung von 2 cm pro Pixel. Der Datensatz besteht aus 4 Kanälen, welche sich aus red green blue und für die transparenz aus alpha (RGBA) zusammensetzen, mit dem Datentype Byte (Werte zwischen 0 und 255) und einer Datenmenge von 6,9 Gigabyte. Das Koordinatensystem des Datensatzes ist "WGS 84 / Web Mercator" (EPSG:3857).
+  Das erste Gebiet ist ein Industriegebiet mit dem Namen Lindenrain, welches aktuell von der Stadt Calw erschlossen wird. Die Daten wurden durch eine Drohnenbefliegung in 120 Meter Höhe erfasst. Genutzt wurde hierfür eine Drohne des Herstellers DJI mit der Modellbezeichnung Matrice 300 RTK und als Sensor eine Kamera von DJI (Zenmuse P1 mit 44,72 Megapixel Auflösung), welche speziell für die Luftbildvermessung geeignet ist. Dieser Datensatz bedeckt eine Fläche von 26,37 Hektar bei einer Bodenauflösung von 2 cm pro Pixel. Der Datensatz besteht aus 4 Kanälen, welche sich aus red green blue und für die transparenz aus alpha (<app-abbreviation abbreviation="RGBA" description="Red green blue alpha"></app-abbreviation>) zusammensetzen, mit dem Datentype Byte (Werte zwischen 0 und 255) und einer Datenmenge von 6,9 Gigabyte. Das Koordinatensystem des Datensatzes ist "WGS 84 / Web Mercator" (EPSG:3857).
 </p>
 
 <app-figure
     id="1-1"
+    [sort]="1.01"
     src="/assets/images/Einleitung/ortho_lindenrain.jpg"
     caption="Orthomosaik des Gebietes Lindenrain"
     source="Screenshot von QGIS"
     imageStyle="padding: 0 19%;"></app-figure>
 
 <p>
-  Das zweite Gebiet mit der Bezeichnung Strenzfeld wurde mittels Gyrocopter der Hochschule Anhalt Institut für Geoinformation und Vermessung in einer Flughöhe von 545 Metern erfasst. Als Sensor wurde eine iXM-100 mit 102,06 Megapixel pro Bild genutzt. Der Datensatz umfasst eine Fläche von 440,18 Hektar bei einer Bodenauflösung von 5 cm pro Pixel. Weiterhin besteht er aus 3 Kanälen, welche sich aus red green blue (RGB) zusammensetzen, mit dem Datentype uint16 (Werte zwischen 0 und 65535) und einer Datenmenge von 16,0 Gigabyte. Das Koordinatensystem des Datensatzes ist "WGS 84 / UTM zone 32N" (EPSG:32632).
+  Das zweite Gebiet mit der Bezeichnung Strenzfeld wurde mittels Gyrocopter der Hochschule Anhalt Institut für Geoinformation und Vermessung in einer Flughöhe von 545 Metern erfasst. Als Sensor wurde eine iXM-100 mit 102,06 Megapixel pro Bild genutzt. Der Datensatz umfasst eine Fläche von 440,18 Hektar bei einer Bodenauflösung von 5 cm pro Pixel. Weiterhin besteht er aus 3 Kanälen, welche sich aus red green blue (<app-abbreviation abbreviation="RGB" description="Red green blue"></app-abbreviation>) zusammensetzen, mit dem Datentype uint16 (Werte zwischen 0 und 65535) und einer Datenmenge von 16,0 Gigabyte. Das Koordinatensystem des Datensatzes ist "WGS 84 / UTM zone 32N" (EPSG:32632).
 </p>
 
 <app-figure
     id="1-2"
+    [sort]="1.02"
     src="/assets/images/Einleitung/ortho_strenzfeld.jpg"
     caption="Orthomosaik des Gebietes Strenzfeld"
     source="Screenshot von QGIS"

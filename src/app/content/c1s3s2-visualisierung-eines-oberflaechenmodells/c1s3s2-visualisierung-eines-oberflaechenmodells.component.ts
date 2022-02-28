@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-c1s3s2-visualisierung-eines-oberflaechenmodells',
+  selector: 'app-c1s2s2-visualisierung-eines-oberflaechenmodells',
   templateUrl: './c1s3s2-visualisierung-eines-oberflaechenmodells.component.html',
   styleUrls: ['./c1s3s2-visualisierung-eines-oberflaechenmodells.component.scss']
 })

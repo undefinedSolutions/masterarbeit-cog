@@ -56,6 +56,10 @@ import { C5s3ErgebnisseDesWMTSComponent } from './content/c5s3-ergebnisse-des-wm
 import { C5s4ErgebnisseDesCOGComponent } from './content/c5s4-ergebnisse-des-cog/c5s4-ergebnisse-des-cog.component';
 import { C6ZusammenfassungComponent } from './content/c6-zusammenfassung/c6-zusammenfassung.component';
 import { C6s1ZentraleErkenntnisseComponent } from './content/c6s1-zentrale-erkenntnisse/c6s1-zentrale-erkenntnisse.component';
+import { C1EinleitungComponent } from './content/c1-einleitung/c1-einleitung.component';
+import { C1s1ZielDerArbeitComponent } from './content/c1s1-ziel-der-arbeit/c1s1-ziel-der-arbeit.component';
+import { C6s2ReflexionComponent } from './content/c6s2-reflexion/c6s2-reflexion.component';
+import { DigitalAttachmentComponent } from './pages/digital-attachment/digital-attachment.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +118,10 @@ import { C6s1ZentraleErkenntnisseComponent } from './content/c6s1-zentrale-erken
     C5s4ErgebnisseDesCOGComponent,
     C6ZusammenfassungComponent,
     C6s1ZentraleErkenntnisseComponent,
+    C1EinleitungComponent,
+    C1s1ZielDerArbeitComponent,
+    C6s2ReflexionComponent,
+    DigitalAttachmentComponent,
   ],
   imports: [
     BrowserModule

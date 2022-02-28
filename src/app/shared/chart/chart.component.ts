@@ -64,6 +64,7 @@ import { FiguresService } from './../../services/figures/figures.service';
 })
 export class ChartComponent implements AfterViewInit, OnInit {
   _that = this;
+  @Input() sort: number;
   @Input() id: string;
   @Input() source: string = "";
   @Input() suffix: string = "";
@@ -151,8 +152,7 @@ export class ChartComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     if (this.captionID) {
-      console.log(this.captionID)
-      this.figuresService.pushFigure(this.caption, this.captionID);
+      this.figuresService.pushFigure(this.caption, this.captionID, this.sort);
     }
   }
 

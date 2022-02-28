@@ -9,6 +9,7 @@
       [id]="'tmsCompareMulti'"
       [caption]="'Vergleich TMS Generierung'"
       captionID="5-7"
+      [sort]="5.07"
       source="eigene Daten"
       [data]="dataTmsCompareMulti"
       [displayLegend]="true"
@@ -22,11 +23,12 @@
   Die nächsten beiden Abbildungen zeigen das Verhältnis der Zoomstufen zu der Anzahl der Tiles bzw. zu der Dateigröße der jeweiligen Zoomstufe des Orthomosaiks Lindenrain. Dies markiert das in <a href="#content-5">Kapitel 5</a> angesprochene exponentielle Wachstum.
 </p>
 
-<div class="chart newPageBefore" style="height: 265px;">
+<div class="chart" style="height: 265px;">
   <app-chart
       [id]="'tmsTileNumber'"
       [caption]="'Anzahl der Tiles'"
       captionID="5-8"
+      [sort]="5.08"
       source="eigene Daten"
       [data]="dataTmsTileNumber"
       [format]="''">
@@ -40,6 +42,7 @@
       [id]="'tmsSize'"
       [caption]="'Größe des TMS ortho_lindenrain'"
       captionID="5-9"
+      [sort]="5.09"
       source="eigene Daten"
       [data]="dataTmsSize"
       [format]="'round3'"
@@ -61,18 +64,18 @@
   Sollte die Darstellung des TMS geändert werden sollen, muss hierzu ein komplett neuer Datensatz erstellt werden. Somit ist es nicht möglich, nur den Stil anzupassen ohne den Datensatz vollständig neu hochzuladen.
 </p>
 
-<p>
+<p class="newPageBefore">
   Der TMS ist ebenfalls nicht in der Lage, Rasterwerte, abgesehen von RGB, wiederzugeben. Es gibt zwar Datensätze, welche Höheninformationen in den RGB-Kanälen enthalten,<app-quote
   id="5-maptiler"
   author="maptiler"
-  lastVisit="29.01.2022"
+  lastVisit="18.02.2022"
   publicationDate="21.03.2019"
   title="RGB-encoded elevation data in MapTiler Cloud"
   [vgl]="true"
   URL="https://www.maptiler.com/news/2019/03/rgb-encoded-elevation-data-in-maptiler-cloud/"></app-quote> die Generierung ist jedoch mit einem großen Aufwand verbunden, sodass es zielführender sein kann, einen anderen Standard zu nutzen.<app-quote
   id="5-gif4water"
   author="GIS for water"
-  lastVisit="29.01.2022"
+  lastVisit="18.02.2022"
   title="Create terrain rgb tile from dem"
   [vgl]="true"
   URL="https://water-gis.com/en/setups/terrain-rgb/create_terrainrgb/"></app-quote>

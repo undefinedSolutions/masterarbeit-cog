@@ -14,12 +14,13 @@
   <li><span>Configure Instance</span> = dient der Zugriffsverwaltung und weiteren in dieser Arbeit nicht genutzten Funktionen.</li>
   <li><span>Speicher hinzufügen</span> = zugewiesener Speicherplatz für die Instanz. Dieser Speicherplatz wird für das Betriebssystem, die installierte Software, Daten und den Cache verwendet und sollte somit ausreichend Speicherplatz bieten. Für die vorliegende Arbeit wurden 20 GB Speicherplatz gewählt.</li>
   <li><span>Tags hinzufügen</span> = Tags dienen der einfacheren Verwaltung von Instances.</li>
-  <li><span>Configure Security Group aus</span> = diese Gruppen beschreiben die zu öffnenden Ports. Der GeoServer wird standardmäßig auf dem Port 8080 betrieben und Secure Shell (<app-abbreviation abbreviation="SSH" description="Secure Shell"></app-abbreviation>) zur Verbindung mit dem Server auf dem Port 22. Des Weiteren werden optionale Ports freigegeben um den Geoserver über HTTP (Port 80) und HTTPS (Port 443) zu erreichen. Die folgende Abbildung zeigt die Freigaben der Instanz.</li>
+  <li><span>Configure Security Group aus</span> = diese Gruppen beschreiben die zu öffnenden Ports. Der GeoServer wird standardmäßig auf dem Port 8080 betrieben und Secure Shell (<app-abbreviation abbreviation="SSH" description="Secure Shell"></app-abbreviation>) zur Verbindung mit dem Server auf dem Port 22. Des Weiteren werden optionale Ports freigegeben um den Geoserver über <app-abbreviation abbreviation="HTTP" description="Hypertext Transfer Protocol"></app-abbreviation> (Port 80) und <app-abbreviation abbreviation="HTTPS" description="Hypertext Transfer Protocol Secure"></app-abbreviation> (Port 443) zu erreichen. Die folgende Abbildung zeigt die Freigaben der Instanz.</li>
   <li><span>Prüfen</span> = dient der finalen Übersicht der getroffenen Einstellungen.</li>
 </ol>
 
 <app-figure
     id="3-5"
+    [sort]="3.05"
     src="/assets/images/Datenbereitstellung/Geoserver-Sicherheitsgruppen.jpg"
     caption="Getroffene Einstellungen für die Sicherheitsgruppe"
     source="Screenshot von AWS"></app-figure>
@@ -35,7 +36,7 @@
 <app-codeblock [lineNumbers]="false" code="ssh -i ~/.ssh/Geoserver.pem
     ubuntu@ec2-3-64-229-203.eu-central-1.compute.amazonaws.com"></app-codeblock>
 
-<p>
+<p class="newPageBefore">
   Die Instanz steht nun bereit und es kann mit der Installation des GeoServers begonnen werden. Für Linux üblich geschieht dies nur über Terminal-Eingaben:
 </p>
 
@@ -65,30 +66,30 @@ rm -r demo/
   id="3-Geoserver-Installation"
   author="Geoserver"
   chapter="Installation"
-  lastVisit="29.01.2022"
+  lastVisit="11.02.2022"
   title="Linux binary"
   [vgl]="true"
   URL="https://docs.geoserver.org/stable/en/user/installation/linux.html"></app-quote> Das Starten des Geoservers sollte jedoch nicht unmittelbar über die startup.sh-Datei erfolgen, sondern für einen bestimmten Service, dies wird in der Dokumentation des GeoServers beschrieben.<app-quote
   id="3-Geoserver-production"
   author="Geoserver"
   chapter="Running in a production environment"
-  lastVisit="29.01.2022"
+  lastVisit="11.02.2022"
   title="Linux init scripts"
   [vgl]="true"
   URL="https://docs.geoserver.org/stable/en/user/production/linuxscript.html"></app-quote>
 </p>
 
-<p>
+<p class="fullLine">
   Ebenso ist es nicht zielführend, den GeoServer nur über Server-IP und Port zu erreichen. Nutzerfreundlicher wäre die Verwendung eines Reverse Proxy samt SSL-Zertifikat. Der Reverse Proxy befähigt den Anwender, den Geoserver ohne Angabe des Ports mit einer Domain zu erreichen. Für diese Arbeit wurde die Domain geoserver.masterarbeit-cog.de verwendet. Eine Anleitung, welche Einstellungen beim GeoServer sowie der Reverse Proxy Software NGINX getroffen werden muss, ist leicht im Internet zu finden.<app-quote
   id="3-NGINX-Geoserver"
   author="Dev.to - Tek Bahadur Kshetri"
-  lastVisit="29.01.2022"
+  lastVisit="12.02.2022"
   title="Using NGINX to put Geoserver HTTPS"
   [vgl]="true"
-  URL="https://dev.to/iamtekson/using-nginx-to-put-geoserver-https-4204"></app-quote> Somit lässt sich die Weboberfläche des Geoservers einfach durch die Adresse geoserver.masterarbeit-cog.de/web aufrufen. Das SSL-Zertifikat ermöglicht eine verschlüsselte Kommunikation (HTTPS) zwischen dem Nutzer und dem Server. Die Verwendung von HTTPS ist aktuell als Standard anzusehen. Internet Browser warnen den Nutzer sogar, sofern es sich nur um eine HTTP-Verbindung handelt. Dies ist sinnvoll, da ohne SSL-Zertifikat einfache "Man in the Middle Attacks" </p><p> ausgeführt werden und Netzwerk-Pakete ausgetauscht werden können.<app-quote
+  URL="https://dev.to/iamtekson/using-nginx-to-put-geoserver-https-4204"></app-quote> Somit lässt sich die Weboberfläche des Geoservers einfach durch die Adresse geoserver.masterarbeit-cog.de/web aufrufen. Das SSL-Zertifikat ermöglicht eine verschlüsselte Kommunikation (HTTPS) zwischen dem Nutzer und dem Server. Die Verwendung von HTTPS ist aktuell als Standard anzusehen.</p><p>Internet Browser warnen den Nutzer sogar, sofern es sich nur um eine HTTP-Verbindung handelt. Dies ist sinnvoll, da ohne SSL-Zertifikat einfache "Man in the Middle Attacks"ausgeführt werden und Netzwerk-Pakete ausgetauscht werden können.<app-quote
   id="3-https-man-in-the-middle"
   author="catchpoint"
-  lastVisit="29.01.2022"
+  lastVisit="14.02.2022"
   publicationDate="25.04.2017"
   title="Is HTTPS the Answer to Man in the Middle Attacks?"
   [vgl]="true"
@@ -97,6 +98,7 @@ rm -r demo/
 
 <app-figure
     id="3-6"
+    [sort]="3.06"
     src="/assets/images/Datenbereitstellung/aws_reverseProxy.png"
     caption="Anfrage eines Browsers an den Reverse Proxy in einer EC2 Instanz"
     source="eigene Darstellung"></app-figure>

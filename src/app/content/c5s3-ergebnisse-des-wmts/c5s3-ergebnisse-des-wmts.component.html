@@ -9,6 +9,7 @@
       [id]="'wmtsNoCache'"
       [caption]="'Vergleich Caching und on-the-fly Generierung'"
       captionID="5-12"
+      [sort]="5.12"
       source="eigene Daten"
       [data]="dataWmtsNoCache"
       [displayLegend]="true"
@@ -27,6 +28,7 @@
       [id]="'wmtsPNG'"
       [caption]="'Größenvergleich des Downloads image/vnd.jpeg-png mit image/png'"
       captionID="5-13"
+      [sort]="5.13"
       source="eigene Daten"
       [data]="dataWmtsPNG"
       [displayLegend]="true"
@@ -61,7 +63,7 @@
   }),
 })"></app-codeblock>
 
-<p>
+<p class="newPageBefore">
   Die Ergebnisse des Vergleichs der Dauer des Downloads unter Berücksichtigung des TMS sind in der folgenden Abbildung zu sehen. Ein unerwartetes Ergebnis, ist die Geschwindigkeit des WMTS-TMS im Vergleich zu dem WMTS. Dies ist auf eine bessere Implementierung des TMS in OpenLayer zurückzuführen. Bei den beiden Oberflächenmodellen ist ebenfalls zu erkennen, dass der WMTS und TMS das "image/vnd.jpeg-png"-Format nutzen und somit die übertragenen Datenmengen geringer ausfallen. Dies erklärt auch die schnellere Übertragung des WMTS und WMTS in diesem Szenario.
 </p>
 
@@ -70,6 +72,7 @@
       [id]="'wmtsNetworkTime'"
       [caption]="'Dauer des Downloads'"
       captionID="5-14"
+      [sort]="5.14"
       source="eigene Daten"
       [data]="datawmtsNetworkTime"
       [displayLegend]="true"

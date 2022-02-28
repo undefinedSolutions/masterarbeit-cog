@@ -111,6 +111,11 @@ p {
   hyphens: auto;
   text-align: justify;
 }
+.fullLine::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
 
 /* Display span as footnote */
 .footnote {
@@ -118,6 +123,7 @@ p {
   font-size: 13px;
 }
 [data-footnote-marker]::marker {
+  content: footnote;
   font-size: 75%;
 }
 
@@ -159,20 +165,101 @@ p {
 }
 @page:nth(4) {
   @bottom-center {
-    content: counter(page, upper-roman);
+    content: none;
   }
 }
 @page:nth(5) {
   @bottom-center {
-    content: counter(page, upper-roman);
+    content: none;
   }
 }
 @page:nth(6) {
   @bottom-center {
-    content: counter(page, upper-roman);
+    content: none;
   }
 }
 @page:nth(7) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(8) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(9) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(10) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(11) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(12) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(13) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(14) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+
+@page:nth(105) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(106) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(107) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(108) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(109) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(110) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(111) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(112) {
+  @bottom-center {
+    content: counter(page, upper-roman);
+  }
+}
+@page:nth(113) {
   @bottom-center {
     content: counter(page, upper-roman);
   }
@@ -189,6 +276,10 @@ p {
     box-shadow: 10px 12px 30px 0 rgb(0 0 0 / 10%);
     margin: 0 auto 13px;
   }
+}
+
+.newPageRight {
+  break-before: right;
 }
 
 .newPageAfter {
